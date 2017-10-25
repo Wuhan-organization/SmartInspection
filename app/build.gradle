@@ -5,10 +5,9 @@ apply plugin: 'org.greenrobot.greendao'
 android {
     compileSdkVersion 23
     buildToolsVersion "24.0.1"
-
     defaultConfig {
         applicationId "com.whut.smartinspection"
-        minSdkVersion 23
+        minSdkVersion 11
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -19,11 +18,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
     greendao {
         schemaVersion 1
         daoPackage 'com.whut.greendao.gen'
         targetGenDir 'src/main/java'
+    }
+    productFlavors {
     }
 }
 

@@ -84,7 +84,7 @@
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/tv_login_user_login"
+            android:id="@+id/btn_login_user_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="20dp"
@@ -94,7 +94,7 @@
             android:textSize="14sp" />
 
         <Button
-            android:id="@+id/tv_login_reset"
+            android:id="@+id/btn_login_reset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -105,7 +105,7 @@
             android:textSize="14sp" />
 
         <Button
-            android:id="@+id/tv_login_user_exit"
+            android:id="@+id/btn_login_user_exit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
