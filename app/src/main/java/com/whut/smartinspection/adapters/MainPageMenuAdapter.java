@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.whut.smartinspection.R;
 
 import java.util.List;
@@ -19,14 +20,10 @@ public class MainPageMenuAdapter extends BaseAdapter {
 
     private List<MainPageMenu> menus;
     private Context mContext;
-    // private DisplayImageOptions options;
 
     public MainPageMenuAdapter(Context context, List<MainPageMenu> menus) {
         this.mContext = context;
         this.menus = menus;
-        // 显示图片的配置
-//        options = new DisplayImageOptions.Builder().cacheInMemory(true).cacheOnDisk(true)
-//                .bitmapConfig(Bitmap.Config.RGB_565).imageScaleType(ImageScaleType.EXACTLY).build();
     }
 
     @Override
@@ -56,8 +53,7 @@ public class MainPageMenuAdapter extends BaseAdapter {
         }
 
         MainPageMenu menu = menus.get(position);
-        // ImageLoader.getInstance().displayImage(menu.getImageUrl(), holder.ivMainPageMenu, options);
-        // holder.ivMainPageMenu.setImageResource(R.drawable.ic_launcher);
+        Glide.with(mContext).load(menu.getImageUrl()).into(holder.ivMainPageMenu);
         holder.tvMainPageMenuName.setText(menu.getMenuName());
 
         return convertView;

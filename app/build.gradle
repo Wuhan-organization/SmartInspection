@@ -43,4 +43,7 @@ dependencies {
     compile 'org.greenrobot:greendao:3.2.0'
     // compile'org.greenrobot:greendao-generator:3.0.0'
     compile 'com.google.code.gson:gson:2.8.2'
+    // 上拉刷新，下拉加载组件框架
+    compile project(':pullRefreshLibrary')
+    compile project(':smartlibrary')
 }

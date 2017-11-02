@@ -1,6 +1,5 @@
 package com.whut.smartinspection.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,15 +9,18 @@ import android.widget.EditText;
 import com.whut.smartinspection.R;
 import com.whut.smartinspection.component.handler.EMsgType;
 import com.whut.smartinspection.component.handler.IHandlerListener;
-import com.whut.smartinspection.component.http.UserComponent;
 import com.whut.smartinspection.utils.SystemUtils;
+import com.whut.smartlibrary.base.SwipeBackActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class LoginActivity extends Activity implements IHandlerListener {
+/***
+ * 登录页面
+ */
+public class LoginActivity extends SwipeBackActivity implements IHandlerListener {
 
     @BindView(R.id.btn_login_user_login)
     Button btnUserLogin;
@@ -50,9 +52,11 @@ public class LoginActivity extends Activity implements IHandlerListener {
     }
 
     private void login() {
-        String username = etLoginUsername.getText().toString().trim();
-        String password = etLoginPassword.getText().toString().trim();
-        UserComponent.login(this, username, password);
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+//        String username = etLoginUsername.getText().toString().trim();
+//        String password = etLoginPassword.getText().toString().trim();
+//        UserComponent.login(this, username, password);
     }
 
     @Override

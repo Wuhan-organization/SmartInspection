@@ -32,7 +32,11 @@ public class UserComponent extends BaseHttpComponent {
                 build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
-                listener.onFailure(e.getMessage(), EMsgType.LOGIN_FAILURE);
+                String message = "network error";
+                if (e != null) {
+                    message = e.getMessage();
+                }
+                listener.onFailure(message, EMsgType.LOGIN_FAILURE);
             }
 
             @Override
