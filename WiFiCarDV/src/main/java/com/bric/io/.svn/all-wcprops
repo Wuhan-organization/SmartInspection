@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/io
+END
+MeasuredInputStream.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/io/MeasuredInputStream.java
+END
+MeasuredOutputStream.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/io/MeasuredOutputStream.java
+END
+GuardedInputStream.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/io/GuardedInputStream.java
+END
+NullOutputStream.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/io/NullOutputStream.java
+END
+GuardedOutputStream.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/io/GuardedOutputStream.java
+END
+IOUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/io/IOUtils.java
+END
+CombinedInputStream.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/io/CombinedInputStream.java
+END

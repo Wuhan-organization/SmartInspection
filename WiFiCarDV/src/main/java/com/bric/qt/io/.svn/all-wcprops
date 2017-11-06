@@ -1,0 +1,197 @@
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io
+END
+Atom.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/Atom.java
+END
+EditListAtom.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/EditListAtom.java
+END
+GraphicsModeConstants.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/GraphicsModeConstants.java
+END
+VideoMediaInformationHeaderAtom.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/VideoMediaInformationHeaderAtom.java
+END
+EditAtom.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/EditAtom.java
+END
+SampleDescriptionEntry.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/SampleDescriptionEntry.java
+END
+MediaHeaderAtom.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/MediaHeaderAtom.java
+END
+SoundSampleDescriptionAtom.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/SoundSampleDescriptionAtom.java
+END
+EmptyAtom.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/EmptyAtom.java
+END
+SoundSampleDescriptionEntry.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/SoundSampleDescriptionEntry.java
+END
+WindowLocationAtom.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/WindowLocationAtom.java
+END
+TimeToSampleAtom.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/TimeToSampleAtom.java
+END
+UnknownSampleDescriptionEntry.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/UnknownSampleDescriptionEntry.java
+END
+AtomFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/AtomFactory.java
+END
+LeafAtom.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/LeafAtom.java
+END
+VideoSampleDescriptionAtom.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/VideoSampleDescriptionAtom.java
+END
+VideoSampleDescriptionEntry.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/VideoSampleDescriptionEntry.java
+END
+TrackHeaderAtom.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/TrackHeaderAtom.java
+END
+MovWriter.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/MovWriter.java
+END
+SoundSampleDescriptionEntry0.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/SoundSampleDescriptionEntry0.java
+END
+ChunkOffsetAtom.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/ChunkOffsetAtom.java
+END
+JPEGMovWriter.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/JPEGMovWriter.java
+END
+SampleDescriptionAtom.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/SampleDescriptionAtom.java
+END
+UnknownLeafAtom.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/UnknownLeafAtom.java
+END
+DataReferenceAtom.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/DataReferenceAtom.java
+END
+MovieHeaderAtom.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/MovieHeaderAtom.java
+END
+ParentAtom.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/ParentAtom.java
+END
+HandlerReferenceAtom.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/HandlerReferenceAtom.java
+END
+SoundMediaInformationHeaderAtom.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/SoundMediaInformationHeaderAtom.java
+END
+SampleSizeAtom.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/SampleSizeAtom.java
+END
+UserDataTextAtom.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/UserDataTextAtom.java
+END
+SampleToChunkAtom.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/bric/qt/io/SampleToChunkAtom.java
+END

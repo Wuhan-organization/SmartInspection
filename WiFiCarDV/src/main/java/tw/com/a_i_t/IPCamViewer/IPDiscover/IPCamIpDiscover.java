@@ -1,0 +1,165 @@
+package tw.com.a_i_t.IPCamViewer.IPDiscover;
+
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.InterfaceAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import tw.com.a_i_t.IPCamViewer.R;
+import tw.com.a_i_t.IPCamViewer.IPCam.IPCamWhistlerEvent;
+
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+import android.widget.ImageView;
+
+public class IPCamIpDiscover {
+	String TAG="IPCamIpDiscover";
+	
+	String BroadcastIpAddr;
+	Timer timer = null;
+	private Handler mHandler;
+	private boolean discovering;
+	
+	public IPCamIpDiscover(Handler handler)
+	{
+		BroadcastIpAddr = getWifiApBroadcastIpAddress();
+		Log.d(TAG,"IP=" + BroadcastIpAddr);
+		mHandler = handler;
+	}
+	
+	public boolean startDiscover(int delay,int interval)
+	{
+		if (!discovering) {
+			timer = new Timer(true);
+			timer.schedule(new DiscoverDeviceRoutine(), delay, interval);
+			discovering = true;
+			return discovering;
+		}
+		return false;
+	}
+	
+	public void stopDiscover()
+	{
+		if (timer != null) {
+			timer.cancel();
+			timer = null;
+			discovering = false;
+		}
+	}
+	
+	public boolean isDiscovering()
+	{
+		return discovering;
+	}
+	
+	
+	/* get Wifi IP before broadcast*/
+	private String getWifiApBroadcastIpAddress() {
+	    try {
+	        for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); 
+	        		en.hasMoreElements();) {
+	            NetworkInterface intf = en.nextElement();
+	            if (intf.getName().contains("wlan")) {
+	            	///
+	            	List<InterfaceAddress> faceAddresses = intf.getInterfaceAddresses();
+	            	for (InterfaceAddress faceAddress : faceAddresses) {
+	                    InetAddress address = faceAddress.getAddress();
+	                    if (address.isLoopbackAddress() == true || address.getHostAddress().contains(":")) {
+	                        continue;
+	                    }
+	                    //get Local IP
+	                    byte[] ipBytes = address.getAddress();
+	                    //long ipData = (ipBytes[0] << 24) + (ipBytes[1] << 16) + (ipBytes[2] << 8) + (ipBytes[3]);
+	                    int IP[] = {0,0,0,0};
+	                    IP[0]=ipBytes[0]& 0xff;
+	                    IP[1]=ipBytes[1]& 0xff;
+	                    IP[2]=ipBytes[2]& 0xff;
+	                    IP[3]=ipBytes[3]& 0xff;
+	                    String ip_str = IP[0]+"."+IP[1]+"."+IP[2]+"."+IP[3];
+	                    Log.d("getWifiApBroadcastIpAddress", "IP="+ip_str);
+	                    
+	                    //get Local IP subnet mask
+	                    long ipMask = (faceAddress.getNetworkPrefixLength());
+	                    int mshift = 0xffffffff<<(32-ipMask);
+	                    int oct[] = {0,0,0,0};
+	                    oct[0] = ((byte) ((mshift&0xff000000)>>24)) & 0xff;
+	                    oct[1] = ((byte) ((mshift&0x00ff0000)>>16)) & 0xff;
+	                    oct[2] = ((byte) ((mshift&0x0000ff00)>>8)) & 0xff;
+	                    oct[3] = ((byte) (mshift&0x000000ff)) & 0xff;
+	                    String submask = oct[0]+"."+oct[1]+"."+oct[2]+"."+oct[3];
+	                    Log.d("getWifiApBroadcastIpAddress", "Submask="+submask);
+	                    
+	                    //int broadcast = (dhcp.ipAddress & dhcp.netmask) | ~dhcp.netmask;
+	                    //get transfer Local IP & netmask tp broadcastIP 
+	                    int[] bip = {0,0,0,0};
+	                    for (int i = 0; i < 4; i++)
+	                    	bip[i] = ((IP[i] & oct[i]) | ~oct[i])&0xff;//(byte) (broadcast >> (k * 8));
+	                    
+	                    String BroadcastIP = bip[0]+"."+bip[1]+"."+bip[2]+"."+bip[3];
+	                    Log.d("getWifiApBroadcastIpAddress", "BroadcastIP="+BroadcastIP);
+	                    return BroadcastIP;
+	                  
+	                }
+	            	/*
+	                for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr
+	                        .hasMoreElements();) {
+	                    InetAddress inetAddress = enumIpAddr.nextElement();
+	                    if (!inetAddress.isLoopbackAddress()
+	                            && (inetAddress.getAddress().length == 4)) {
+	                        //Log.d("WWWW", inetAddress.getHostAddress());
+	                        return inetAddress.getHostAddress();
+	                    }
+	                }*/
+	            }
+	        }
+	    } catch (SocketException ex) {
+	        Log.e("getWifiApBroadcastIpAddress", ex.toString());
+	    }
+	    return null;
+	}
+	
+	public class DiscoverDeviceRoutine extends TimerTask
+	{
+		public void run()
+		{
+			//Log.d("IPCamIpDiscover","DiscoverDeviceRoutine");
+			//if (CameraCommand.isAPEnable())
+			Message message;
+			message = mHandler.obtainMessage();
+//			message.obj = "";
+			message.arg1 = IPCamWhistlerEvent.MSG_BROADCAST_EVENT;
+
+			mHandler.sendMessage(message);
+			sendbroadcast();
+		}
+	};
+	
+	public void sendbroadcast() {
+		Thread background=new Thread(new Runnable() {
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				String sendData = "DISCOVER.CAMERA.IP";
+				try {
+					DatagramSocket dsock;
+					dsock = new DatagramSocket();
+					dsock.setBroadcast(true);
+					DatagramPacket sendPacket = new DatagramPacket(sendData.getBytes(), sendData.length(), 
+							InetAddress.getByName(BroadcastIpAddr), 49132);
+					dsock.send(sendPacket);
+					dsock.close();
+				} catch (Exception e)   {
+					Log.d("sendbroadcast","Exception!!!!!");
+				}
+			}
+		});
+        background.start();
+	}
+}

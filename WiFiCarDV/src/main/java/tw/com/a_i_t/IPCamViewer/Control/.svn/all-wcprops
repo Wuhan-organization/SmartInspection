@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/SmartCamera/!svn/ver/35923/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/tw/com/a_i_t/IPCamViewer/Control
+END
+NetworkConfigurationsFragment.java
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/tw/com/a_i_t/IPCamViewer/Control/NetworkConfigurationsFragment.java
+END
+CameraControlFragment.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/tw/com/a_i_t/IPCamViewer/Control/CameraControlFragment.java
+END
+CameraSettingsFragment.java
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/svn/SmartCamera/!svn/ver/35923/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/tw/com/a_i_t/IPCamViewer/Control/CameraSettingsFragment.java
+END

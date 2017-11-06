@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/SmartCamera/!svn/ver/35145/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/tw/com/a_i_t/IPCamViewer/FileBrowser
+END
+LocalFileBrowserFragment.java
+K 25
+svn:wc:ra_dav:version-url
+V 165
+/svn/SmartCamera/!svn/ver/33850/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/tw/com/a_i_t/IPCamViewer/FileBrowser/LocalFileBrowserFragment.java
+END
+FileBrowser.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/tw/com/a_i_t/IPCamViewer/FileBrowser/FileBrowser.java
+END
+BrowserSettingFragment.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/tw/com/a_i_t/IPCamViewer/FileBrowser/BrowserSettingFragment.java
+END
+ViewTag.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/tw/com/a_i_t/IPCamViewer/FileBrowser/ViewTag.java
+END
+FileBrowserFragment.java
+K 25
+svn:wc:ra_dav:version-url
+V 160
+/svn/SmartCamera/!svn/ver/34782/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/tw/com/a_i_t/IPCamViewer/FileBrowser/FileBrowserFragment.java
+END
+LocalFileListAdapter.java
+K 25
+svn:wc:ra_dav:version-url
+V 161
+/svn/SmartCamera/!svn/ver/34467/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/tw/com/a_i_t/IPCamViewer/FileBrowser/LocalFileListAdapter.java
+END
+FileListAdapter.java
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/svn/SmartCamera/!svn/ver/35145/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/tw/com/a_i_t/IPCamViewer/FileBrowser/FileListAdapter.java
+END

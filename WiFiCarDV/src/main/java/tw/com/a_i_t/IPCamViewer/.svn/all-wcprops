@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/SmartCamera/!svn/ver/35923/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/tw/com/a_i_t/IPCamViewer
+END
+PrintableAsciiInputFilter.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/tw/com/a_i_t/IPCamViewer/PrintableAsciiInputFilter.java
+END
+CameraSocket.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/tw/com/a_i_t/IPCamViewer/CameraSocket.java
+END
+MainActivity.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/SmartCamera/!svn/ver/35529/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/tw/com/a_i_t/IPCamViewer/MainActivity.java
+END
+ProgressMultiPartEntity.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/tw/com/a_i_t/IPCamViewer/ProgressMultiPartEntity.java
+END
+CameraPeeker.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/tw/com/a_i_t/IPCamViewer/CameraPeeker.java
+END
+CameraSniffer.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/SmartCamera/!svn/ver/34873/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/tw/com/a_i_t/IPCamViewer/CameraSniffer.java
+END
+FunctionListFragment.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/svn/SmartCamera/!svn/ver/34618/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/tw/com/a_i_t/IPCamViewer/FunctionListFragment.java
+END
+CameraCommand.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/SmartCamera/!svn/ver/35916/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/tw/com/a_i_t/IPCamViewer/CameraCommand.java
+END
+mProgressListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/tw/com/a_i_t/IPCamViewer/mProgressListener.java
+END
+LoginDialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/tw/com/a_i_t/IPCamViewer/LoginDialog.java
+END
+SimpleDialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/tw/com/a_i_t/IPCamViewer/SimpleDialog.java
+END
+Splash.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/tw/com/a_i_t/IPCamViewer/Splash.java
+END
+CameraUIConfig.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/tw/com/a_i_t/IPCamViewer/CameraUIConfig.java
+END
+AdasToastView.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/tw/com/a_i_t/IPCamViewer/AdasToastView.java
+END

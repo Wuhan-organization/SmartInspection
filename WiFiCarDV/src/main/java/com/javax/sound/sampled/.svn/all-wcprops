@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/javax/sound/sampled
+END
+AudioSystem.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/javax/sound/sampled/AudioSystem.java
+END
+AudioFormat.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/javax/sound/sampled/AudioFormat.java
+END
+AudioInputStream.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/SmartCamera/!svn/ver/33330/DSC_APP/branches/Car_DV.android.gradle/WiFiCarDV/app/src/main/java/com/javax/sound/sampled/AudioInputStream.java
+END
