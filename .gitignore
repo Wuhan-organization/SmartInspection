@@ -6,3 +6,6 @@
 .DS_Store
 /build
 /captures
+/WiFiCarDV/build
+/smartlibrary/build
+/pullRefreshLibrary/build
