@@ -1,2 +1,2 @@
-include ':app', ':smartlibrary'
+include ':app', ':smartlibrary', ':WiFiCarDV'
 include ':pullRefreshLibrary'

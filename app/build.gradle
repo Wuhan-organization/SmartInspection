@@ -4,7 +4,7 @@ apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "24.0.1"
+    buildToolsVersion '25.0.0'
     defaultConfig {
         applicationId "com.whut.smartinspection"
         minSdkVersion 11
@@ -27,6 +27,11 @@ android {
     }
 }
 
+repositories {
+    flatDir {
+        dirs 'libs','../WiFiCarDV/libs'
+    }
+}
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
@@ -46,4 +51,5 @@ dependencies {
     // 上拉刷新，下拉加载组件框架
     compile project(':pullRefreshLibrary')
     compile project(':smartlibrary')
+    compile project(':WiFiCarDV')
 }
