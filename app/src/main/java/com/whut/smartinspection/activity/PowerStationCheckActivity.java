@@ -1,5 +1,6 @@
 package com.whut.smartinspection.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -50,12 +51,20 @@ public class PowerStationCheckActivity extends SwipeBackActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String menuName = menusText[position];
+                Intent intent;
                 switch (position) {
+                    // 进入全面巡视页面
                     case 0:
+                        intent = new Intent(PowerStationCheckActivity.this, FullInspectionActivity.class);
+                        startActivity(intent);
+                        break;
 
+                    // 我的任务
+                    case 5:
+                        intent = new Intent(PowerStationCheckActivity.this, MyTaskActivity.class);
+                        startActivity(intent);
                         break;
-                    case 1:
-                        break;
+
                     default:
                         break;
                 }
@@ -84,6 +93,7 @@ public class PowerStationCheckActivity extends SwipeBackActivity {
     @OnClick({R.id.tv_power_station_check_back})
     public void onClick(View view) {
         switch (view.getId()) {
+            // 返回
             case R.id.tv_power_station_check_back:
                 finish();
                 break;

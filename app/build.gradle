@@ -4,7 +4,7 @@ apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "24.0.1"
+    buildToolsVersion "23.0.1"
     defaultConfig {
         applicationId "com.whut.smartinspection"
         minSdkVersion 11
