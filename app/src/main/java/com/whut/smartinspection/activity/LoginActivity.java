@@ -52,7 +52,7 @@ public class LoginActivity extends SwipeBackActivity implements IHandlerListener
     }
 
     private void login() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, MMainActivity.class);
         startActivity(intent);
 //        String username = etLoginUsername.getText().toString().trim();
 //        String password = etLoginPassword.getText().toString().trim();
@@ -64,7 +64,7 @@ public class LoginActivity extends SwipeBackActivity implements IHandlerListener
         switch (type) {
             // 登录成功
             case LOGIN_SUCCESS:
-                Intent intent = new Intent(this, MainActivity.class);
+                Intent intent = new Intent(this, MMainActivity.class);
                 startActivity(intent);
                 break;
 

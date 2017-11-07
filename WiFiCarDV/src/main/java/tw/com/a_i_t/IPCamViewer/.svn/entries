@@ -26,19 +26,16 @@ chrison.feng
 
 f3f50b47-209f-e511-ba83-00e081d2039e
 
-Control
-dir
-
-MainActivity.java
+AdasToastView.java
 file
 
 
 
 
-2016-12-06T06:14:27.270617Z
-5fd621ee19137b4543f7a86c5182cf9e
-2016-11-07T06:07:31.914672Z
-35529
+2016-08-10T11:49:58.147247Z
+bf476c7d2bcefdf5f345d000547de0bf
+2016-06-03T01:44:38.164454Z
+33330
 chrison.feng
 
 
@@ -61,7 +58,112 @@ chrison.feng
 
 
 
-16456
+671
+
+AutoTest
+dir
+
+CameraCommand.java
+file
+
+
+
+
+2017-01-11T08:34:56.192777Z
+3137ff5b854099e50ccd9fa99b472b4f
+2016-12-08T09:38:34.715024Z
+35916
+chrison.feng
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+23085
+
+CameraPeeker.java
+file
+
+
+
+
+2016-08-10T11:49:58.162847Z
+5bde387acfb9c69a35f7dd9359dc5223
+2016-06-03T01:44:38.164454Z
+33330
+chrison.feng
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+150
+
+CameraSniffer.java
+file
+
+
+
+
+2016-12-06T06:14:27.208217Z
+64f9ae2f391f783d088d8834414d6197
+2016-09-12T09:53:47.986770Z
+34873
+chrison.feng
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+11228
 
 CameraSocket.java
 file
@@ -97,14 +199,14 @@ chrison.feng
 
 4334
 
-ProgressMultiPartEntity.java
+CameraUIConfig.java
 file
 
 
 
 
-2016-08-10T11:49:58.194047Z
-06a95501a8dc4e9012c87adeac132ad4
+2016-08-10T11:49:58.178447Z
+4c2c82eaf042b4dd4b4e0c8a318859a9
 2016-06-03T01:44:38.164454Z
 33330
 chrison.feng
@@ -129,12 +231,18 @@ chrison.feng
 
 
 
-2138
+2649
+
+Control
+dir
+
+DroneCam
+dir
 
 FileBrowser
 dir
 
-Property
+FileUtility
 dir
 
 FunctionListFragment.java
@@ -171,297 +279,10 @@ chrison.feng
 
 16224
 
-CameraSniffer.java
-file
-
-
-
-
-2016-12-06T06:14:27.208217Z
-64f9ae2f391f783d088d8834414d6197
-2016-09-12T09:53:47.986770Z
-34873
-chrison.feng
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-11228
-
-DroneCam
-dir
-
-SimpleDialog.java
-file
-
-
-
-
-2016-08-10T11:49:58.194047Z
-52617afc4fb51008d92474c6a2c2dea8
-2016-06-03T01:44:38.164454Z
-33330
-chrison.feng
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2045
-
 IPCam
 dir
 
-CameraUIConfig.java
-file
-
-
-
-
-2016-08-10T11:49:58.178447Z
-4c2c82eaf042b4dd4b4e0c8a318859a9
-2016-06-03T01:44:38.164454Z
-33330
-chrison.feng
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2649
-
-AdasToastView.java
-file
-
-
-
-
-2016-08-10T11:49:58.147247Z
-bf476c7d2bcefdf5f345d000547de0bf
-2016-06-03T01:44:38.164454Z
-33330
-chrison.feng
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-671
-
-PrintableAsciiInputFilter.java
-file
-
-
-
-
-2016-08-10T11:49:58.194047Z
-4b668b7b64c968b8ea2e25e818760bcb
-2016-06-03T01:44:38.164454Z
-33330
-chrison.feng
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1009
-
-Viewer
-dir
-
-VideoView
-dir
-
-FileUtility
-dir
-
-CameraPeeker.java
-file
-
-
-
-
-2016-08-10T11:49:58.162847Z
-5bde387acfb9c69a35f7dd9359dc5223
-2016-06-03T01:44:38.164454Z
-33330
-chrison.feng
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-150
-
-CameraCommand.java
-file
-
-
-
-
-2017-01-11T08:34:56.192777Z
-3137ff5b854099e50ccd9fa99b472b4f
-2016-12-08T09:38:34.715024Z
-35916
-chrison.feng
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-23085
-
 IPDiscover
-dir
-
-mProgressListener.java
-file
-
-
-
-
-2016-08-10T11:49:58.209647Z
-102d641a79551343c2a0eb93bf14f2a7
-2016-06-03T01:44:38.164454Z
-33330
-chrison.feng
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-260
-
-AutoTest
 dir
 
 LoginDialog.java
@@ -498,6 +319,145 @@ chrison.feng
 
 2305
 
+MainActivity.java
+file
+
+
+
+replace
+2016-12-06T06:14:27.270617Z
+
+2016-11-07T06:07:31.914672Z
+35529
+chrison.feng
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+16456
+
+PrintableAsciiInputFilter.java
+file
+
+
+
+
+2016-08-10T11:49:58.194047Z
+4b668b7b64c968b8ea2e25e818760bcb
+2016-06-03T01:44:38.164454Z
+33330
+chrison.feng
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1009
+
+ProgressMultiPartEntity.java
+file
+
+
+
+
+2016-08-10T11:49:58.194047Z
+06a95501a8dc4e9012c87adeac132ad4
+2016-06-03T01:44:38.164454Z
+33330
+chrison.feng
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2138
+
+Property
+dir
+
+SimpleDialog.java
+file
+
+
+
+
+2016-08-10T11:49:58.194047Z
+52617afc4fb51008d92474c6a2c2dea8
+2016-06-03T01:44:38.164454Z
+33330
+chrison.feng
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2045
+
 Splash.java
 file
 
@@ -531,4 +491,44 @@ chrison.feng
 
 
 1881
+
+VideoView
+dir
+
+Viewer
+dir
+
+mProgressListener.java
+file
+
+
+
+
+2016-08-10T11:49:58.209647Z
+102d641a79551343c2a0eb93bf14f2a7
+2016-06-03T01:44:38.164454Z
+33330
+chrison.feng
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+260
 

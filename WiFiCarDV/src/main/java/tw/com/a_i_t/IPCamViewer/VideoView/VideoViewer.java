@@ -15,7 +15,6 @@ import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Display;
-import android.view.Gravity;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.ViewGroup;
@@ -29,9 +28,7 @@ import org.videolan.libvlc.MediaPlayer;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
-import tw.com.a_i_t.IPCamViewer.IPCam.IPCamWhistlerEvent;
 import tw.com.a_i_t.IPCamViewer.MainActivity;
-import tw.com.a_i_t.IPCamViewer.R;
 
 
 public class VideoViewer extends SurfaceView implements IVLCVout.Callback {

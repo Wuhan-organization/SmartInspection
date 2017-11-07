@@ -5,18 +5,15 @@ package tw.com.a_i_t.IPCamViewer ;
 //import org.videolan.vlc.VLCApplication ;
 
 import android.app.Activity ;
-import android.content.Context ;
 import android.content.Intent ;
-import android.content.SharedPreferences ;
 import android.os.Bundle ;
-import android.preference.PreferenceManager ;
 import android.view.Window ;
 import android.widget.ImageView ;
 
 public class Splash extends Activity {
 
 	private long ms = 0 ;
-	private long splashTime = 3500 ;
+	private long splashTime = 150 ;
 	private boolean splashActive = true ;
 	private boolean paused = false ;
 

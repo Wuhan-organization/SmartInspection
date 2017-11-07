@@ -22,7 +22,6 @@ import java.lang.reflect.Method;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
-import java.net.SocketTimeoutException;
 
 //import org.videolan.vlc.VLCApplication;
 
@@ -31,8 +30,6 @@ import android.net.wifi.WifiManager;
 import android.util.Log;
 import android.app.Fragment ;
 import android.content.Context;
-import tw.com.a_i_t.IPCamViewer.CameraPeeker;
-import tw.com.a_i_t.IPCamViewer.FileUtility.NetFileDownload;
 
 /**
  * Implements some simple tests for datagrams. Not as excessive as the core
@@ -368,7 +365,7 @@ public class CameraSniffer extends Thread {
 		if (context == null)
 			return false ;
 
-		WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE) ;
+		WifiManager wifiManager = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE) ;
 		wifiManager.getConnectionInfo();
 		Method[] wmMethods = wifiManager.getClass().getDeclaredMethods();
 		

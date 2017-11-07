@@ -14,9 +14,8 @@ import java.util.Locale ;
 
 import tw.com.a_i_t.IPCamViewer.CameraCommand ;
 import tw.com.a_i_t.IPCamViewer.CameraPeeker;
-import tw.com.a_i_t.IPCamViewer.CameraSniffer;
 import tw.com.a_i_t.IPCamViewer.FunctionListFragment;
-import tw.com.a_i_t.IPCamViewer.MainActivity ;
+import tw.com.a_i_t.IPCamViewer.MainActivity;
 import tw.com.a_i_t.IPCamViewer.Property.IPCamProperty;
 import tw.com.a_i_t.IPCamViewer.R ;
 import tw.com.a_i_t.IPCamViewer.FileBrowser.Model.FileNode ;
@@ -37,7 +36,6 @@ import android.net.ConnectivityManager;
 import android.net.DhcpInfo ;
 import android.net.NetworkInfo;
 import android.net.Uri ;
-import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager ;
 import android.net.wifi.WifiManager.WifiLock ;
 import android.os.AsyncTask ;
@@ -544,7 +542,7 @@ public class FileBrowserFragment extends Fragment {
 		mIp = getArguments().getString(KEY_IP) ;
 
 		if (mIp == null) {
-			WifiManager wifiManager = (WifiManager) getActivity().getSystemService(Context.WIFI_SERVICE) ;
+			WifiManager wifiManager = (WifiManager) getActivity().getApplicationContext().getSystemService(Context.WIFI_SERVICE) ;
 
 			DhcpInfo dhcpInfo = wifiManager.getDhcpInfo() ;
 

@@ -1,7 +1,7 @@
 package tw.com.a_i_t.IPCamViewer.FileBrowser;
 
 
-import tw.com.a_i_t.IPCamViewer.MainActivity ;
+import tw.com.a_i_t.IPCamViewer.MainActivity;
 import tw.com.a_i_t.IPCamViewer.R ;
 import android.app.Fragment ;
 import android.content.Context ;

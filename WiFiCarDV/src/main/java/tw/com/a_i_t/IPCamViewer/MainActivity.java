@@ -218,7 +218,7 @@ public class MainActivity extends Activity {
 
 		setTitle(getResources().getString(R.string.app_name)) ;
 
-		getActionBar().setDisplayHomeAsUpEnabled(false) ;
+		//getActionBar().setDisplayHomeAsUpEnabled(false) ;
 
 		setProgressBarIndeterminateVisibility(false) ;
 

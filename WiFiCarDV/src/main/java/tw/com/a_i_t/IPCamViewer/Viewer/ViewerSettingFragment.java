@@ -1,6 +1,6 @@
 package tw.com.a_i_t.IPCamViewer.Viewer;
 
-import tw.com.a_i_t.IPCamViewer.MainActivity ;
+import tw.com.a_i_t.IPCamViewer.MainActivity;
 import tw.com.a_i_t.IPCamViewer.R ;
 import android.app.Fragment ;
 import android.content.Context ;
@@ -47,7 +47,7 @@ public class ViewerSettingFragment extends Fragment {
 		
 		final Button connectButton = (Button) view.findViewById(R.id.connectButton) ;
 
-		WifiManager wifiManager = (WifiManager) getActivity().getSystemService(Context.WIFI_SERVICE) ;
+		WifiManager wifiManager = (WifiManager) getActivity().getApplicationContext().getSystemService(Context.WIFI_SERVICE) ;
 
 		DhcpInfo dhcpInfo = wifiManager.getDhcpInfo() ;
 		

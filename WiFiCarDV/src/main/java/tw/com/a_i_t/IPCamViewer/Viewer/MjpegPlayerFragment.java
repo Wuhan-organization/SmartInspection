@@ -14,19 +14,15 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue ;
 import java.util.concurrent.ConcurrentLinkedQueue ;
-import java.util.Timer;
-import java.util.TimerTask;
 
 
 import tw.com.a_i_t.IPCamViewer.CameraCommand ;
-import tw.com.a_i_t.IPCamViewer.MainActivity ;
+import tw.com.a_i_t.IPCamViewer.MainActivity;
 import tw.com.a_i_t.IPCamViewer.R ;
 import android.app.Activity ;
-import android.app.AlertDialog ;
 import android.app.Fragment ;
 import android.content.BroadcastReceiver ;
 import android.content.Context ;
-import android.content.DialogInterface ;
 import android.content.Intent ;
 import android.content.IntentFilter ;
 import android.content.SharedPreferences ;
@@ -60,18 +56,12 @@ import android.view.ViewGroup ;
 import android.view.ViewGroup.LayoutParams ;
 import android.view.WindowManager ;
 import android.widget.Button ;
-import android.widget.CompoundButton ;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.CompoundButton.OnCheckedChangeListener ;
 import android.widget.FrameLayout ;
-import android.widget.Switch ;
 
 import com.bric.qt.io.JPEGMovWriter ;
 import com.bric.qt.io.MovWriter ;
-import java.text.SimpleDateFormat;
-
-
 
 
 public class MjpegPlayerFragment extends Fragment {
@@ -1054,7 +1044,7 @@ public class MjpegPlayerFragment extends Fragment {
 
 		if (mMediaUrl == null) {
 
-			WifiManager wifiManager = (WifiManager) getActivity().getSystemService(Context.WIFI_SERVICE) ;
+			WifiManager wifiManager = (WifiManager) getActivity().getApplicationContext().getSystemService(Context.WIFI_SERVICE) ;
 
 			DhcpInfo dhcpInfo = wifiManager.getDhcpInfo() ;
 

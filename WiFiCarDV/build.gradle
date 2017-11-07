@@ -2,12 +2,12 @@ apply plugin: 'com.android.library'
 //apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion '25.0.0'
+    compileSdkVersion 25
+    buildToolsVersion '25.0.3'
 
     defaultConfig {
        // applicationId "tw.com.a_i_t.IPCamViewer"
-        minSdkVersion 10
+        minSdkVersion 14
         targetSdkVersion 23
     }
 
@@ -31,15 +31,13 @@ repositories {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile(name:'libvlc-3.0.0-1.9.8', ext:'aar')
-
-    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile(name: 'libvlc-3.0.0-1.9.8', ext: 'aar')
+   // compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:appcompat-v7:25.3.1'
     //compile 'com.android.support:support-v4:19.1.0'
     compile files('libs/httpclient-4.2.1.jar')
     compile files('libs/httpcore-4.2.1.jar')
     compile files('libs/httpmime-4.2.1.jar')
-
-
 }

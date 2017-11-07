@@ -9,15 +9,13 @@ import java.util.List;
 import java.util.Locale ;
 
 
-import tw.com.a_i_t.IPCamViewer.MainActivity ;
+import tw.com.a_i_t.IPCamViewer.MainActivity;
 import tw.com.a_i_t.IPCamViewer.R ;
 import tw.com.a_i_t.IPCamViewer.FileBrowser.Model.FileBrowserModel.ModelException ;
 import tw.com.a_i_t.IPCamViewer.FileBrowser.Model.FileNode ;
 import tw.com.a_i_t.IPCamViewer.FileBrowser.Model.FileNode.Format ;
 import android.app.Activity ;
-import android.app.AlertDialog ;
 import android.app.Fragment ;
-import android.content.DialogInterface ;
 import android.content.Intent ;
 import android.net.Uri ;
 import android.os.AsyncTask ;
@@ -27,16 +25,12 @@ import android.view.LayoutInflater ;
 import android.view.View ;
 import android.view.ViewGroup ;
 import android.view.View.OnClickListener;
-import android.webkit.MimeTypeMap ;
 import android.widget.AdapterView ;
 import android.widget.AdapterView.OnItemClickListener ;
 import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.ListView ;
 import android.widget.TextView ;
-
-import org.videolan.libvlc.LibVLC;
-import org.videolan.libvlc.util.VLCUtil;
 
 public class LocalFileBrowserFragment extends Fragment {
 

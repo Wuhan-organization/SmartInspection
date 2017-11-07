@@ -18,7 +18,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 //import org.videolan.vlc.VLCApplication ;
-import android.app.Activity;
 import android.content.Context ;
 import android.net.DhcpInfo ;
 import android.net.wifi.WifiManager ;
@@ -139,7 +138,7 @@ public class CameraCommand {
 		if (context == null)
 			return false ;
 
-		WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE) ;
+		WifiManager wifiManager = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE) ;
 		wifiManager.getConnectionInfo();
 		Method[] wmMethods = wifiManager.getClass().getDeclaredMethods();
 		

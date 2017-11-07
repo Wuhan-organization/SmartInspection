@@ -2,23 +2,14 @@ package tw.com.a_i_t.IPCamViewer.Control ;
 
 import java.net.URL;
 
-import org.videolan.libvlc.LibVLC;
-
 import tw.com.a_i_t.IPCamViewer.CameraCommand;
 import tw.com.a_i_t.IPCamViewer.FunctionListFragment;
-import tw.com.a_i_t.IPCamViewer.MainActivity ;
+import tw.com.a_i_t.IPCamViewer.MainActivity;
 import tw.com.a_i_t.IPCamViewer.R ;
-import tw.com.a_i_t.IPCamViewer.Viewer.MjpegPlayerFragment;
-import tw.com.a_i_t.IPCamViewer.Viewer.StreamPlayerFragment;
-import android.app.AlertDialog;
+
 import android.app.Fragment ;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.net.DhcpInfo;
-import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.os.Bundle ;
-import android.util.Log;
 import android.view.LayoutInflater ;
 import android.view.MotionEvent ;
 import android.view.View ;
