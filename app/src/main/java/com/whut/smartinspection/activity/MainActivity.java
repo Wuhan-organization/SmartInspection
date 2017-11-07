@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
+import com.whut.baidu.location.LocationService;
 import com.whut.smartinspection.R;
 import com.whut.smartinspection.adapters.MainPageMenuAdapter;
 import com.whut.smartinspection.widgets.LoopSlidingView;
@@ -69,12 +70,14 @@ public class MainActivity extends SwipeBackActivity {
     private void initData() {
         showMenu();
         showBanner();
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         loopSlidingView.startTurning(4000);
+
     }
 
     @Override
@@ -82,6 +85,13 @@ public class MainActivity extends SwipeBackActivity {
         super.onPause();
         loopSlidingView.stopTurning();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        LocationService.getInstance(this).stopLocation();
+    }
+
 
     /***
      * 显示主页菜单

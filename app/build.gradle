@@ -18,6 +18,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets {
+        main {
+            jniLibs.srcDirs "libs"
+            jni.srcDirs = [] // disable automatic ndk-build
+        }
+    }
     greendao {
         schemaVersion 1
         daoPackage 'com.whut.greendao.gen'
@@ -46,4 +52,5 @@ dependencies {
     // 上拉刷新，下拉加载组件框架
     compile project(':pullRefreshLibrary')
     compile project(':smartlibrary')
+    compile files('libs/BaiduLBS_Android.jar')
 }

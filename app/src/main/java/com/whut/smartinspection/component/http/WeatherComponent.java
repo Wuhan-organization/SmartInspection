@@ -19,13 +19,13 @@ public class WeatherComponent extends BaseHttpComponent {
 
     public static void getWeathers(final IHandlerListener listener, String location) {
 
-        String url = "http://api.map.baidu.com/telematics/v3/weather";
+        String url = "http://api.map.baidu.com/telematics/v3/weather?mcode=0B:3F:0C:F4:92:85:47:21:94:16:9F:9C:37:13:FE:88:37:17:A3:A2;com.whut.smartinspection";
         OkHttpUtils.get()
                 .url(url)
                 .addParams("location", location)
                 .addParams("output", "json")
                 .addParams("ak", AK)
-                .addParams("mcode", "0B:3F:0C:F4:92:85:47:21:94:16:9F:9C:37:13:FE:88:37:17:A3:A2;com.whut.smartinspection")
+                //.addParams("mcode", "0B:3F:0C:F4:92:85:47:21:94:16:9F:9C:37:13:FE:88:37:17:A3:A2;com.whut.smartinspection")
                 .build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {

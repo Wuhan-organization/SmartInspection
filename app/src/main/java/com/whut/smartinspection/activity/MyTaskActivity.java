@@ -5,8 +5,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
 import com.bumptech.glide.Glide;
+import com.whut.baidu.location.LocationService;
 import com.whut.smartinspection.R;
+import com.whut.smartinspection.application.SApplication;
 import com.whut.smartinspection.component.handler.EMsgType;
 import com.whut.smartinspection.component.handler.IHandlerListener;
 import com.whut.smartinspection.component.http.WeatherComponent;
@@ -42,7 +46,36 @@ public class MyTaskActivity extends SwipeBackActivity implements IHandlerListene
         setContentView(R.layout.activity_my_task);
         ButterKnife.bind(this);
 
-        WeatherComponent.getWeathers(this, "南昌");
+        MyLocationListener myListener = new MyLocationListener();
+        LocationService.getInstance(this).registerListener(myListener);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        LocationService.getInstance(this).startLocation();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        LocationService.getInstance(this).stopLocation();
+    }
+
+    public class MyLocationListener implements BDLocationListener {
+        @Override
+        public void onReceiveLocation(BDLocation bdLocation) {
+            if (bdLocation == null) {
+                return;
+            }
+            String city = bdLocation.getCity();
+            WeatherComponent.getWeathers(MyTaskActivity.this, city);
+        }
+
+        @Override
+        public void onConnectHotSpotMessage(String s, int i) {
+
+        }
     }
 
     @OnClick({R.id.tv_my_task_back})
@@ -68,8 +101,12 @@ public class MyTaskActivity extends SwipeBackActivity implements IHandlerListene
             return null;
         }
         String[] str = date.split(" ");
-        str = str[2].split(":");
-        return str[1].replace("℃","");
+        str = str[2].split(":|：");
+        if (str != null && str.length > 1) {
+            return str[1].replace(")","").replace("）","");
+        } else {
+            return "";
+        }
     }
 
     @Override
@@ -85,7 +122,7 @@ public class MyTaskActivity extends SwipeBackActivity implements IHandlerListene
                         ResultObject.Weather current = weathers[0];
                         tvMyTaskWind.setText(current.getWind());
                         tvMyTaskWeather.setText(current.getWeather());
-                        Glide.with(this).load(current.getDayPictureUrl()).into(ivMyTaskWeatherPicture);
+                        Glide.with(SApplication.getInstance()).load(current.getDayPictureUrl()).into(ivMyTaskWeatherPicture);
                         String currentTemperature = getCurrentTemperature(current.getDate());
                         if (currentTemperature != null) {
                             tvMyTaskTemperature.setText(currentTemperature);
