@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SmartInspection.iml" filepath="$PROJECT_DIR$/SmartInspection.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WiFiCarDV/WiFiCarDV.iml" filepath="$PROJECT_DIR$/WiFiCarDV/WiFiCarDV.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/pullRefreshLibrary/pullRefreshLibrary.iml" filepath="$PROJECT_DIR$/pullRefreshLibrary/pullRefreshLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/smartlibrary/smartlibrary.iml" filepath="$PROJECT_DIR$/smartlibrary/smartlibrary.iml" />

@@ -16,6 +16,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import tw.com.a_i_t.IPCamViewer.Splash;
 
 /***
  * 主页面
@@ -58,6 +59,10 @@ public class MainActivity extends SwipeBackActivity {
                         startActivity(intent);
                         break;
                     case 1:
+                        break;
+                    case 4:
+                        intent = new Intent(MainActivity.this, Splash.class);
+                        startActivity(intent);
                         break;
                     default:
                         break;

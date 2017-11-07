@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
        // applicationId "tw.com.a_i_t.IPCamViewer"
-        minSdkVersion 10
+        minSdkVersion 11
         targetSdkVersion 23
     }
 

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context="com.whut.smartinspection.activity.CompeletedTaskActivity">
+
+
+    <include android:id="@+id/item_task_title_id" layout="@layout/item_task_title"/>
+    <include android:id="@+id/item_task_body_id" layout="@layout/item_task_body"/>
+
+
+
+</LinearLayout>

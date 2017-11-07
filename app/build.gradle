@@ -31,27 +31,28 @@ android {
 
 repositories {
     flatDir {
-        dirs 'libs','../WiFiCarDV/libs'
+        dirs 'libs', '../WiFiCarDV/libs'
     }
 }
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.4.0'
     // ButterKnife
-    apt 'com.jakewharton:butterknife-compiler:8.0.1'
-    compile 'com.jakewharton:butterknife:8.0.1'
     // 图片缓存框架
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
     // 网络请求框架,对应okhttp版本3.3.1
-    compile 'com.zhy:okhttputils:2.6.2'
     // orm框架GreenDao
-    compile 'org.greenrobot:greendao:3.2.0'
     // compile'org.greenrobot:greendao-generator:3.0.0'
-    compile 'com.google.code.gson:gson:2.8.2'
     // 上拉刷新，下拉加载组件框架
     compile project(':pullRefreshLibrary')
     compile project(':smartlibrary')
     compile project(':WiFiCarDV')
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.jakewharton:butterknife:8.0.1'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
+    compile 'com.zhy:okhttputils:2.6.2'
+    compile 'org.greenrobot:greendao:3.2.0'
+    compile 'com.google.code.gson:gson:2.8.2'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+    apt 'com.jakewharton:butterknife-compiler:8.0.1'
 }
