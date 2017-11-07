@@ -13,7 +13,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+
         tools:replace="android:icon,android:label,android:theme">
+
         <meta-data
             android:name="com.whut.smartinspection.glide.MyGlideModule"
             android:value="GlideModule" />
@@ -29,7 +31,9 @@
             </intent-filter>
         </activity>
         <activity
+
             android:name=".activity.MMainActivity"
+
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
         <activity
