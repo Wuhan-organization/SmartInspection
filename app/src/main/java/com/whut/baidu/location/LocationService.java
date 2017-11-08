@@ -74,7 +74,9 @@ public class LocationService {
 	
 	/*** 停止定位  ***/
 	public void stopLocation(){
-		mLocationClient.unRegisterLocationListener(listener);
+		if (listener != null) {
+			mLocationClient.unRegisterLocationListener(listener);
+		}
 		mLocationClient.stop();  // 调用此方法停止定位
 	}
 }

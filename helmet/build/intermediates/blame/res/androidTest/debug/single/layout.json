@@ -1,0 +1,94 @@
+[
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\browser.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\layout\\browser.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\browser_setting.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\layout\\browser_setting.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\login_dialog.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\layout\\login_dialog.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\preview_player.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\layout\\preview_player.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\dronecam_view.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\layout\\dronecam_view.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\whistler_view.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\layout\\whistler_view.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\viewer_setting.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\layout\\viewer_setting.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\network_configurations.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\layout\\network_configurations.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\autotest_view.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\layout\\autotest_view.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\function_list.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\layout\\function_list.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\local_filelist_row.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\layout\\local_filelist_row.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\player_contol_classic.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\layout\\player_contol_classic.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\camera_control.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\layout\\camera_control.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\splash.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\layout\\splash.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\local_browser.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\layout\\local_browser.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\ringdialog.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\layout\\ringdialog.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\player.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\layout\\player.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\filelist_row.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\layout\\filelist_row.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\videosurface.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\layout\\videosurface.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_helmet.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_helmet.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\image_dialog.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\layout\\image_dialog.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\camera_settings.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\layout\\camera_settings.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\adas_view.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\layout\\adas_view.xml"
+    }
+]

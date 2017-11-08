@@ -1,0 +1,94 @@
+[
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\layout\\ringdialog.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\layout\\ringdialog.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\layout\\local_filelist_row.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\layout\\local_filelist_row.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\layout\\adas_view.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\layout\\adas_view.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\layout\\splash.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\layout\\splash.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\layout\\browser.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\layout\\browser.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\layout\\autotest_view.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\layout\\autotest_view.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\layout\\image_dialog.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\layout\\image_dialog.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\layout\\preview_player.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\layout\\preview_player.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\layout\\camera_control.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\layout\\camera_control.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\layout\\player.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\layout\\player.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\layout\\browser_setting.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\layout\\browser_setting.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\layout\\whistler_view.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\layout\\whistler_view.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\layout\\videosurface.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\layout\\videosurface.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\layout\\filelist_row.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\layout\\filelist_row.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\layout\\viewer_setting.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\layout\\viewer_setting.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\layout\\local_browser.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\layout\\local_browser.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\layout\\login_dialog.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\layout\\login_dialog.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\layout\\network_configurations.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\layout\\network_configurations.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\layout\\function_list.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\layout\\function_list.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\layout\\activity_helmet.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\layout\\activity_helmet.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\layout\\dronecam_view.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\layout\\dronecam_view.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\layout\\player_contol_classic.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\layout\\player_contol_classic.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\layout\\camera_settings.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\layout\\camera_settings.xml"
+    }
+]

@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\local_folder_btn.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable-xxhdpi\\local_folder_btn.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\app_icon.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable-xxhdpi\\app_icon.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\setting_btn.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable-xxhdpi\\setting_btn.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\type_all.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable-xxhdpi\\type_all.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\video_type.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable-xxhdpi\\video_type.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\camera_folder_btn.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable-xxhdpi\\camera_folder_btn.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\photo_type.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable-xxhdpi\\photo_type.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_launcher.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\live_btn.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable-xxhdpi\\live_btn.png"
+    }
+]

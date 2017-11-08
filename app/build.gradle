@@ -33,6 +33,12 @@ android {
     }
 }
 
+repositories {
+    flatDir {
+        dirs '../helmet/libs','libs'
+    }
+}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
@@ -53,4 +59,5 @@ dependencies {
     compile project(':pullRefreshLibrary')
     compile project(':smartlibrary')
     compile files('libs/BaiduLBS_Android.jar')
+    compile project(':helmet')
 }

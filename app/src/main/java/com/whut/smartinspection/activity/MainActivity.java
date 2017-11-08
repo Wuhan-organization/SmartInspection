@@ -4,12 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.GridView;
 
 import com.whut.baidu.location.LocationService;
 import com.whut.smartinspection.R;
 import com.whut.smartinspection.adapters.MainPageMenuAdapter;
 import com.whut.smartinspection.widgets.LoopSlidingView;
+import com.whut.smartinspection.widgets.WrapContentGridView;
 import com.whut.smartlibrary.base.SwipeBackActivity;
 
 import java.util.ArrayList;
@@ -17,6 +17,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import tw.com.a_i_t.IPCamViewer.HelmetActivity;
 
 /***
  * 主页面
@@ -30,7 +31,7 @@ public class MainActivity extends SwipeBackActivity {
     LoopSlidingView loopSlidingView;
 
     @BindView(R.id.gd_main_page_menu)
-    GridView gdMainPageMenu;
+    WrapContentGridView gdMainPageMenu;
 
     private String[] menusText = {"变电巡视", "闸刀操作", "运维", "带电检测", "智能安全帽",
             "设置", "知识中心"};
@@ -60,6 +61,11 @@ public class MainActivity extends SwipeBackActivity {
                         break;
                     case 1:
                         break;
+
+                    case 4:
+                        intent = new Intent(MainActivity.this, HelmetActivity.class);
+                        startActivity(intent);
+                        break;
                     default:
                         break;
                 }
@@ -70,14 +76,12 @@ public class MainActivity extends SwipeBackActivity {
     private void initData() {
         showMenu();
         showBanner();
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         loopSlidingView.startTurning(4000);
-
     }
 
     @Override

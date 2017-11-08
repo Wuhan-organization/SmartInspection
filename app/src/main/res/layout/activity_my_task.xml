@@ -16,7 +16,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:drawableLeft="@drawable/ic_back"
-            android:paddingRight="8dp"
+            android:padding="20dp"
             android:textColor="#000000"
             android:textSize="18sp" />
 
