@@ -1,5 +1,6 @@
 package com.whut.smartinspection.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -78,12 +79,25 @@ public class MyTaskActivity extends SwipeBackActivity implements IHandlerListene
         }
     }
 
-    @OnClick({R.id.tv_my_task_back})
+    @OnClick({R.id.tv_my_task_back,R.id.waiting_task,R.id.completed_task,R.id.new_task})
     public void onClick(View view) {
+        Intent intent = null;
         switch (view.getId()) {
             // 返回
             case R.id.tv_my_task_back:
                 finish();
+                break;
+            case R.id.waiting_task:
+                intent = new Intent(MyTaskActivity.this,CompletedTaskActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.new_task:
+                intent = new Intent(MyTaskActivity.this,CompletedTaskActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.completed_task:
+                intent = new Intent(MyTaskActivity.this,CompletedTaskActivity.class);
+                startActivity(intent);
                 break;
 
             default:
