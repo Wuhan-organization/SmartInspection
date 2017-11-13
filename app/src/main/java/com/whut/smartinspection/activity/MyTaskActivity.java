@@ -16,6 +16,7 @@ import com.whut.smartinspection.component.handler.EMsgType;
 import com.whut.smartinspection.component.handler.IHandlerListener;
 import com.whut.smartinspection.component.http.WeatherComponent;
 import com.whut.smartinspection.model.ResultObject;
+import com.whut.smartinspection.model.Task;
 import com.whut.smartinspection.utils.SystemUtils;
 import com.whut.smartlibrary.base.SwipeBackActivity;
 
@@ -89,14 +90,23 @@ public class MyTaskActivity extends SwipeBackActivity implements IHandlerListene
                 break;
             case R.id.waiting_task:
                 intent = new Intent(MyTaskActivity.this,CompletedTaskActivity.class);
+                intent.putExtra("title","待办任务");
                 startActivity(intent);
                 break;
             case R.id.new_task:
-                intent = new Intent(MyTaskActivity.this,CompletedTaskActivity.class);
+                intent = new Intent(MyTaskActivity.this,NewTaskActivity.class);
+                intent.putExtra("title","新建任务");
+                Task task = new Task();
+                task.setText("新建任务正文");
+                task.setStationName("变电站名称");
+                task.setNumber("工作成员");
+                intent.putExtra("task",task);
+                intent.putExtra("flag","2");
                 startActivity(intent);
                 break;
             case R.id.completed_task:
                 intent = new Intent(MyTaskActivity.this,CompletedTaskActivity.class);
+                intent.putExtra("title","已完成任务");
                 startActivity(intent);
                 break;
 

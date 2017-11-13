@@ -3,8 +3,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.whut.smartinspection.activity.CompletedTaskActivity">
 
-    <include android:id="@+id/completed_task_title" layout="@layout/item_task_title"/>
-    <include android:id="@+id/completed_task_body" layout="@layout/item_task_body"/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include
+            android:id="@+id/completed_task_title"
+            layout="@layout/item_task_title" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ListView
+            android:dividerHeight="1dp"
+            android:divider="@color/black"
+            android:id="@+id/gd_task_page_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
 </LinearLayout>
+
+
+
+
