@@ -55,7 +55,7 @@ public class PowerStationCheckActivity extends SwipeBackActivity {
                 switch (position) {
                     // 进入全面巡视页面
                     case 0:
-                        intent = new Intent(PowerStationCheckActivity.this, FullInspectionActivity.class);
+                        intent = new Intent(PowerStationCheckActivity.this, MyTaskActivity.class);
                         startActivity(intent);
                         break;
 

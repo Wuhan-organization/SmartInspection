@@ -18,11 +18,11 @@
             android:layout_height="wrap_content"
             android:text="变电站名称:" />
 
-        <EditText
-            android:inputType="text"
+        <Spinner
             android:id="@+id/name_transformer_substation"
-            android:layout_width="284dp"
-            android:layout_height="wrap_content" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
     </LinearLayout>
 
     <LinearLayout
