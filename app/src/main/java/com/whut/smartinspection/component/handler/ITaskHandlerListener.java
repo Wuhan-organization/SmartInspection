@@ -7,6 +7,6 @@ import java.util.ArrayList;
  */
 
 public interface ITaskHandlerListener {
-    public void onSuccess(Object obj, EMsgType type,ArrayList<String> list);
-    public void onFailure(Object obj, EMsgType type);
+    public void onTaskSuccess(Object obj, EMsgType type, int flag);
+    public void onTaskFailure(Object obj, EMsgType type);
 }

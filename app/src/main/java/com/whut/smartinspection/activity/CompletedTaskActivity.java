@@ -5,11 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.whut.smartinspection.R;
 import com.whut.smartinspection.adapters.TaskPageListAdapter;
-import com.whut.smartinspection.model.Task;
 import com.whut.smartlibrary.base.SwipeBackActivity;
 
 import java.util.ArrayList;

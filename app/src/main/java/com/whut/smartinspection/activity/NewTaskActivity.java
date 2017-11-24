@@ -45,7 +45,7 @@ public class NewTaskActivity extends SwipeBackActivity implements ITaskHandlerLi
         setContentView(R.layout.activity_new_task);
         ButterKnife.bind(this);
 
-        TaskComponent.getSubstationList(NewTaskActivity.this,list);
+        TaskComponent.getSubstationList(NewTaskActivity.this,0);
 
         initView();
     }
@@ -86,7 +86,7 @@ public class NewTaskActivity extends SwipeBackActivity implements ITaskHandlerLi
         }
     }
     @Override
-    public void onSuccess(Object obj, EMsgType type,ArrayList<String> list) {
+    public void onTaskSuccess(Object obj, EMsgType type, final int flag) {
         JsonObject jsonObject = new JsonParser().parse((String)obj).getAsJsonObject();
 
         JsonArray jsonArray = jsonObject.getAsJsonArray("data");
@@ -101,7 +101,7 @@ public class NewTaskActivity extends SwipeBackActivity implements ITaskHandlerLi
         }
     }
     @Override
-    public void onFailure(Object obj, EMsgType type) {
+    public void onTaskFailure(Object obj, EMsgType type) {
 
     }
     private void getText(){

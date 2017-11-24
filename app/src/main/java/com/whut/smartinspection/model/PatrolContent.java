@@ -1,0 +1,114 @@
+package com.whut.smartinspection.model;
+
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Property;
+import java.util.Date;
+import org.greenrobot.greendao.annotation.Generated;
+
+/**
+ * Created by xms on 2017/10/24.
+ * 巡视内容
+ */
+@Entity
+public class PatrolContent {
+    @Property(nameInDb = "id")
+    @Id(autoincrement = true)
+    private Long id;
+
+    private String idd;
+    //项目条目
+    private int no;
+    //巡视部位
+    private String part;
+    //内容及要求
+    private String content;
+    //是否为关键步骤
+    private short isImportant;
+    //添加时间
+    private String date;
+
+    //数据类型
+    private String patrolContentType;
+
+    @Generated(hash = 345809710)
+    public PatrolContent(Long id, String idd, int no, String part, String content,
+            short isImportant, String date, String patrolContentType) {
+        this.id = id;
+        this.idd = idd;
+        this.no = no;
+        this.part = part;
+        this.content = content;
+        this.isImportant = isImportant;
+        this.date = date;
+        this.patrolContentType = patrolContentType;
+    }
+
+    @Generated(hash = 1821211469)
+    public PatrolContent() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getIdd() {
+        return idd;
+    }
+
+    public void setIdd(String idd) {
+        this.idd = idd;
+    }
+
+    public int getNo() {
+        return no;
+    }
+
+    public void setNo(int no) {
+        this.no = no;
+    }
+
+    public String getPart() {
+        return part;
+    }
+
+    public void setPart(String part) {
+        this.part = part;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public short getIsImportant() {
+        return isImportant;
+    }
+
+    public void setIsImportant(short isImportant) {
+        this.isImportant = isImportant;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getPatrolContentType() {
+        return patrolContentType;
+    }
+
+    public void setPatrolContentType(String patrolContentType) {
+        this.patrolContentType = patrolContentType;
+    }
+}
