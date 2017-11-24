@@ -2,6 +2,15 @@ apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 apply plugin: 'org.greenrobot.greendao'
 
+//signingConfigs {
+//    myConfig {
+//        storeFilefile(RELEASE_STOREFILE)
+//        storePassword RELEASE_STORE_PASSWORD
+//        keyAlias RELEASE_KEY_ALIAS
+//        keyPassword RELEASE_KEY_PASSWORD
+//    }
+//}
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
@@ -15,6 +24,8 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            shrinkResources true
+            // signingConfig  signingConfigs.myConfig //签名
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
