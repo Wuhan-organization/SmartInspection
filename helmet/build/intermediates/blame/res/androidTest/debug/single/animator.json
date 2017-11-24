@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\animator\\right_in.xml",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\animator\\right_in.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\animator\\right_in.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\animator\\right_in.xml"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\animator\\left_out.xml",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\animator\\left_out.xml"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\animator\\left_in.xml",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\animator\\left_in.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\animator\\left_out.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\animator\\left_out.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\animator\\right_out.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\animator\\right_out.xml"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\animator\\right_out.xml",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\animator\\right_out.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\animator\\left_in.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\animator\\left_in.xml"
+    }
+]

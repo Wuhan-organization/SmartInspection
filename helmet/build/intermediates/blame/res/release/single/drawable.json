@@ -1,0 +1,354 @@
+[
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_size.xml",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_size.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_play_glow.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_play_glow.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\adas_sag.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\adas_sag.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\open.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\open.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_size_normal.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_size_normal.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\adas_right.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\adas_right.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\type_photo.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\type_photo.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_play.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_play.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\poweron.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\poweron.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\cam_connect.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\cam_connect.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\wificam.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\wificam.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\adas_left.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\adas_left.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\cam_detect1.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\cam_detect1.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_forward.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_forward.xml"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\adas_fcws.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\adas_fcws.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\type_all.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\type_all.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_size_glow.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_size_glow.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\header_icon_audio.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\header_icon_audio.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_play_normal.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_play_normal.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_pause.xml",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_pause.xml"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_seekbar_thumb.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_seekbar_thumb.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\switch_inner_holo_light.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\switch_inner_holo_light.xml"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\pir_icon.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\pir_icon.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\cam_detect2.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\cam_detect2.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\adas_alarm.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\adas_alarm.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_pause_normal.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_pause_normal.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\streamstop.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\streamstop.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\switch_inner_holo_light.xml",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\switch_inner_holo_light.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_pause_normal.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_pause_normal.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\poweroff.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\poweroff.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\selected_background.xml",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\selected_background.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\adas_calibrate.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\adas_calibrate.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\cam_detect2.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\cam_detect2.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\banner.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\banner.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\adas_fcws.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\adas_fcws.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\bell_icon.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\bell_icon.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\selected_background.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\selected_background.xml"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\adas_left.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\adas_left.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_size.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_size.xml"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_backward_normal.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_backward_normal.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\header_icon_audio.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\header_icon_audio.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_seekbar_thumb.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_seekbar_thumb.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_forward_normal.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_forward_normal.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\cam_connect.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\cam_connect.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\poweron.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\poweron.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_backward.xml",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_backward.xml"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_forward_glow.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_forward_glow.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\cam_detect1.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\cam_detect1.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\group_background.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\group_background.xml"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_play_normal.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_play_normal.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\banner.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\banner.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\type_photo.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\type_photo.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\type_all.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\type_all.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\adas_calibrateb.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\adas_calibrateb.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\streamstop.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\streamstop.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\wificam.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\wificam.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_play.xml",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_play.xml"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_size_glow.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_size_glow.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\adas_right.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\adas_right.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\adas_alarm.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\adas_alarm.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\type_video.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\type_video.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\open.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\open.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\video_list_length_bg.xml",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\video_list_length_bg.xml"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\po_seekbar.xml",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\po_seekbar.xml"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\background.jpg",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\background.jpg"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\bell_icon.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\bell_icon.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_pause_glow.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_pause_glow.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_backward_normal.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_backward_normal.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\background.jpg",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\background.jpg"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\video_list_length_bg.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\video_list_length_bg.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_size_normal.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_size_normal.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\adas_calibrateb.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\adas_calibrateb.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\group_background.xml",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\group_background.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_backward_glow.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_backward_glow.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_backward_glow.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_backward_glow.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_play_glow.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_play_glow.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_pause_glow.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_pause_glow.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_forward.xml",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_forward.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\po_seekbar.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\po_seekbar.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_pause.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_pause.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_backward.xml",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_backward.xml"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_forward_glow.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_forward_glow.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\adas_sag.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\adas_sag.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\poweroff.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\poweroff.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\adas_calibrate.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable\\adas_calibrate.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_forward_normal.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_forward_normal.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\pir_icon.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\pir_icon.png"
+    },
+    {
+        "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\type_video.png",
+        "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\drawable\\type_video.png"
+    }
+]
