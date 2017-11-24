@@ -4,7 +4,15 @@
         "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\raw\\buzzer.wav"
     },
     {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\raw\\pirbuzzer.wav",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\raw\\pirbuzzer.wav"
+    },
+    {
         "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\raw\\pirbuzzer.wav",
         "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\raw\\pirbuzzer.wav"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\raw\\buzzer.wav",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\raw\\buzzer.wav"
     }
 ]

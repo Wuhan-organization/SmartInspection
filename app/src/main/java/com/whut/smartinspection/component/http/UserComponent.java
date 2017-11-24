@@ -42,7 +42,7 @@ public class UserComponent extends BaseHttpComponent {
             @Override
             public void onResponse(String response, int id) {
                 CustomParser.ResponseObject ro = CustomParser.parse(response);
-                if (ro.getRet() == 200) {
+                if (ro.getCode() == 200) {
                     listener.onSuccess(ro.getMsg(), EMsgType.LOGIN_SUCCESS);
                 } else {
                     listener.onFailure(ro.getMsg(), EMsgType.LOGIN_FAILURE);

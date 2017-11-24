@@ -20,7 +20,7 @@ import java.util.List;
 {
     "msg": "ok",
     "data": "",
-    "ret": 0
+    "code": 0
 }
  */
 public class CustomParser {
@@ -39,7 +39,7 @@ public class CustomParser {
 			JSONObject obj = new JSONObject(json);
 			mo.setData(obj.optString("data"));
 			mo.setMsg(obj.optString("msg"));
-			mo.setRet(obj.optInt("ret"));
+			mo.setCode(obj.optInt("code"));
 			return mo;
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -130,7 +130,7 @@ public class CustomParser {
 	public static class ResponseObject{
 		private String msg;
 		private String data;
-		private int ret;
+		private int code;
 		
 		/***
 		 * getter 和  setter方法区
@@ -147,11 +147,11 @@ public class CustomParser {
 		public void setData(String data) {
 			this.data = data;
 		}
-		public int getRet() {
-			return ret;
+		public int getCode() {
+			return code;
 		}
-		public void setRet(int ret) {
-			this.ret = ret;
+		public void setCode(int code) {
+			this.code = code;
 		}
 		
 	}

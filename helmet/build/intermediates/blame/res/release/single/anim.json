@@ -1,15 +1,31 @@
 [
     {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\anim\\right_out.xml",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\anim\\right_out.xml"
+    },
+    {
         "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\anim\\right_in.xml",
         "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\anim\\right_in.xml"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\anim\\left_in.xml",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\anim\\left_in.xml"
     },
     {
         "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\anim\\left_in.xml",
         "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\anim\\left_in.xml"
     },
     {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\anim\\left_out.xml",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\anim\\left_out.xml"
+    },
+    {
         "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\anim\\left_out.xml",
         "source": "E:\\develops_tools\\SmartInspection\\helmet\\src\\main\\res\\anim\\left_out.xml"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\anim\\right_in.xml",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\anim\\right_in.xml"
     },
     {
         "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\anim\\right_out.xml",

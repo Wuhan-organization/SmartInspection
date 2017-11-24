@@ -6,5 +6,13 @@
     {
         "merged": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\raw\\pirbuzzer.wav",
         "source": "E:\\develops_tools\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\raw\\pirbuzzer.wav"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\raw\\buzzer.wav",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\raw\\buzzer.wav"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\raw\\pirbuzzer.wav",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\raw\\pirbuzzer.wav"
     }
 ]

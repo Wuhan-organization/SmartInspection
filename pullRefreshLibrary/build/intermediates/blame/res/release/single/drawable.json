@@ -4,6 +4,14 @@
         "source": "E:\\develops_tools\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\drawable\\indicator_bg_bottom.xml"
     },
     {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\res\\merged\\release\\drawable\\indicator_bg_top.xml",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\drawable\\indicator_bg_top.xml"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\res\\merged\\release\\drawable\\indicator_bg_bottom.xml",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\drawable\\indicator_bg_bottom.xml"
+    },
+    {
         "merged": "E:\\develops_tools\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\res\\merged\\release\\drawable\\indicator_bg_top.xml",
         "source": "E:\\develops_tools\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\drawable\\indicator_bg_top.xml"
     }
