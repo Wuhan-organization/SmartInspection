@@ -1,5 +1,8 @@
 package com.whut.smartinspection.component.handler;
-/*** 
+
+import java.util.ArrayList;
+
+/***
  * @author xiongbin
  * @date 2016-3-22
  * @version 1.0

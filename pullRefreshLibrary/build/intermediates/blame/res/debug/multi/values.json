@@ -1,0 +1,429 @@
+[
+    {
+        "outputFile": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\res\\merged\\debug\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 1511,
+                    "endColumn": 63,
+                    "endOffset": 1570
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 229,
+                        "endColumn": 63,
+                        "endOffset": 288
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 1575,
+                    "endColumn": 63,
+                    "endOffset": 1634
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 294,
+                        "endColumn": 63,
+                        "endOffset": 353
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 1639,
+                    "endColumn": 54,
+                    "endOffset": 1689
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 115,
+                        "endColumn": 54,
+                        "endOffset": 165
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 1694,
+                    "endColumn": 56,
+                    "endOffset": 1746
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 171,
+                        "endColumn": 56,
+                        "endOffset": 223
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 1751,
+                    "endColumn": 54,
+                    "endOffset": 1801
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 59,
+                        "endColumn": 54,
+                        "endOffset": 109
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 1806,
+                    "endColumn": 37,
+                    "endOffset": 1839
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values\\ids.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 59,
+                        "endColumn": 37,
+                        "endOffset": 92
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 1844,
+                    "endColumn": 41,
+                    "endOffset": 1881
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values\\ids.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 177,
+                        "endColumn": 41,
+                        "endOffset": 214
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 1886,
+                    "endColumn": 39,
+                    "endOffset": 1921
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values\\ids.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 136,
+                        "endColumn": 39,
+                        "endOffset": 171
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 1926,
+                    "endColumn": 36,
+                    "endOffset": 1958
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values\\ids.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 98,
+                        "endColumn": 36,
+                        "endOffset": 130
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 1963,
+                    "endColumn": 52,
+                    "endOffset": 2011
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 107,
+                        "endColumn": 52,
+                        "endOffset": 155
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 2016,
+                    "endColumn": 58,
+                    "endOffset": 2070
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 216,
+                        "endColumn": 58,
+                        "endOffset": 270
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 2075,
+                    "endColumn": 54,
+                    "endOffset": 2125
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 276,
+                        "endColumn": 54,
+                        "endOffset": 326
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 2130,
+                    "endColumn": 47,
+                    "endOffset": 2173
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 58,
+                        "endColumn": 47,
+                        "endOffset": 101
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 2178,
+                    "endColumn": 52,
+                    "endOffset": 2226
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 161,
+                        "endColumn": 52,
+                        "endOffset": 209
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 2231,
+                    "endColumn": 101,
+                    "endOffset": 2328
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values\\pull_refresh_strings.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 398,
+                        "endColumn": 101,
+                        "endOffset": 495
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 2333,
+                    "endColumn": 113,
+                    "endOffset": 2442
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values\\pull_refresh_strings.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 610,
+                        "endColumn": 113,
+                        "endOffset": 719
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 2447,
+                    "endColumn": 107,
+                    "endOffset": 2550
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values\\pull_refresh_strings.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 501,
+                        "endColumn": 107,
+                        "endOffset": 604
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 2555,
+                    "endColumn": 71,
+                    "endOffset": 2622
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values\\pull_refresh_strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 59,
+                        "endColumn": 71,
+                        "endOffset": 126
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 21,
+                    "startColumn": 4,
+                    "startOffset": 2627,
+                    "endColumn": 69,
+                    "endOffset": 2692
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values\\pull_refresh_strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 211,
+                        "endColumn": 69,
+                        "endOffset": 276
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 22,
+                    "startColumn": 4,
+                    "startOffset": 2697,
+                    "endColumn": 77,
+                    "endOffset": 2770
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values\\pull_refresh_strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 132,
+                        "endColumn": 77,
+                        "endOffset": 205
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 23,
+                    "startColumn": 4,
+                    "startOffset": 2775,
+                    "endLine": 29,
+                    "endColumn": 12,
+                    "endOffset": 3061
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 191,
+                        "endLine": 12,
+                        "endColumn": 12,
+                        "endOffset": 481
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 30,
+                    "startColumn": 4,
+                    "startOffset": 3066,
+                    "endLine": 32,
+                    "endColumn": 12,
+                    "endOffset": 3221
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 522,
+                        "endLine": 17,
+                        "endColumn": 12,
+                        "endOffset": 679
+                    }
+                }
+            }
+        ]
+    }
+]

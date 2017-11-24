@@ -6,14 +6,45 @@
     android:orientation="vertical"
     tools:context="com.whut.smartinspection.activity.WaitingTaskActivity">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <include
-            android:id="@+id/completed_task_title"
-            layout="@layout/item_task_title" />
-    </LinearLayout>
+        android:layout_height="60dp"
+        android:background="#ffffff">
+
+        <TextView
+            android:id="@+id/tv_wai_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:drawableLeft="@drawable/ic_back"
+            android:padding="20dp"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_wai_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="待办任务"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#CCCCCC" />
+    <!--<LinearLayout-->
+        <!--android:orientation="vertical"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+        <!--<include-->
+            <!--android:id="@+id/completed_task_title"-->
+            <!--layout="@layout/item_task_title" />-->
+    <!--</LinearLayout>-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

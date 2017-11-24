@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -35,198 +38,133 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#CCCCCC" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:orientation="horizontal">
-
+    <ScrollView
+        android:id="@+id/scorll_view"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="vertical"
+        android:fadeScrollbars="false"
+        android:fadingEdge="vertical">
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="20dp"
-            android:paddingTop="20dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="变电站名称："
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="巡视作业："
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="间隔名称："
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="设备名称："
-                android:textSize="20sp" />
-        </LinearLayout>
-
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:orientation="vertical"
-            android:paddingBottom="20dp"
-            android:paddingTop="20dp">
-
-            <TextView
-                android:id="@+id/tv_full_inspection_power_station"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="江西变电站"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/tv_full_inspection_task"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="巡视a"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/tv_full_inspection_group"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="间隔a"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/tv_full_inspection_device"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="设备a"
-                android:textSize="20sp" />
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:orientation="horizontal">
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingBottom="20dp"
-                android:paddingTop="20dp">
-
+                android:orientation="horizontal">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="巡视项目："
+                    android:text="变电站名称："
                     android:textSize="20sp" />
-
+                <EditText
+                    android:id="@+id/substation_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="巡视内容："
+                    android:text="设备类型："
                     android:textSize="20sp" />
-
+                <EditText
+                    android:id="@+id/style_device"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="巡视作业："
+                    android:textSize="20sp" />
+                <EditText
+                    android:id="@+id/work_walk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="间隔名称："
+                    android:textSize="20sp" />
+                <EditText
+                    android:id="@+id/name_dis"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingBottom="20dp"
-                android:paddingTop="20dp">
-
+                android:orientation="horizontal">
                 <TextView
-                    android:id="@+id/tv_full_inspection_project"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="江西变电站"
+                    android:text="设备名称："
                     android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/tv_full_inspection_content"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/name_device"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="巡视a"
                     android:textSize="20sp" />
             </LinearLayout>
         </LinearLayout>
-    </RelativeLayout>
+        <!-- //////////////////////////////////////////////-->
+        <RelativeLayout
+            android:background="@drawable/bodder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:orientation="vertical">
+            <include layout="@layout/item_radio_group"/>
+        </RelativeLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="缺陷"
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:text="隐患"
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:text="问题"
-                android:textSize="20sp" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="#CCCCCC" />
-
-        <TextView
+            android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="请描述缺陷内容（含视频）"
-            android:textSize="20sp" />
+            android:layout_height="wrap_content">
 
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabIndicatorColor="@color/red"
+                app:tabSelectedTextColor="@color/red"
+                app:tabTextColor="@color/black"/>
+
+            <!--可滑动的布局内容-->
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </android.support.v4.view.ViewPager>
+        </LinearLayout>
     </LinearLayout>
+    </ScrollView>
 </LinearLayout>
+

@@ -3,25 +3,27 @@
     android:id="@+id/item_task_body"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:orientation="vertical">
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_weight="34">
+        android:layout_gravity="center_vertical">
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="变电站名称:" />
 
-        <Spinner
-            android:id="@+id/name_transformer_substation"
+        <EditText
+            android:id="@+id/button_substation"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
+
 
     </LinearLayout>
 
@@ -29,8 +31,7 @@
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_weight="34">
+        android:layout_gravity="center_vertical">
 
         <TextView
             android:id="@+id/textView1"
@@ -62,12 +63,22 @@
             <EditText
                 android:id="@+id/discribe_content"
                 android:layout_width="372dp"
-                android:layout_height="410dp"
+                android:layout_height="374dp"
                 android:height="@dimen/activity_horizontal_margin"
                 android:gravity="left"
                 android:hint="请描述任务内容..."
                 android:maxLength="100"
                 android:maxWidth="100dp" />
         </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/button_commit"
+            android:text="提交"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </LinearLayout>

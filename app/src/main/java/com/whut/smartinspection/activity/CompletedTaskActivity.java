@@ -17,13 +17,13 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 import static com.whut.smartinspection.adapters.TaskPageListAdapter.*;
 
 public class CompletedTaskActivity extends SwipeBackActivity {
 
-    @BindView(R.id.title_task)
-    TextView titleTask;
+
     @BindView(R.id.gd_task_page_menu)
     ListView taskmenu;
 
@@ -40,7 +40,6 @@ public class CompletedTaskActivity extends SwipeBackActivity {
         initData();
     }
     private void initView(){
-        titleTask.setText("已完成任务");
         taskPageListAdapter = new TaskPageListAdapter(this,list);
         taskmenu.setAdapter(taskPageListAdapter);
         final Intent intent = new Intent(this,FullInspectionActivity.class);
@@ -69,6 +68,17 @@ public class CompletedTaskActivity extends SwipeBackActivity {
             list.add(item);
         }
         taskPageListAdapter.notifyDataSetChanged();
+    }
+    @OnClick({R.id.tv_com_back})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            // 返回
+            case R.id.tv_com_back:
+                finish();
+                break;
+            default:
+                break;
+        }
     }
 
 }

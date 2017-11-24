@@ -4,10 +4,10 @@ apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    buildToolsVersion '23.0.3'
     defaultConfig {
         applicationId "com.whut.smartinspection"
-        minSdkVersion 11
+        minSdkVersion 14
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -34,12 +34,15 @@ android {
 }
 
 repositories {
+
     flatDir {
         dirs '../helmet/libs','libs'
     }
 }
 
 dependencies {
+    compile 'com.wx.wheelview:wheelview:1.3.3'
+    //compile 'com.android.support:appcompat-v7:25.3.1'
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.4.0'
@@ -60,4 +63,17 @@ dependencies {
     compile project(':smartlibrary')
     compile files('libs/BaiduLBS_Android.jar')
     compile project(':helmet')
+    //tab
+    //compile 'com.shizhefei:ViewPagerIndicator:1.1.6'
+    //compile 'com.android.support:support-v4:23.4.0'
+    compile 'com.android.support:recyclerview-v7:23.4.0'
+    compile 'com.android.support:design:23.4.0'
+    //scrollview
+    compile 'me.everything:overscroll-decor-android:1.0.4'
+    //button
+    compile 'com.github.clans:fab:1.6.4'
+
+
+
+
 }

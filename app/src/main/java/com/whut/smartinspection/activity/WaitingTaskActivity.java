@@ -19,11 +19,11 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class WaitingTaskActivity extends SwipeBackActivity {
 
-    @BindView(R.id.title_task)
-    TextView titleTask;
+
     @BindView(R.id.gd_task_page_menu)
     ListView taskmenu;
 
@@ -42,7 +42,7 @@ public class WaitingTaskActivity extends SwipeBackActivity {
     }
 
     private void initView(){
-        titleTask.setText("待办任务");
+
         taskPageListAdapter = new TaskPageListAdapter(this,list);
         taskmenu.setAdapter(taskPageListAdapter);
         final Intent intent = new Intent(this,FullInspectionActivity.class);
@@ -58,6 +58,17 @@ public class WaitingTaskActivity extends SwipeBackActivity {
         });
 
 
+    }
+    @OnClick({R.id.tv_wai_back})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            // 返回
+            case R.id.tv_wai_back:
+                finish();
+                break;
+            default:
+                break;
+        }
     }
     private void initData(){
 
