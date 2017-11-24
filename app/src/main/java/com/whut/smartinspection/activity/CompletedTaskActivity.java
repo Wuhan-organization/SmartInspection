@@ -17,7 +17,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-import static com.whut.smartinspection.adapters.TaskPageListAdapter.*;
+import static com.whut.smartinspection.adapters.TaskPageListAdapter.TaskPageItem;
 
 public class CompletedTaskActivity extends SwipeBackActivity {
 

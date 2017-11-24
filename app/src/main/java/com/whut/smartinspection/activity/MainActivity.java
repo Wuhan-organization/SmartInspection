@@ -33,7 +33,7 @@ public class MainActivity extends SwipeBackActivity {
     @BindView(R.id.gd_main_page_menu)
     WrapContentGridView gdMainPageMenu;
 
-    private String[] menusText = {"变电巡视", "闸刀操作", "运维", "带电检测", "智能安全帽",
+    private String[] menusText = {"变电巡视", "倒闸操作", "运维", "带电检测", "智能安全帽",
             "设置", "知识中心"};
 
     @Override
