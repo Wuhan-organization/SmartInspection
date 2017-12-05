@@ -1,5 +1,6 @@
 package com.whut.smartinspection.component.http;
 
+import com.google.gson.JsonObject;
 import com.whut.smartinspection.component.handler.EMsgType;
 import com.whut.smartinspection.component.handler.ITaskHandlerListener;
 import com.whut.smartinspection.parser.CustomParser;
@@ -113,9 +114,64 @@ public class TaskComponent extends BaseHttpComponent {
 
            }
        });
+       //查询任务
+       OkHttpUtils.get().
+               url(URL_TASK).
+               build().execute(new StringCallback() {
+           @Override
+           public void onError(Call call, Exception e, int id) {
+               String message = "network error";
+               if (e != null) {
+                   message = e.getMessage();
+               }
+               listener.onTaskFailure(message, EMsgType.LOGIN_FAILURE);
+           }
+
+           @Override
+           public void onResponse(String response, int id) {
+               CustomParser.ResponseObject ro = CustomParser.parse(response);
+               if (ro.getCode() == 200) {
+                   listener.onTaskSuccess(ro.getMsg(), EMsgType.LOGIN_SUCCESS,7);
+               } else {
+                   listener.onTaskFailure(ro.getMsg(), EMsgType.LOGIN_FAILURE);
+               }
+
+           }
+       });
     }
 
-    public static void commitTask(final ITaskHandlerListener listener,Map<String,String> map) {
+    //提交任务
+    public static void commitTask(final ITaskHandlerListener listener,String value) {
+        OkHttpUtils.post().
+                url(URL_TASK).addParams("Param",value).
+                build().execute(new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                String message = "network error";
+                if (e != null) {
+                    message = e.getMessage();
+                }
+                listener.onTaskFailure(message, EMsgType.LOGIN_FAILURE);
+            }
+
+            @Override
+            public void onResponse(String response, int id) {
+                CustomParser.ResponseObject ro = CustomParser.parse(response);
+                if (ro.getCode() == 200) {
+                    listener.onTaskSuccess(ro.getMsg(), EMsgType.LOGIN_SUCCESS,0);
+                } else {
+                    listener.onTaskFailure(ro.getMsg(), EMsgType.LOGIN_FAILURE);
+                }
+
+            }
+        });
+    }
+    //查询任务
+    public static void searchTask(final ITaskHandlerListener listener,String value) {
+
+    }
+
+    public static void commitDetialTask(final ITaskHandlerListener listener,Map<String,String> map) {
 
 
         OkHttpUtils.post().

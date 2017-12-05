@@ -21,18 +21,30 @@ public class DeviceType {
     @Property(nameInDb = "id")
     private Long id;
     //类型名称
+    private String idd;
     private String name;
     private String no;
 
-    @Generated(hash = 940470995)
-    public DeviceType(Long id, String name, String no) {
+
+    @Generated(hash = 803241347)
+    public DeviceType(Long id, String idd, String name, String no) {
         this.id = id;
+        this.idd = idd;
         this.name = name;
         this.no = no;
     }
 
     @Generated(hash = 1621062569)
     public DeviceType() {
+    }
+
+
+    public String getIdd() {
+        return idd;
+    }
+
+    public void setIdd(String idd) {
+        this.idd = idd;
     }
 
     public Long getId() {

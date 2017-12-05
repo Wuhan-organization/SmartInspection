@@ -155,4 +155,15 @@ public class CustomParser {
 		}
 		
 	}
+
+	/***
+	 * 客户端转换数据
+	 */
+	public static String createJsonString(String key,Object value) throws JSONException {
+		JSONObject jsonObject=new JSONObject();
+		jsonObject.put(key, value);
+		return jsonObject.toString();
+	}
+
 }
+

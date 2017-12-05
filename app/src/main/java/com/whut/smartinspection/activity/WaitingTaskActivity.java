@@ -6,9 +6,16 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.whut.greendao.gen.SubDao;
+import com.whut.greendao.gen.TaskItemDao;
 import com.whut.smartinspection.R;
 import com.whut.smartinspection.adapters.TaskPageListAdapter;
+import com.whut.smartinspection.application.SApplication;
+import com.whut.smartinspection.model.Sub;
+import com.whut.smartinspection.model.TaskItem;
 import com.whut.smartlibrary.base.SwipeBackActivity;
+
+import org.greenrobot.greendao.query.QueryBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +54,8 @@ public class WaitingTaskActivity extends SwipeBackActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 TaskPageListAdapter tpl = (TaskPageListAdapter)adapterView.getAdapter();
                 TaskPageListAdapter.TaskPageItem item  = (TaskPageListAdapter.TaskPageItem)tpl.getItem(i);
-
+                intent.putExtra("item",item);
+                intent.putExtra("pageFlag","0");
                 startActivity(intent);
 
             }
@@ -67,15 +75,24 @@ public class WaitingTaskActivity extends SwipeBackActivity {
         }
     }
     private void initData(){
+        TaskItemDao taskItemDao = SApplication.getInstance().getDaoSession().getTaskItemDao();
+        QueryBuilder<TaskItem> qb = taskItemDao.queryBuilder();
 
+        SubDao subDao = SApplication.getInstance().getDaoSession().getSubDao();
+        QueryBuilder<Sub> qbSub = subDao.queryBuilder();
 
-        for(int i = 0;i<20;i++){
-            TaskPageListAdapter.TaskPageItem item = new TaskPageListAdapter.TaskPageItem();
-            item.setText("texttesttexttesttexttesttexttesttexttesttexttesttexttest" +
-                    "testtexttesttexttesttexttesttexttesttexttesttexttesttextt"+i);
-            item.setNumber("number"+i);
-            item.setStationName("stationName"+i);
-            list.add(item);
+        List<TaskItem> listTemp = qb.list();
+        for (TaskItem taskItem   :listTemp ) {
+            if(taskItem.getStatus() == 0){
+                TaskPageListAdapter.TaskPageItem item = new TaskPageListAdapter.TaskPageItem();
+                item.setText(taskItem.getContent());
+                item.setNumber(taskItem.getWorker());
+                item.setId(taskItem.getSubstationId());
+                //查找变电站id
+                Sub subTemp = qbSub.where(SubDao.Properties.Idd.eq(taskItem.getId())).unique();
+                item.setStationName(subTemp.getName());
+                list.add(item);
+            }
         }
         taskPageListAdapter.notifyDataSetChanged();
     }

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#ffffff">
+
+        <TextView
+            android:id="@+id/tv_defect_handle_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:drawableLeft="@drawable/ic_back"
+            android:paddingRight="8dp"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_full_inspection_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="缺陷处理"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#CCCCCC" />
+
+    <!--///////////////////////////// -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ScrollView
+            android:fillViewport="true"
+            android:id="@+id/scorll_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:fadeScrollbars="false"
+            android:scrollbars="vertical"
+            android:fadingEdge="vertical">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:scrollbarStyle="outsideInset"
+                android:scrollbars="vertical">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                <include layout="@layout/item_defect"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="缺陷性质："
+                        android:textSize="20sp" />
+                    <EditText
+                        android:id="@+id/et_defect_proterty"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="审核时间："
+                        android:textSize="20sp" />
+                    <EditText
+                        android:id="@+id/et_check_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="审核人："
+                        android:textSize="20sp" />
+                    <EditText
+                        android:id="@+id/et_check_man"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="审核意见："
+                        android:textSize="20sp" />
+                    <EditText
+                        android:inputType="textMultiLine"
+                        android:hint="请填写审核意见"
+                        android:id="@+id/et_check_agreement"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:scrollbars="vertical"
+                        android:singleLine="false"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:gravity="center_horizontal"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <Button
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/button_style"
+                        android:text="缺陷详情"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <Button
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/button_style"
+                        android:text="重置"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <Button
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/button_style"
+                        android:text="保存"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <Button
+                        android:background="@drawable/button_style"
+                        android:text="返回"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</LinearLayout>

@@ -12,14 +12,17 @@ apply plugin: 'org.greenrobot.greendao'
 //}
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion '23.0.3'
+    compileSdkVersion 25
+    buildToolsVersion '25.0.3'
     defaultConfig {
         applicationId "com.whut.smartinspection"
         minSdkVersion 14
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
+        }
     }
     buildTypes {
         release {
@@ -32,11 +35,11 @@ android {
     sourceSets {
         main {
             jniLibs.srcDirs "libs"
-            jni.srcDirs = [] // disable automatic ndk-build
+            //jni.srcDirs = [] // disable automatic ndk-build
         }
     }
     greendao {
-        schemaVersion 6
+        schemaVersion 8
         daoPackage 'com.whut.greendao.gen'
         targetGenDir 'src/main/java'
     }
@@ -45,46 +48,76 @@ android {
 }
 
 repositories {
-
     flatDir {
-        dirs '../helmet/libs','libs'
+        dirs '../helmet/libs', 'libs'
     }
 }
 
 dependencies {
-    compile 'com.wx.wheelview:wheelview:1.3.3'
-    //compile 'com.android.support:appcompat-v7:25.3.1'
+    //    compile 'com.android.support:appcompat-v7:25.3.1'
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.4.0'
-    // ButterKnife
-    apt 'com.jakewharton:butterknife-compiler:8.0.1'
-    compile 'com.jakewharton:butterknife:8.0.1'
-    // 图片缓存框架
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
-    // 网络请求框架,对应okhttp版本3.3.1
-    compile 'com.zhy:okhttputils:2.6.2'
-    // orm框架GreenDao
-    compile 'org.greenrobot:greendao:3.2.0'
-    // compile'org.greenrobot:greendao-generator:3.0.0'
-    compile 'com.google.code.gson:gson:2.8.2'
-    // 上拉刷新，下拉加载组件框架
+//compile 'com.android.support:appcompat-v7:23.4.0'
+// ButterKnife
+// 图片缓存框架
+// 网络请求框架,对应okhttp版本3.3.1
+// orm框架GreenDao
+// compile'org.greenrobot:greendao-generator:3.0.0'
+// 上拉刷新，下拉加载组件框架
     compile project(':pullRefreshLibrary')
     compile project(':smartlibrary')
     compile files('libs/BaiduLBS_Android.jar')
     compile project(':helmet')
-    //tab
-    //compile 'com.shizhefei:ViewPagerIndicator:1.1.6'
-    //compile 'com.android.support:support-v4:23.4.0'
-    compile 'com.android.support:recyclerview-v7:23.4.0'
-    compile 'com.android.support:design:23.4.0'
-    //scrollview
+//tab
+//scrollview
+//button
+//toast
+
+
+    compile 'com.wx.wheelview:wheelview:1.3.3'
+    compile 'com.jakewharton:butterknife:8.0.1'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
+    compile 'com.zhy:okhttputils:2.6.2'
+    compile 'org.greenrobot:greendao:3.2.0'
+    compile 'com.google.code.gson:gson:2.8.2'
+    compile 'com.android.support:appcompat-v7:25.0.3'
     compile 'me.everything:overscroll-decor-android:1.0.4'
-    //button
     compile 'com.github.clans:fab:1.6.4'
-
-
-
-
+    compile 'com.github.johnkil.android-appmsg:appmsg:1.2.0'
+    compile 'com.android.support:design:26.0.0-alpha1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+    apt 'com.jakewharton:butterknife-compiler:8.0.1'
 }
+//compile 'com.wx.wheelview:wheelview:1.3.3'
+////    compile 'com.android.support:appcompat-v7:25.3.1'
+//compile fileTree(include: ['*.jar'], dir: 'libs')
+//testCompile 'junit:junit:4.12'
+////compile 'com.android.support:appcompat-v7:23.4.0'
+//// ButterKnife
+//apt 'com.jakewharton:butterknife-compiler:8.0.1'
+//compile 'com.jakewharton:butterknife:8.0.1'
+//// 图片缓存框架
+//compile 'com.github.bumptech.glide:glide:3.7.0'
+//compile 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
+//// 网络请求框架,对应okhttp版本3.3.1
+//compile 'com.zhy:okhttputils:2.6.2'
+//// orm框架GreenDao
+//compile 'org.greenrobot:greendao:3.2.0'
+//// compile'org.greenrobot:greendao-generator:3.0.0'
+//compile 'com.google.code.gson:gson:2.8.2'
+//// 上拉刷新，下拉加载组件框架
+//compile project(':pullRefreshLibrary')
+//compile project(':smartlibrary')
+//compile files('libs/BaiduLBS_Android.jar')
+//compile project(':helmet')
+////tab
+//compile 'com.android.support:appcompat-v7:25.0.3'
+////scrollview
+//compile 'me.everything:overscroll-decor-android:1.0.4'
+////button
+//compile 'com.github.clans:fab:1.6.4'
+////toast
+//compile 'com.github.johnkil.android-appmsg:appmsg:1.2.0'
+//
+//compile 'com.android.support:design:26.0.0-alpha1'

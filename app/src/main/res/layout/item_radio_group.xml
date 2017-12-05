@@ -9,7 +9,7 @@
         android:layout_marginBottom="25dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="70dp">
         <TextView
             android:textSize="20dp"
             android:text="1.题目"
@@ -18,15 +18,18 @@
             android:layout_height="wrap_content" />
 
         <RadioGroup
+            android:id="@+id/radioGroup"
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <RadioButton
                 android:text="no"
+                android:id="@+id/radioButton1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <RadioButton
                 android:text="yes"
+                android:id="@+id/radioButton2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </RadioGroup>

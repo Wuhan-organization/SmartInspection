@@ -41,6 +41,12 @@
             android:name="com.baidu.location.f"
             android:enabled="true"
             android:process=":remote" />
+        <service
+            android:name=".services.HttpService">
+            <intent-filter>
+                <action android:name="com.whut.smartinspection.services" />
+            </intent-filter>
+        </service>
 
         <activity
             android:name=".activity.LoginActivity"
@@ -70,8 +76,12 @@
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
         <activity android:name=".activity.CompletedTaskActivity" />
         <activity android:name=".activity.WaitingTaskActivity" />
-        <activity android:name=".activity.NewTaskActivity"></activity>
-
+        <activity android:name=".activity.NewTaskActivity" />
+        <activity android:name=".activity.DefectManagActivity" />
+        <activity android:name=".activity.DefectRegisterActivity" />
+        <activity android:name=".activity.DefectAcceptanceActivity" />
+        <activity android:name=".activity.DefectExamineActivity" />
+        <activity android:name=".activity.DefectHandleActivity"></activity>
     </application>
 
 </manifest>

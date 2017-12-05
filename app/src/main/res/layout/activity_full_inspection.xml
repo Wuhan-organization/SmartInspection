@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusable="true"
@@ -38,133 +39,156 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#CCCCCC" />
-    <ScrollView
-        android:id="@+id/scorll_view"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:scrollbars="vertical"
-        android:fadeScrollbars="false"
-        android:fadingEdge="vertical">
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="变电站名称："
-                    android:textSize="20sp" />
-                <EditText
-                    android:id="@+id/substation_name"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ScrollView
+            android:fillViewport="true"
+            android:id="@+id/scorll_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:fadeScrollbars="false"
+            android:scrollbars="vertical"
+            android:fadingEdge="vertical">
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical"
+                    android:scrollbarStyle="outsideInset"
+                    android:scrollbars="vertical">
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="设备类型："
-                    android:textSize="20sp" />
-                <EditText
-                    android:id="@+id/style_device"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="变电站名称："
+                            android:textSize="20sp" />
+                        <EditText
+                            android:id="@+id/substation_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="设备类型："
+                            android:textSize="20sp" />
+                        <EditText
+                            android:id="@+id/style_device"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="巡视作业："
+                            android:textSize="20sp" />
+                        <EditText
+                            android:id="@+id/work_walk"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="间隔名称："
+                            android:textSize="20sp" />
+                        <EditText
+                            android:id="@+id/name_dis"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="设备名称："
+                            android:textSize="20sp" />
+                        <EditText
+                            android:id="@+id/name_device"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+                </LinearLayout>
+                <!-- //////////////////////////////////////////////-->
+                <RelativeLayout
+                    android:background="@drawable/bodder"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
+                    android:layout_margin="20dp">
+                    <include layout="@layout/item_radio_group" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="巡视作业："
-                    android:textSize="20sp" />
-                <EditText
-                    android:id="@+id/work_walk"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp" />
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TabLayout
+                        android:id="@+id/tabs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:tabIndicatorColor="@color/red"
+                        app:tabSelectedTextColor="@color/red"
+                        app:tabTextColor="@color/black"/>
+
+                    <!--可滑动的布局内容-->
+                    <android.support.v4.view.ViewPager
+                        android:id="@+id/vp_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+                    </android.support.v4.view.ViewPager>
+                </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/button_id_visual"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <com.github.clans.fab.FloatingActionButton
+                            android:id="@+id/task_detail_commit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|right"
+                            android:layout_marginBottom="1dp"
+                            android:layout_marginRight="1dp"
+                            android:src="@drawable/commit"
+                            fab:fab_colorNormal="@color/white"
+                            fab:fab_colorPressed="@color/red"
+                            fab:fab_colorRipple="@color/gray"/>
+                    </LinearLayout>
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="间隔名称："
-                    android:textSize="20sp" />
-                <EditText
-                    android:id="@+id/name_dis"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="设备名称："
-                    android:textSize="20sp" />
-                <EditText
-                    android:id="@+id/name_device"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp" />
-            </LinearLayout>
-        </LinearLayout>
-        <!-- //////////////////////////////////////////////-->
-        <RelativeLayout
-            android:background="@drawable/bodder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp">
-
-            <include layout="@layout/item_radio_group"/>
-        </RelativeLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <android.support.design.widget.TabLayout
-                android:id="@+id/tabs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:tabIndicatorColor="@color/red"
-                app:tabSelectedTextColor="@color/red"
-                app:tabTextColor="@color/black"/>
-
-            <!--可滑动的布局内容-->
-            <android.support.v4.view.ViewPager
-                android:id="@+id/vp_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            </android.support.v4.view.ViewPager>
-        </LinearLayout>
+        </ScrollView>
     </LinearLayout>
-    </ScrollView>
 </LinearLayout>
 

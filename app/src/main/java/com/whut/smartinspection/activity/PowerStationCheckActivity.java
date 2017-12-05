@@ -32,7 +32,7 @@ public class PowerStationCheckActivity extends SwipeBackActivity {
     private List<MainPageMenuAdapter.MainPageMenu> menus = new ArrayList<MainPageMenuAdapter.MainPageMenu>();
 
     private String[] menusText = {"全面巡视", "例行巡视", "熄灯巡视", "专业巡视", "特殊巡视",
-            "我的任务"};
+            "我的任务","缺陷管理"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +64,11 @@ public class PowerStationCheckActivity extends SwipeBackActivity {
                         intent = new Intent(PowerStationCheckActivity.this, MyTaskActivity.class);
                         startActivity(intent);
                         break;
+                    case 6:
+                        intent = new Intent(PowerStationCheckActivity.this,DefectManagActivity.class);
+                        startActivity(intent);
+                        break;
+
 
                     default:
                         break;

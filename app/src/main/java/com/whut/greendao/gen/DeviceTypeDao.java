@@ -25,8 +25,9 @@ public class DeviceTypeDao extends AbstractDao<DeviceType, Long> {
      */
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "id");
-        public final static Property Name = new Property(1, String.class, "name", false, "NAME");
-        public final static Property No = new Property(2, String.class, "no", false, "NO");
+        public final static Property Idd = new Property(1, String.class, "idd", false, "IDD");
+        public final static Property Name = new Property(2, String.class, "name", false, "NAME");
+        public final static Property No = new Property(3, String.class, "no", false, "NO");
     }
 
 
@@ -43,8 +44,9 @@ public class DeviceTypeDao extends AbstractDao<DeviceType, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"DEVICE_TYPE\" (" + //
                 "\"id\" INTEGER PRIMARY KEY ," + // 0: id
-                "\"NAME\" TEXT," + // 1: name
-                "\"NO\" TEXT);"); // 2: no
+                "\"IDD\" TEXT," + // 1: idd
+                "\"NAME\" TEXT," + // 2: name
+                "\"NO\" TEXT);"); // 3: no
     }
 
     /** Drops the underlying database table. */
@@ -62,14 +64,19 @@ public class DeviceTypeDao extends AbstractDao<DeviceType, Long> {
             stmt.bindLong(1, id);
         }
  
+        String idd = entity.getIdd();
+        if (idd != null) {
+            stmt.bindString(2, idd);
+        }
+ 
         String name = entity.getName();
         if (name != null) {
-            stmt.bindString(2, name);
+            stmt.bindString(3, name);
         }
  
         String no = entity.getNo();
         if (no != null) {
-            stmt.bindString(3, no);
+            stmt.bindString(4, no);
         }
     }
 
@@ -82,14 +89,19 @@ public class DeviceTypeDao extends AbstractDao<DeviceType, Long> {
             stmt.bindLong(1, id);
         }
  
+        String idd = entity.getIdd();
+        if (idd != null) {
+            stmt.bindString(2, idd);
+        }
+ 
         String name = entity.getName();
         if (name != null) {
-            stmt.bindString(2, name);
+            stmt.bindString(3, name);
         }
  
         String no = entity.getNo();
         if (no != null) {
-            stmt.bindString(3, no);
+            stmt.bindString(4, no);
         }
     }
 
@@ -102,8 +114,9 @@ public class DeviceTypeDao extends AbstractDao<DeviceType, Long> {
     public DeviceType readEntity(Cursor cursor, int offset) {
         DeviceType entity = new DeviceType( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
-            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // name
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2) // no
+            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // idd
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // name
+            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3) // no
         );
         return entity;
     }
@@ -111,8 +124,9 @@ public class DeviceTypeDao extends AbstractDao<DeviceType, Long> {
     @Override
     public void readEntity(Cursor cursor, DeviceType entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setName(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
-        entity.setNo(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
+        entity.setIdd(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
+        entity.setName(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
+        entity.setNo(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
      }
     
     @Override

@@ -1,5 +1,6 @@
 package com.whut.smartinspection.activity;
 
+import android.app.Service;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.AdapterView;
 import com.whut.baidu.location.LocationService;
 import com.whut.smartinspection.R;
 import com.whut.smartinspection.adapters.MainPageMenuAdapter;
+import com.whut.smartinspection.services.HttpService;
 import com.whut.smartinspection.widgets.LoopSlidingView;
 import com.whut.smartinspection.widgets.WrapContentGridView;
 import com.whut.smartlibrary.base.SwipeBackActivity;
@@ -35,12 +37,21 @@ public class MainActivity extends SwipeBackActivity {
 
     private String[] menusText = {"变电巡视", "倒闸操作", "运维", "带电检测", "智能安全帽",
             "设置", "知识中心"};
+    private Intent serviceIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        //启动后台服务
+        serviceIntent = new Intent(MainActivity.this, HttpService.class);
+        startService(serviceIntent);
+//        serviceIntent = new Intent();
+//        serviceIntent.setAction("com.whut.smartinspection.services");
+//        bindService(serviceIntent, null, Service.BIND_AUTO_CREATE);
+//        startService(serviceIntent);
 
         initView();
         initData();

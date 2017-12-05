@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.whut.smartinspection.R;
 
+import java.io.Serializable;
 import java.util.List;
 
 import butterknife.BindView;
@@ -80,7 +81,9 @@ public class TaskPageListAdapter extends BaseAdapter implements View.OnClickList
             ButterKnife.bind(this,view);
         }
     }
-    public static class TaskPageItem {
+    public static class TaskPageItem implements Serializable {
+        private String id;
+
         private String text ;
 
         private String stationName;
@@ -109,6 +112,14 @@ public class TaskPageListAdapter extends BaseAdapter implements View.OnClickList
 
         public void setNumber(String number) {
             this.number = number;
+        }
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
         }
     }
 }
