@@ -1,5 +1,9 @@
 [
     {
+        "merged": "E:\\Smart\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\ic_launcher.png",
+        "source": "E:\\Smart\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\drawable-mdpi\\ic_launcher.png"
+    },
+    {
         "merged": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\ic_launcher.png",
         "source": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\drawable-mdpi\\ic_launcher.png"
     }

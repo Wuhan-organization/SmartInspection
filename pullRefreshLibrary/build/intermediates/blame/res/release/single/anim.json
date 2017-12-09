@@ -8,8 +8,24 @@
         "source": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\anim\\slide_in_from_top.xml"
     },
     {
+        "merged": "E:\\Smart\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\res\\merged\\release\\anim\\slide_out_to_bottom.xml",
+        "source": "E:\\Smart\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\anim\\slide_out_to_bottom.xml"
+    },
+    {
+        "merged": "E:\\Smart\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\res\\merged\\release\\anim\\slide_in_from_top.xml",
+        "source": "E:\\Smart\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\anim\\slide_in_from_top.xml"
+    },
+    {
         "merged": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\res\\merged\\release\\anim\\slide_in_from_bottom.xml",
         "source": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\anim\\slide_in_from_bottom.xml"
+    },
+    {
+        "merged": "E:\\Smart\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\res\\merged\\release\\anim\\slide_in_from_bottom.xml",
+        "source": "E:\\Smart\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\anim\\slide_in_from_bottom.xml"
+    },
+    {
+        "merged": "E:\\Smart\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\res\\merged\\release\\anim\\slide_out_to_top.xml",
+        "source": "E:\\Smart\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\anim\\slide_out_to_top.xml"
     },
     {
         "merged": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\res\\merged\\release\\anim\\slide_out_to_top.xml",

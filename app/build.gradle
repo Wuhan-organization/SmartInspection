@@ -72,8 +72,5 @@ dependencies {
     compile 'me.everything:overscroll-decor-android:1.0.4'
     //button
     compile 'com.github.clans:fab:1.6.4'
-
-
-
-
+    compile files('libs/rfBleService_V2.1.2.jar')
 }

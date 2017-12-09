@@ -4,7 +4,15 @@
         "source": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\layout\\pull_to_refresh_header_vertical.xml"
     },
     {
+        "merged": "E:\\Smart\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\res\\merged\\debug\\layout\\pull_to_refresh_header_horizontal.xml",
+        "source": "E:\\Smart\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\layout\\pull_to_refresh_header_horizontal.xml"
+    },
+    {
         "merged": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\res\\merged\\debug\\layout\\pull_to_refresh_header_horizontal.xml",
         "source": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\layout\\pull_to_refresh_header_horizontal.xml"
+    },
+    {
+        "merged": "E:\\Smart\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\res\\merged\\debug\\layout\\pull_to_refresh_header_vertical.xml",
+        "source": "E:\\Smart\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\layout\\pull_to_refresh_header_vertical.xml"
     }
 ]

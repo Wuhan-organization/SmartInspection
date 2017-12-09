@@ -1,10 +1,18 @@
 [
     {
+        "merged": "E:\\Smart\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\res\\merged\\debug\\drawable\\indicator_bg_top.xml",
+        "source": "E:\\Smart\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\drawable\\indicator_bg_top.xml"
+    },
+    {
         "merged": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\res\\merged\\debug\\drawable\\indicator_bg_top.xml",
         "source": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\drawable\\indicator_bg_top.xml"
     },
     {
         "merged": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\res\\merged\\debug\\drawable\\indicator_bg_bottom.xml",
         "source": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\drawable\\indicator_bg_bottom.xml"
+    },
+    {
+        "merged": "E:\\Smart\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\res\\merged\\debug\\drawable\\indicator_bg_bottom.xml",
+        "source": "E:\\Smart\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\drawable\\indicator_bg_bottom.xml"
     }
 ]

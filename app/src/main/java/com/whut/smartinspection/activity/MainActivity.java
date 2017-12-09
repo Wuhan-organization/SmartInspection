@@ -1,5 +1,6 @@
 package com.whut.smartinspection.activity;
 
+import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,8 @@ import com.whut.smartlibrary.base.SwipeBackActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,7 +37,7 @@ public class MainActivity extends SwipeBackActivity {
     WrapContentGridView gdMainPageMenu;
 
     private String[] menusText = {"变电巡视", "闸刀操作", "运维", "带电检测", "智能安全帽",
-            "设置", "知识中心"};
+            "设置", "知识中心","蓝牙开锁"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +47,24 @@ public class MainActivity extends SwipeBackActivity {
 
         initView();
         initData();
-    }
+        //延迟开启蓝牙
+        TimerTask task = new TimerTask(){
+            public void run(){
+                //execute the task
+                openBT();//打开蓝牙
+            }
+        };
+        Timer timer = new Timer();
+        timer.schedule(task, 200);
 
+    }
+    private void openBT(){
+        //请求打开蓝牙
+//        Intent intent =new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+//        startActivityForResult(intent,1);
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        bluetoothAdapter.enable();//强制开启蓝牙
+    }
     private void initView() {
         mMainPageMenuAdapter = new MainPageMenuAdapter(this, menus);
         gdMainPageMenu.setAdapter(mMainPageMenuAdapter);
@@ -66,6 +85,9 @@ public class MainActivity extends SwipeBackActivity {
                         intent = new Intent(MainActivity.this, HelmetActivity.class);
                         startActivity(intent);
                         break;
+                    case 7:
+                        intent = new Intent(MainActivity.this,BluetoothActivity.class);
+                        startActivity(intent);
                     default:
                         break;
                 }
