@@ -1,5 +1,6 @@
 package com.whut.smartinspection.activity;
 
+import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,8 @@ import com.whut.smartlibrary.base.SwipeBackActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,7 +38,7 @@ public class MainActivity extends SwipeBackActivity {
     WrapContentGridView gdMainPageMenu;
 
     private String[] menusText = {"变电巡视", "倒闸操作", "运维", "带电检测", "智能安全帽",
-            "设置", "知识中心"};
+            "设置", "知识中心","蓝牙开锁"};
     private Intent serviceIntent;
 
     @Override
@@ -76,6 +79,9 @@ public class MainActivity extends SwipeBackActivity {
                         intent = new Intent(MainActivity.this, HelmetActivity.class);
                         startActivity(intent);
                         break;
+                    case 7:
+                        intent = new Intent(MainActivity.this,BluetoothActivity.class);
+                        startActivity(intent);
                     default:
                         break;
                 }
@@ -84,8 +90,25 @@ public class MainActivity extends SwipeBackActivity {
     }
 
     private void initData() {
+        //延迟开启蓝牙
+        TimerTask task = new TimerTask(){
+            public void run(){
+                //execute the task
+                openBT();//打开蓝牙
+            }
+        };
+        Timer timer = new Timer();
+        timer.schedule(task, 200);
+
         showMenu();
         showBanner();
+    }
+    private void openBT(){
+        //请求打开蓝牙
+//        Intent intent =new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+//        startActivityForResult(intent,1);
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        bluetoothAdapter.enable();//强制开启蓝牙
     }
 
     @Override
@@ -138,6 +161,8 @@ public class MainActivity extends SwipeBackActivity {
                 case 6:
                     menu.setImageLocal(R.drawable.knowledge_center);
                     break;
+                case 7:
+                    menu.setImageLocal(R.drawable.knowledge_center);
                 default:
                     break;
             }

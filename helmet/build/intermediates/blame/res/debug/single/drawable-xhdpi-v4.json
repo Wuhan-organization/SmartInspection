@@ -8,12 +8,12 @@
         "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable-xhdpi-v4\\abc_list_selector_disabled_holo_light.9.png"
     },
     {
-        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\local_folder_btn.png",
-        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable-xhdpi\\local_folder_btn.png"
-    },
-    {
         "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png",
         "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable-xhdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\local_folder_btn.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\src\\main\\res\\drawable-xhdpi\\local_folder_btn.png"
     },
     {
         "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png",

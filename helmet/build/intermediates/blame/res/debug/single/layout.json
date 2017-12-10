@@ -8,12 +8,12 @@
         "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\layout\\abc_action_mode_close_item_material.xml"
     },
     {
-        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\layout\\abc_action_menu_layout.xml"
-    },
-    {
         "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media_custom.xml",
         "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\layout\\notification_template_media_custom.xml"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\layout\\abc_action_menu_layout.xml"
     },
     {
         "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",

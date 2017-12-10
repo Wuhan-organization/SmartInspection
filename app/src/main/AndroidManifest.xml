@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.whut.smartinspection">
 
+    <!-- 这个权限用于发现和配对蓝牙 -->
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <!-- 这个权限用于连接到已配对的蓝牙设备 -->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
     <!-- 这个权限用于进行网络定位 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <!-- 这个权限用于访问GPS定位 -->
@@ -71,6 +75,10 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
         <activity
+            android:name=".activity.BluetoothActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+        <activity
             android:name=".activity.MyTaskActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
@@ -81,6 +89,7 @@
         <activity android:name=".activity.DefectRegisterActivity" />
         <activity android:name=".activity.DefectAcceptanceActivity" />
         <activity android:name=".activity.DefectExamineActivity" />
+        <service android:name="cn.com.reformer.rfBleService.BleService" />
         <activity android:name=".activity.DefectHandleActivity"></activity>
     </application>
 

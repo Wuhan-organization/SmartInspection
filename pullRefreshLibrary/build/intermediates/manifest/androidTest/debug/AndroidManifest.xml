@@ -13,6 +13,10 @@
         android:label="Tests for com.handmark.pulltorefresh.library.test"
         android:targetPackage="com.handmark.pulltorefresh.library.test" />
 
+    <meta-data
+        android:name="android.support.VERSION"
+        android:value="25.3.1" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
