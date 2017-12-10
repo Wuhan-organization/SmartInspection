@@ -1,0 +1,216 @@
+[
+    {
+        "outputFile": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-uk-rUA\\values-uk-rUA.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 52,
+                    "endOffset": 103
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values-uk-rUA\\strings.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 776,
+                        "endColumn": 52,
+                        "endOffset": 824
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 108,
+                    "endColumn": 58,
+                    "endOffset": 162
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values-uk-rUA\\strings.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 886,
+                        "endColumn": 58,
+                        "endOffset": 940
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 167,
+                    "endColumn": 54,
+                    "endOffset": 217
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values-uk-rUA\\strings.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 946,
+                        "endColumn": 54,
+                        "endOffset": 996
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 222,
+                    "endColumn": 47,
+                    "endOffset": 265
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values-uk-rUA\\strings.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 727,
+                        "endColumn": 47,
+                        "endOffset": 770
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 270,
+                    "endColumn": 52,
+                    "endOffset": 318
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values-uk-rUA\\strings.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 830,
+                        "endColumn": 52,
+                        "endOffset": 878
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 323,
+                    "endColumn": 101,
+                    "endOffset": 420
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values-uk-rUA\\strings.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 398,
+                        "endColumn": 101,
+                        "endOffset": 495
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 425,
+                    "endColumn": 113,
+                    "endOffset": 534
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values-uk-rUA\\strings.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 610,
+                        "endColumn": 113,
+                        "endOffset": 719
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 539,
+                    "endColumn": 107,
+                    "endOffset": 642
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values-uk-rUA\\strings.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 501,
+                        "endColumn": 107,
+                        "endOffset": 604
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 647,
+                    "endColumn": 71,
+                    "endOffset": 714
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values-uk-rUA\\strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 59,
+                        "endColumn": 71,
+                        "endOffset": 126
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 719,
+                    "endColumn": 69,
+                    "endOffset": 784
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values-uk-rUA\\strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 211,
+                        "endColumn": 69,
+                        "endOffset": 276
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 789,
+                    "endColumn": 77,
+                    "endOffset": 862
+                },
+                "from": {
+                    "file": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\values-uk-rUA\\strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 132,
+                        "endColumn": 77,
+                        "endOffset": 205
+                    }
+                }
+            }
+        ]
+    }
+]

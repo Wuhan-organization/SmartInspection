@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="1080dp"
+    android:layout_height="fill_parent"
+    android:background="#888888">
+
+    <ImageView
+        android:id="@+id/dbpicture"
+        android:layout_width="fill_parent"
+        android:layout_height="300dp"
+        android:contentDescription="@string/label_find_camera" />
+
+    <TextView
+        android:id="@+id/dbtext"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:text="Hello World!"
+        android:textSize="24dp" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/dbbtnyes"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:text="YES" />
+        <Button
+            android:id="@+id/dbbtnno"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:text="NO" />
+    </LinearLayout>
+</LinearLayout>

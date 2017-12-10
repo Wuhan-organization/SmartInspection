@@ -178,6 +178,7 @@ public class LocalFileBrowserFragment extends Fragment {
 
 			ArrayList<FileNode> fileList = new ArrayList<FileNode>() ;
 
+			if(files!=null)
 			for (File file : files) {
 				String name = file.getName() ;
 				Log.i("LOCAL FILE", "list file name  : " +name) ;

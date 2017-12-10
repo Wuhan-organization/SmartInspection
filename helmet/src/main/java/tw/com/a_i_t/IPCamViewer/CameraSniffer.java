@@ -365,7 +365,7 @@ public class CameraSniffer extends Thread {
 		if (context == null)
 			return false ;
 
-		WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE) ;
+		WifiManager wifiManager = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE) ;
 		wifiManager.getConnectionInfo();
 		Method[] wmMethods = wifiManager.getClass().getDeclaredMethods();
 		
@@ -402,7 +402,7 @@ public class CameraSniffer extends Thread {
 		if (isAPEnable()) {
 			return Hotspot_CameraIP;
 		}else {
-			WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE) ;
+			WifiManager wifiManager = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE) ;
 
 			DhcpInfo dhcpInfo = wifiManager.getDhcpInfo() ;
 

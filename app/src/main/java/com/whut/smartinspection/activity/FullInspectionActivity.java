@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -11,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.devspark.appmsg.AppMsg;
 import com.github.clans.fab.FloatingActionButton;
@@ -20,6 +22,7 @@ import com.whut.greendao.gen.IntervalUnitDao;
 import com.whut.greendao.gen.PatrolContentDao;
 import com.whut.greendao.gen.SubDao;
 import com.whut.smartinspection.adapters.PageViewTabAdapter;
+import com.whut.smartinspection.adapters.TaskPageListAdapter;
 import com.whut.smartinspection.application.SApplication;
 import com.whut.smartinspection.model.Device;
 import com.whut.smartinspection.model.DeviceType;
@@ -44,6 +47,8 @@ import me.everything.android.ui.overscroll.OverScrollDecoratorHelper;
 import com.whut.smartinspection.R;
 
 import org.greenrobot.greendao.query.QueryBuilder;
+
+import static com.bumptech.glide.gifdecoder.GifHeaderParser.TAG;
 
 
 //import static com.baidu.location.h.j.R;
@@ -92,7 +97,7 @@ public class FullInspectionActivity extends SwipeBackActivity{
     final ArrayList<String> neList = new ArrayList<>();
 
     Map<Integer,String> map = new HashMap<Integer,String>();
-    Map<String,String> radioMap = new HashMap<String,String>();
+    Map<Integer,String> radioMap = new HashMap<Integer,String>();
     private LayoutInflater mInflater;
     private List<String> mTitleList = new ArrayList<>();//页卡标题集合
     private View view1, view2, view3;//页卡视图
@@ -100,16 +105,16 @@ public class FullInspectionActivity extends SwipeBackActivity{
 
     private Task task = new Task();
 
-    TaskItem item;
-
+    TaskPageListAdapter.TaskPageItem item;
+    String pageFlag;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_inspection);
         ButterKnife.bind(this);
 
-        item = (TaskItem)getIntent().getSerializableExtra("item");
-        String pageFlag = getIntent().getStringExtra("pageFlag");
+        item = (TaskPageListAdapter.TaskPageItem)getIntent().getSerializableExtra("item");
+        pageFlag = getIntent().getStringExtra("pageFlag");
         if("1".equals(pageFlag)){//已完成界面设置
             pageSetting();
         }
@@ -120,7 +125,11 @@ public class FullInspectionActivity extends SwipeBackActivity{
     }
     private void pageSetting(){
         linearLayout.setVisibility(View.INVISIBLE);
-
+        styleDevice.setEnabled(false);  //设备类型
+        substationName.setEnabled(false);
+        nameDevice.setEnabled(false);//设备名称
+        nameDis.setEnabled(false); ;//间隔名称
+        workWalk.setEnabled(false);//巡视作业
     }
     private void initData(){
         //从greenDao查询变电站名称
@@ -172,12 +181,12 @@ public class FullInspectionActivity extends SwipeBackActivity{
         OverScrollDecoratorHelper.setUpOverScroll(scrollView);
 
 //        TaskUtils.initView(substationName,suList,"变电站名称",FullInspectionActivity.this,task);
-        substationName.setText(item.getContent());
+        substationName.setText(item.getStationName());
 
         TaskUtils.initView(styleDevice,stList,"设备类型",FullInspectionActivity.this,task);
 
 //        TaskUtils.initView(workWalk,woList,"巡视作业",FullInspectionActivity.this,task);
-        substationName.setText("全面巡视");
+        workWalk.setText("全面巡视");
 
         TaskUtils.initView(nameDis,ndList,"间隔名称",FullInspectionActivity.this,task);
 
@@ -192,6 +201,11 @@ public class FullInspectionActivity extends SwipeBackActivity{
         content1 = (EditText) view1.findViewById(R.id.content1);
         content2 = (EditText) view2.findViewById(R.id.content2);
         content3 = (EditText) view3.findViewById(R.id.content3);
+        if("1".equals(pageFlag)) {
+            content1.setEnabled(false);
+            content2.setEnabled(false);
+            content3.setEnabled(false);
+        }
 
         content1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -266,6 +280,13 @@ public class FullInspectionActivity extends SwipeBackActivity{
             public void onClick(View view) {
                 String content = titleContent.getText().toString();
                 int point = Integer.parseInt(content.split("\\.")[0]);
+                if(!radioMap.containsKey(point)){//没录入清空
+                    radioGroup.clearCheck();
+                }else{//已录入 设置
+                    if("true".equals(radioMap.get(point)))
+                        radioGroup.check(R.id.radioButton1);
+                    radioGroup.check(R.id.radioButton2);
+                }
                 point--;
                 if(point>0)
                     titleContent.setText(point+"."+map.get(point).substring(1,map.get(point).length()-1));
@@ -276,6 +297,13 @@ public class FullInspectionActivity extends SwipeBackActivity{
             public void onClick(View view) {
                 String content = titleContent.getText().toString();
                 int point = Integer.parseInt(content.split("\\.")[0]);
+                if(!radioMap.containsKey(point)){//没录入清空
+                    radioGroup.clearCheck();
+                }else{//已录入 设置
+                    if("true".equals(radioMap.get(point)))
+                        radioGroup.check(R.id.radioButton1);
+                    radioGroup.check(R.id.radioButton2);
+                }
                 point++;
                 if(point<=map.size())
                     titleContent.setText(point+"."+map.get(point).substring(1,map.get(point).length()-1));
@@ -287,10 +315,10 @@ public class FullInspectionActivity extends SwipeBackActivity{
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
                 String content = titleContent.getText().toString().split("\\.")[0];
                 if(checkedId == R.id.radioButton1){//是
-                    radioMap.put(content,String.valueOf(true));
+                    radioMap.put(Integer.parseInt(content),String.valueOf(true));
                 }
                 if(checkedId == R.id.radioButton2){//否
-                    radioMap.put(content,String.valueOf(false));
+                    radioMap.put(Integer.parseInt(content),String.valueOf(false));
                 }
             }
         });
@@ -305,44 +333,39 @@ public class FullInspectionActivity extends SwipeBackActivity{
                 break;
             case R.id.task_detail_commit:
                 if(radioMap.size() <map.size()){
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            AppMsg.makeText(FullInspectionActivity.this,"还有数据未录入...",AppMsg.STYLE_CONFIRM);
-                        }
-                    });
+                    Toast.makeText(FullInspectionActivity.this,"还有数据未录入",Toast.LENGTH_LONG).show();
                 }
-
                 break;
             default:
                 break;
         }
     }
-    public Map<String,String> getDataCommit(){
-        Map<String,String> map = new HashMap<>();
-
-        String subName = substationName.getText().toString();
-        String subId = "";
-        String deviceName = nameDevice.getText().toString();
-        String deviceStyle = styleDevice.getText().toString();
-        String disName = nameDis.getText().toString();
-        String walkwork = workWalk.getText().toString();
-
-        String ontent1 = content1.getText().toString();
-        String ontent2 = content2.getText().toString();
-        String ontent3 = content3.getText().toString();
-
-        map.put("subName",subName);
-        map.put("subId",subId);
-        map.put("deviceName",deviceName);
-        map.put("deviceStyle",deviceStyle);
-        map.put("disName",disName);
-        map.put("Walkwork",walkwork);
-        map.put("ontent1",ontent1);
-        map.put("ontent2",ontent2);
-        map.put("ontent3",ontent3);
-        return map;
-//        JsonObject jsonObject = new JsonObject();
-
-    }
+//    public Map<String,String> getDataCommit(){
+//        Map<String,String> map = new HashMap<>();
+//
+//        String subName = substationName.getText().toString();
+//        String subId = "";
+//        String deviceName = nameDevice.getText().toString();
+//        String deviceStyle = styleDevice.getText().toString();
+//        String disName = nameDis.getText().toString();
+//        String walkwork = workWalk.getText().toString();
+//
+//        String ontent1 = content1.getText().toString();
+//        String ontent2 = content2.getText().toString();
+//        String ontent3 = content3.getText().toString();
+//
+//        map.put("subName",subName);
+//        map.put("subId",subId);
+//        map.put("deviceName",deviceName);
+//        map.put("deviceStyle",deviceStyle);
+//        map.put("disName",disName);
+//        map.put("Walkwork",walkwork);
+//        map.put("ontent1",ontent1);
+//        map.put("ontent2",ontent2);
+//        map.put("ontent3",ontent3);
+//        Log.d(TAG, "getDataCommit: ");
+//        return map;
+////        JsonObject jsonObject = new JsonObject();
+//
+//    }
 }

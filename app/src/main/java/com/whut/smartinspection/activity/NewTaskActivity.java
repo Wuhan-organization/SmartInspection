@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -70,23 +71,22 @@ public class NewTaskActivity extends SwipeBackActivity implements ITaskHandlerLi
     }
     private void initView(){
 
-        substationText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-
+        substationText.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-
-                if(hasFocus == true && list.size()!= 0){
+            public void onClick(View v) {
+                if(list.size()!= 0){
                     final WheelViewDialog dialog = new WheelViewDialog(NewTaskActivity.this);
                     dialog.setTitle("变电站名称").setItems(list).setButtonText("确定").setCount(5).setOnDialogItemClickListener(new WheelViewDialog.OnDialogItemClickListener() {
                         @Override
                         public void onItemClick(int position, String s) {
-                           substationText.setText(s);
+                            substationText.setText(s);
                         }
                     }).show();
+                }else{
+                    Toast.makeText(NewTaskActivity.this,"数据库没有数据",Toast.LENGTH_LONG).show();
                 }
             }
         });
-
     }
     @OnClick({R.id.tv_new_back,R.id.button_commit})
     public void onClick(View view) {
@@ -106,21 +106,12 @@ public class NewTaskActivity extends SwipeBackActivity implements ITaskHandlerLi
     }
     @Override
     public void onTaskSuccess(Object obj, EMsgType type, final int flag) {
-        JsonObject jsonObject = new JsonParser().parse((String)obj).getAsJsonObject();
-
-        JsonArray jsonArray = jsonObject.getAsJsonArray("data");
-        for(int i = 0;i<jsonArray.size();i++){
-            JsonElement idx = jsonArray.get(i);
-            JsonObject jo = idx.getAsJsonObject();
-
-            String id = jo.get("id").toString();
-            String name = jo.get("name").toString();
-            list.add(name.substring(1,name.length()-1));
-        }
+        Toast.makeText(NewTaskActivity.this,"提交成功!",Toast.LENGTH_LONG).show();
     }
     @Override
     public void onTaskFailure(Object obj, EMsgType type) {
-
+        String message = (String)obj;
+        Toast.makeText(NewTaskActivity.this,message,Toast.LENGTH_LONG).show();
     }
     private void getText(){
         String numT = numberTask.getText().toString();
@@ -129,18 +120,27 @@ public class NewTaskActivity extends SwipeBackActivity implements ITaskHandlerLi
         if(checkText(numberTask,numT)&&checkText(substationText,subText)&&checkText(discribeContent,dis)){
             SubDao subDao = SApplication.getInstance().getDaoSession().getSubDao();
             QueryBuilder<Sub> qb = subDao.queryBuilder();
-            Sub sTemp = qb.where(SubDao.Properties.Name.eq(subText.substring(1,subText.length()-1))).unique();
-            tempTask.setId("");
-            tempTask.setSubstationId(sTemp.getIdd());//变电站id
-            tempTask.setWorker(numT);//工作成员
-            tempTask.setContent(dis);//工作内容
-            tempTask.setStatus(1);//1表示待办
-            tempTask.setPatrolTypeId(1);//巡视类型
+            Sub sTemp = null;
+            if(subText.length()>2)
+                sTemp = qb.where(SubDao.Properties.Name.eq(subText.substring(1,subText.length()-1))).unique();
+            if(sTemp != null){
+                tempTask.setId("");
+                tempTask.setSubstationId(sTemp.getIdd());//变电站id
+                tempTask.setWorker(numT);//工作成员
+                tempTask.setContent(dis);//工作内容
+                tempTask.setStatus(1);//1表示待办
+                tempTask.setPatrolTypeId(1);//巡视类型
+            }
         }
     }
     private boolean checkText(TextView t,String s){
         if(s == null|| "".equals(s)){
-            t.setFocusable(true);
+            if(t!=substationText){
+                t.setFocusable(true);
+                t.setFocusableInTouchMode(true);
+                t.requestFocus();
+            }
+            Toast.makeText(NewTaskActivity.this,"还有内容未输入",Toast.LENGTH_LONG).show();
             return false;
         }
         return true;

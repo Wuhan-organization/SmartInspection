@@ -1,8 +1,11 @@
 package com.whut.smartinspection.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -46,6 +49,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static java.security.AccessController.getContext;
+
 /**
  * 我的任务页面
  * Created by xiongbin on 2017/11/3.
@@ -70,6 +75,12 @@ public class MyTaskActivity extends SwipeBackActivity implements IHandlerListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_task);
         ButterKnife.bind(this);
+        WindowManager wm = this.getWindowManager();
+
+        int width = wm.getDefaultDisplay().getWidth();
+        int height = wm.getDefaultDisplay().getHeight();
+        Log.i("width", "width: "+width);
+        Log.i("height", "height: "+height);
 
         MyLocationListener myListener = new MyLocationListener();
         LocationService.getInstance(this).registerListener(myListener);

@@ -116,14 +116,15 @@
                     android:text="审核意见："
                     android:textSize="20sp" />
                 <EditText
+                    android:minLines="3"
+                    android:gravity="left|top"
                     android:inputType="textMultiLine"
                     android:hint="请填写审核意见"
                     android:id="@+id/et_check_agreement"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="wrap_content"
                     android:scrollbars="vertical"
-                    android:singleLine="false"
-                    android:textSize="20sp" />
+                    android:textSize="10sp" />
             </LinearLayout>
 
             <LinearLayout

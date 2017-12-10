@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -209,6 +210,6 @@ public class HttpService extends Service implements ITaskHandlerListener{
     }
     @Override
     public void onTaskFailure(Object obj, EMsgType type) {
-
+        Toast.makeText(HttpService.this,"请求服务器出错!",Toast.LENGTH_LONG);
     }
 }

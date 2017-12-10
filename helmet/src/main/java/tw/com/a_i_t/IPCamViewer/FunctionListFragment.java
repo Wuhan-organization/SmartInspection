@@ -107,7 +107,7 @@ public class FunctionListFragment extends Fragment {
 		protected void onPostExecute(String result) {
 			String	liveStreamUrl;
 			WifiManager wifiManager = (WifiManager)
-					getActivity().getSystemService(Context.WIFI_SERVICE);
+					getActivity().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 			DhcpInfo dhcpInfo = wifiManager.getDhcpInfo();
 
 			if ((dhcpInfo == null || dhcpInfo.gateway == 0)&&(CamIp == null)) {

@@ -94,6 +94,11 @@ public class WaitingTaskActivity extends SwipeBackActivity {
                 list.add(item);
             }
         }
+        TaskPageListAdapter.TaskPageItem ii = new TaskPageListAdapter.TaskPageItem();
+        ii.setStationName("景江变电站500KV");
+        ii.setText("AAA");
+        ii.setNumber("worker");
+        list.add(ii);
         taskPageListAdapter.notifyDataSetChanged();
     }
 }

@@ -145,15 +145,28 @@
                     android:layout_height="wrap_content"
                     android:text="备注："
                     android:textSize="20sp" />
-                <EditText
-                    android:inputType="textMultiLine"
-                    android:hint="请填写审核意见"
-                    android:id="@+id/et_check_agreement"
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:scrollbars="vertical"
-                    android:singleLine="false"
-                    android:textSize="20sp" />
+                    android:layout_height="wrap_content">
+                    <ScrollView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:fadeScrollbars="false"
+                        android:scrollbars="vertical"
+                        android:fadingEdge="vertical">
+                        <EditText
+                            android:gravity="left|top"
+                            android:minLines="3"
+                            android:id="@+id/et_check_agreement"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="请填写审核意见..."
+                            android:inputType="textMultiLine"
+                            android:scrollbars="vertical"
+                            android:textSize="10sp" />
+                    </ScrollView>
+                </LinearLayout>
             </LinearLayout>
 
 

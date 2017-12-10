@@ -282,7 +282,7 @@ public class FileBrowserFragment extends Fragment {
 
 			Log.i("DownloadTask", "onPreExecute") ;
 
-			WifiManager wm = (WifiManager) mContext.getSystemService(Context.WIFI_SERVICE) ;
+			WifiManager wm = (WifiManager) mContext.getApplicationContext().getSystemService(Context.WIFI_SERVICE) ;
 			mWifiLock = wm.createWifiLock(WifiManager.WIFI_MODE_FULL, "DownloadTask") ;
 			mWifiLock.acquire() ;
 
@@ -543,7 +543,7 @@ public class FileBrowserFragment extends Fragment {
 		mIp = getArguments().getString(KEY_IP) ;
 
 		if (mIp == null) {
-			WifiManager wifiManager = (WifiManager) getActivity().getSystemService(Context.WIFI_SERVICE) ;
+			WifiManager wifiManager = (WifiManager) getActivity().getApplicationContext().getSystemService(Context.WIFI_SERVICE) ;
 
 			DhcpInfo dhcpInfo = wifiManager.getDhcpInfo() ;
 

@@ -123,7 +123,7 @@ public class CameraCommand {
 					&& (CameraUIConfig.uiType != CameraUIConfig.droneView)) {
 			return CameraUIConfig.getIP();
 		}else {
-			WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE) ;
+			WifiManager wifiManager = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE) ;
 
 			DhcpInfo dhcpInfo = wifiManager.getDhcpInfo() ;
 
@@ -139,7 +139,7 @@ public class CameraCommand {
 		if (context == null)
 			return false ;
 
-		WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE) ;
+		WifiManager wifiManager = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE) ;
 		wifiManager.getConnectionInfo();
 		Method[] wmMethods = wifiManager.getClass().getDeclaredMethods();
 		

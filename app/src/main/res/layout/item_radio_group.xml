@@ -6,61 +6,66 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
-        android:layout_marginBottom="25dp"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="70dp">
+        android:layout_height="120dp"
+        android:layout_marginBottom="25dp"
+        android:orientation="vertical">
+
         <TextView
-            android:textSize="20dp"
-            android:text="1.题目"
             android:id="@+id/title_content"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="1.题目"
+            android:textSize="20dp" />
 
         <RadioGroup
             android:id="@+id/radioGroup"
-            android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
             <RadioButton
-                android:text="no"
                 android:id="@+id/radioButton1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="no" />
+
             <RadioButton
-                android:text="yes"
                 android:id="@+id/radioButton2"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="yes" />
         </RadioGroup>
     </LinearLayout>
+
     <LinearLayout
-        android:layout_gravity="center"
-        android:orientation="horizontal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
-            android:layout_marginBottom="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginRight="20dp"
             android:src="@drawable/ic_back"
             fab:fab_colorNormal="@color/white"
             fab:fab_colorPressed="@color/red"
-            fab:fab_colorRipple="@color/gray"/>
+            fab:fab_colorRipple="@color/gray" />
+
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
-            android:layout_marginBottom="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginBottom="4dp"
             android:src="@drawable/ic_next"
             fab:fab_colorNormal="@color/white"
             fab:fab_colorPressed="@color/red"
-            fab:fab_colorRipple="@color/gray"/>
+            fab:fab_colorRipple="@color/gray" />
 
     </LinearLayout>
 

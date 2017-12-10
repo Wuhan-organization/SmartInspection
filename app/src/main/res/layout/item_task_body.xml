@@ -20,6 +20,9 @@
             android:text="变电站名称:" />
 
         <EditText
+            android:cursorVisible="false"
+            android:focusableInTouchMode="false"
+            android:focusable="false"
             android:id="@+id/button_substation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -49,7 +52,11 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="任务名称" />
+            android:text="任务名称:" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#CCCCCC" />
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -58,11 +65,12 @@
             android:layout_weight="34">
 
             <EditText
+                android:textSize="12dp"
+                android:minLines="10"
                 android:id="@+id/discribe_content"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:height="@dimen/activity_horizontal_margin"
-                android:gravity="left"
+                android:layout_height="wrap_content"
+                android:gravity="left|top"
                 android:hint="请描述任务内容..."
                 android:maxLength="100"
                 android:maxWidth="100dp" />

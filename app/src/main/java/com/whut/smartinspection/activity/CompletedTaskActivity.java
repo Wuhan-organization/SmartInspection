@@ -57,7 +57,6 @@ public class CompletedTaskActivity extends SwipeBackActivity {
                 intent.putExtra("item",item);
                 intent.putExtra("pageFlag","1");
                 startActivity(intent);
-
             }
         });
     }
@@ -82,6 +81,11 @@ public class CompletedTaskActivity extends SwipeBackActivity {
 
             }
         }
+        TaskPageItem ii = new TaskPageItem();
+        ii.setStationName("景江变电站500KV");
+        ii.setText("AAA");
+        ii.setNumber("worker");
+        list.add(ii);
         taskPageListAdapter.notifyDataSetChanged();
     }
     @OnClick({R.id.tv_com_back})

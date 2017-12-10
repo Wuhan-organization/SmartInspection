@@ -73,7 +73,7 @@ public class NetFileDownload {
 
             Log.e("DownloadTask", "onPreExecute") ;
 
-            WifiManager wm = (WifiManager) mContext.getSystemService(Context.WIFI_SERVICE) ;
+            WifiManager wm = (WifiManager) mContext.getApplicationContext().getSystemService(Context.WIFI_SERVICE) ;
             mWifiLock = wm.createWifiLock(WifiManager.WIFI_MODE_FULL, "DownloadTask") ;
             mWifiLock.acquire() ;
 

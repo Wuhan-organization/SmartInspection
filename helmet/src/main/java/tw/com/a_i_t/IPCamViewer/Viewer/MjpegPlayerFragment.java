@@ -1044,7 +1044,7 @@ public class MjpegPlayerFragment extends Fragment {
 
 		if (mMediaUrl == null) {
 
-			WifiManager wifiManager = (WifiManager) getActivity().getSystemService(Context.WIFI_SERVICE) ;
+			WifiManager wifiManager = (WifiManager) getActivity().getApplicationContext().getSystemService(Context.WIFI_SERVICE) ;
 
 			DhcpInfo dhcpInfo = wifiManager.getDhcpInfo() ;
 

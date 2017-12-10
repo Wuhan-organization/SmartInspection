@@ -53,7 +53,7 @@ public class MainPageMenuAdapter extends BaseAdapter {
         }
 
         MainPageMenu menu = menus.get(position);
-        Glide.with(mContext).load(menu.getImageUrl()).into(holder.ivMainPageMenu);
+        Glide.with(mContext).load(menu.getImageLocal()).into(holder.ivMainPageMenu);
         holder.tvMainPageMenuName.setText(menu.getMenuName());
 
         return convertView;
@@ -75,6 +75,15 @@ public class MainPageMenuAdapter extends BaseAdapter {
         private String menuName;
         private String type;
         private String url;
+        private int imageLocal;
+
+        public int getImageLocal() {
+            return imageLocal;
+        }
+
+        public void setImageLocal(int imageLocal) {
+            this.imageLocal = imageLocal;
+        }
 
         public String getImageUrl() {
             return imageUrl;

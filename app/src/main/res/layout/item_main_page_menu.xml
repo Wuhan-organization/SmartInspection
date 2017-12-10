@@ -13,17 +13,19 @@
         android:orientation="vertical" >
 
         <ImageView
+            android:scaleType="fitXY"
             android:id="@+id/iv_main_page_menu"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:adjustViewBounds="true"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
 
         <TextView
             android:id="@+id/tv_main_page_menu_name"
+            android:layout_marginTop="-3dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
             android:layout_below="@id/iv_main_page_menu"
             android:layout_centerHorizontal="true"
             android:gravity="center"

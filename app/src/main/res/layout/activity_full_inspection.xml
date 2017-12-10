@@ -41,6 +41,7 @@
         android:background="#CCCCCC" />
 
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <ScrollView
@@ -74,6 +75,7 @@
                             android:text="变电站名称："
                             android:textSize="20sp" />
                         <EditText
+                            android:enabled="false"
                             android:id="@+id/substation_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -89,6 +91,9 @@
                             android:text="设备类型："
                             android:textSize="20sp" />
                         <EditText
+                            android:cursorVisible="false"
+                            android:focusableInTouchMode="false"
+                            android:focusable="false"
                             android:id="@+id/style_device"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -104,6 +109,7 @@
                             android:text="巡视作业："
                             android:textSize="20sp" />
                         <EditText
+                            android:enabled="false"
                             android:id="@+id/work_walk"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -119,6 +125,9 @@
                             android:text="间隔名称："
                             android:textSize="20sp" />
                         <EditText
+                            android:cursorVisible="false"
+                            android:focusableInTouchMode="false"
+                            android:focusable="false"
                             android:id="@+id/name_dis"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -135,6 +144,9 @@
                             android:text="设备名称："
                             android:textSize="20sp" />
                         <EditText
+                            android:cursorVisible="false"
+                            android:focusableInTouchMode="false"
+                            android:focusable="false"
                             android:id="@+id/name_device"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -154,7 +166,6 @@
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
-
                     <android.support.design.widget.TabLayout
                         android:id="@+id/tabs"
                         android:layout_width="match_parent"
@@ -162,12 +173,11 @@
                         app:tabIndicatorColor="@color/red"
                         app:tabSelectedTextColor="@color/red"
                         app:tabTextColor="@color/black"/>
-
                     <!--可滑动的布局内容-->
                     <android.support.v4.view.ViewPager
                         android:id="@+id/vp_view"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp">
+                        android:layout_height="100dp">
                     </android.support.v4.view.ViewPager>
                 </LinearLayout>
                     <LinearLayout
@@ -180,8 +190,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom|right"
-                            android:layout_marginBottom="1dp"
-                            android:layout_marginRight="1dp"
                             android:src="@drawable/commit"
                             fab:fab_colorNormal="@color/white"
                             fab:fab_colorPressed="@color/red"
