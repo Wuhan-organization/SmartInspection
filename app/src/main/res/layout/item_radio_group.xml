@@ -9,7 +9,7 @@
         android:layout_height="wrap_content">
         <TextView
             android:textSize="18dp"
-            android:text="巡视项目作业卡"
+            android:text=""
             android:id="@+id/tv_patrol_card_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -34,6 +34,7 @@
 
         <RadioGroup
             android:visibility="gone"
+            android:layout_marginTop="15dp"
             android:id="@+id/radioGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -55,88 +56,58 @@
                 android:text="×" />
         </RadioGroup>
         <LinearLayout
+            android:layout_marginTop="15dp"
+            android:weightSum="2"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <LinearLayout
                 android:visibility="gone"
+                android:layout_weight="1"
                 android:layout_marginRight="20dp"
                 android:id="@+id/degree_full"
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-
                 <TextView
+                    android:gravity="right"
+                    android:layout_marginLeft="10dp"
                     android:id="@+id/first_part"
-                    android:layout_width="wrap_content"
+                    android:layout_width="90dp"
                     android:layout_height="wrap_content" />
                 <EditText
                     android:id="@+id/degree_number"
-                    android:layout_marginLeft="10dp"
                     android:inputType="number"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content" />
                 <TextView
-                    android:text="C"
+                    android:text="℃"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </LinearLayout>
             <LinearLayout
                 android:visibility="gone"
+                android:layout_weight="1"
+                android:gravity="right"
                 android:id="@+id/second_degree_full"
                 android:orientation="horizontal"
-                android:layout_width="wrap_content"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content">
-
                 <TextView
+                    android:layout_marginLeft="10dp"
                     android:id="@+id/second_part"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <EditText
                     android:id="@+id/secod_degree_number"
-                    android:layout_marginLeft="10dp"
                     android:inputType="number"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content" />
                 <TextView
-                    android:text="C"
+                    android:text="℃"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="horizontal">
-
-        <com.github.clans.fab.FloatingActionButton
-            android:visibility="gone"
-            android:id="@+id/back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            android:layout_marginBottom="4dp"
-            android:layout_marginRight="20dp"
-            android:src="@drawable/ic_back"
-            fab:fab_colorNormal="@color/white"
-            fab:fab_colorPressed="@color/red"
-            fab:fab_colorRipple="@color/gray" />
-
-        <com.github.clans.fab.FloatingActionButton
-            android:visibility="gone"
-            android:id="@+id/next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            android:layout_marginBottom="4dp"
-            android:src="@drawable/ic_next"
-            fab:fab_colorNormal="@color/white"
-            fab:fab_colorPressed="@color/red"
-            fab:fab_colorRipple="@color/gray" />
-
-    </LinearLayout>
-
 </LinearLayout>

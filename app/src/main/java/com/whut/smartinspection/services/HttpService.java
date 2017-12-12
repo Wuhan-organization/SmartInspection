@@ -168,7 +168,7 @@ public class HttpService extends Service implements ITaskHandlerListener{
                 int deviceTypeId = Integer.parseInt(jo.get("deviceTypeId").toString());
                 String patrolNameId = jo.get("patrolNameId").toString();
                 String patrolContentTypeNo = jo.get("patrolContentTypeNo").toString(); //巡视项目数据类型编码用于指定填RecordPostVo中的哪一个value字段，详情见附件1
-                String patrolContentName = ""; //巡视项目数据类型
+                String patrolContentName = jo.get("patrolContentTypeName").toString(); //巡视项目数据类型
 
 
                 PatrolContent patrolContent = new PatrolContent(null,format(id),Integer.parseInt(no),part,content,

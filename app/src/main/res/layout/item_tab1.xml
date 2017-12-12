@@ -10,5 +10,5 @@
         android:hint="请输入内容..."
         android:gravity="left|top"
         android:inputType="textMultiLine"
-        android:minLines="3" />
+        android:minLines="5" />
 </LinearLayout>

@@ -31,8 +31,18 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:text="全面巡视"
-            android:textColor="#000000"
+            android:textColor="#000E00"
             android:textSize="18sp" />
+        <TextView
+            android:id="@+id/tv_commit"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="12dp"
+            android:text="提交"
+            android:textSize="18sp"
+            android:textColor="@drawable/selector_commit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </RelativeLayout>
 
     <View
@@ -154,33 +164,66 @@
                     </LinearLayout>
                 </LinearLayout>
                 <!-- //////////////////////////////////////////////-->
-                <RelativeLayout
-                    android:background="@drawable/bodder"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp">
-                    <include layout="@layout/item_radio_group" />
-                </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="500px"
+                        android:background="@drawable/bodder">
 
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <android.support.design.widget.TabLayout
-                        android:id="@+id/tabs"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:tabIndicatorColor="@color/red"
-                        app:tabSelectedTextColor="@color/red"
-                        app:tabTextColor="@color/black"/>
-                    <!--可滑动的布局内容-->
-                    <android.support.v4.view.ViewPager
-                        android:id="@+id/vp_view"
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp">
-                    </android.support.v4.view.ViewPager>
-                </LinearLayout>
+                        <include layout="@layout/item_radio_group" />
+                    </RelativeLayout>
+
                     <LinearLayout
+                            android:weightSum="2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal">
+
+                            <com.github.clans.fab.FloatingActionButton
+                                android:layout_weight="1"
+                                android:id="@+id/back"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom|center"
+                                android:layout_marginBottom="4dp"
+                                android:layout_marginRight="90dp"
+                                android:src="@drawable/ic_back"
+                                fab:fab_colorNormal="@color/white"
+                                fab:fab_colorPressed="@color/red"
+                                fab:fab_colorRipple="@color/gray" />
+
+                            <com.github.clans.fab.FloatingActionButton
+                                android:layout_weight="1"
+                                android:id="@+id/next"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom|center"
+                                android:layout_marginBottom="4dp"
+                                android:src="@drawable/ic_next"
+                                fab:fab_colorNormal="@color/white"
+                                fab:fab_colorPressed="@color/red"
+                                fab:fab_colorRipple="@color/gray" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <android.support.design.widget.TabLayout
+                            android:id="@+id/tabs"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:tabIndicatorColor="@color/red"
+                            app:tabSelectedTextColor="@color/red"
+                            app:tabTextColor="@color/black"/>
+                        <!--可滑动的布局内容-->
+                        <android.support.v4.view.ViewPager
+                            android:id="@+id/vp_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp">
+                        </android.support.v4.view.ViewPager>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:visibility="gone"
                         android:id="@+id/button_id_visual"
                         android:gravity="center"
                         android:layout_width="match_parent"
