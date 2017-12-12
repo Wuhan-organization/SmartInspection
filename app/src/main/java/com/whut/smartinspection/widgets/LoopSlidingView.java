@@ -1,6 +1,7 @@
 package com.whut.smartinspection.widgets;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -113,6 +114,40 @@ public class LoopSlidingView extends RelativeLayout {
 			viewDots.add(viewDot);
 			bottomLayout.addView(viewDot,params);
 		}		
+		mPagerAdapter = new MyPagerAdapter(views);
+		mViewPager.setAdapter(mPagerAdapter);
+		mViewPager.setOnPageChangeListener(new MyOnPageChangeListener());
+		mViewPager.setCurrentItem(currIndex);
+	}
+	public void setImageOverride(List<Integer> data){
+		if (data == null || data.size() == 0) {
+			return;
+		}
+//		urlList = data;
+		views.clear();
+		viewDots.clear();
+		bottomLayout.removeAllViews();
+		LayoutParams params = new LayoutParams(20,20);
+		params.rightMargin = 10;
+		params.leftMargin = 10;
+
+		for(int i = 0;i < data.size();i++){
+			ImageViewWithPosition view = new ImageViewWithPosition(mContext);
+			view.setPosition(i);
+			Glide.with(mContext).load(data.get(i))
+					.placeholder(R.drawable.ic_launcher)
+					.error(R.drawable.ic_launcher)
+					.into(view);
+			views.add(view);
+			View viewDot = new View(mContext);
+			if (i == 0) {
+				viewDot.setBackgroundResource(R.drawable.icon_gallery_point_white);
+			} else {
+				viewDot.setBackgroundResource(R.drawable.icon_gallery_point_grey);
+			}
+			viewDots.add(viewDot);
+			bottomLayout.addView(viewDot,params);
+		}
 		mPagerAdapter = new MyPagerAdapter(views);
 		mViewPager.setAdapter(mPagerAdapter);
 		mViewPager.setOnPageChangeListener(new MyOnPageChangeListener());

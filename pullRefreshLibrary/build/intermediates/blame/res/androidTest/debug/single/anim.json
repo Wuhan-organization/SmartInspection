@@ -16,12 +16,12 @@
         "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\anim\\abc_slide_out_top.xml"
     },
     {
-        "merged": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_top.xml",
-        "source": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_top.xml"
-    },
-    {
         "merged": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_shrink_fade_out_from_bottom.xml",
         "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_out_to_top.xml",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\bundles\\debug\\res\\anim\\slide_out_to_top.xml"
     },
     {
         "merged": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\slide_in_from_top.xml",

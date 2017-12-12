@@ -36,19 +36,19 @@
             <com.whut.smartinspection.widgets.LoopSlidingView
                 android:id="@+id/lsv_main_page"
                 android:layout_width="match_parent"
-                android:layout_height="100dp" />
+                android:layout_height="666px" />
 
             <com.whut.smartinspection.widgets.WrapContentGridView
+                android:horizontalSpacing="1dp"
+                android:verticalSpacing="1dp"
+                android:background="#DCDCDC"
                 android:id="@+id/gd_main_page_menu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:listSelector="@drawable/bg_home_gridview"
-                android:numColumns="3"
-                android:padding="10dp" />
-
+                android:numColumns="3" />
         </LinearLayout>
     </ScrollView>
 

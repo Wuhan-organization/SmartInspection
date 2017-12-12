@@ -50,6 +50,8 @@ public class TaskUtils {
                         default:
                             break;
                     }
+                }else {
+                    SystemUtils.showToast(fullInspectionActivity,"本地数据库无数据,请重启软件");
                 }
             }
 

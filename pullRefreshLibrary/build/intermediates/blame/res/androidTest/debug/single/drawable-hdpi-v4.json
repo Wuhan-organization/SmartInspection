@@ -84,12 +84,12 @@
         "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable-hdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png"
     },
     {
-        "merged": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\indicator_arrow.png",
-        "source": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\indicator_arrow.png"
-    },
-    {
         "merged": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png",
         "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable-hdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\indicator_arrow.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\indicator_arrow.png"
     },
     {
         "merged": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\abc_ic_star_black_48dp.png",

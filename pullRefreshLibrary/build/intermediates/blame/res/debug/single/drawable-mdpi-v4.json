@@ -204,11 +204,11 @@
         "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable-mdpi-v4\\abc_list_longpressed_holo.9.png"
     },
     {
-        "merged": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_launcher.png",
-        "source": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\drawable-mdpi\\ic_launcher.png"
-    },
-    {
         "merged": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\abc_ic_star_black_16dp.png",
         "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable-mdpi-v4\\abc_ic_star_black_16dp.png"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_launcher.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\pullRefreshLibrary\\src\\main\\res\\drawable-mdpi\\ic_launcher.png"
     }
 ]

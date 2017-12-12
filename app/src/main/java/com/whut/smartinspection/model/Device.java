@@ -22,16 +22,39 @@ public class Device {
     
     private String idd;
 
-    @Generated(hash = 1996440647)
-    public Device(Long id, String name, String no, String idd) {
+    private String intervalUnitId;
+
+    private int deviceTypeId;
+
+    @Generated(hash = 744949392)
+    public Device(Long id, String name, String no, String idd,
+            String intervalUnitId, int deviceTypeId) {
         this.id = id;
         this.name = name;
         this.no = no;
         this.idd = idd;
+        this.intervalUnitId = intervalUnitId;
+        this.deviceTypeId = deviceTypeId;
     }
 
     @Generated(hash = 1469582394)
     public Device() {
+    }
+
+    public String getIntervalUnitId() {
+        return intervalUnitId;
+    }
+
+    public void setIntervalUnitId(String intervalUnitId) {
+        this.intervalUnitId = intervalUnitId;
+    }
+
+    public int getDeviceTypeId() {
+        return deviceTypeId;
+    }
+
+    public void setDeviceTypeId(int deviceTypeId) {
+        this.deviceTypeId = deviceTypeId;
     }
 
     public String getIdd() {

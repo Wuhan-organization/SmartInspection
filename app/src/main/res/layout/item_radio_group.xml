@@ -15,7 +15,7 @@
             android:id="@+id/title_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1.题目"
+            android:text="(暂无数据)"
             android:textSize="20dp" />
 
         <RadioGroup
@@ -28,14 +28,32 @@
                 android:id="@+id/radioButton1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="no" />
+                android:text="true" />
 
             <RadioButton
                 android:id="@+id/radioButton2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="yes" />
+                android:text="false" />
         </RadioGroup>
+        <LinearLayout
+            android:id="@+id/degree_full"
+            android:visibility="gone"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/degree_number"
+                android:layout_marginLeft="10dp"
+                android:inputType="number"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="C"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout

@@ -2,6 +2,7 @@ package com.whut.smartinspection.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -73,19 +74,14 @@ public class CompletedTaskActivity extends SwipeBackActivity {
                 TaskPageListAdapter.TaskPageItem item = new TaskPageListAdapter.TaskPageItem();
                 item.setText(taskItem.getContent());
                 item.setNumber(taskItem.getWorker());
-                item.setId(taskItem.getSubstationId());
+                item.setStationName(taskItem.getSubstationId());
                 //查找变电站id
-                Sub subTemp = qbSub.where(SubDao.Properties.Idd.eq(taskItem.getId())).unique();
-                item.setStationName(subTemp.getName());
+                List<Sub> subTemp = qbSub.where(SubDao.Properties.Name.eq(taskItem.getSubstationId())).list();
+                if(subTemp!=null&&subTemp.size()>0)
+                    item.setId(subTemp.get(0).getIdd());
                 list.add(item);
-
             }
         }
-        TaskPageItem ii = new TaskPageItem();
-        ii.setStationName("景江变电站500KV");
-        ii.setText("AAA");
-        ii.setNumber("worker");
-        list.add(ii);
         taskPageListAdapter.notifyDataSetChanged();
     }
     @OnClick({R.id.tv_com_back})

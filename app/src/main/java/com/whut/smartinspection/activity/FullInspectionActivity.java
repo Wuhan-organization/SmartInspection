@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -14,13 +13,12 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.devspark.appmsg.AppMsg;
 import com.github.clans.fab.FloatingActionButton;
 import com.whut.greendao.gen.DeviceDao;
 import com.whut.greendao.gen.DeviceTypeDao;
 import com.whut.greendao.gen.IntervalUnitDao;
 import com.whut.greendao.gen.PatrolContentDao;
-import com.whut.greendao.gen.SubDao;
+import com.whut.greendao.gen.PatrolWorkCardDao;
 import com.whut.smartinspection.adapters.PageViewTabAdapter;
 import com.whut.smartinspection.adapters.TaskPageListAdapter;
 import com.whut.smartinspection.application.SApplication;
@@ -28,9 +26,9 @@ import com.whut.smartinspection.model.Device;
 import com.whut.smartinspection.model.DeviceType;
 import com.whut.smartinspection.model.IntervalUnit;
 import com.whut.smartinspection.model.PatrolContent;
-import com.whut.smartinspection.model.Sub;
+import com.whut.smartinspection.model.PatrolWorkCard;
 import com.whut.smartinspection.model.Task;
-import com.whut.smartinspection.model.TaskItem;
+import com.whut.smartinspection.utils.SystemUtils;
 import com.whut.smartinspection.utils.TaskUtils;
 import com.whut.smartlibrary.base.SwipeBackActivity;
 
@@ -45,10 +43,9 @@ import butterknife.OnClick;
 import me.everything.android.ui.overscroll.OverScrollDecoratorHelper;
 
 import com.whut.smartinspection.R;
+import com.wx.wheelview.widget.WheelViewDialog;
 
 import org.greenrobot.greendao.query.QueryBuilder;
-
-import static com.bumptech.glide.gifdecoder.GifHeaderParser.TAG;
 
 
 //import static com.baidu.location.h.j.R;
@@ -59,6 +56,8 @@ import static com.bumptech.glide.gifdecoder.GifHeaderParser.TAG;
  */
 public class FullInspectionActivity extends SwipeBackActivity{
 
+    @BindView(R.id.degree_number)
+    EditText degreeNumber;
     @BindView(R.id.tv_full_inspection_back)
     TextView tvFullInspectionBack; // 返回
     @BindView(R.id.style_device)
@@ -87,6 +86,8 @@ public class FullInspectionActivity extends SwipeBackActivity{
     RadioGroup radioGroup;
     @BindView(R.id.button_id_visual)
     LinearLayout linearLayout;
+    @BindView(R.id.degree_full)
+    LinearLayout degree;
     EditText content1;
     EditText content2;
     EditText content3;
@@ -95,6 +96,7 @@ public class FullInspectionActivity extends SwipeBackActivity{
     final ArrayList<String> woList = new ArrayList<>();
     final ArrayList<String> ndList = new ArrayList<>();
     final ArrayList<String> neList = new ArrayList<>();
+    private int lastPoint = 0;
 
     Map<Integer,String> map = new HashMap<Integer,String>();
     Map<Integer,String> radioMap = new HashMap<Integer,String>();
@@ -102,6 +104,9 @@ public class FullInspectionActivity extends SwipeBackActivity{
     private List<String> mTitleList = new ArrayList<>();//页卡标题集合
     private View view1, view2, view3;//页卡视图
     private List<View> mViewList = new ArrayList<>();//页卡视图集合
+    private List<Integer> degreeFlag = new ArrayList<>();
+    private List<Integer> signFlg = new ArrayList<>();
+    private List<Integer> radioFlag = new ArrayList<>();
 
     private Task task = new Task();
 
@@ -132,14 +137,6 @@ public class FullInspectionActivity extends SwipeBackActivity{
         workWalk.setEnabled(false);//巡视作业
     }
     private void initData(){
-        //从greenDao查询变电站名称
-//        SubDao subDao = SApplication.getInstance().getDaoSession().getSubDao();
-//        QueryBuilder<Sub> qb = subDao.queryBuilder();
-//
-//        List<Sub> list = qb.list();
-//        for (Sub sub   :list ) {
-//            suList.add(sub.getName());
-//        }
         //从greenDao查询设备名称
         DeviceTypeDao deviceTypeDao = SApplication.getInstance().getDaoSession().getDeviceTypeDao();
         QueryBuilder<DeviceType> qbDT = deviceTypeDao.queryBuilder();
@@ -155,12 +152,6 @@ public class FullInspectionActivity extends SwipeBackActivity{
         for (IntervalUnit iu   :listIU ) {
             ndList.add(iu.getName());
         }
-        //巡视作业
-//        woList.add("全面巡视");
-//        woList.add("例行巡视");
-//        woList.add("特殊巡视");
-//        woList.add("特殊巡视");
-//        woList.add("熄灯巡视");
         //设备名称
         DeviceDao deviceDao = SApplication.getInstance().getDaoSession().getDeviceDao();
         QueryBuilder<Device> qbD = deviceDao.queryBuilder();
@@ -168,29 +159,100 @@ public class FullInspectionActivity extends SwipeBackActivity{
         for (Device dt   :listD ) {
             neList.add(dt.getName());
         }
-        //巡视作业卡片内容
-        PatrolContentDao patrolContentDao = SApplication.getInstance().getDaoSession().getPatrolContentDao();
-        QueryBuilder<PatrolContent> qbPC = patrolContentDao.queryBuilder();
-        List<PatrolContent> listPC = qbPC.list();
-        for (PatrolContent dt  :listPC ) {
-            map.put(dt.getNo(),dt.getContent());
-        }
     }
     private void initView(){
         //滑动样式
         OverScrollDecoratorHelper.setUpOverScroll(scrollView);
 
-//        TaskUtils.initView(substationName,suList,"变电站名称",FullInspectionActivity.this,task);
         substationName.setText(item.getStationName());
 
-        TaskUtils.initView(styleDevice,stList,"设备类型",FullInspectionActivity.this,task);
+        //设备类型选择
+        styleDevice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(stList.size()!= 0){
+                    final WheelViewDialog dialog = new WheelViewDialog(FullInspectionActivity.this);
+                    dialog.setTitle("设备类型").setItems(stList).setButtonText("确定").setCount(5).
+                            setOnDialogItemClickListener(new WheelViewDialog.OnDialogItemClickListener() {
+                                @Override
+                                public void onItemClick(int position, String s) {
+                                    styleDevice.setText(s);
+                                    //获取设备类型id
+                                    DeviceTypeDao deviceTypeDao = SApplication.getInstance().getDaoSession().getDeviceTypeDao();
+                                    QueryBuilder<DeviceType> dbDT = deviceTypeDao.queryBuilder();
 
-//        TaskUtils.initView(workWalk,woList,"巡视作业",FullInspectionActivity.this,task);
+                                    List<DeviceType> deviceTypeList1 = dbDT.where(DeviceTypeDao.Properties.Name.eq(s)).list();
+                                    int deviceTypeIdd = Integer.parseInt(deviceTypeList1.get(0).getIdd());
+
+                                    //巡视作业卡片内容
+                                    map.clear();
+                                    PatrolContentDao patrolContentDao = SApplication.getInstance().getDaoSession().getPatrolContentDao();
+                                    QueryBuilder<PatrolContent> qbPC = patrolContentDao.queryBuilder();
+
+                                    List<PatrolContent> listPC = qbPC.where(PatrolContentDao.Properties.DeviceTypeId.eq(deviceTypeIdd)).list();
+                                    for (PatrolContent dt  :listPC ) {
+                                        if("0".equals(dt.getPatrolContentTypeNo())) {//单选
+                                            radioFlag.add(dt.getNo());
+                                            map.put(dt.getNo(), dt.getContent());
+                                        }else if("1".equals(dt.getPatrolContentTypeNo())){//温度
+                                            degreeFlag.add(dt.getNo());
+                                            map.put(dt.getNo(),dt.getContent());
+                                        } else{//备注
+                                            signFlg.add(dt.getNo());
+                                            map.put(dt.getNo(),dt.getContent());
+                                        }
+                                    }
+                                    if(map.size()==0)
+                                        titleContent.setText("(本地无数据)");
+                                    else titleContent.setText(1+"."+map.get(1).substring(1,map.get(1).length()-1));
+                                }
+                            }).show();
+                    task.setGetDeviceName(styleDevice.getText().toString());
+
+                }else  SystemUtils.showToast(FullInspectionActivity.this,"本地数据库无数据,请重启软件");
+
+            }
+
+        });
+
+
         workWalk.setText("全面巡视");
 
         TaskUtils.initView(nameDis,ndList,"间隔名称",FullInspectionActivity.this,task);
 
-        TaskUtils.initView(nameDevice,neList,"设备名称",FullInspectionActivity.this,task);
+        //通过设备名称查巡视作业卡
+        nameDevice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(neList.size()!= 0){
+                    final WheelViewDialog dialog = new WheelViewDialog(FullInspectionActivity.this);
+                    dialog.setTitle("设备名称").setItems(neList).setButtonText("确定").setCount(5).
+                            setOnDialogItemClickListener(new WheelViewDialog.OnDialogItemClickListener() {
+                                @Override
+                                public void onItemClick(int position, String s) {
+                                    nameDevice.setText(s);
+                                    DeviceDao deviceDao = SApplication.getInstance().getDaoSession().getDeviceDao();
+                                    QueryBuilder<Device> qbDevice = deviceDao.queryBuilder();
+                                    List<Device> deviceList = qbDevice.where(DeviceDao.Properties.Name.eq(s)).list();
+                                    String deviceId = "";
+                                    if(deviceList!=null && deviceList.size()>0){
+                                        deviceId = deviceList.get(0).getIdd();
+                                    }
+                                    PatrolWorkCardDao patrolWorkCardDao = SApplication.getInstance().getDaoSession().getPatrolWorkCardDao();
+                                    QueryBuilder<PatrolWorkCard> dbPWC = patrolWorkCardDao.queryBuilder();
+                                    List<PatrolWorkCard> parolWC = dbPWC.where(PatrolWorkCardDao.Properties.DeviceId.eq(deviceId)).list();
+                                    if (parolWC!=null && parolWC.size()>0){
+                                        PatrolWorkCard pwc = parolWC.get(0);
+                                    }
+                                }
+                            }).show();
+                            task.setDeviceName(nameDevice.getText().toString());
+                }else {
+                    SystemUtils.showToast(FullInspectionActivity.this,"本地数据库无数据,请重启软件");
+                }
+            }
+
+        });
 
         mInflater = getLayoutInflater();
         view1 = mInflater.inflate(R.layout.item_tab1, null);
@@ -274,42 +336,86 @@ public class FullInspectionActivity extends SwipeBackActivity{
         mTabLayout.setTabsFromPagerAdapter(mAdapter);//给Tabs设置适配器
         mTabLayout.setTabMode(TabLayout.MODE_FIXED);
 
-        titleContent.setText(1+"."+map.get(1));
+
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                radioGroup.clearCheck();
+                degreeNumber.setFocusable(false);
                 String content = titleContent.getText().toString();
                 int point = Integer.parseInt(content.split("\\.")[0]);
-                if(!radioMap.containsKey(point)){//没录入清空
-                    radioGroup.clearCheck();
-                }else{//已录入 设置
-                    if("true".equals(radioMap.get(point)))
-                        radioGroup.check(R.id.radioButton1);
-                    radioGroup.check(R.id.radioButton2);
-                }
                 point--;
                 if(point>0)
                     titleContent.setText(point+"."+map.get(point).substring(1,map.get(point).length()-1));
+                if(radioFlag.contains(point)){//单选框
+                    degree.setVisibility(View.INVISIBLE);
+                    radioGroup.setVisibility(View.VISIBLE);
+                    if(!radioMap.containsKey(point)){//没录入清空
+                        radioGroup.clearCheck();
+                    }else{//已录入 设置
+                        if(point<=map.size()&&"true".equals(radioMap.get(point)))
+                            radioGroup.check(R.id.radioButton1);
+                        if(point<=map.size()&&"false".equals(radioMap.get(point)))
+                            radioGroup.check(R.id.radioButton2);
+                    }
+                }
+                if(degreeFlag.contains(point)){//填温度数字
+                    degree.setVisibility(View.VISIBLE);
+                    radioGroup.setVisibility(View.INVISIBLE);
+                    degreeNumber.setFocusable(true);
+                    degreeNumber.setFocusableInTouchMode(true);
+                    lastPoint = point;
+                }
+                if(signFlg.contains(point)){
+
+                }
             }
         });
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                radioGroup.clearCheck();
+                degreeNumber.setFocusable(false);
                 String content = titleContent.getText().toString();
                 int point = Integer.parseInt(content.split("\\.")[0]);
-                if(!radioMap.containsKey(point)){//没录入清空
-                    radioGroup.clearCheck();
-                }else{//已录入 设置
-                    if("true".equals(radioMap.get(point)))
-                        radioGroup.check(R.id.radioButton1);
-                    radioGroup.check(R.id.radioButton2);
-                }
                 point++;
                 if(point<=map.size())
                     titleContent.setText(point+"."+map.get(point).substring(1,map.get(point).length()-1));
+                if(radioFlag.contains(point)){//单选框
+                    degree.setVisibility(View.INVISIBLE);
+                    radioGroup.setVisibility(View.VISIBLE);
+                    if(!radioMap.containsKey(point)){//没录入清空
+
+                    }else{//已录入 设置
+                        if(point<=map.size()&&"true".equals(radioMap.get(point)))
+                            radioGroup.check(R.id.radioButton1);
+                        if(point<=map.size()&&"false".equals(radioMap.get(point)))
+                            radioGroup.check(R.id.radioButton2);
+                    }
+                }
+                if(degreeFlag.contains(point)){//填温度数字
+                    degree.setVisibility(View.VISIBLE);
+                    radioGroup.setVisibility(View.INVISIBLE);
+                    degreeNumber.setFocusable(true);
+                    degreeNumber.setFocusableInTouchMode(true);
+                    lastPoint = point;
+                }
+                if(signFlg.contains(point)){
+
+                }
             }
         });
 
+        degreeNumber.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus == false){
+                    radioMap.put(lastPoint,degreeNumber.getText().toString());
+                    degreeNumber.setText(null);
+                }
+            }
+        });
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
@@ -322,6 +428,7 @@ public class FullInspectionActivity extends SwipeBackActivity{
                 }
             }
         });
+
     }
 
 
@@ -340,32 +447,4 @@ public class FullInspectionActivity extends SwipeBackActivity{
                 break;
         }
     }
-//    public Map<String,String> getDataCommit(){
-//        Map<String,String> map = new HashMap<>();
-//
-//        String subName = substationName.getText().toString();
-//        String subId = "";
-//        String deviceName = nameDevice.getText().toString();
-//        String deviceStyle = styleDevice.getText().toString();
-//        String disName = nameDis.getText().toString();
-//        String walkwork = workWalk.getText().toString();
-//
-//        String ontent1 = content1.getText().toString();
-//        String ontent2 = content2.getText().toString();
-//        String ontent3 = content3.getText().toString();
-//
-//        map.put("subName",subName);
-//        map.put("subId",subId);
-//        map.put("deviceName",deviceName);
-//        map.put("deviceStyle",deviceStyle);
-//        map.put("disName",disName);
-//        map.put("Walkwork",walkwork);
-//        map.put("ontent1",ontent1);
-//        map.put("ontent2",ontent2);
-//        map.put("ontent3",ontent3);
-//        Log.d(TAG, "getDataCommit: ");
-//        return map;
-////        JsonObject jsonObject = new JsonObject();
-//
-//    }
 }

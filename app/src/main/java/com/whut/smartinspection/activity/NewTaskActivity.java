@@ -96,7 +96,7 @@ public class NewTaskActivity extends SwipeBackActivity implements ITaskHandlerLi
                 finish();
                 break;
             case R.id.button_commit:
-                getText();
+                getTextContent();
                 Log.i("tempTask",tempTask.toString());
                 TaskComponent.commitTask(NewTaskActivity.this,tempTask.toString());
                 break;
@@ -113,22 +113,23 @@ public class NewTaskActivity extends SwipeBackActivity implements ITaskHandlerLi
         String message = (String)obj;
         Toast.makeText(NewTaskActivity.this,message,Toast.LENGTH_LONG).show();
     }
-    private void getText(){
+    private void getTextContent(){
         String numT = numberTask.getText().toString();
         String subText = substationText.getText().toString();
         String dis = discribeContent.getText().toString();
         if(checkText(numberTask,numT)&&checkText(substationText,subText)&&checkText(discribeContent,dis)){
             SubDao subDao = SApplication.getInstance().getDaoSession().getSubDao();
             QueryBuilder<Sub> qb = subDao.queryBuilder();
-            Sub sTemp = null;
+             List<Sub> sTemp = null;
             if(subText.length()>2)
-                sTemp = qb.where(SubDao.Properties.Name.eq(subText.substring(1,subText.length()-1))).unique();
-            if(sTemp != null){
+                sTemp = qb.where(SubDao.Properties.Name.eq(subText)).list();
+            if(sTemp != null&&sTemp.size()>0){
                 tempTask.setId("");
-                tempTask.setSubstationId(sTemp.getIdd());//变电站id
+                tempTask.setSubstationId(sTemp.get(0).getIdd());//变电站id
                 tempTask.setWorker(numT);//工作成员
+
                 tempTask.setContent(dis);//工作内容
-                tempTask.setStatus(1);//1表示待办
+                tempTask.setStatus(0);//1表示待办
                 tempTask.setPatrolTypeId(1);//巡视类型
             }
         }

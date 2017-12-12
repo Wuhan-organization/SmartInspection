@@ -39,7 +39,7 @@ android {
         }
     }
     greendao {
-        schemaVersion 8
+        schemaVersion 11
         daoPackage 'com.whut.greendao.gen'
         targetGenDir 'src/main/java'
     }

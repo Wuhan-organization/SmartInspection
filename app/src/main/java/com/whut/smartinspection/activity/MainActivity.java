@@ -37,8 +37,8 @@ public class MainActivity extends SwipeBackActivity {
     @BindView(R.id.gd_main_page_menu)
     WrapContentGridView gdMainPageMenu;
 
-    private String[] menusText = {"变电巡视", "倒闸操作", "运维", "带电检测", "智能安全帽",
-            "设置", "知识中心","蓝牙开锁"};
+    private String[] menusText = {"变电巡视", "倒闸操作", "运维", "带电检测", "智能安全帽","数据上传", "知识中心","无线门禁",
+            "设置"};
     private Intent serviceIntent;
 
     @Override
@@ -156,13 +156,16 @@ public class MainActivity extends SwipeBackActivity {
                     menu.setImageLocal(R.drawable.excel_safe_cat);
                     break;
                 case 5:
-                    menu.setImageLocal(R.drawable.system_setting);
+                    menu.setImageLocal(R.drawable.data_up_load);
                     break;
                 case 6:
                     menu.setImageLocal(R.drawable.knowledge_center);
                     break;
                 case 7:
-                    menu.setImageLocal(R.drawable.knowledge_center);
+                    menu.setImageLocal(R.drawable.wireless_door_ban1);
+                case 8:
+                    menu.setImageLocal(R.drawable.system_setting);
+                    break;
                 default:
                     break;
             }
@@ -173,11 +176,13 @@ public class MainActivity extends SwipeBackActivity {
     }
 
     private void showBanner() {
-        List<String> urlList = new ArrayList<String>();
-        for (int i = 0;i < 5;i++) {
-            urlList.add("http://img.taopic.com/uploads/allimg/120727/201995-120HG1030762.jpg");
-        }
-        loopSlidingView.setImage(urlList);
+        List<Integer> urlList = new ArrayList<>();
+//        for (int i = 0;i < 2;i++) {
+//            urlList.add("http://img.taopic.com/uploads/allimg/120727/201995-120HG1030762.jpg");
+            urlList.add(R.drawable.oop1);
+            urlList.add(R.drawable.oop2);
+//        }
+        loopSlidingView.setImageOverride(urlList);
         loopSlidingView.startTurning(4000);
     }
 }

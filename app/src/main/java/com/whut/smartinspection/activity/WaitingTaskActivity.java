@@ -87,18 +87,15 @@ public class WaitingTaskActivity extends SwipeBackActivity {
                 TaskPageListAdapter.TaskPageItem item = new TaskPageListAdapter.TaskPageItem();
                 item.setText(taskItem.getContent());
                 item.setNumber(taskItem.getWorker());
-                item.setId(taskItem.getSubstationId());
+                item.setStationName(taskItem.getSubstationId());
                 //查找变电站id
-                Sub subTemp = qbSub.where(SubDao.Properties.Idd.eq(taskItem.getId())).unique();
-                item.setStationName(subTemp.getName());
+                List<Sub> subTemp = qbSub.where(SubDao.Properties.Name.eq(taskItem.getSubstationId())).list();
+                if(subTemp!=null&&subTemp.size()>0)
+                    item.setId(subTemp.get(0).getIdd());
                 list.add(item);
+
             }
         }
-        TaskPageListAdapter.TaskPageItem ii = new TaskPageListAdapter.TaskPageItem();
-        ii.setStationName("景江变电站500KV");
-        ii.setText("AAA");
-        ii.setNumber("worker");
-        list.add(ii);
         taskPageListAdapter.notifyDataSetChanged();
     }
 }

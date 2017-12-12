@@ -28,6 +28,8 @@ public class DeviceDao extends AbstractDao<Device, Long> {
         public final static Property Name = new Property(1, String.class, "name", false, "NAME");
         public final static Property No = new Property(2, String.class, "no", false, "NO");
         public final static Property Idd = new Property(3, String.class, "idd", false, "IDD");
+        public final static Property IntervalUnitId = new Property(4, String.class, "intervalUnitId", false, "INTERVAL_UNIT_ID");
+        public final static Property DeviceTypeId = new Property(5, int.class, "deviceTypeId", false, "DEVICE_TYPE_ID");
     }
 
 
@@ -46,7 +48,9 @@ public class DeviceDao extends AbstractDao<Device, Long> {
                 "\"id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "\"NAME\" TEXT," + // 1: name
                 "\"NO\" TEXT," + // 2: no
-                "\"IDD\" TEXT);"); // 3: idd
+                "\"IDD\" TEXT," + // 3: idd
+                "\"INTERVAL_UNIT_ID\" TEXT," + // 4: intervalUnitId
+                "\"DEVICE_TYPE_ID\" INTEGER NOT NULL );"); // 5: deviceTypeId
     }
 
     /** Drops the underlying database table. */
@@ -78,6 +82,12 @@ public class DeviceDao extends AbstractDao<Device, Long> {
         if (idd != null) {
             stmt.bindString(4, idd);
         }
+ 
+        String intervalUnitId = entity.getIntervalUnitId();
+        if (intervalUnitId != null) {
+            stmt.bindString(5, intervalUnitId);
+        }
+        stmt.bindLong(6, entity.getDeviceTypeId());
     }
 
     @Override
@@ -103,6 +113,12 @@ public class DeviceDao extends AbstractDao<Device, Long> {
         if (idd != null) {
             stmt.bindString(4, idd);
         }
+ 
+        String intervalUnitId = entity.getIntervalUnitId();
+        if (intervalUnitId != null) {
+            stmt.bindString(5, intervalUnitId);
+        }
+        stmt.bindLong(6, entity.getDeviceTypeId());
     }
 
     @Override
@@ -116,7 +132,9 @@ public class DeviceDao extends AbstractDao<Device, Long> {
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // name
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // no
-            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3) // idd
+            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // idd
+            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // intervalUnitId
+            cursor.getInt(offset + 5) // deviceTypeId
         );
         return entity;
     }
@@ -127,6 +145,8 @@ public class DeviceDao extends AbstractDao<Device, Long> {
         entity.setName(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setNo(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
         entity.setIdd(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
+        entity.setIntervalUnitId(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
+        entity.setDeviceTypeId(cursor.getInt(offset + 5));
      }
     
     @Override

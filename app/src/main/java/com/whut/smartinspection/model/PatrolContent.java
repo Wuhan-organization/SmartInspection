@@ -29,11 +29,18 @@ public class PatrolContent {
     private String date;
 
     //数据类型
-    private String patrolContentType;
+    private String patrolContentTypeNo;
 
-    @Generated(hash = 345809710)
+    private String patrolContentName; //巡视项目数据类型
+
+    private int deviceTypeId;
+
+    private String patrolNameId;
+
+    @Generated(hash = 41847467)
     public PatrolContent(Long id, String idd, int no, String part, String content,
-            short isImportant, String date, String patrolContentType) {
+            short isImportant, String date, String patrolContentTypeNo,
+            String patrolContentName, int deviceTypeId, String patrolNameId) {
         this.id = id;
         this.idd = idd;
         this.no = no;
@@ -41,11 +48,46 @@ public class PatrolContent {
         this.content = content;
         this.isImportant = isImportant;
         this.date = date;
-        this.patrolContentType = patrolContentType;
+        this.patrolContentTypeNo = patrolContentTypeNo;
+        this.patrolContentName = patrolContentName;
+        this.deviceTypeId = deviceTypeId;
+        this.patrolNameId = patrolNameId;
     }
 
     @Generated(hash = 1821211469)
     public PatrolContent() {
+    }
+
+    public String getPatrolContentTypeNo() {
+        return patrolContentTypeNo;
+    }
+
+    public void setPatrolContentTypeNo(String patrolContentTypeNo) {
+        this.patrolContentTypeNo = patrolContentTypeNo;
+    }
+
+    public String getPatrolContentName() {
+        return patrolContentName;
+    }
+
+    public void setPatrolContentName(String patrolContentName) {
+        this.patrolContentName = patrolContentName;
+    }
+
+    public int getDeviceTypeId() {
+        return deviceTypeId;
+    }
+
+    public void setDeviceTypeId(int deviceTypeId) {
+        this.deviceTypeId = deviceTypeId;
+    }
+
+    public String getPatrolNameId() {
+        return patrolNameId;
+    }
+
+    public void setPatrolNameId(String patrolNameId) {
+        this.patrolNameId = patrolNameId;
     }
 
     public Long getId() {
@@ -104,11 +146,5 @@ public class PatrolContent {
         this.date = date;
     }
 
-    public String getPatrolContentType() {
-        return patrolContentType;
-    }
 
-    public void setPatrolContentType(String patrolContentType) {
-        this.patrolContentType = patrolContentType;
-    }
 }

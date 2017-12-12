@@ -2,6 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -37,12 +39,14 @@
         android:background="#CCCCCC" />
 
     <GridView
+        android:layout_gravity="center_horizontal"
         android:id="@+id/gv_power_station_check_menu"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
+        android:layout_width="900px"
+        android:layout_height="wrap_content"
+        android:background="#DCDCDC"
+        android:horizontalSpacing="1dp"
         android:listSelector="@drawable/bg_home_gridview"
-        android:numColumns="3"
-        android:padding="10dp" />
+        android:numColumns="2"
+        android:verticalSpacing="1dp" />
 
 </LinearLayout>

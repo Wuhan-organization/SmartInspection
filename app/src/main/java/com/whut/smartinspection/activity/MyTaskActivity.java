@@ -75,13 +75,6 @@ public class MyTaskActivity extends SwipeBackActivity implements IHandlerListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_task);
         ButterKnife.bind(this);
-        WindowManager wm = this.getWindowManager();
-
-        int width = wm.getDefaultDisplay().getWidth();
-        int height = wm.getDefaultDisplay().getHeight();
-        Log.i("width", "width: "+width);
-        Log.i("height", "height: "+height);
-
         MyLocationListener myListener = new MyLocationListener();
         LocationService.getInstance(this).registerListener(myListener);
         initData();
@@ -194,7 +187,7 @@ public class MyTaskActivity extends SwipeBackActivity implements IHandlerListene
         switch (type) {
             // 获取天气失败
             case GET_WEATHER_FAILURE:
-                SystemUtils.showToast(this, obj.toString());
+                //SystemUtils.showToast(this, obj.toString());
                 break;
 
             default:

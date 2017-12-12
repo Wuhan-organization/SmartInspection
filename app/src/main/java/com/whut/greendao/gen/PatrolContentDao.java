@@ -31,7 +31,10 @@ public class PatrolContentDao extends AbstractDao<PatrolContent, Long> {
         public final static Property Content = new Property(4, String.class, "content", false, "CONTENT");
         public final static Property IsImportant = new Property(5, short.class, "isImportant", false, "IS_IMPORTANT");
         public final static Property Date = new Property(6, String.class, "date", false, "DATE");
-        public final static Property PatrolContentType = new Property(7, String.class, "patrolContentType", false, "PATROL_CONTENT_TYPE");
+        public final static Property PatrolContentTypeNo = new Property(7, String.class, "patrolContentTypeNo", false, "PATROL_CONTENT_TYPE_NO");
+        public final static Property PatrolContentName = new Property(8, String.class, "patrolContentName", false, "PATROL_CONTENT_NAME");
+        public final static Property DeviceTypeId = new Property(9, int.class, "deviceTypeId", false, "DEVICE_TYPE_ID");
+        public final static Property PatrolNameId = new Property(10, String.class, "patrolNameId", false, "PATROL_NAME_ID");
     }
 
 
@@ -54,7 +57,10 @@ public class PatrolContentDao extends AbstractDao<PatrolContent, Long> {
                 "\"CONTENT\" TEXT," + // 4: content
                 "\"IS_IMPORTANT\" INTEGER NOT NULL ," + // 5: isImportant
                 "\"DATE\" TEXT," + // 6: date
-                "\"PATROL_CONTENT_TYPE\" TEXT);"); // 7: patrolContentType
+                "\"PATROL_CONTENT_TYPE_NO\" TEXT," + // 7: patrolContentTypeNo
+                "\"PATROL_CONTENT_NAME\" TEXT," + // 8: patrolContentName
+                "\"DEVICE_TYPE_ID\" INTEGER NOT NULL ," + // 9: deviceTypeId
+                "\"PATROL_NAME_ID\" TEXT);"); // 10: patrolNameId
     }
 
     /** Drops the underlying database table. */
@@ -94,9 +100,20 @@ public class PatrolContentDao extends AbstractDao<PatrolContent, Long> {
             stmt.bindString(7, date);
         }
  
-        String patrolContentType = entity.getPatrolContentType();
-        if (patrolContentType != null) {
-            stmt.bindString(8, patrolContentType);
+        String patrolContentTypeNo = entity.getPatrolContentTypeNo();
+        if (patrolContentTypeNo != null) {
+            stmt.bindString(8, patrolContentTypeNo);
+        }
+ 
+        String patrolContentName = entity.getPatrolContentName();
+        if (patrolContentName != null) {
+            stmt.bindString(9, patrolContentName);
+        }
+        stmt.bindLong(10, entity.getDeviceTypeId());
+ 
+        String patrolNameId = entity.getPatrolNameId();
+        if (patrolNameId != null) {
+            stmt.bindString(11, patrolNameId);
         }
     }
 
@@ -131,9 +148,20 @@ public class PatrolContentDao extends AbstractDao<PatrolContent, Long> {
             stmt.bindString(7, date);
         }
  
-        String patrolContentType = entity.getPatrolContentType();
-        if (patrolContentType != null) {
-            stmt.bindString(8, patrolContentType);
+        String patrolContentTypeNo = entity.getPatrolContentTypeNo();
+        if (patrolContentTypeNo != null) {
+            stmt.bindString(8, patrolContentTypeNo);
+        }
+ 
+        String patrolContentName = entity.getPatrolContentName();
+        if (patrolContentName != null) {
+            stmt.bindString(9, patrolContentName);
+        }
+        stmt.bindLong(10, entity.getDeviceTypeId());
+ 
+        String patrolNameId = entity.getPatrolNameId();
+        if (patrolNameId != null) {
+            stmt.bindString(11, patrolNameId);
         }
     }
 
@@ -152,7 +180,10 @@ public class PatrolContentDao extends AbstractDao<PatrolContent, Long> {
             cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // content
             cursor.getShort(offset + 5), // isImportant
             cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // date
-            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7) // patrolContentType
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // patrolContentTypeNo
+            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // patrolContentName
+            cursor.getInt(offset + 9), // deviceTypeId
+            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10) // patrolNameId
         );
         return entity;
     }
@@ -166,7 +197,10 @@ public class PatrolContentDao extends AbstractDao<PatrolContent, Long> {
         entity.setContent(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
         entity.setIsImportant(cursor.getShort(offset + 5));
         entity.setDate(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
-        entity.setPatrolContentType(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
+        entity.setPatrolContentTypeNo(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
+        entity.setPatrolContentName(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
+        entity.setDeviceTypeId(cursor.getInt(offset + 9));
+        entity.setPatrolNameId(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
      }
     
     @Override
