@@ -16,7 +16,7 @@
             android:layout_centerVertical="true"
             android:text="变电站智能巡检系统"
             android:textColor="#000000"
-            android:textSize="18sp" />
+            android:textSize="22sp" />
     </RelativeLayout>
 
     <View
@@ -45,8 +45,6 @@
                 android:id="@+id/gd_main_page_menu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:listSelector="@drawable/bg_home_gridview"
                 android:numColumns="3" />
         </LinearLayout>

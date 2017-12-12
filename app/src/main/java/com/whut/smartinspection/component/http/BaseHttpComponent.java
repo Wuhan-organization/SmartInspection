@@ -4,7 +4,7 @@ public class BaseHttpComponent {
 	public static final String URL = "http://115.159.108.163:8009/smartIsland/";
 	public final String contentType = "application/json;charset=UTF-8";
 	public static final String USER_AGENT = "fm_android";
-	public static final String IP = "http://192.168.1.100:8080/";
+	public static final String IP = "http://192.168.1.101:8080/";
 	//获取变电站名称列表
 	public static final String URL_SUBSTATION =IP + "BDZXJService/Android/Substation/all";
 	//任务提交
@@ -21,6 +21,8 @@ public class BaseHttpComponent {
 	public static final String URL_TASK =IP + "BDZXJService/Android/Task";
 	//巡视作业卡
 	public static final String URL_PATROL_NAME =IP + "BDZXJService/Android/PatrolName";
+	public static final String URL_HeadPage =IP + "BDZXJService/Android/HeadPage";
+	public static final String URL_PatrolRecord =IP + "BDZXJService/Android/PatrolRecord";
 
 
 //	protected static FinalHttp mFinalHttp;

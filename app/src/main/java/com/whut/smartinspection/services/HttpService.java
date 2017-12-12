@@ -202,7 +202,7 @@ public class HttpService extends Service implements ITaskHandlerListener{
                 taskItemDao.insertOrReplace(taskItem);
             }
         }
-        if(flag == 8) {//获取全部巡视作业卡
+        if(flag == 8) {//获取全部巡视作业卡名称
             JsonObject jsonObject = new JsonParser().parse((String) obj).getAsJsonObject();
             JsonArray jsonArray = jsonObject.getAsJsonArray("data");
 

@@ -195,15 +195,10 @@ public class TaskComponent extends BaseHttpComponent {
         });
     }
     //查询任务
-    public static void searchTask(final ITaskHandlerListener listener,String value) {
+    public static void getHeadPageId(final ITaskHandlerListener listener,String value) {
 
-    }
-
-    public static void commitDetialTask(final ITaskHandlerListener listener,Map<String,String> map) {
-
-
-        OkHttpUtils.post().
-                url(URL_CO).params(map).
+        OkHttpUtils.postString().
+                url(URL_HeadPage).content(value).
                 build().execute(new StringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
@@ -218,11 +213,37 @@ public class TaskComponent extends BaseHttpComponent {
             public void onResponse(String response, int id) {
                 CustomParser.ResponseObject ro = CustomParser.parse(response);
                 if (ro.getCode() == 200) {
-                    listener.onTaskSuccess(ro.getMsg(), EMsgType.LOGIN_SUCCESS,0);
+                    listener.onTaskSuccess(response, EMsgType.LOGIN_SUCCESS,8);
                 } else {
                     listener.onTaskFailure(ro.getMsg(), EMsgType.LOGIN_FAILURE);
                 }
 
+            }
+        });
+    }
+
+    public static void commitDetialTask(final ITaskHandlerListener listener,String value) {
+        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+        OkHttpUtils.postString().
+                url(URL_PatrolRecord).mediaType(JSON).content(value).
+                build().execute(new StringCallback() {
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                String message = "network error";
+                if (e != null) {
+                    message = e.getMessage();
+                }
+                listener.onTaskFailure(message, EMsgType.LOGIN_FAILURE);
+            }
+
+            @Override
+            public void onResponse(String response, int id) {
+                CustomParser.ResponseObject ro = CustomParser.parse(response);
+                if (ro.getCode() == 200) {
+                    listener.onTaskSuccess(ro.getMsg(), EMsgType.LOGIN_SUCCESS,1);
+                } else {
+                    listener.onTaskFailure(ro.getMsg(), EMsgType.LOGIN_FAILURE);
+                }
             }
         });
     }

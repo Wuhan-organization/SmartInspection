@@ -32,7 +32,7 @@ public class PowerStationCheckActivity extends SwipeBackActivity {
     private List<MainPageMenuAdapter.MainPageMenu> menus = new ArrayList<MainPageMenuAdapter.MainPageMenu>();
 
     private String[] menusText = {"全面巡视", "例行巡视", "熄灯巡视", "专业巡视", "特殊巡视",
-            "我的任务","缺陷管理"};
+            "我的任务","缺陷管理",""};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,8 +110,12 @@ public class PowerStationCheckActivity extends SwipeBackActivity {
                     menu.setImageLocal(R.drawable.two_level5);
                     break;
                 case 6:
-                    menu.setImageLocal(R.drawable.two_level5);
+                    menu.setImageLocal(R.drawable.two_level6);
                     break;
+                case 7:
+                    menu.setImageLocal(R.drawable.two_level3);
+                    break;
+
                 default:
                     break;
             }

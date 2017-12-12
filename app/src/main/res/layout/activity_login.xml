@@ -11,7 +11,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="5dp"
-        android:textSize="20dp"
+        android:textSize="30dp"
         android:text="变电站智能巡检系统" />
 
     <LinearLayout

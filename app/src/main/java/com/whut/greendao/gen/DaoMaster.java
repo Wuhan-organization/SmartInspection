@@ -25,11 +25,11 @@ public class DaoMaster extends AbstractDaoMaster {
         DeviceTypeDao.createTable(db, ifNotExists);
         IntervalUnitDao.createTable(db, ifNotExists);
         PatrolContentDao.createTable(db, ifNotExists);
+        PatrolWorkCardDao.createTable(db, ifNotExists);
         PersonDao.createTable(db, ifNotExists);
         SubDao.createTable(db, ifNotExists);
         TaskDao.createTable(db, ifNotExists);
         TaskItemDao.createTable(db, ifNotExists);
-        PatrolWorkCardDao.createTable(db, ifNotExists);
     }
 
     /** Drops underlying database table using DAOs. */
@@ -38,11 +38,11 @@ public class DaoMaster extends AbstractDaoMaster {
         DeviceTypeDao.dropTable(db, ifExists);
         IntervalUnitDao.dropTable(db, ifExists);
         PatrolContentDao.dropTable(db, ifExists);
+        PatrolWorkCardDao.dropTable(db, ifExists);
         PersonDao.dropTable(db, ifExists);
         SubDao.dropTable(db, ifExists);
         TaskDao.dropTable(db, ifExists);
         TaskItemDao.dropTable(db, ifExists);
-        PatrolWorkCardDao.dropTable(db, ifExists);
     }
 
     /**
@@ -65,11 +65,11 @@ public class DaoMaster extends AbstractDaoMaster {
         registerDaoClass(DeviceTypeDao.class);
         registerDaoClass(IntervalUnitDao.class);
         registerDaoClass(PatrolContentDao.class);
+        registerDaoClass(PatrolWorkCardDao.class);
         registerDaoClass(PersonDao.class);
         registerDaoClass(SubDao.class);
         registerDaoClass(TaskDao.class);
         registerDaoClass(TaskItemDao.class);
-        registerDaoClass(PatrolWorkCardDao.class);
     }
 
     public DaoSession newSession() {

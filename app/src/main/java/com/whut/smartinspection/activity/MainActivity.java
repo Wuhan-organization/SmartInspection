@@ -37,8 +37,8 @@ public class MainActivity extends SwipeBackActivity {
     @BindView(R.id.gd_main_page_menu)
     WrapContentGridView gdMainPageMenu;
 
-    private String[] menusText = {"变电巡视", "倒闸操作", "运维", "带电检测", "智能安全帽","数据上传", "知识中心","无线门禁",
-            "设置"};
+    private String[] menusText = {"变电巡视", "倒闸操作", "运维", "带电检测", "智能安全帽",
+            "数据上传", "知识中心","无线门禁","设置"};
     private Intent serviceIntent;
 
     @Override
@@ -163,8 +163,9 @@ public class MainActivity extends SwipeBackActivity {
                     break;
                 case 7:
                     menu.setImageLocal(R.drawable.wireless_door_ban1);
+                    break;
                 case 8:
-                    menu.setImageLocal(R.drawable.system_setting);
+                    menu.setImageLocal(R.drawable.system_setting1);
                     break;
                 default:
                     break;

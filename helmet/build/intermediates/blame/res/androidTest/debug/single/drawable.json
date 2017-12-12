@@ -152,12 +152,12 @@
         "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_list_selector_holo_dark.xml"
     },
     {
-        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\ic_size_glow.png",
-        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\drawable\\ic_size_glow.png"
-    },
-    {
         "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_tab_indicator_material.xml",
         "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_tab_indicator_material.xml"
+    },
+    {
+        "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\ic_size_glow.png",
+        "source": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\bundles\\debug\\res\\drawable\\ic_size_glow.png"
     },
     {
         "merged": "D:\\elegiac\\helmet\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\adas_sag.png",

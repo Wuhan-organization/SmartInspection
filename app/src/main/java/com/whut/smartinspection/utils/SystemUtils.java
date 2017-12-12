@@ -41,6 +41,11 @@ public class SystemUtils {
 
     }
 
+    public static String format(String str){
+        if(str.length()>2)
+            return str.substring(1,str.length()-1);
+        return str;
+    }
     public static int getSecreenW(Context context) {
         DisplayMetrics dm = new DisplayMetrics();
         ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(dm);

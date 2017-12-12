@@ -4,10 +4,24 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="wrap_content">
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textSize="18dp"
+            android:text="巡视项目作业卡"
+            android:id="@+id/tv_patrol_card_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#CCCCCC" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="25dp"
         android:orientation="vertical">
 
@@ -19,40 +33,76 @@
             android:textSize="20dp" />
 
         <RadioGroup
+            android:visibility="gone"
             android:id="@+id/radioGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <RadioButton
+                android:textSize="30dp"
                 android:id="@+id/radioButton1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="true" />
+                android:text="√" />
 
             <RadioButton
+                android:layout_marginLeft="50dp"
+                android:textSize="30dp"
                 android:id="@+id/radioButton2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="false" />
+                android:text="×" />
         </RadioGroup>
         <LinearLayout
-            android:id="@+id/degree_full"
-            android:visibility="gone"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_marginRight="20dp"
+                android:id="@+id/degree_full"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/degree_number"
-                android:layout_marginLeft="10dp"
-                android:inputType="number"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:text="C"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/first_part"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:id="@+id/degree_number"
+                    android:layout_marginLeft="10dp"
+                    android:inputType="number"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="C"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/second_degree_full"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/second_part"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:id="@+id/secod_degree_number"
+                    android:layout_marginLeft="10dp"
+                    android:inputType="number"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:text="C"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
@@ -63,6 +113,7 @@
         android:orientation="horizontal">
 
         <com.github.clans.fab.FloatingActionButton
+            android:visibility="gone"
             android:id="@+id/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -75,6 +126,7 @@
             fab:fab_colorRipple="@color/gray" />
 
         <com.github.clans.fab.FloatingActionButton
+            android:visibility="gone"
             android:id="@+id/next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
