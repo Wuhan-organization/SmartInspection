@@ -165,10 +165,10 @@
                 </LinearLayout>
                 <!-- //////////////////////////////////////////////-->
                     <RelativeLayout
+                        android:id="@+id/rl_gestrue"
                         android:layout_width="match_parent"
                         android:layout_height="500px"
                         android:background="@drawable/bodder">
-
                         <include layout="@layout/item_radio_group" />
                     </RelativeLayout>
 

@@ -2,15 +2,19 @@ package com.whut.smartinspection.activity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.gesture.GestureOverlayView;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -68,8 +72,10 @@ import org.greenrobot.greendao.query.QueryBuilder;
  * 全面巡视页面
  * Created by xiongbin on 2017/11/2.
  */
-public class FullInspectionActivity extends SwipeBackActivity implements ITaskHandlerListener{
+public class FullInspectionActivity extends SwipeBackActivity implements ITaskHandlerListener,GestureDetector.OnGestureListener,View.OnTouchListener {
 
+    @BindView(R.id.rl_gestrue)
+    RelativeLayout rlGestrue;
     @BindView(R.id.tv_commit)
     TextView tvCommit;
     @BindView(R.id.tv_patrol_card_name)
@@ -128,6 +134,7 @@ public class FullInspectionActivity extends SwipeBackActivity implements ITaskHa
     Map<Integer,String> map = new HashMap<Integer,String>();
     Map<Integer,String> radioMap = new HashMap<Integer,String>();
     Map<Integer,String> radioMap1 = new HashMap<Integer,String>();
+    private GestureDetector gestureDetector;
     private LayoutInflater mInflater;
     private List<String> mTitleList = new ArrayList<>();//页卡标题集合
     private View view1, view2, view3;//页卡视图
@@ -145,6 +152,9 @@ public class FullInspectionActivity extends SwipeBackActivity implements ITaskHa
     private String deviceId ;//用于 请求首页ID的
     private String subId;
     private int deviceTypeIdd;
+    public FullInspectionActivity(){
+        gestureDetector = new GestureDetector(this);
+    }
 
     TaskPageListAdapter.TaskPageItem item;
     String pageFlag;
@@ -195,6 +205,10 @@ public class FullInspectionActivity extends SwipeBackActivity implements ITaskHa
     private void initView(){
         //滑动样式
         OverScrollDecoratorHelper.setUpOverScroll(scrollView);
+        //左右滑
+        gestureDetector.setIsLongpressEnabled(true);
+        rlGestrue.setOnTouchListener(this);
+        rlGestrue.setLongClickable(true);
 
         substationName.setText(item.getStationName());
 
@@ -604,6 +618,7 @@ public class FullInspectionActivity extends SwipeBackActivity implements ITaskHa
             record.setPatrolContentId(pcList.get(i).getIdd());
             listR.add(record);
         }
+
         for (Map.Entry<Integer,String> entry: radioMap1.entrySet()
                 ) {
             Record record = new Record();
@@ -648,5 +663,132 @@ public class FullInspectionActivity extends SwipeBackActivity implements ITaskHa
     @Override
     public void onTaskFailure(Object obj, EMsgType type) {
         SystemUtils.showToast(FullInspectionActivity.this,"失败,服务器或者网络错误");
+    }
+
+    @Override
+    public boolean onDown(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public void onShowPress(MotionEvent e) {
+
+    }
+
+    @Override
+    public boolean onSingleTapUp(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+        return false;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent e) {
+
+    }
+
+    @Override
+    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+        if(e2.getX()-e1.getX() > 88 && Math.abs(velocityX) > 0){
+            radioGroup.clearCheck();
+            degreeNumber.setFocusable(false);
+            secondNumber.setFocusable(false);
+            String content = titleContent.getText().toString();
+            int point = Integer.parseInt(content.split("\\.")[0]);
+            point--;
+            if(point>0)
+                titleContent.setText(point+"."+map.get(point).substring(1,map.get(point).length()-1));
+            if(radioFlag.contains(point)){//单选框
+                degree.setVisibility(View.GONE);
+                secondDegree.setVisibility(View.GONE);
+
+                radioGroup.setVisibility(View.VISIBLE);
+                if(!radioMap.containsKey(point)){//没录入清空
+                    radioGroup.clearCheck();
+                }else{//已录入 设置
+                    if(point<=map.size()&&"true".equals(radioMap.get(point)))
+                        radioGroup.check(R.id.radioButton1);
+                    if(point<=map.size()&&"false".equals(radioMap.get(point)))
+                        radioGroup.check(R.id.radioButton2);
+                }
+            }
+            if(degreeFlag.contains(point)){//填温度数字
+                degree.setVisibility(View.VISIBLE);
+                radioGroup.setVisibility(View.GONE);
+                degreeNumber.setFocusable(true);
+                degreeNumber.setFocusableInTouchMode(true);
+                firstPart.setText(pcList.get(point).getPatrolContentName());
+
+                if(signPatrol.containsKey(point)){
+                    secondDegree.setVisibility(View.VISIBLE);
+                    secondNumber.setFocusable(true);
+                    secondNumber.setFocusableInTouchMode(true);
+                    secondPart.setText(signPatrol.get(point).getPatrolContentName());
+                }
+                lastPoint = point;
+            }
+            if(signFlg.contains(point)){
+
+            }
+        } else if(e1.getX() - e2.getX() > 88 && Math.abs(velocityX) > 0){
+            radioGroup.clearCheck();
+            degreeNumber.setFocusable(false);
+            secondNumber.setFocusable(false);
+            String content = titleContent.getText().toString();
+            int point = Integer.parseInt(content.split("\\.")[0]);
+            point++;
+            if(point<=map.size())
+                titleContent.setText(point+"."+map.get(point).substring(1,map.get(point).length()-1));
+            if(radioFlag.contains(point)){//单选框
+                degree.setVisibility(View.GONE);
+                secondDegree.setVisibility(View.GONE);
+                radioGroup.setVisibility(View.VISIBLE);
+                if(!radioMap.containsKey(point)){//没录入清空
+
+                }else{//已录入 设置
+                    if(point<=map.size()&&"true".equals(radioMap.get(point)))
+                        radioGroup.check(R.id.radioButton1);
+                    if(point<=map.size()&&"false".equals(radioMap.get(point)))
+                        radioGroup.check(R.id.radioButton2);
+                }
+            }
+            if(degreeFlag.contains(point)){//填温度数字
+
+                radioGroup.setVisibility(View.GONE);
+                if(radioMap.containsKey(point)){
+                    degreeNumber.setText(radioMap.get(point));
+                }else{
+                    degreeNumber.setText(null);
+                }
+                if(radioMap1.containsKey(point)){
+                    secondNumber.setText(radioMap1.get(point));
+                }else{
+                    secondNumber.setText(null);
+                }
+                degree.setVisibility(View.VISIBLE);
+                degreeNumber.setFocusable(true);
+                degreeNumber.setFocusableInTouchMode(true);
+                firstPart.setText(pcList.get(point).getPatrolContentName());
+                if(signPatrol.containsKey(point)){
+                    secondDegree.setVisibility(View.VISIBLE);
+                    secondNumber.setFocusable(true);
+                    secondNumber.setFocusableInTouchMode(true);
+                    secondPart.setText(signPatrol.get(point).getPatrolContentName());
+                }
+                lastPoint = point;
+            }
+            if(signFlg.contains(point)){
+
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        return gestureDetector.onTouchEvent(event);
     }
 }
