@@ -82,6 +82,10 @@
             android:name=".activity.MyTaskActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+        <activity
+            android:name=".activity.HomePageActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
         <activity android:name=".activity.CompletedTaskActivity" />
         <activity android:name=".activity.WaitingTaskActivity" />
         <activity android:name=".activity.NewTaskActivity" />
@@ -90,7 +94,7 @@
         <activity android:name=".activity.DefectAcceptanceActivity" />
         <activity android:name=".activity.DefectExamineActivity" />
         <service android:name="cn.com.reformer.rfBleService.BleService" />
-        <activity android:name=".activity.DefectHandleActivity"></activity>
+        <activity android:name=".activity.DefectHandleActivity"/>
     </application>
 
 </manifest>

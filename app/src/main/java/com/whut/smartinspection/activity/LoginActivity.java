@@ -64,7 +64,7 @@ public class LoginActivity extends SwipeBackActivity implements IHandlerListener
         switch (type) {
             // 登录成功
             case LOGIN_SUCCESS:
-                Intent intent = new Intent(this, MainActivity.class);
+                Intent intent = new Intent(this, HomePageActivity.class);
                 startActivity(intent);
                 break;
 
