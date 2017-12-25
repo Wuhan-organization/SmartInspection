@@ -27,7 +27,6 @@ public class PatrolContent {
     private short isImportant;
     //添加时间
     private String date;
-
     //数据类型
     private String patrolContentTypeNo;
 

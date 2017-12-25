@@ -7,6 +7,7 @@ import org.greenrobot.greendao.annotation.Generated;
 
 /**
  * Created by Fortuner on 2017/12/12.
+ * 巡视项目卡信息
  */
 @Entity
 public class PatrolWorkCard {
@@ -15,7 +16,7 @@ public class PatrolWorkCard {
     @Id(autoincrement = true)
     private Long id;
 
-    private String idd;
+    private String idd;//巡视作业卡名字ID
 
     private String name;
 

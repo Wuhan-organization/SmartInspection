@@ -74,7 +74,6 @@ public class MainActivity extends SwipeBackActivity {
                         break;
                     case 1:
                         break;
-
                     case 4:
                         intent = new Intent(MainActivity.this, HelmetActivity.class);
                         startActivity(intent);
@@ -102,6 +101,7 @@ public class MainActivity extends SwipeBackActivity {
 
         showMenu();
         showBanner();
+
     }
     private void openBT(){
         //请求打开蓝牙

@@ -22,6 +22,7 @@ import okhttp3.OkHttpClient;
 public class SApplication extends Application {
 	
 	private static SApplication instance;
+	private static String sessionID = "";
 
 	private DaoMaster.DevOpenHelper mHelper;
 	private SQLiteDatabase db;
@@ -95,4 +96,11 @@ public class SApplication extends Application {
 		resources.updateConfiguration(config, dm);
 	}
 
+	public static String getSessionID() {
+		return sessionID;
+	}
+
+	public static void setSessionID(String sessionID) {
+		SApplication.sessionID = sessionID;
+	}
 }

@@ -1,12 +1,13 @@
 package com.whut.smartinspection.activity;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.gesture.GestureOverlayView;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -17,10 +18,7 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.github.clans.fab.FloatingActionButton;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -28,9 +26,12 @@ import com.whut.greendao.gen.DeviceDao;
 import com.whut.greendao.gen.DeviceTypeDao;
 import com.whut.greendao.gen.IntervalUnitDao;
 import com.whut.greendao.gen.PatrolContentDao;
+import com.whut.greendao.gen.PatrolTaskDetailDao;
 import com.whut.greendao.gen.PatrolWorkCardDao;
+import com.whut.greendao.gen.PerPatrolCardDao;
+import com.whut.greendao.gen.RecordDao;
+import com.whut.greendao.gen.WholePatrolCardDao;
 import com.whut.smartinspection.adapters.PageViewTabAdapter;
-import com.whut.smartinspection.adapters.TaskPageListAdapter;
 import com.whut.smartinspection.application.SApplication;
 import com.whut.smartinspection.component.handler.EMsgType;
 import com.whut.smartinspection.component.handler.ITaskHandlerListener;
@@ -40,20 +41,20 @@ import com.whut.smartinspection.model.DeviceType;
 import com.whut.smartinspection.model.HeadPage;
 import com.whut.smartinspection.model.IntervalUnit;
 import com.whut.smartinspection.model.PatrolContent;
-import com.whut.smartinspection.model.PatrolRecordsPostVo;
+import com.whut.smartinspection.model.PatrolTaskDetail;
+import com.whut.smartinspection.model.PerPatrolCard;
 import com.whut.smartinspection.model.PatrolWorkCard;
 import com.whut.smartinspection.model.Record;
-import com.whut.smartinspection.model.Task;
+import com.whut.smartinspection.model.TaskItem;
+import com.whut.smartinspection.model.WholePatrolCard;
 import com.whut.smartinspection.utils.SystemUtils;
-import com.whut.smartinspection.utils.TaskUtils;
-import com.whut.smartlibrary.base.SwipeBackActivity;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -61,7 +62,7 @@ import butterknife.OnClick;
 import me.everything.android.ui.overscroll.OverScrollDecoratorHelper;
 
 import com.whut.smartinspection.R;
-import com.wx.wheelview.widget.WheelViewDialog;
+import com.whut.smartinspection.widgets.CustomToolBar;
 
 import org.greenrobot.greendao.query.QueryBuilder;
 
@@ -72,12 +73,12 @@ import org.greenrobot.greendao.query.QueryBuilder;
  * 全面巡视页面
  * Created by xiongbin on 2017/11/2.
  */
-public class FullInspectionActivity extends SwipeBackActivity implements ITaskHandlerListener,GestureDetector.OnGestureListener,View.OnTouchListener {
+public class FullInspectionActivity extends Activity implements ITaskHandlerListener,GestureDetector.OnGestureListener,View.OnTouchListener {
 
     @BindView(R.id.rl_gestrue)
     RelativeLayout rlGestrue;
-    @BindView(R.id.tv_commit)
-    TextView tvCommit;
+//    @BindView(R.id.toolbar_right_tv)
+//    TextView tvCommit;
     @BindView(R.id.tv_patrol_card_name)
     TextView tvPatrolCardName;
     @BindView(R.id.first_part)
@@ -88,18 +89,16 @@ public class FullInspectionActivity extends SwipeBackActivity implements ITaskHa
     EditText degreeNumber;
     @BindView(R.id.secod_degree_number)
     EditText secondNumber;
-    @BindView(R.id.tv_full_inspection_back)
-    TextView tvFullInspectionBack; // 返回
+//    @BindView(R.id.tv_full_inspection_back)
+//    TextView tvFullInspectionBack; // 返回
     @BindView(R.id.style_device)
-    EditText styleDevice;  //设备类型
+    EditText deviceTypeName;  //设备类型
     @BindView(R.id.substation_name)
     EditText substationName;
     @BindView(R.id.name_device)
     EditText nameDevice;//设备名称
     @BindView(R.id.name_dis)
     EditText nameDis ;//间隔名称
-    @BindView(R.id.work_walk)
-    EditText workWalk;//巡视作业
     @BindView(R.id.tabs)
     TabLayout mTabLayout;
     @BindView(R.id.vp_view)
@@ -108,10 +107,6 @@ public class FullInspectionActivity extends SwipeBackActivity implements ITaskHa
     ScrollView scrollView;
     @BindView(R.id.title_content)
     TextView titleContent;//标题题目
-    @BindView(R.id.back)
-    FloatingActionButton back;//上一个
-    @BindView(R.id.next)
-    FloatingActionButton next;//下一个
     @BindView(R.id.radioGroup)
     RadioGroup radioGroup;
     @BindView(R.id.button_id_visual)
@@ -120,20 +115,17 @@ public class FullInspectionActivity extends SwipeBackActivity implements ITaskHa
     LinearLayout degree;
     @BindView(R.id.second_degree_full)
     LinearLayout secondDegree;
-    EditText content1;
-    EditText content2;
-    EditText content3;
-    final ArrayList<String> suList = new ArrayList<>();
-    final ArrayList<String> stList = new ArrayList<>();
-    final ArrayList<String> woList = new ArrayList<>();
-    final ArrayList<String> ndList = new ArrayList<>();
-    final ArrayList<String> neList = new ArrayList<>();
-    List<Record> listR = new ArrayList<>();
-    private int lastPoint = 0;
-
-    Map<Integer,String> map = new HashMap<Integer,String>();
-    Map<Integer,String> radioMap = new HashMap<Integer,String>();
-    Map<Integer,String> radioMap1 = new HashMap<Integer,String>();
+    private EditText content1;
+    private EditText content2;
+    private EditText content3;
+    private final ArrayList<String> deviceTypeNameList = new ArrayList<>();//设备类型名称列表
+    private final ArrayList<String> intervalUnitList = new ArrayList<>();//间隔名称列表
+    private final ArrayList<String> deviceNameList = new ArrayList<>();//设备名称列表
+    private List<Record>patrolConResList = new ArrayList<>();//巡视项目结果列表
+    private int point = 0;
+    private Map<Integer,String> map = new HashMap<Integer,String>();
+    private Map<Integer,String> radioMap = new HashMap<Integer,String>();
+    private Map<Integer,String> radioMap1 = new HashMap<Integer,String>();
     private GestureDetector gestureDetector;
     private LayoutInflater mInflater;
     private List<String> mTitleList = new ArrayList<>();//页卡标题集合
@@ -144,384 +136,137 @@ public class FullInspectionActivity extends SwipeBackActivity implements ITaskHa
     private List<Integer> radioFlag = new ArrayList<>();
     private Map<Integer,PatrolContent> pcList = new HashMap<>();
     private Map<Integer,PatrolContent> signPatrol = new HashMap<>();
-
-    private Task task = new Task();
+    private Map<String,Long> deviceIdMapInerId = new HashMap<>();
     private String patrolHeadPageId ;//首页ID
-
     private String patrolContentId ;//巡视作业卡名字ID
-    private String deviceId ;//用于 请求首页ID的
-    private String subId;
-    private int deviceTypeIdd;
+    private String deviceId ;//设备名称ID
+    private String deviceName;//设备名称
+    private String subIdI;//变电站ID
+    private int deviceTypeIddI;//item设备类型ID
+    private String deviceTypeNameI;//item设备类型名称
+    private TaskItem item;//传过来的任务item
+    private String patrolNameId;
+    private String taskId;
+    private List<String> patrolNameIDList = new ArrayList<>();
+    private PerPatrolCard perPatrolCard = null;
+    private Long wholeId;
+    private List<Device> deviceList;
+    private int devicePoint = 0;
+    private WholePatrolCard wholePatrolCard;
     public FullInspectionActivity(){
         gestureDetector = new GestureDetector(this);
     }
 
-    TaskPageListAdapter.TaskPageItem item;
-    String pageFlag;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_inspection);
         ButterKnife.bind(this);
+        CustomToolBar.goBack(FullInspectionActivity.this);//返回按钮监听
+        item = (TaskItem) getIntent().getSerializableExtra("item");
+        taskId  = item.getIdd();
+        PatrolTaskDetailDao patrolTaskDetailDao = SApplication.getInstance().getDaoSession().getPatrolTaskDetailDao();
+        QueryBuilder<PatrolTaskDetail> qbPatrolTDetail = patrolTaskDetailDao.queryBuilder();
 
-        item = (TaskPageListAdapter.TaskPageItem)getIntent().getSerializableExtra("item");
-        subId = item.getId();
-
-        pageFlag = getIntent().getStringExtra("pageFlag");
-        if("1".equals(pageFlag)){//已完成界面设置
-            pageSetting();
+        List<PatrolTaskDetail> lpatrolNameId1 = qbPatrolTDetail.list();
+        List<PatrolTaskDetail> lpatrolNameId = qbPatrolTDetail.where(PatrolTaskDetailDao.Properties.TaskId.eq(taskId)).list();
+        patrolNameId = lpatrolNameId.size()>0?lpatrolNameId.get(0).getPatrolNameId():null;
+        for (PatrolTaskDetail temp:lpatrolNameId){
+            String tPatrolNameId = temp.getPatrolNameId();
+            patrolNameIDList.add(tPatrolNameId);
         }
+        patrolHeadPageId = lpatrolNameId.size()>0?lpatrolNameId.get(0).getPatrolHeadPageId():null;
+
+        //插入一个巡视作业卡
+        WholePatrolCard wholePatrolCard = new WholePatrolCard(null,patrolHeadPageId);
+        WholePatrolCardDao wholePatrolCardDao = SApplication.getInstance().getDaoSession().getWholePatrolCardDao();
+        wholePatrolCardDao.insertOrReplace(wholePatrolCard);
+        wholeId = wholePatrolCard.getId();
 
         initData();
-
         initView();
-    }
-    private void pageSetting(){
-        linearLayout.setVisibility(View.GONE);
-        styleDevice.setEnabled(false);  //设备类型
-        substationName.setEnabled(false);
-        nameDevice.setEnabled(false);//设备名称
-        nameDis.setEnabled(false); ;//间隔名称
-        workWalk.setEnabled(false);//巡视作业
+        initTabView();
     }
     private void initData(){
-        //从greenDao查询设备名称
-        DeviceTypeDao deviceTypeDao = SApplication.getInstance().getDaoSession().getDeviceTypeDao();
-        QueryBuilder<DeviceType> qbDT = deviceTypeDao.queryBuilder();
-        List<DeviceType> listDT = qbDT.list();
-        for (DeviceType dt   :listDT ) {
-            stList.add(dt.getName());
-        }
         //间隔名称
         IntervalUnitDao intervalUnitDao = SApplication.getInstance().getDaoSession().getIntervalUnitDao();
         QueryBuilder<IntervalUnit> qbIU = intervalUnitDao.queryBuilder();
-
         List<IntervalUnit> listIU = qbIU.list();
         for (IntervalUnit iu   :listIU ) {
-            ndList.add(iu.getName());
+            intervalUnitList.add(iu.getName());
         }
-
     }
     private void initView(){
-        //滑动样式
-        OverScrollDecoratorHelper.setUpOverScroll(scrollView);
-        //左右滑
-        gestureDetector.setIsLongpressEnabled(true);
+        OverScrollDecoratorHelper.setUpOverScroll(scrollView);//滑动样式
+        gestureDetector.setIsLongpressEnabled(true);//左右滑
         rlGestrue.setOnTouchListener(this);
         rlGestrue.setLongClickable(true);
+        deviceTypeName.setText(deviceTypeNameI);
+//        //设备名称  （根据间隔和设备类型来）
+//        DeviceDao deviceDao = SApplication.getInstance().getDaoSession().getDeviceDao();
+//        QueryBuilder<Device> qbD = deviceDao.queryBuilder();
+//        List<Device> listD1 = qbD.where(DeviceDao.Properties.DeviceTypeId.eq(deviceTypeIddI)).list();
+//        for (Device dt   :listD1 ) {
+//            deviceNameList.add(dt.getName());
+//        }
+        //巡视作业卡片内容
+        map.clear();
+        PatrolContentDao patrolContentDao = SApplication.getInstance().getDaoSession().getPatrolContentDao();
+        QueryBuilder<PatrolContent> qbPC = patrolContentDao.queryBuilder();
+        List<PatrolContent> listPC = qbPC.where(PatrolContentDao.Properties.PatrolNameId.eq(patrolNameId)).list();
 
-        substationName.setText(item.getStationName());
-
-        //设备类型选择
-        styleDevice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(stList.size()!= 0){
-                    final WheelViewDialog dialog = new WheelViewDialog(FullInspectionActivity.this);
-                    dialog.setTitle("设备类型").setItems(stList).setButtonText("确定").setCount(5).
-                            setOnDialogItemClickListener(new WheelViewDialog.OnDialogItemClickListener() {
-                                @Override
-                                public void onItemClick(int position, String s) {
-                                    styleDevice.setText(s);
-                                    //获取设备类型id
-                                    DeviceTypeDao deviceTypeDao = SApplication.getInstance().getDaoSession().getDeviceTypeDao();
-                                    QueryBuilder<DeviceType> dbDT = deviceTypeDao.queryBuilder();
-
-                                    List<DeviceType> deviceTypeList1 = dbDT.where(DeviceTypeDao.Properties.Name.eq(s)).list();
-                                    deviceTypeIdd = Integer.parseInt(deviceTypeList1.get(0).getIdd());
-
-                                    //设备名称
-                                    DeviceDao deviceDao = SApplication.getInstance().getDaoSession().getDeviceDao();
-                                    QueryBuilder<Device> qbD = deviceDao.queryBuilder();
-//                                    List<Device> listD = qbD.list();
-                                    List<Device> listD1 = qbD.where(DeviceDao.Properties.DeviceTypeId.eq(deviceTypeIdd)).list();
-                                    for (Device dt   :listD1 ) {
-                                        neList.add(dt.getName());
-                                    }
-
-                                    //巡视作业卡片内容
-                                    map.clear();
-                                    PatrolContentDao patrolContentDao = SApplication.getInstance().getDaoSession().getPatrolContentDao();
-                                    QueryBuilder<PatrolContent> qbPC = patrolContentDao.queryBuilder();
-
-                                    List<PatrolContent> listPC = qbPC.where(PatrolContentDao.Properties.DeviceTypeId.eq(deviceTypeIdd)).list();
-                                    for (PatrolContent dt  :listPC ) {
-                                        int no = dt.getNo();
-                                        if(!pcList.containsKey(no)){
-                                            pcList.put(no,dt);//记录所有巡视项目
-                                        }
-                                        if(map.containsKey(no)){
-                                            signPatrol.put(no,dt);
-                                            continue;
-                                        }
-                                        if("0".equals(dt.getPatrolContentTypeNo())) {//单选
-                                            radioFlag.add(dt.getNo());
-                                            map.put(dt.getNo(), dt.getContent());
-                                        }else if("1".equals(dt.getPatrolContentTypeNo())){//温度
-                                            degreeFlag.add(dt.getNo());
-                                            map.put(dt.getNo(),dt.getContent());
-                                        } else{//备注
-                                            signFlg.add(dt.getNo());
-                                            map.put(dt.getNo(),dt.getContent());
-                                        }
-                                    }
-                                    if(map.size()>0){
-                                        titleContent.setText(1+"."+map.get(1).substring(1,map.get(1).length()-1));
-                                        radioGroup.setVisibility(View.VISIBLE);
-                                        next.setVisibility(View.VISIBLE);
-                                        back.setVisibility(View.VISIBLE);
-                                    }
-
-                                }
-                            }).show();
-                    task.setGetDeviceName(styleDevice.getText().toString());
-
-                }else  SystemUtils.showToast(FullInspectionActivity.this,"本地数据库无数据,请重启软件");
-
+        for (PatrolContent dt  :listPC ) {
+            int no = dt.getNo();
+            if(!pcList.containsKey(no)){
+                pcList.put(no,dt);//记录所有巡视项目
             }
-
-        });
-
-
-        workWalk.setText("全面巡视");
-
-        TaskUtils.initView(nameDis,ndList,"间隔名称",FullInspectionActivity.this,task);
-
-        //通过设备名称查巡视作业卡
-        nameDevice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(neList.size()!= 0){
-                    final WheelViewDialog dialog = new WheelViewDialog(FullInspectionActivity.this);
-                    dialog.setTitle("设备名称").setItems(neList).setButtonText("确定").setCount(5).
-                            setOnDialogItemClickListener(new WheelViewDialog.OnDialogItemClickListener() {
-                                @Override
-                                public void onItemClick(int position, String s) {
-                                    nameDevice.setText(s);
-                                    DeviceDao deviceDao = SApplication.getInstance().getDaoSession().getDeviceDao();
-                                    QueryBuilder<Device> qbDevice = deviceDao.queryBuilder();
-                                    List<Device> deviceList = qbDevice.where(DeviceDao.Properties.Name.eq(s)).list();
-                                    if(deviceList!=null && deviceList.size()>0){
-                                        deviceId = deviceList.get(0).getIdd();
-                                    }
-                                    PatrolWorkCardDao patrolWorkCardDao = SApplication.getInstance().getDaoSession().getPatrolWorkCardDao();
-                                    QueryBuilder<PatrolWorkCard> dbPWC = patrolWorkCardDao.queryBuilder();
-                                    List<PatrolWorkCard> parolWC = dbPWC.list();//where(PatrolWorkCardDao.Properties.DeviceId.eq(deviceId))
-                                    if (parolWC!=null && parolWC.size()>0){
-                                        PatrolWorkCard pwc = parolWC.get(0);
-                                        patrolContentId = pwc.getIdd();//巡视作业卡名字ID
-                                        tvPatrolCardName.setText(pwc.getName());
-                                    }
-
-                                    //请求首页ID
-                                    HeadPage headPage = new HeadPage();
-                                    headPage.setEditorName("110");
-                                    headPage.setPatrolNameId(patrolContentId);
-                                    headPage.setSubstationId(subId);
-                                    String sTemp = headPage.toString();
-
-                                    TaskComponent.getHeadPageId(FullInspectionActivity.this,sTemp);
-
-
-                                }
-                            }).show();
-                            task.setDeviceName(nameDevice.getText().toString());
-                }else {
-                    SystemUtils.showToast(FullInspectionActivity.this,"本地数据库无数据,请重启软件");
-                }
+            if(map.containsKey(no)){
+                signPatrol.put(no,dt);
+                continue;
             }
-
-        });
-
-        mInflater = getLayoutInflater();
-        view1 = mInflater.inflate(R.layout.item_tab1, null);
-        view2 = mInflater.inflate(R.layout.item_tab2, null);
-        view3 = mInflater.inflate(R.layout.item_tab3, null);
-
-
-        content1 = (EditText) view1.findViewById(R.id.content1);
-        content2 = (EditText) view2.findViewById(R.id.content2);
-        content3 = (EditText) view3.findViewById(R.id.content3);
-        if("1".equals(pageFlag)) {
-            content1.setEnabled(false);
-            content2.setEnabled(false);
-            content3.setEnabled(false);
+            if("0".equals(dt.getPatrolContentTypeNo())) {//单选
+                radioFlag.add(dt.getNo());
+                map.put(dt.getNo(), dt.getContent());
+            }else if("1".equals(dt.getPatrolContentTypeNo())){//温度
+                degreeFlag.add(dt.getNo());
+                map.put(dt.getNo(),dt.getContent());
+            } else{//备注
+                signFlg.add(dt.getNo());
+                map.put(dt.getNo(),dt.getContent());
+            }
+        }
+        if(map.size()>0){
+            titleContent.setText(1+"."+map.get(1).substring(1,map.get(1).length()-1));
+            radioGroup.setVisibility(View.VISIBLE);
+        }
+        deviceTypeIddI = listPC.get(0).getDeviceTypeId();//获得设备类型ID
+        DeviceTypeDao deviceTypeDao = SApplication.getInstance().getDaoSession().getDeviceTypeDao();
+        QueryBuilder<DeviceType> dbDeviceType = deviceTypeDao.queryBuilder();
+        DeviceType deviceType = dbDeviceType.where(DeviceTypeDao.Properties.Idd.eq(deviceTypeIddI)).unique();
+        if(deviceType != null){
+            deviceTypeNameI = deviceType.getName();
+        }
+        if(intervalUnitList.size()>0){//set间隔名称
+            nameDis.setText(intervalUnitList.get(0));
+        }
+        //查询设备名称（patrolNameId-->deviceTypeId-->deviceId)
+        DeviceDao deviceDao = SApplication.getInstance().getDaoSession().getDeviceDao();
+        QueryBuilder<Device> qbDevice = deviceDao.queryBuilder();
+        List<Device> ll = qbDevice.list();
+        deviceList = qbDevice.where(DeviceDao.Properties.DeviceTypeId.eq(deviceTypeIddI)).list();
+        if(deviceList!=null && deviceList.size()>0){
+            deviceId = deviceList.get(0).getIdd();
+            deviceName = deviceList.get(0).getName();
         }
 
-        content1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus == false){
-                    String s = content1.getText().toString();
-                    task.setBug(s);
-                }
-            }
-        });
-        content2.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus == false){
-                    String s = content2.getText().toString();
-                    task.setDanger(s);
-                }
-            }
-        });
-        content3.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus == false){
-                    String s = content3.getText().toString();
-                    task.setProblem(s);
-                }
-            }
-        });
-
-        //添加页卡视图
-        mViewList.add(view1);
-        mViewList.add(view2);
-        mViewList.add(view3);
-
-        //添加页卡标题
-        mTitleList.add("缺陷");
-        mTitleList.add("隐患");
-        mTitleList.add("问题");
-
-
-        mTabLayout.setTabMode(TabLayout.MODE_FIXED);//设置tab模式，当前为系统默认模式
-        mTabLayout.addTab(mTabLayout.newTab().setText(mTitleList.get(0)));//添加tab选项卡
-        mTabLayout.addTab(mTabLayout.newTab().setText(mTitleList.get(1)));
-        mTabLayout.addTab(mTabLayout.newTab().setText(mTitleList.get(2)));
-
-        mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                mViewPager.setCurrentItem(tab.getPosition());
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-                mViewPager.setCurrentItem(1);
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-            }
-        });
-
-
-        PageViewTabAdapter mAdapter = new PageViewTabAdapter(mViewList,mTitleList);
-        mViewPager.setAdapter(mAdapter);//给ViewPager设置适配器
-        mTabLayout.setupWithViewPager(mViewPager);//将TabLayout和ViewPager关联起来。
-        mTabLayout.setTabsFromPagerAdapter(mAdapter);//给Tabs设置适配器
-        mTabLayout.setTabMode(TabLayout.MODE_FIXED);
-
-
-
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                radioGroup.clearCheck();
-                degreeNumber.setFocusable(false);
-                secondNumber.setFocusable(false);
-                String content = titleContent.getText().toString();
-                int point = Integer.parseInt(content.split("\\.")[0]);
-                point--;
-                if(point>0)
-                    titleContent.setText(point+"."+map.get(point).substring(1,map.get(point).length()-1));
-                if(radioFlag.contains(point)){//单选框
-                    degree.setVisibility(View.GONE);
-                    secondDegree.setVisibility(View.GONE);
-
-                    radioGroup.setVisibility(View.VISIBLE);
-                    if(!radioMap.containsKey(point)){//没录入清空
-                        radioGroup.clearCheck();
-                    }else{//已录入 设置
-                        if(point<=map.size()&&"true".equals(radioMap.get(point)))
-                            radioGroup.check(R.id.radioButton1);
-                        if(point<=map.size()&&"false".equals(radioMap.get(point)))
-                            radioGroup.check(R.id.radioButton2);
-                    }
-                }
-                if(degreeFlag.contains(point)){//填温度数字
-                    degree.setVisibility(View.VISIBLE);
-                    radioGroup.setVisibility(View.GONE);
-                    degreeNumber.setFocusable(true);
-                    degreeNumber.setFocusableInTouchMode(true);
-                    firstPart.setText(pcList.get(point).getPatrolContentName());
-
-                    if(signPatrol.containsKey(point)){
-                        secondDegree.setVisibility(View.VISIBLE);
-                        secondNumber.setFocusable(true);
-                        secondNumber.setFocusableInTouchMode(true);
-                        secondPart.setText(signPatrol.get(point).getPatrolContentName());
-                    }
-                    lastPoint = point;
-                }
-                if(signFlg.contains(point)){
-
-                }
-            }
-        });
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                radioGroup.clearCheck();
-                degreeNumber.setFocusable(false);
-                secondNumber.setFocusable(false);
-                String content = titleContent.getText().toString();
-                int point = Integer.parseInt(content.split("\\.")[0]);
-                point++;
-                if(point<=map.size())
-                    titleContent.setText(point+"."+map.get(point).substring(1,map.get(point).length()-1));
-                if(radioFlag.contains(point)){//单选框
-                    degree.setVisibility(View.GONE);
-                    secondDegree.setVisibility(View.GONE);
-                    radioGroup.setVisibility(View.VISIBLE);
-                    if(!radioMap.containsKey(point)){//没录入清空
-
-                    }else{//已录入 设置
-                        if(point<=map.size()&&"true".equals(radioMap.get(point)))
-                            radioGroup.check(R.id.radioButton1);
-                        if(point<=map.size()&&"false".equals(radioMap.get(point)))
-                            radioGroup.check(R.id.radioButton2);
-                    }
-                }
-                if(degreeFlag.contains(point)){//填温度数字
-
-                    radioGroup.setVisibility(View.GONE);
-                    if(radioMap.containsKey(point)){
-                        degreeNumber.setText(radioMap.get(point));
-                    }else{
-                        degreeNumber.setText(null);
-                    }
-                    if(radioMap1.containsKey(point)){
-                        secondNumber.setText(radioMap1.get(point));
-                    }else{
-                        secondNumber.setText(null);
-                    }
-                    degree.setVisibility(View.VISIBLE);
-                    degreeNumber.setFocusable(true);
-                    degreeNumber.setFocusableInTouchMode(true);
-                    firstPart.setText(pcList.get(point).getPatrolContentName());
-                    if(signPatrol.containsKey(point)){
-                        secondDegree.setVisibility(View.VISIBLE);
-                        secondNumber.setFocusable(true);
-                        secondNumber.setFocusableInTouchMode(true);
-                        secondPart.setText(signPatrol.get(point).getPatrolContentName());
-                    }
-                    lastPoint = point;
-                }
-                if(signFlg.contains(point)){
-
-                }
-            }
-        });
-
+        if(deviceNameList.size()>0){//set设备名称
+            nameDevice.setText(deviceNameList.get(0));
+        }
         degreeNumber.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus == false){
-                    radioMap.put(lastPoint,degreeNumber.getText().toString());
+                    radioMap.put(point,degreeNumber.getText().toString());
                 }
             }
         });
@@ -529,7 +274,7 @@ public class FullInspectionActivity extends SwipeBackActivity implements ITaskHa
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus == false){
-                    radioMap1.put(lastPoint,degreeNumber.getText().toString());
+                    radioMap1.put(point,secondNumber.getText().toString());
                 }
             }
         });
@@ -545,36 +290,112 @@ public class FullInspectionActivity extends SwipeBackActivity implements ITaskHa
                 }
             }
         });
-
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                nameDis.setText("未知间隔");
+                nameDevice.setText(deviceName);
+                deviceTypeName.setText(deviceTypeNameI);
+            }
+        });
     }
 
+    public void initTabView(){
 
-    @OnClick({R.id.tv_full_inspection_back,R.id.task_detail_commit,R.id.tv_commit})
+        mInflater = getLayoutInflater();
+        view1 = mInflater.inflate(R.layout.item_tab1, null);
+        view2 = mInflater.inflate(R.layout.item_tab2, null);
+        view3 = mInflater.inflate(R.layout.item_tab3, null);
+
+        content1 = (EditText) view1.findViewById(R.id.content1);
+        content2 = (EditText) view2.findViewById(R.id.content2);
+        content3 = (EditText) view3.findViewById(R.id.content3);
+
+        content1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus == false){
+                    String s = content1.getText().toString();
+                }
+            }
+        });
+        content2.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus == false){
+                    String s = content2.getText().toString();
+                }
+            }
+        });
+        content3.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus == false){
+                    String s = content3.getText().toString();
+                }
+            }
+        });
+
+        //添加页卡视图
+        mViewList.add(view1);
+        mViewList.add(view2);
+        mViewList.add(view3);
+
+        //添加页卡标题
+        mTitleList.add("缺陷");
+        mTitleList.add("隐患");
+        mTitleList.add("问题");
+
+        mTabLayout.setTabMode(TabLayout.MODE_FIXED);//设置tab模式，当前为系统默认模式
+        mTabLayout.addTab(mTabLayout.newTab().setText(mTitleList.get(0)));//添加tab选项卡
+        mTabLayout.addTab(mTabLayout.newTab().setText(mTitleList.get(1)));
+        mTabLayout.addTab(mTabLayout.newTab().setText(mTitleList.get(2)));
+
+        mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                mViewPager.setCurrentItem(tab.getPosition());
+            }
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                mViewPager.setCurrentItem(1);
+            }
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
+
+        PageViewTabAdapter mAdapter = new PageViewTabAdapter(mViewList,mTitleList);
+        mViewPager.setAdapter(mAdapter);//给ViewPager设置适配器
+        mTabLayout.setupWithViewPager(mViewPager);//将TabLayout和ViewPager关联起来。
+        mTabLayout.setTabsFromPagerAdapter(mAdapter);//给Tabs设置适配器
+        mTabLayout.setTabMode(TabLayout.MODE_FIXED);
+    }
+    @OnClick({R.id.toolbar_right_tv})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.tv_full_inspection_back:// 返回
-                finish();
-                break;
-            case R.id.task_detail_commit:
-                if(radioMap.size() < map.size()){
-                    new AlertDialog.Builder(FullInspectionActivity.this).setTitle("提示...")
-                            .setMessage("数据未录入完，确认提交吗？")//设置显示的内容
-                            .setPositiveButton("确定",new DialogInterface.OnClickListener() {//添加确定按钮
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    commitData();
-                                }
-                            }).setNegativeButton("取消",new DialogInterface.OnClickListener() {//添加返回按钮
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                        }
-                    }).show();
-                }else{
-                    commitData();
-                }
-
-                break;
-            case R.id.tv_commit:
+//            case R.id.tv_full_inspection_back:// 返回
+//                finish();
+//                break;
+//            case R.id.task_detail_commit:
+//                if(radioMap.size() < map.size()){
+//                    new AlertDialog.Builder(FullInspectionActivity.this).setTitle("提示...")
+//                            .setMessage("数据未录入完，确认提交吗？")//设置显示的内容
+//                            .setPositiveButton("确定",new DialogInterface.OnClickListener() {//添加确定按钮
+//                                @Override
+//                                public void onClick(DialogInterface dialog, int which) {
+//                                    commitData();
+//                                }
+//                            }).setNegativeButton("取消",new DialogInterface.OnClickListener() {//添加返回按钮
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                        }
+//                    }).show();
+//                }else{
+//                    commitData();
+//                }
+//                break;
+            case R.id.toolbar_right_tv:
                 if(map.size()==0 || radioMap.size() < map.size()){
                     new AlertDialog.Builder(FullInspectionActivity.this).setTitle("提示...")
                             .setMessage("数据未录入完，确认提交吗？")//设置显示的内容
@@ -591,32 +412,31 @@ public class FullInspectionActivity extends SwipeBackActivity implements ITaskHa
                 }else{
                     commitData();
                 }
-
             break;
             default:
                 break;
         }
     }
     private void commitData(){
-        PatrolRecordsPostVo patrolRecordsPostVo = new PatrolRecordsPostVo();
+        perPatrolCard = new PerPatrolCard();
         for (Map.Entry<Integer,String> entry: radioMap.entrySet()
                 ) {
             Record record = new Record();
             int i = entry.getKey();
 
             if(radioMap.get(i).equals(String.valueOf(false))){
-                record.setValueChar('F');
+                record.setValueChar("F");
             }else if(radioMap.get(i).equals(String.valueOf(true))){
-                record.setValueChar('T');
+                record.setValueChar("T");
             }else{
-                record.setValueChar(' ');
+                record.setValueChar(" ");
                 record.setValueFloat(Float.parseFloat(radioMap.get(i)));
             }
-            record.setId("");
+            record.setIdd("");
             record.setDeviceId(deviceId);
             record.setPatrolRecordDate(System.currentTimeMillis());
             record.setPatrolContentId(pcList.get(i).getIdd());
-            listR.add(record);
+            patrolConResList.add(record);
         }
 
         for (Map.Entry<Integer,String> entry: radioMap1.entrySet()
@@ -625,30 +445,132 @@ public class FullInspectionActivity extends SwipeBackActivity implements ITaskHa
             int i = entry.getKey();
             signPatrol.get(entry.getKey());
             if(radioMap1.get(i).equals(String.valueOf(false))){
-                record.setValueChar('F');
+                record.setValueChar("F");
             }else if(radioMap1.get(i).equals(String.valueOf(true))){
-                record.setValueChar('T');
+                record.setValueChar("T");
             }else{
-                record.setValueChar(' ');
+                record.setValueChar(" ");
                 record.setValueFloat(Float.parseFloat(radioMap1.get(i)));
             }
-            record.setId("");
+            record.setIdd("");
             record.setDeviceId(deviceId);
             record.setPatrolRecordDate(System.currentTimeMillis());
             record.setPatrolContentId(pcList.get(i).getIdd());
-            listR.add(record);
+            patrolConResList.add(record);
         }
-
-        patrolRecordsPostVo.setRecords(listR);
-        patrolRecordsPostVo.setPatrolHeadPageId(patrolHeadPageId);
-
-        String sTemp = patrolRecordsPostVo.toString();
+        perPatrolCard.setRecords(patrolConResList);
+        perPatrolCard.setDeviceId(patrolHeadPageId);
+        String sTemp = perPatrolCard.toString();
         TaskComponent.commitDetialTask(FullInspectionActivity.this,sTemp);
 
     }
     @Override
-    public void onTaskSuccess(Object obj, EMsgType type, int flag) {
+    protected void onPause() {
+        super.onPause();
+        //退出界面时发起提交服务
+        insertData();
+//       //查询对应任务的巡视首页实体
+//        WholePatrolCardDao wholePatrolCardDao = SApplication.getInstance().getDaoSession().getWholePatrolCardDao();
+//        QueryBuilder<WholePatrolCard> dbWhole = wholePatrolCardDao.queryBuilder();
+//        List<WholePatrolCard> wholeList = dbWhole.where(WholePatrolCardDao.Properties.PatrolHeadPageId.eq(patrolHeadPageId)).list();
+//        Long wholeID
+        //查询一个设备的巡视项目
+        PerPatrolCardDao perPatrolCardDao = SApplication.getInstance().getDaoSession().getPerPatrolCardDao();
+        QueryBuilder<PerPatrolCard> qbPer = perPatrolCardDao.queryBuilder();
+        List<PerPatrolCard> lll = qbPer.list();
+        List<PerPatrolCard> l = qbPer.where(PerPatrolCardDao.Properties.Fid.eq(wholeId)).list();
+        RecordDao recordDao = SApplication.getInstance().getDaoSession().getRecordDao();
+        for(PerPatrolCard temp : l){
+            Long id = temp.getId();
+            QueryBuilder<Record> qbRecord = recordDao.queryBuilder();
+            List<Record> records = null;
+            if(id!=null) {
+                records = qbRecord.where(RecordDao.Properties.Fid.eq(id)).list();
+            }
+            temp.setRecords(records);
+        }
+        wholePatrolCard.setPerPatrolCardList(l);
+        String resultWhole = wholePatrolCard.toString();
+        Log.i("onPause", "onPause: "+resultWhole);
+    }
+    public void insertData(){
+        //插入一个设备的巡视记录结果
+        PerPatrolCardDao perPatrolCardDao = SApplication.getInstance().getDaoSession().getPerPatrolCardDao();
+        Long perInsertId = null ;
+        if(!deviceIdMapInerId.containsKey(deviceId)){//生成id
+            perPatrolCard = new PerPatrolCard(null,deviceId,false,wholeId);
+            perPatrolCardDao.insertOrReplace(perPatrolCard);
+            deviceIdMapInerId.put(deviceId,perPatrolCard.getId());
+            perInsertId = perPatrolCard.getId();
+        }else{//id已存在
+            perInsertId = deviceIdMapInerId.get(deviceId);
+            QueryBuilder<PerPatrolCard> qbPer = perPatrolCardDao.queryBuilder();
+            PerPatrolCard per = qbPer.where(PerPatrolCardDao.Properties.Id.eq(perInsertId)).unique();
+            List<PerPatrolCard> pper = qbPer.where(PerPatrolCardDao.Properties.Id.eq(perInsertId)).list();
+            perPatrolCard = per ;
+        }
 
+        Long fid = perPatrolCard.getId();
+        for (Map.Entry<Integer,String> entry: radioMap.entrySet()
+                ) {
+            Record record = new Record();
+            int i = entry.getKey();
+
+            if(radioMap.get(i).equals(String.valueOf(false))){
+                record.setValueChar("F");
+            }else if(radioMap.get(i).equals(String.valueOf(true))){
+                record.setValueChar("T");
+            }else{
+                record.setValueChar(" ");
+                record.setValueFloat(Float.parseFloat(radioMap.get(i)));
+            }
+            String recordId = pcList.get(i).getIdd();
+            record.setIdd("");
+            record.setDeviceId(deviceId);
+            record.setPatrolRecordDate(System.currentTimeMillis());
+            record.setPatrolContentId(recordId);
+            record.setFid(fid);
+            RecordDao recordDao = SApplication.getInstance().getDaoSession().getRecordDao();
+            QueryBuilder<Record> qbRec = recordDao.queryBuilder();
+            List<Record> l = qbRec.list();
+            List<Record> ll = qbRec.where(RecordDao.Properties.Idd.eq(recordId)).list();
+            if(ll.size()>0){
+                record.setId(ll.get(0).getId());
+            }
+            recordDao.insertOrReplace(record);
+        }
+
+        for (Map.Entry<Integer,String> entry: radioMap1.entrySet()
+                ) {
+            Record record = new Record();
+            int i = entry.getKey();
+            signPatrol.get(entry.getKey());
+            if(radioMap1.get(i).equals(String.valueOf(false))){
+                record.setValueChar("F");
+            }else if(radioMap1.get(i).equals(String.valueOf(true))){
+                record.setValueChar("T");
+            }else{
+                record.setValueChar(" ");
+                record.setValueFloat(Float.parseFloat(radioMap1.get(i)));
+            }
+            String recordId = pcList.get(i).getIdd();
+            record.setIdd("");
+            record.setDeviceId(deviceId);
+            record.setPatrolRecordDate(System.currentTimeMillis());
+            record.setPatrolContentId(pcList.get(i).getIdd());
+            record.setFid(fid);
+            RecordDao recordDao = SApplication.getInstance().getDaoSession().getRecordDao();
+            QueryBuilder<Record> qbRec = recordDao.queryBuilder();
+            List<Record> l = qbRec.list();
+            List<Record> ll = qbRec.where(RecordDao.Properties.Idd.eq(recordId)).list();
+            if(ll.size()>0){
+                record.setId(ll.get(0).getId());
+            }
+            recordDao.insertOrReplace(record);
+        }
+    }
+    @Override
+    public void onTaskSuccess(Object obj, EMsgType type, int flag) {
         if(flag == 1){
             SystemUtils.showToast(FullInspectionActivity.this,"提交已成功到服务器！");
         }
@@ -657,34 +579,27 @@ public class FullInspectionActivity extends SwipeBackActivity implements ITaskHa
             String str = jsonObject.get("msg").toString();
             patrolHeadPageId = str.substring(1,str.length()-1);
         }
-
     }
 
     @Override
     public void onTaskFailure(Object obj, EMsgType type) {
         SystemUtils.showToast(FullInspectionActivity.this,"失败,服务器或者网络错误");
     }
-
     @Override
     public boolean onDown(MotionEvent e) {
         return false;
     }
-
     @Override
     public void onShowPress(MotionEvent e) {
-
     }
-
     @Override
     public boolean onSingleTapUp(MotionEvent e) {
         return false;
     }
-
     @Override
     public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
         return false;
     }
-
     @Override
     public void onLongPress(MotionEvent e) {
 
@@ -696,92 +611,134 @@ public class FullInspectionActivity extends SwipeBackActivity implements ITaskHa
             radioGroup.clearCheck();
             degreeNumber.setFocusable(false);
             secondNumber.setFocusable(false);
-            String content = titleContent.getText().toString();
-            int point = Integer.parseInt(content.split("\\.")[0]);
-            point--;
-            if(point>0)
-                titleContent.setText(point+"."+map.get(point).substring(1,map.get(point).length()-1));
-            if(radioFlag.contains(point)){//单选框
-                degree.setVisibility(View.GONE);
-                secondDegree.setVisibility(View.GONE);
-
-                radioGroup.setVisibility(View.VISIBLE);
-                if(!radioMap.containsKey(point)){//没录入清空
-                    radioGroup.clearCheck();
-                }else{//已录入 设置
-                    if(point<=map.size()&&"true".equals(radioMap.get(point)))
-                        radioGroup.check(R.id.radioButton1);
-                    if(point<=map.size()&&"false".equals(radioMap.get(point)))
-                        radioGroup.check(R.id.radioButton2);
+            point --;
+            if(point>0) {//point在边界之内
+                titleContent.setText(point + "." + pcList.get(point).getContent());
+                if(radioFlag.contains(point)){
+                    degree.setVisibility(View.GONE);//隐藏温度输入
+                    secondDegree.setVisibility(View.GONE);
+                    radioGroup.setVisibility(View.VISIBLE);//开启单选框输入
+                    if(!radioMap.containsKey(point)){//没录入清空
+                        radioGroup.clearCheck();
+                    }else{//已录入 设置
+                        if(point<=map.size()&&"true".equals(radioMap.get(point)))
+                            radioGroup.check(R.id.radioButton1);
+                        if(point<=map.size()&&"false".equals(radioMap.get(point)))
+                            radioGroup.check(R.id.radioButton2);
+                    }
                 }
-            }
-            if(degreeFlag.contains(point)){//填温度数字
-                degree.setVisibility(View.VISIBLE);
-                radioGroup.setVisibility(View.GONE);
-                degreeNumber.setFocusable(true);
-                degreeNumber.setFocusableInTouchMode(true);
-                firstPart.setText(pcList.get(point).getPatrolContentName());
+                if(degreeFlag.contains(point)){
+                    radioGroup.setVisibility(View.GONE);
+                    degree.setVisibility(View.VISIBLE);//开启温度输入
+                    degreeNumber.setFocusable(true);
+                    degreeNumber.setFocusableInTouchMode(true);
+                    if(radioMap.containsKey(point)){
+                        degreeNumber.setText(radioMap.get(point));
+                    }else{
+                        degreeNumber.setText(null);
+                    }
+                    firstPart.setText(pcList.get(point).getPatrolContentName());
 
-                if(signPatrol.containsKey(point)){
-                    secondDegree.setVisibility(View.VISIBLE);
-                    secondNumber.setFocusable(true);
-                    secondNumber.setFocusableInTouchMode(true);
-                    secondPart.setText(signPatrol.get(point).getPatrolContentName());
+                    if(signPatrol.containsKey(point)){//第二次次输入温度
+                        secondDegree.setVisibility(View.VISIBLE);
+                        secondNumber.setFocusable(true);
+                        secondNumber.setFocusableInTouchMode(true);
+                        secondPart.setText(signPatrol.get(point).getPatrolContentName());
+                        if(radioMap1.containsKey(point)){
+                            secondNumber.setText(radioMap1.get(point));
+                        }else{
+                            secondNumber.setText(null);
+                        }
+                    }
                 }
-                lastPoint = point;
-            }
-            if(signFlg.contains(point)){
-
+                if(signFlg.contains(point)){
+                }
+            }else{
+                devicePoint --;
+                if(devicePoint>=0){
+                    insertData();//进入下一个设备之前 插入上一个设备的巡视结果
+                    point = map.size();
+                    deviceName = deviceList.get(devicePoint).getName();
+                    deviceId = deviceList.get(devicePoint).getIdd();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            titleContent.setText(point + "." + pcList.get(point).getContent());
+                            nameDevice.setText(deviceName);
+                        }
+                    });
+                }else{//第一项
+                    devicePoint = 0;
+                    point = 1;
+                    SystemUtils.showToast(getApplicationContext(),"已经是第一项了");
+                }
             }
         } else if(e1.getX() - e2.getX() > 88 && Math.abs(velocityX) > 0){
             radioGroup.clearCheck();
             degreeNumber.setFocusable(false);
             secondNumber.setFocusable(false);
-            String content = titleContent.getText().toString();
-            int point = Integer.parseInt(content.split("\\.")[0]);
             point++;
-            if(point<=map.size())
-                titleContent.setText(point+"."+map.get(point).substring(1,map.get(point).length()-1));
-            if(radioFlag.contains(point)){//单选框
-                degree.setVisibility(View.GONE);
-                secondDegree.setVisibility(View.GONE);
-                radioGroup.setVisibility(View.VISIBLE);
-                if(!radioMap.containsKey(point)){//没录入清空
 
-                }else{//已录入 设置
-                    if(point<=map.size()&&"true".equals(radioMap.get(point)))
-                        radioGroup.check(R.id.radioButton1);
-                    if(point<=map.size()&&"false".equals(radioMap.get(point)))
-                        radioGroup.check(R.id.radioButton2);
+            if(point<=map.size()) {
+                titleContent.setText(point + "." + pcList.get(point).getContent());
+                if(radioFlag.contains(point)){//单选框
+                    degree.setVisibility(View.GONE);
+                    secondDegree.setVisibility(View.GONE);
+                    radioGroup.setVisibility(View.VISIBLE);
+                    if(!radioMap.containsKey(point)){//没录入清空
+                        radioGroup.clearCheck();
+                    }else{//已录入 设置
+                        if(point<=map.size()&&"true".equals(radioMap.get(point)))
+                            radioGroup.check(R.id.radioButton1);
+                        if(point<=map.size()&&"false".equals(radioMap.get(point)))
+                            radioGroup.check(R.id.radioButton2);
+                    }
                 }
-            }
-            if(degreeFlag.contains(point)){//填温度数字
-
-                radioGroup.setVisibility(View.GONE);
-                if(radioMap.containsKey(point)){
-                    degreeNumber.setText(radioMap.get(point));
+                if(degreeFlag.contains(point)){//填温度数字
+                    radioGroup.setVisibility(View.GONE);
+                    degree.setVisibility(View.VISIBLE);
+                    degreeNumber.setFocusable(true);
+                    degreeNumber.setFocusableInTouchMode(true);
+                    firstPart.setText(pcList.get(point).getPatrolContentName());
+                    if(radioMap.containsKey(point)){
+                        degreeNumber.setText(radioMap.get(point));
+                    }else{
+                        degreeNumber.setText(null);
+                    }
+                    if(signPatrol.containsKey(point)){
+                        secondDegree.setVisibility(View.VISIBLE);
+                        secondNumber.setFocusable(true);
+                        secondNumber.setFocusableInTouchMode(true);
+                        secondPart.setText(signPatrol.get(point).getPatrolContentName());
+                        if(radioMap1.containsKey(point)){
+                            secondNumber.setText(radioMap1.get(point));
+                        }else{
+                            secondNumber.setText(null);
+                        }
+                    }
+                }
+                if(signFlg.contains(point)){
+                }
+            }else{
+                devicePoint ++;
+                if(deviceList.size()>devicePoint){
+                    insertData();//进入下一个设备之前 插入上一个设备的巡视结果
+                    point = 1;
+                    deviceName = deviceList.get(devicePoint).getName();
+                    deviceId = deviceList.get(devicePoint).getIdd();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            nameDevice.setText(deviceName);
+                            titleContent.setText(point + "." + pcList.get(point).getContent());
+                        }
+                    });
                 }else{
-                    degreeNumber.setText(null);
+                    devicePoint = deviceList.size()-1;
+                    point = map.size();
+                    insertData();
+                    SystemUtils.showToast(getApplicationContext(),"巡视完成");
                 }
-                if(radioMap1.containsKey(point)){
-                    secondNumber.setText(radioMap1.get(point));
-                }else{
-                    secondNumber.setText(null);
-                }
-                degree.setVisibility(View.VISIBLE);
-                degreeNumber.setFocusable(true);
-                degreeNumber.setFocusableInTouchMode(true);
-                firstPart.setText(pcList.get(point).getPatrolContentName());
-                if(signPatrol.containsKey(point)){
-                    secondDegree.setVisibility(View.VISIBLE);
-                    secondNumber.setFocusable(true);
-                    secondNumber.setFocusableInTouchMode(true);
-                    secondPart.setText(signPatrol.get(point).getPatrolContentName());
-                }
-                lastPoint = point;
-            }
-            if(signFlg.contains(point)){
-
             }
         }
         return false;

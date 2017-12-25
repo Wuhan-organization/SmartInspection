@@ -6,13 +6,16 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.whut.greendao.gen.PatrolTaskDetailDao;
 import com.whut.greendao.gen.SubDao;
 import com.whut.greendao.gen.TaskItemDao;
 import com.whut.smartinspection.R;
 import com.whut.smartinspection.adapters.TaskPageListAdapter;
 import com.whut.smartinspection.application.SApplication;
+import com.whut.smartinspection.model.PatrolTaskDetail;
 import com.whut.smartinspection.model.Sub;
 import com.whut.smartinspection.model.TaskItem;
+import com.whut.smartinspection.widgets.CustomToolBar;
 import com.whut.smartlibrary.base.SwipeBackActivity;
 
 import org.greenrobot.greendao.query.QueryBuilder;
@@ -25,21 +28,18 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class WaitingTaskActivity extends SwipeBackActivity {
-
-
     @BindView(R.id.gd_task_page_menu)
     ListView taskmenu;
 
     TaskPageListAdapter taskPageListAdapter ;
-    List<TaskPageListAdapter.TaskPageItem> list = new ArrayList<TaskPageListAdapter.TaskPageItem>();
+    List<TaskItem> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_waiting_task);
-
         ButterKnife.bind(this);
-
+        CustomToolBar.goBack(WaitingTaskActivity.this);//返回按钮监听
         initView();
         initData();
     }
@@ -48,54 +48,85 @@ public class WaitingTaskActivity extends SwipeBackActivity {
 
         taskPageListAdapter = new TaskPageListAdapter(this,list);
         taskmenu.setAdapter(taskPageListAdapter);
-        final Intent intent = new Intent(this,FullInspectionActivity.class);
+
         taskmenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent;
                 TaskPageListAdapter tpl = (TaskPageListAdapter)adapterView.getAdapter();
-                TaskPageListAdapter.TaskPageItem item  = (TaskPageListAdapter.TaskPageItem)tpl.getItem(i);
-                intent.putExtra("item",item);
-                intent.putExtra("pageFlag","0");
-                startActivity(intent);
-
+                TaskItem item  = (TaskItem) tpl.getItem(i);
+                switch (Integer.parseInt(item.getTaskType())){
+                    case 0://全面巡视
+                        intent = new Intent(WaitingTaskActivity.this,FullInspectionActivity.class);
+                        intent.putExtra("item",item);
+                        startActivity(intent);
+                        break;
+                    case 6://倒闸操作
+                        intent = new Intent(WaitingTaskActivity.this,SluiceOperationActivity.class);
+                        intent.putExtra("item",item);
+                        startActivity(intent);
+                        break;
+                    case 7://带电检测
+                        intent = new Intent(WaitingTaskActivity.this,PointDetectionActivity.class);
+                        intent.putExtra("item",item);
+                        startActivity(intent);
+                        break;
+                    case 8://运维
+                        intent = new Intent(WaitingTaskActivity.this,MaintenanceActivity.class);
+                        intent.putExtra("item",item);
+                        startActivity(intent);
+                        break;
+                    default:
+                        break;
+                }
             }
         });
 
 
     }
-    @OnClick({R.id.tv_wai_back})
-    public void onClick(View view) {
-        switch (view.getId()) {
-            // 返回
-            case R.id.tv_wai_back:
-                finish();
-                break;
-            default:
-                break;
-        }
-    }
     private void initData(){
         TaskItemDao taskItemDao = SApplication.getInstance().getDaoSession().getTaskItemDao();
         QueryBuilder<TaskItem> qb = taskItemDao.queryBuilder();
-
-        SubDao subDao = SApplication.getInstance().getDaoSession().getSubDao();
-        QueryBuilder<Sub> qbSub = subDao.queryBuilder();
-
         List<TaskItem> listTemp = qb.list();
-        for (TaskItem taskItem   :listTemp ) {
-            if(taskItem.getStatus() == 0){
-                TaskPageListAdapter.TaskPageItem item = new TaskPageListAdapter.TaskPageItem();
-                item.setText(taskItem.getContent());
-                item.setNumber(taskItem.getWorker());
-                item.setStationName(taskItem.getSubstationId());
-                //查找变电站id
-                List<Sub> subTemp = qbSub.where(SubDao.Properties.Name.eq(taskItem.getSubstationId())).list();
-                if(subTemp!=null&&subTemp.size()>0)
-                    item.setId(subTemp.get(0).getIdd());
-                list.add(item);
+//        PatrolTaskDetailDao patrolTaskDetail = SApplication.getInstance().getDaoSession().getPatrolTaskDetailDao();
+//        QueryBuilder<PatrolTaskDetail> qbPatrolTDetail = patrolTaskDetail.queryBuilder();
 
+        for (int i= 0;i<listTemp.size();i++){
+            TaskItem item = listTemp.get(i);
+            if("0".equals(item.getTaskType())){
+                item.setTaskTypeName("全面巡视");
+                item.setTaskIcon(R.drawable.bian_dian);
             }
+            list.add(item);
+
         }
+        TaskItem item = new TaskItem();
+        item.setTaskType("0");
+        item.setWorker("范国柱");
+        item.setTaskTypeName("全面巡视");
+        item.setTaskIcon(R.drawable.bian_dian);
+        list.add(item);
+
+        TaskItem item1 = new TaskItem();
+        item1.setTaskType("6");
+        item1.setWorker("范国柱");
+        item1.setTaskTypeName("倒闸操作");
+        item1.setTaskIcon(R.drawable.dao_zha);
+        list.add(item1);
+
+        TaskItem item2 = new TaskItem();
+        item2.setTaskType("7");
+        item2.setTaskTypeName("带电检测");
+        item2.setTaskIcon(R.drawable.patrol);
+        item2.setWorker("范国柱");
+        list.add(item2);
+
+        TaskItem item3 = new TaskItem();
+        item3.setTaskType("8");
+        item3.setTaskTypeName("运维");
+        item3.setWorker("范国柱");
+        item3.setTaskIcon(R.drawable.yun_wei);
+        list.add(item3);
         taskPageListAdapter.notifyDataSetChanged();
     }
 }

@@ -5,10 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.whut.smartinspection.R;
+import com.whut.smartinspection.model.TaskItem;
 
 import java.io.Serializable;
 import java.util.List;
@@ -21,10 +23,10 @@ import butterknife.ButterKnife;
  */
 
 public class TaskPageListAdapter extends BaseAdapter implements View.OnClickListener{
-    private List<TaskPageItem> menus;
+    private List<TaskItem> menus;
     private Context mContext;
 
-    public TaskPageListAdapter(Context context, List<TaskPageItem> menus) {
+    public TaskPageListAdapter(Context context, List<TaskItem> menus) {
         this.mContext = context;
         this.menus = menus;
     }
@@ -55,12 +57,11 @@ public class TaskPageListAdapter extends BaseAdapter implements View.OnClickList
             holder = (TaskViewHolder) convertView.getTag();
         }
 
-        TaskPageItem menu = menus.get(position);
+        TaskItem menu = menus.get(position);
 
-        holder.item.setText(menu.getText());
-        holder.number.setText(menu.getNumber());
-        holder.stationName.setText(menu.getStationName());
-
+        holder.taskType.setText(menu.getTaskTypeName());
+        holder.workMember.setText(menu.getWorker());
+        Glide.with(mContext).load(menu.getTaskIcon()).into(holder.taskIcon);
         return convertView;
 
     }
@@ -70,56 +71,14 @@ public class TaskPageListAdapter extends BaseAdapter implements View.OnClickList
 
     }
     public class  TaskViewHolder {
-        @BindView(R.id.item)
-        public TextView item ;
-        @BindView(R.id.textView1)
-        public TextView stationName;
-        @BindView(R.id.textView2)
-        public TextView number;
-
+        @BindView(R.id.task_icon)
+        public ImageView taskIcon;
+        @BindView(R.id.work_member)
+        public TextView workMember ;
+        @BindView(R.id.task_type)
+        public TextView taskType;
         public TaskViewHolder(View view){
             ButterKnife.bind(this,view);
-        }
-    }
-    public static class TaskPageItem implements Serializable {
-        private String id;
-
-        private String text ;
-
-        private String stationName;
-
-        private String number;
-
-        public String getText() {
-            return text;
-        }
-
-        public void setText(String text) {
-            this.text = text;
-        }
-
-        public String getStationName() {
-            return stationName;
-        }
-
-        public String getNumber() {
-            return number;
-        }
-
-        public void setStationName(String stationName) {
-            this.stationName = stationName;
-        }
-
-        public void setNumber(String number) {
-            this.number = number;
-        }
-
-        public String getId() {
-            return id;
-        }
-
-        public void setId(String id) {
-            this.id = id;
         }
     }
 }

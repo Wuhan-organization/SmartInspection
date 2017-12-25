@@ -5,40 +5,79 @@ import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Property;
 import org.greenrobot.greendao.annotation.Generated;
 
+import java.io.Serializable;
+import java.util.Date;
+
 /**
  * Created by Fortuner on 2017/12/5.
  */
 @Entity
-public class TaskItem {
+public class TaskItem  implements Serializable{
+    final static long   serialVersionUID = 1;
     @Property(nameInDb = "id")
     @Id(autoincrement = true)
-    private Long id;
+    private Long id;//前端自动生成Id
+    private String idd; //后台自动生成
+    private String worker;//工作者 列表 负责人放在第一位
+    private Date startDate;//任务开始日期
+    private Date endDate;//任务结束日期
+    private int status; //完成状态1完成，0代办
+    private String taskType;//任务类型
+    private String taskTypeName;//任务类型名称 eg.全面巡视
+    private int taskIcon;//任务类型图标
 
-    private String idd;
-    private String content;
-    private String type;
-    private String worker;      //工作者
-    private String date;
-    private int status;       //完成状态1完成，0代办
-    private String substationId;
-    private int patrolTypeId;
 
-    @Generated(hash = 960819216)
-    public TaskItem(Long id, String idd, String content, String type, String worker,
-            String date, int status, String substationId, int patrolTypeId) {
+
+
+    @Generated(hash = 1063385986)
+    public TaskItem(Long id, String idd, String worker, Date startDate,
+            Date endDate, int status, String taskType, String taskTypeName,
+            int taskIcon) {
         this.id = id;
         this.idd = idd;
-        this.content = content;
-        this.type = type;
         this.worker = worker;
-        this.date = date;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.status = status;
-        this.substationId = substationId;
-        this.patrolTypeId = patrolTypeId;
+        this.taskType = taskType;
+        this.taskTypeName = taskTypeName;
+        this.taskIcon = taskIcon;
     }
 
     @Generated(hash = 910645620)
     public TaskItem() {
+    }
+
+
+
+
+//    private String substatioinName;//变电站名称
+//    private String substationId;//变电站id
+//    private String deviceTypeName;//设备类型名称
+//    private String deviceTypeId;//设备类型ID
+//    private String intervalUnitName;//间隔名称
+//    private String intervalUnitId;//间隔ID
+//    private String patrolStyleName;//巡视类型
+//    private String patrolStyleId;//巡视类型ID
+//    private String deviceName;//设备名称
+//    private String deviceId;//设备ID
+//    private String patrolContentName;//巡视项目名称
+//    private String patrolContentId;//巡视项目ID
+
+    public int getTaskIcon() {
+        return taskIcon;
+    }
+
+    public void setTaskIcon(int taskIcon) {
+        this.taskIcon = taskIcon;
+    }
+
+    public String getTaskTypeName() {
+        return taskTypeName;
+    }
+
+    public void setTaskTypeName(String taskTypeName) {
+        this.taskTypeName = taskTypeName;
     }
 
     public Long getId() {
@@ -57,22 +96,6 @@ public class TaskItem {
         this.idd = idd;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public String getWorker() {
         return worker;
     }
@@ -80,15 +103,6 @@ public class TaskItem {
     public void setWorker(String worker) {
         this.worker = worker;
     }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
     public int getStatus() {
         return status;
     }
@@ -97,19 +111,31 @@ public class TaskItem {
         this.status = status;
     }
 
-    public String getSubstationId() {
-        return substationId;
+    public String getTaskType() {
+        return taskType;
     }
 
-    public void setSubstationId(String substationId) {
-        this.substationId = substationId;
+    public void setTaskType(String taskType) {
+        this.taskType = taskType;
     }
 
-    public int getPatrolTypeId() {
-        return patrolTypeId;
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
-    public void setPatrolTypeId(int patrolTypeId) {
-        this.patrolTypeId = patrolTypeId;
+    public Date getStartDate() {
+        return this.startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return this.endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 }

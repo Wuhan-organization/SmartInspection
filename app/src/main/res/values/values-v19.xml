@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
+        <!--<item name="android:windowTranslucentStatus">true</item>-->
+        <!--<item name="android:windowTranslucentNavigation">true</item>-->
+        <!--<item name="android:statusBarColor">@color/bg_toolbar</item>-->
+        <!--<item name="android:fitsSystemWindows">true</item>-->
+    <!--</style>-->
+    <!--<style name="AppTheme.Translucent" >-->
+        <!--<item name="android:windowIsTranslucent">true</item>-->
+    <!--</style>-->
+</resources>

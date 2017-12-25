@@ -22,6 +22,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.whut.smartinspection.R;
+import com.whut.smartinspection.widgets.CustomToolBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -127,13 +128,15 @@ public class BluetoothActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        CustomToolBar.goBack(BluetoothActivity.this);//返回按钮监听
+
         sp_action = (Spinner)findViewById(R.id.sp_action);
         et_num = (EditText)findViewById(R.id.et_num);
         et_password = (EditText)findViewById(R.id.et_password);
         et_outputTime = (EditText)findViewById(R.id.et_outputTime);
         lsv_door = (ListView)findViewById(R.id.listView);
         tv_result = (TextView)findViewById(R.id.tv_result);
-        bluetooth_back = (TextView)findViewById(R.id.bluetooth_back);
+//        bluetooth_back = (TextView)findViewById(R.id.bluetooth_back);
         data_list = new ArrayList<String>();
         data_list.add("开门");
         data_list.add("编号");
@@ -162,14 +165,14 @@ public class BluetoothActivity extends Activity {
             public void afterTextChanged(Editable editable) {
             }
         });
-        bluetooth_back.setOnClickListener(new  View.OnClickListener(){
-            @Override
-            public void onClick(View view)
-            {
-                Intent intent = new Intent(BluetoothActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
+//        bluetooth_back.setOnClickListener(new  View.OnClickListener(){
+//            @Override
+//            public void onClick(View view)
+//            {
+//                Intent intent = new Intent(BluetoothActivity.this, MainActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         sp_action.setOnItemSelectedListener(
                 new AdapterView.OnItemSelectedListener() {

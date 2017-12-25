@@ -125,12 +125,6 @@ public class MyTaskActivity extends SwipeBackActivity implements IHandlerListene
                 intent = new Intent(MyTaskActivity.this,NewTaskActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.completed_task:
-
-                intent = new Intent(MyTaskActivity.this,CompletedTaskActivity.class);
-                startActivity(intent);
-                break;
-
             default:
                 break;
         }

@@ -1,70 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<com.whut.smartinspection.widgets.CustomToolBar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#ffffff">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="true"
+    android:orientation="vertical"
+    app:left_tv_visible="false"
+    app:left_tv_text="返回"
+    app:right_btn_visible="false"
+    app:title_visible="true"
+    app:title_text="变电智能巡检系统"
+    tools:context="com.whut.smartinspection.activity.HomePageActivity">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <com.whut.smartinspection.widgets.LoopSlidingView
+            android:id="@+id/lsv_home_page"
+            android:layout_width="match_parent"
+            android:layout_height="666px" />
+    </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="170dp"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="变电站智能巡检系统"
-            android:textColor="#000000"
-            android:textSize="22sp" />
-    </RelativeLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#CCCCCC" />
-    <RelativeLayout
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:id="@+id/ll_my_task"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-            <ImageView
-                android:layout_marginLeft="130dp"
-                android:src="@drawable/ic_launcher"
+            <LinearLayout
+                android:id="@+id/ll_my_task"
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:textSize="24sp"
-                android:gravity="center_vertical"
-                android:text="我的任务"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_marginLeft="180dp"
+                    android:src="@drawable/excel_safe_cat"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp" />
+                <TextView
+                    android:textSize="30sp"
+                    android:gravity="center_vertical"
+                    android:text="开始工作"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_help"
+                android:layout_marginTop="80dp"
+                android:layout_below="@id/ll_my_task"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+                <ImageView
+                    android:layout_marginLeft="180dp"
+                    android:src="@drawable/wireless_door_ban1"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp" />
+                <TextView
+                    android:textSize="30sp"
+                    android:gravity="center_vertical"
+                    android:text="帮助"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
         </LinearLayout>
-        <LinearLayout
-            android:id="@+id/ll_help"
-            android:layout_marginTop="50dp"
-            android:layout_below="@id/ll_my_task"
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_marginLeft="130dp"
-                android:src="@drawable/ic_launcher"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:textSize="24sp"
-                android:gravity="center_vertical"
-                android:text="帮助"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
-        </LinearLayout>
-
-    </RelativeLayout>
-</LinearLayout>
+    <!--</RelativeLayout>-->
+</com.whut.smartinspection.widgets.CustomToolBar>

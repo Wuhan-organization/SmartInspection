@@ -13,15 +13,49 @@ public class Person {
     private Long id;
     private String name;
     private int age;
-    @Generated(hash = 1145075130)
-    public Person(Long id, String name, int age) {
+    private String phoneNumber;
+    private String password;
+    private String sessionId;
+
+    @Generated(hash = 739484211)
+    public Person(Long id, String name, int age, String phoneNumber,
+            String password, String sessionId) {
         this.id = id;
         this.name = name;
         this.age = age;
+        this.phoneNumber = phoneNumber;
+        this.password = password;
+        this.sessionId = sessionId;
     }
+
     @Generated(hash = 1024547259)
     public Person() {
     }
+
+    public String getSessionId() {
+        return sessionId;
+    }
+
+    public void setSessionId(String sessionId) {
+        this.sessionId = sessionId;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public Long getId() {
         return this.id;
     }

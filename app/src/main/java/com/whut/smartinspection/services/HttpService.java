@@ -1,10 +1,21 @@
 package com.whut.smartinspection.services;
 
 import android.app.Service;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
+import android.os.Vibrator;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.google.gson.JsonArray;
@@ -15,12 +26,15 @@ import com.whut.greendao.gen.DeviceDao;
 import com.whut.greendao.gen.DeviceTypeDao;
 import com.whut.greendao.gen.IntervalUnitDao;
 import com.whut.greendao.gen.PatrolContentDao;
+import com.whut.greendao.gen.PatrolTaskDetailDao;
 import com.whut.greendao.gen.PatrolWorkCardDao;
 import com.whut.greendao.gen.SubDao;
 import com.whut.greendao.gen.TaskItemDao;
+import com.whut.smartinspection.R;
 import com.whut.smartinspection.activity.MyTaskActivity;
 import com.whut.smartinspection.application.SApplication;
 import com.whut.smartinspection.component.handler.EMsgType;
+import com.whut.smartinspection.component.handler.IDetailHandlerListener;
 import com.whut.smartinspection.component.handler.IHandlerListener;
 import com.whut.smartinspection.component.handler.ITaskHandlerListener;
 import com.whut.smartinspection.component.http.TaskComponent;
@@ -28,13 +42,26 @@ import com.whut.smartinspection.model.Device;
 import com.whut.smartinspection.model.DeviceType;
 import com.whut.smartinspection.model.IntervalUnit;
 import com.whut.smartinspection.model.PatrolContent;
+import com.whut.smartinspection.model.PatrolTaskDetail;
 import com.whut.smartinspection.model.PatrolWorkCard;
 import com.whut.smartinspection.model.Sub;
 import com.whut.smartinspection.model.TaskItem;
+import com.whut.smartinspection.utils.SystemUtils;
 
 import org.greenrobot.greendao.query.QueryBuilder;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+//import java.util.logging.Handler;
+
+import cn.com.reformer.rfBleService.BleDevContext;
+import cn.com.reformer.rfBleService.BleService;
+import cn.com.reformer.rfBleService.OnCompletedListener;
+import cn.com.reformer.rfBleService.OnPasswordWriteListener;
 
 import static com.bumptech.glide.gifdecoder.GifHeaderParser.TAG;
 
@@ -42,7 +69,42 @@ import static com.bumptech.glide.gifdecoder.GifHeaderParser.TAG;
  * Created by Fortuner on 2017/12/5.
  */
 
-public class HttpService extends Service implements ITaskHandlerListener{
+public class HttpService extends Service implements ITaskHandlerListener,IDetailHandlerListener{
+    private BleService.RfBleKey rfBleKey = null;
+    private List<String> data_list = new ArrayList<>();
+    SensorManager sensorManager;
+    private BleService mService;
+    Vibrator vibrator;
+    private ShakeListener shakeListener;
+    private final ServiceConnection mServiceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName className,IBinder rawBinder) {
+            mService = ((BleService.LocalBinder) rawBinder).getService();
+            rfBleKey = mService.getRfBleKey();
+            rfBleKey.init(null);//mWhiteList
+            rfBleKey.setOnCompletedListener(new OnCompletedListener() {
+                @Override
+                public void OnCompleted(byte[] bytes, int i) {
+                    final int result = i;
+                }
+            });
+            rfBleKey.setOnBleDevListChangeListener(new BleService.OnBleDevListChangeListener() {
+                @Override
+                public void onNewBleDev(BleDevContext bleDevContext) {
+                    //发现新设备
+                }
+                @Override
+                public void onUpdateBleDev(BleDevContext bleDevContext) {
+                    //设备更新
+                }
+            });
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName classname) {
+            mService = null;
+        }
+    };
 
     @Nullable
     @Override
@@ -52,16 +114,23 @@ public class HttpService extends Service implements ITaskHandlerListener{
     @Override
     public void onCreate() {
         super.onCreate();
+        //开启蓝牙服务
+        Intent bindIntent = new Intent(getApplicationContext(), BleService.class);
+        bindService(bindIntent, mServiceConnection, Context.BIND_AUTO_CREATE);
+
+        //获取 SensorManager 负责管理传感器
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        vibrator = (Vibrator) getSystemService(Service.VIBRATOR_SERVICE);
+        shakeListener = new ShakeListener();
+        sensorManager.registerListener(shakeListener, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), sensorManager.SENSOR_DELAY_NORMAL);
         Log.w(TAG, "in onCreate");
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.w(TAG, "in onStartCommand");
-
         //从服务器获取数据到本地数据库
         TaskComponent.getSubstationList(HttpService.this,0);
-
         return START_STICKY;
     }
 
@@ -71,7 +140,89 @@ public class HttpService extends Service implements ITaskHandlerListener{
         Log.w(TAG, "in onDestroy");
     }
 
+    @Override
+    public void onDetialSuccess(Object obj, EMsgType type, int flag,String id) {
+        if(flag == 1) {//获取巡视任务详细内容
+            JsonObject jsonObject = new JsonParser().parse((String) obj).getAsJsonObject();
+            JsonArray jsonArray = jsonObject.getAsJsonArray("data");
+            PatrolTaskDetailDao patrolTaskDetailDao = SApplication.getInstance().getDaoSession().getPatrolTaskDetailDao();
+            for (int i = 0; i < jsonArray.size(); i++) {
+                JsonElement idx = jsonArray.get(i);
+                JsonObject jo = idx.getAsJsonObject();
+                String patrolHeadPageId = jo.get("patrolHeadPageId").toString();//任务的id
+                String patrolNameId = jo.get("patrolNameId").toString();//任务类型
+                PatrolTaskDetail patrolTaskDetail = new PatrolTaskDetail(null,id,format(patrolHeadPageId), format(patrolNameId));
+                patrolTaskDetailDao.insertOrReplace(patrolTaskDetail);
+            }
+        }
+    }
 
+    @Override
+    public void onDetialFailure(Object obj, EMsgType type) {
+        SystemUtils.showToast(HttpService.this,(String)obj);
+    }
+
+    //摇一摇监听器
+    public class ShakeListener implements SensorEventListener {
+        @Override
+        public void onSensorChanged(SensorEvent event) {
+            //values[0]:X轴，values[1]：Y轴，values[2]：Z轴
+            float[] values = event.values;
+            if ((Math.abs(values[0]) > 15 || Math.abs(values[1]) > 15 || Math.abs(values[2]) > 15)) {
+                //开锁
+                ArrayList<BleDevContext> lst = rfBleKey.getDiscoveredDevices();
+                for (BleDevContext dev:lst){
+                    StringBuffer stringBuffer = new StringBuffer();
+                    stringBuffer.append(bytesToString(dev.mac))
+                            .append(" (").append(dev.rssi).append(")");
+                    data_list.add(stringBuffer.toString());
+//                    adapter.add(stringBuffer.toString().toUpperCase());
+                }
+                try{
+                    rfBleKey.openDoor(stringToBytes(data_list.get(0).substring(0,18)),5,"31313131313131313131313131313131");
+                }catch (Exception e){
+                    Handler handler = new Handler(Looper.getMainLooper());
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(),"权限或蓝牙没有打开",Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
+                //摇动手机后，再伴随震动提示~~
+                vibrator.vibrate(500);
+            }
+        }
+
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        }
+    }
+    public static byte[] stringToBytes(String outStr){
+        if (outStr.length()!=18)
+            return null;
+        int len = outStr.length()/2;
+        byte[] mac = new byte[len];
+        for (int i = 0; i < len; i++){
+            String s = outStr.substring(i*2,i*2+2);
+            if (Integer.valueOf(s, 16)>0x7F) {
+                mac[i] = (byte)(Integer.valueOf(s, 16) - 0xFF - 1);
+            }else {
+                mac[i] = Byte.valueOf(s, 16);
+            }
+        }
+        return mac;
+    }
+    public static String bytesToString(byte b[]) {
+        StringBuffer hexString = new StringBuffer();
+        for (int i = 0; i < b.length; i++) {
+            String plainText = Integer.toHexString(0xff & b[i]);
+            if (plainText.length() < 2)
+                plainText = "0" + plainText;
+            hexString.append(plainText);
+        }
+        return hexString.toString().toUpperCase();
+    }
     @Override
     public void onTaskSuccess(Object obj, EMsgType type, int flag) {
         if(flag == 1){
@@ -187,19 +338,6 @@ public class HttpService extends Service implements ITaskHandlerListener{
             for (int i = 0; i < jsonArray.size(); i++) {
                 JsonElement idx = jsonArray.get(i);
                 JsonObject jo = idx.getAsJsonObject();
-
-                String id = jo.get("id").toString();
-                String content = jo.get("content").toString();
-                String typee = jo.get("type").toString();
-                String worker = jo.get("worker").toString();
-                String date = jo.get("date").toString();
-                String status = jo.get("status").toString();
-                String substationId = jo.get("substationName").toString();
-//                String patrolTypeId = jo.get("patrolTypeId").toString();
-
-                TaskItem taskItem = new TaskItem(null,format(id),format(content),format(typee),format(worker),
-                        format(date),Integer.parseInt(status),format(substationId),0);
-                taskItemDao.insertOrReplace(taskItem);
             }
         }
         if(flag == 8) {//获取全部巡视作业卡名称
@@ -207,7 +345,6 @@ public class HttpService extends Service implements ITaskHandlerListener{
             JsonArray jsonArray = jsonObject.getAsJsonArray("data");
 
             PatrolWorkCardDao patrolWorkCardDao = SApplication.getInstance().getDaoSession().getPatrolWorkCardDao();
-
             patrolWorkCardDao.deleteAll();
             for (int i = 0; i < jsonArray.size(); i++) {
                 JsonElement idx = jsonArray.get(i);
@@ -222,7 +359,45 @@ public class HttpService extends Service implements ITaskHandlerListener{
                 patrolWorkCardDao.insertOrReplace(patrolWorkCard);
             }
         }
+        if(flag == 9) {//获取通用任务列表
+            SimpleDateFormat sdr = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss", Locale.CHINA);
+            JsonObject jsonObject = new JsonParser().parse((String) obj).getAsJsonObject();
+            JsonArray jsonArray = jsonObject.getAsJsonArray("data");
+            TaskItemDao taskItemDao = SApplication.getInstance().getDaoSession().getTaskItemDao();
 
+            taskItemDao.deleteAll();
+            for (int i = 0; i < jsonArray.size(); i++) {
+                JsonElement idx = jsonArray.get(i);
+                JsonObject jo = idx.getAsJsonObject();
+                String id = jo.get("id").toString();//任务的id
+
+                String taskType = jo.get("taskType").toString();//任务类型
+                Date startDate = null,endDate = null ;
+                try {
+                    startDate = sdr.parse(jo.get("startDate").toString());
+                    startDate = sdr.parse(jo.get("endDate").toString());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                String leader1 = jo.get("leader").toString();
+                JsonParser jsonParser = new JsonParser();
+                JsonElement jLeader = jsonParser.parse(leader1);
+                JsonObject joLeader = jLeader.getAsJsonObject();
+                String leader = joLeader.get("username").toString();
+
+                TaskItem taskItem = new TaskItem(null, format(id), format(leader),startDate,endDate,1,
+                        format(taskType), null, 1);
+                taskItemDao.insertOrReplace(taskItem);
+
+                if("0".equals(format(taskType))){
+                    PatrolTaskDetailDao patrolTaskDetailDao = SApplication.getInstance().getDaoSession().getPatrolTaskDetailDao();
+                    patrolTaskDetailDao.deleteAll();
+                    TaskComponent.getDetialPatrolTask(HttpService.this,format(id),format(id));//根据任务ID查询任务详情
+                }
+
+            }
+        }
     }
     private String format(String str){
         if(str.length()>2)

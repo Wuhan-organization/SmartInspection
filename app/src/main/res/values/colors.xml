@@ -8,5 +8,5 @@
     <color name="gray">#ccc</color>
     <color name="transparent">#00000000</color>
     <color name="red">#FF4081</color>
-
+    <color name="bg_toolbar">#32A082</color>
 </resources>
