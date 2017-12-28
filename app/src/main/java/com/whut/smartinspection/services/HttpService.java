@@ -12,6 +12,7 @@ import android.hardware.SensorManager;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
+import android.os.Message;
 import android.os.Vibrator;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -33,10 +34,12 @@ import com.whut.greendao.gen.TaskItemDao;
 import com.whut.smartinspection.R;
 import com.whut.smartinspection.activity.MyTaskActivity;
 import com.whut.smartinspection.application.SApplication;
+import com.whut.smartinspection.component.db.BaseDbComponent;
 import com.whut.smartinspection.component.handler.EMsgType;
 import com.whut.smartinspection.component.handler.IDetailHandlerListener;
 import com.whut.smartinspection.component.handler.IHandlerListener;
 import com.whut.smartinspection.component.handler.ITaskHandlerListener;
+import com.whut.smartinspection.component.http.BaseHttpComponent;
 import com.whut.smartinspection.component.http.TaskComponent;
 import com.whut.smartinspection.model.Device;
 import com.whut.smartinspection.model.DeviceType;
@@ -168,7 +171,7 @@ public class HttpService extends Service implements ITaskHandlerListener,IDetail
         public void onSensorChanged(SensorEvent event) {
             //values[0]:X轴，values[1]：Y轴，values[2]：Z轴
             float[] values = event.values;
-            if ((Math.abs(values[0]) > 15 || Math.abs(values[1]) > 15 || Math.abs(values[2]) > 15)) {
+            if ((Math.abs(values[0]) > 22 || Math.abs(values[1]) > 22 || Math.abs(values[2]) > 22)) {
                 //开锁
                 ArrayList<BleDevContext> lst = rfBleKey.getDiscoveredDevices();
                 for (BleDevContext dev:lst){
@@ -360,19 +363,19 @@ public class HttpService extends Service implements ITaskHandlerListener,IDetail
             }
         }
         if(flag == 9) {//获取通用任务列表
+
             SimpleDateFormat sdr = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss", Locale.CHINA);
             JsonObject jsonObject = new JsonParser().parse((String) obj).getAsJsonObject();
             JsonArray jsonArray = jsonObject.getAsJsonArray("data");
             TaskItemDao taskItemDao = SApplication.getInstance().getDaoSession().getTaskItemDao();
-
-            taskItemDao.deleteAll();
             for (int i = 0; i < jsonArray.size(); i++) {
                 JsonElement idx = jsonArray.get(i);
                 JsonObject jo = idx.getAsJsonObject();
                 String id = jo.get("id").toString();//任务的id
-
+                String common = jo.get("comment").toString();//备注
                 String taskType = jo.get("taskType").toString();//任务类型
                 Date startDate = null,endDate = null ;
+
                 try {
                     startDate = sdr.parse(jo.get("startDate").toString());
                     startDate = sdr.parse(jo.get("endDate").toString());
@@ -387,7 +390,7 @@ public class HttpService extends Service implements ITaskHandlerListener,IDetail
                 String leader = joLeader.get("username").toString();
 
                 TaskItem taskItem = new TaskItem(null, format(id), format(leader),startDate,endDate,1,
-                        format(taskType), null, 1);
+                        format(taskType), null, 1,format(common));
                 taskItemDao.insertOrReplace(taskItem);
 
                 if("0".equals(format(taskType))){
@@ -395,10 +398,21 @@ public class HttpService extends Service implements ITaskHandlerListener,IDetail
                     patrolTaskDetailDao.deleteAll();
                     TaskComponent.getDetialPatrolTask(HttpService.this,format(id),format(id));//根据任务ID查询任务详情
                 }
-
             }
+            Log.i("httpServiceSuc", "onTaskSuccess: "+jsonObject.toString());
+            //发消息给HomePageActivity
+            Intent intent = new Intent();
+            intent.putExtra("flag","1");
+            intent.setAction("com.whut.smartinspection.services.HttpService");
+            sendBroadcast(intent);
         }
     }
+//    private class NoticeHandler extends Handler{
+//        @Override
+//        public void handleMessage(Message msg ){
+//
+//        }
+//    }
     private String format(String str){
         if(str.length()>2)
             return str.substring(1,str.length()-1);

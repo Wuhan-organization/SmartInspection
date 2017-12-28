@@ -31,8 +31,8 @@
     <application
         android:name=".application.SApplication"
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/main_app_name"
+        android:icon="@drawable/patrol"
+        android:label="@string/m_app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon, android:theme, android:label">
@@ -100,6 +100,7 @@
         <activity android:name=".activity.DefectHandleActivity"/>
         <activity android:name=".activity.tree_view.TreeTestActivity"/>
         <activity android:name=".activity.MaintenanceActivity"/>
+        <activity android:name=".activity.WorkingHelpActivity"/>
 
         <service android:name="cn.com.reformer.rfBleService.BleService" />
     </application>

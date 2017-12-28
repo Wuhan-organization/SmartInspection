@@ -12,6 +12,7 @@ import com.whut.greendao.gen.TaskItemDao;
 import com.whut.smartinspection.R;
 import com.whut.smartinspection.adapters.TaskPageListAdapter;
 import com.whut.smartinspection.application.SApplication;
+import com.whut.smartinspection.component.db.BaseDbComponent;
 import com.whut.smartinspection.model.PatrolTaskDetail;
 import com.whut.smartinspection.model.Sub;
 import com.whut.smartinspection.model.TaskItem;
@@ -85,12 +86,21 @@ public class WaitingTaskActivity extends SwipeBackActivity {
 
     }
     private void initData(){
-        TaskItemDao taskItemDao = SApplication.getInstance().getDaoSession().getTaskItemDao();
+//        TaskItemDao taskItemDao = SApplication.getInstance().getDaoSession().getTaskItemDao();
+        TaskItemDao taskItemDao = BaseDbComponent.getTaskItemDao();
         QueryBuilder<TaskItem> qb = taskItemDao.queryBuilder();
-        List<TaskItem> listTemp = qb.list();
+        List<TaskItem> listTemp = qb.build().list();
 //        PatrolTaskDetailDao patrolTaskDetail = SApplication.getInstance().getDaoSession().getPatrolTaskDetailDao();
 //        QueryBuilder<PatrolTaskDetail> qbPatrolTDetail = patrolTaskDetail.queryBuilder();
 
+//        while(listTemp.size()==0){
+//            try{
+//                Thread.sleep(500);
+//            }catch (Exception e){
+//
+//            }
+//            listTemp = qb.build().list();
+//        }
         for (int i= 0;i<listTemp.size();i++){
             TaskItem item = listTemp.get(i);
             if("0".equals(item.getTaskType())){
@@ -98,35 +108,34 @@ public class WaitingTaskActivity extends SwipeBackActivity {
                 item.setTaskIcon(R.drawable.bian_dian);
             }
             list.add(item);
-
         }
-        TaskItem item = new TaskItem();
-        item.setTaskType("0");
-        item.setWorker("范国柱");
-        item.setTaskTypeName("全面巡视");
-        item.setTaskIcon(R.drawable.bian_dian);
-        list.add(item);
+//        TaskItem item = new TaskItem();
+//        item.setTaskType("0");
+//        item.setWorker("范国柱");
+//        item.setTaskTypeName("全面巡视");
+//        item.setTaskIcon(R.drawable.bian_dian);
+//        list.add(item);
 
-        TaskItem item1 = new TaskItem();
-        item1.setTaskType("6");
-        item1.setWorker("范国柱");
-        item1.setTaskTypeName("倒闸操作");
-        item1.setTaskIcon(R.drawable.dao_zha);
-        list.add(item1);
-
-        TaskItem item2 = new TaskItem();
-        item2.setTaskType("7");
-        item2.setTaskTypeName("带电检测");
-        item2.setTaskIcon(R.drawable.patrol);
-        item2.setWorker("范国柱");
-        list.add(item2);
-
-        TaskItem item3 = new TaskItem();
-        item3.setTaskType("8");
-        item3.setTaskTypeName("运维");
-        item3.setWorker("范国柱");
-        item3.setTaskIcon(R.drawable.yun_wei);
-        list.add(item3);
+//        TaskItem item1 = new TaskItem();
+//        item1.setTaskType("6");
+//        item1.setWorker("范国柱");
+//        item1.setTaskTypeName("倒闸操作");
+//        item1.setTaskIcon(R.drawable.dao_zha);
+//        list.add(item1);
+//
+//        TaskItem item2 = new TaskItem();
+//        item2.setTaskType("7");
+//        item2.setTaskTypeName("带电检测");
+//        item2.setTaskIcon(R.drawable.patrol);
+//        item2.setWorker("范国柱");
+//        list.add(item2);
+//
+//        TaskItem item3 = new TaskItem();
+//        item3.setTaskType("8");
+//        item3.setTaskTypeName("运维");
+//        item3.setWorker("范国柱");
+//        item3.setTaskIcon(R.drawable.yun_wei);
+//        list.add(item3);
         taskPageListAdapter.notifyDataSetChanged();
     }
 }

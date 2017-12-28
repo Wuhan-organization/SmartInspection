@@ -2,6 +2,7 @@
 <com.whut.smartinspection.widgets.CustomToolBar
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ProgressWheel="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -22,8 +23,27 @@
             android:layout_width="match_parent"
             android:layout_height="666px" />
     </LinearLayout>
-        <LinearLayout
-            android:layout_marginTop="170dp"
+
+    <com.todddavies.components.progressbar.ProgressWheel
+        android:layout_marginTop="120dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/pw_spinner"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        ProgressWheel:pwText="正在分配任务..."
+        ProgressWheel:pwTextColor="#222"
+        ProgressWheel:pwTextSize="14sp"
+        ProgressWheel:pwRimColor="#330097D6"
+        ProgressWheel:pwBarLength="60dp"
+        ProgressWheel:pwBarColor="#0097D6"
+        ProgressWheel:pwBarWidth="5dp"
+        ProgressWheel:pwRimWidth="2dp" />
+
+    <LinearLayout
+            android:visibility="invisible"
+            android:id="@+id/ll_list"
+            android:layout_marginTop="90dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
@@ -36,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <ImageView
-                    android:layout_marginLeft="180dp"
+                    android:layout_marginLeft="90dp"
                     android:src="@drawable/excel_safe_cat"
                     android:layout_width="40dp"
                     android:layout_height="40dp" />
@@ -49,13 +69,13 @@
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/ll_help"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="90dp"
                 android:layout_below="@id/ll_my_task"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="40dp">
                 <ImageView
-                    android:layout_marginLeft="180dp"
+                    android:layout_marginLeft="90dp"
                     android:src="@drawable/wireless_door_ban1"
                     android:layout_width="40dp"
                     android:layout_height="40dp" />

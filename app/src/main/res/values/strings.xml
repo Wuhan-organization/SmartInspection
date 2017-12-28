@@ -1,7 +1,8 @@
 <resources>
-    <string name="main_app_name">江西变电</string>
+
+    <string name="main_app_name">智能巡检</string>
+    <string name="m_app_name">智能巡检</string>
     <string name="front">24sp</string>
-    <string name="app_name">bledemo</string>
     <string name="time">开门时间：</string>
     <string name="openning">开门中...</string>
     <string name="setting">设置密码中...</string>

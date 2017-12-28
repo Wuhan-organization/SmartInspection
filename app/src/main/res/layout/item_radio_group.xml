@@ -72,7 +72,7 @@
                 <TextView
                     android:gravity="right"
                     android:layout_marginLeft="10dp"
-                    android:id="@+id/first_part"
+                    android:id="@+id/fir_part"
                     android:layout_width="90dp"
                     android:layout_height="wrap_content" />
                 <EditText

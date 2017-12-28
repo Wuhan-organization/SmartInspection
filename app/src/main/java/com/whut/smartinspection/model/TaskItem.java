@@ -25,14 +25,12 @@ public class TaskItem  implements Serializable{
     private String taskType;//任务类型
     private String taskTypeName;//任务类型名称 eg.全面巡视
     private int taskIcon;//任务类型图标
+    private String common;//备注
 
-
-
-
-    @Generated(hash = 1063385986)
+    @Generated(hash = 874878458)
     public TaskItem(Long id, String idd, String worker, Date startDate,
             Date endDate, int status, String taskType, String taskTypeName,
-            int taskIcon) {
+            int taskIcon, String common) {
         this.id = id;
         this.idd = idd;
         this.worker = worker;
@@ -42,13 +40,20 @@ public class TaskItem  implements Serializable{
         this.taskType = taskType;
         this.taskTypeName = taskTypeName;
         this.taskIcon = taskIcon;
+        this.common = common;
     }
 
     @Generated(hash = 910645620)
     public TaskItem() {
     }
 
+    public String getCommon() {
+        return common;
+    }
 
+    public void setCommon(String common) {
+        this.common = common;
+    }
 
 
 //    private String substatioinName;//变电站名称

@@ -33,6 +33,7 @@ public class TaskItemDao extends AbstractDao<TaskItem, Long> {
         public final static Property TaskType = new Property(6, String.class, "taskType", false, "TASK_TYPE");
         public final static Property TaskTypeName = new Property(7, String.class, "taskTypeName", false, "TASK_TYPE_NAME");
         public final static Property TaskIcon = new Property(8, int.class, "taskIcon", false, "TASK_ICON");
+        public final static Property Common = new Property(9, String.class, "common", false, "COMMON");
     }
 
 
@@ -56,7 +57,8 @@ public class TaskItemDao extends AbstractDao<TaskItem, Long> {
                 "\"STATUS\" INTEGER NOT NULL ," + // 5: status
                 "\"TASK_TYPE\" TEXT," + // 6: taskType
                 "\"TASK_TYPE_NAME\" TEXT," + // 7: taskTypeName
-                "\"TASK_ICON\" INTEGER NOT NULL );"); // 8: taskIcon
+                "\"TASK_ICON\" INTEGER NOT NULL ," + // 8: taskIcon
+                "\"COMMON\" TEXT);"); // 9: common
     }
 
     /** Drops the underlying database table. */
@@ -105,6 +107,11 @@ public class TaskItemDao extends AbstractDao<TaskItem, Long> {
             stmt.bindString(8, taskTypeName);
         }
         stmt.bindLong(9, entity.getTaskIcon());
+ 
+        String common = entity.getCommon();
+        if (common != null) {
+            stmt.bindString(10, common);
+        }
     }
 
     @Override
@@ -147,6 +154,11 @@ public class TaskItemDao extends AbstractDao<TaskItem, Long> {
             stmt.bindString(8, taskTypeName);
         }
         stmt.bindLong(9, entity.getTaskIcon());
+ 
+        String common = entity.getCommon();
+        if (common != null) {
+            stmt.bindString(10, common);
+        }
     }
 
     @Override
@@ -165,7 +177,8 @@ public class TaskItemDao extends AbstractDao<TaskItem, Long> {
             cursor.getInt(offset + 5), // status
             cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // taskType
             cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // taskTypeName
-            cursor.getInt(offset + 8) // taskIcon
+            cursor.getInt(offset + 8), // taskIcon
+            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9) // common
         );
         return entity;
     }
@@ -181,6 +194,7 @@ public class TaskItemDao extends AbstractDao<TaskItem, Long> {
         entity.setTaskType(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
         entity.setTaskTypeName(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
         entity.setTaskIcon(cursor.getInt(offset + 8));
+        entity.setCommon(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
      }
     
     @Override

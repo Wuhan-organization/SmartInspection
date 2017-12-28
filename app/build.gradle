@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 apply plugin: 'org.greenrobot.greendao'
 
+
 //signingConfigs {
 //    myConfig {
 //        storeFilefile(RELEASE_STOREFILE)
@@ -39,7 +40,7 @@ android {
         }
     }
     greendao {
-        schemaVersion 20
+        schemaVersion 21
         daoPackage 'com.whut.greendao.gen'
         targetGenDir 'src/main/java'
     }
@@ -51,6 +52,7 @@ repositories {
     flatDir {
         dirs '../helmet/libs', 'libs'
     }
+    maven { url "https://jitpack.io" }
 }
 
 dependencies {
@@ -88,6 +90,8 @@ dependencies {
     apt 'com.jakewharton:butterknife-compiler:8.0.1'
     compile files('libs/rfBleService_V2.1.2.jar')
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+    //网络请求加载数据界面
+    compile 'com.github.Todd-Davies:ProgressWheel:1.2'
     //状态栏和标题栏一致
 }
 //compile 'com.wx.wheelview:wheelview:1.3.3'

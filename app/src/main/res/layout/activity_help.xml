@@ -29,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <ImageView
-                    android:layout_marginLeft="170dp"
+                    android:layout_marginLeft="80dp"
                     android:src="@drawable/excel_safe_cat"
                     android:layout_width="40dp"
                     android:layout_height="40dp" />
@@ -48,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <ImageView
-                    android:layout_marginLeft="170dp"
+                    android:layout_marginLeft="80dp"
                     android:src="@drawable/knowledge_center"
                     android:layout_width="40dp"
                     android:layout_height="40dp" />
@@ -67,7 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <ImageView
-                    android:layout_marginLeft="170dp"
+                    android:layout_marginLeft="80dp"
                     android:src="@drawable/wireless_door_ban1"
                     android:layout_width="40dp"
                     android:layout_height="40dp" />
@@ -79,6 +79,7 @@
                     android:layout_height="match_parent" />
             </LinearLayout>
             <LinearLayout
+                android:visibility="gone"
                 android:id="@+id/fouth"
                 android:layout_marginTop="80dp"
                 android:layout_below="@id/third"
@@ -86,7 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <ImageView
-                    android:layout_marginLeft="170dp"
+                    android:layout_marginLeft="80dp"
                     android:src="@drawable/wireless_door_ban1"
                     android:layout_width="40dp"
                     android:layout_height="40dp" />

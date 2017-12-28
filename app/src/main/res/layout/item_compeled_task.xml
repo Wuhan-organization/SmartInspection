@@ -43,7 +43,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="工作成员："
+                android:text="设备类型："
                 android:textSize="24sp" />
 
             <TextView

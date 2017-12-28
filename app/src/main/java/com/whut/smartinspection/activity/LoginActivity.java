@@ -1,15 +1,19 @@
 package com.whut.smartinspection.activity;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.whut.greendao.gen.TaskItemDao;
 import com.whut.smartinspection.R;
 import com.whut.smartinspection.application.SApplication;
+import com.whut.smartinspection.component.db.BaseDbComponent;
 import com.whut.smartinspection.component.handler.EMsgType;
 import com.whut.smartinspection.component.handler.IHandlerListener;
 import com.whut.smartinspection.component.http.UserComponent;
@@ -40,12 +44,20 @@ public class LoginActivity extends SwipeBackActivity implements IHandlerListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+        //删除任务列表
+        TaskItemDao taskItemDao = BaseDbComponent.getTaskItemDao();
+        taskItemDao.deleteAll();
+
         SharedPreferences sp = this.getSharedPreferences("userInfo", Context.MODE_WORLD_READABLE);
         String username = sp.getString("USERNAME","");
         String password = sp.getString("PASSWORD","");
         etLoginUsername.setText("li");
         etLoginPassword.setText("123456");
-        login();
+
+        if(SApplication.getSessionID()!=null && !"".equals(SApplication.getSessionID())){
+            Intent intent = new Intent(this, HomePageActivity.class);
+            startActivity(intent);
+        }
     }
 
     @OnClick({R.id.btn_login_user_login, R.id.btn_login_reset, R.id.btn_login_user_exit})
@@ -54,8 +66,6 @@ public class LoginActivity extends SwipeBackActivity implements IHandlerListener
             // 登录
             case R.id.btn_login_user_login:
                 login();
-//                Intent intent = new Intent(this, HomePageActivity.class);
-//                startActivity(intent);
                 break;
             case R.id.btn_login_reset:
                 etLoginPassword.setText("");
