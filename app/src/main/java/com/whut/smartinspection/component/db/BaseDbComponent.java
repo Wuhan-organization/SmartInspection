@@ -1,7 +1,11 @@
 package com.whut.smartinspection.component.db;
 
+import com.whut.greendao.gen.PerPatrolCardDao;
+import com.whut.greendao.gen.RecordDao;
 import com.whut.greendao.gen.TaskItemDao;
+import com.whut.greendao.gen.WholePatrolCardDao;
 import com.whut.smartinspection.application.SApplication;
+import com.whut.smartinspection.model.WholePatrolCard;
 
 /***
  * @author xiongbin
@@ -22,7 +26,17 @@ public class BaseDbComponent {
 //
 //	}
     public static TaskItemDao taskItemDao = SApplication.getInstance().getDaoSession().getTaskItemDao();
+    public static WholePatrolCardDao wholePatrolCardDao = SApplication.getInstance().getDaoSession().getWholePatrolCardDao();
+    public static PerPatrolCardDao perPatrolCardDao = SApplication.getInstance().getDaoSession().getPerPatrolCardDao();
+    public static RecordDao recordDao = SApplication.getInstance().getDaoSession().getRecordDao();
+
     public static TaskItemDao getTaskItemDao(){
         return taskItemDao;
+    }
+    public static void deleteData(){
+        taskItemDao.deleteAll();
+        wholePatrolCardDao.deleteAll();
+        perPatrolCardDao.deleteAll();
+        recordDao.deleteAll();
     }
 }

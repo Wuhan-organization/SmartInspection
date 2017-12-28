@@ -1,14 +1,17 @@
 package com.whut.smartinspection.services;
 
 import android.app.Service;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
@@ -16,6 +19,7 @@ import android.os.Message;
 import android.os.Vibrator;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
@@ -29,9 +33,13 @@ import com.whut.greendao.gen.IntervalUnitDao;
 import com.whut.greendao.gen.PatrolContentDao;
 import com.whut.greendao.gen.PatrolTaskDetailDao;
 import com.whut.greendao.gen.PatrolWorkCardDao;
+import com.whut.greendao.gen.PerPatrolCardDao;
+import com.whut.greendao.gen.RecordDao;
 import com.whut.greendao.gen.SubDao;
 import com.whut.greendao.gen.TaskItemDao;
+import com.whut.greendao.gen.WholePatrolCardDao;
 import com.whut.smartinspection.R;
+import com.whut.smartinspection.activity.HomePageActivity;
 import com.whut.smartinspection.activity.MyTaskActivity;
 import com.whut.smartinspection.application.SApplication;
 import com.whut.smartinspection.component.db.BaseDbComponent;
@@ -47,8 +55,11 @@ import com.whut.smartinspection.model.IntervalUnit;
 import com.whut.smartinspection.model.PatrolContent;
 import com.whut.smartinspection.model.PatrolTaskDetail;
 import com.whut.smartinspection.model.PatrolWorkCard;
+import com.whut.smartinspection.model.PerPatrolCard;
+import com.whut.smartinspection.model.Record;
 import com.whut.smartinspection.model.Sub;
 import com.whut.smartinspection.model.TaskItem;
+import com.whut.smartinspection.model.WholePatrolCard;
 import com.whut.smartinspection.utils.SystemUtils;
 
 import org.greenrobot.greendao.query.QueryBuilder;
@@ -134,18 +145,57 @@ public class HttpService extends Service implements ITaskHandlerListener,IDetail
         Log.w(TAG, "in onStartCommand");
         //从服务器获取数据到本地数据库
         TaskComponent.getSubstationList(HttpService.this,0);
+        //注册广播接收器(FullInspectionActivity-->HttpService)
+        FullActivityReceiver receiver=new HttpService.FullActivityReceiver();
+        IntentFilter filter=new IntentFilter();
+        filter.addAction("com.whut.smartinspection.activity.FullInspectionActivity");
+        HttpService.this.registerReceiver(receiver,filter);
         return START_STICKY;
     }
+    /**
+     * 获取广播数据
+     *接收来自FullInspectionActivity的广播
+     * @author jiqinlin
+     *
+     */
+    public class FullActivityReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Bundle bundle=intent.getExtras();
+            String count=bundle.getString("flag");
+            if("1".equals(count)){ //将本地数据库的巡视记录提交到服务器
+                //查询一个设备的巡视项目
+                    PerPatrolCardDao perPatrolCardDao = SApplication.getInstance().getDaoSession().getPerPatrolCardDao();
+                    QueryBuilder<PerPatrolCard> qbPer = perPatrolCardDao.queryBuilder();
+                    List<PerPatrolCard> lll = qbPer.list();
+                    List<PerPatrolCard> perPatrolCardList = qbPer.list();
+                    RecordDao recordDao = SApplication.getInstance().getDaoSession().getRecordDao();
+                    for(PerPatrolCard temp : perPatrolCardList){
+                        Long id = temp.getId();
+                        QueryBuilder<Record> qbRecord = recordDao.queryBuilder();
+                        List<Record> records = null;
+                        if(id!=null) {
+                            records = qbRecord.where(RecordDao.Properties.Fid.eq(id)).list();
+                        }
+                        temp.setRecords(records);
+                        //按设备来提交（一个设备提交一次)
+                        String resultPerPatrolCard = temp.toString();
+                        TaskComponent.commitDetialTask(HttpService.this,resultPerPatrolCard);
 
+                        temp.setFlag(true);//标注已提交过
+                        perPatrolCardDao.insertOrReplace(temp);
+                    }
+            }
+        }
+    }
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.w(TAG, "in onDestroy");
     }
 
     @Override
     public void onDetialSuccess(Object obj, EMsgType type, int flag,String id) {
-        if(flag == 1) {//获取巡视任务详细内容
+        if(flag == 1) {//获取巡视任务对应的详细内容
             JsonObject jsonObject = new JsonParser().parse((String) obj).getAsJsonObject();
             JsonArray jsonArray = jsonObject.getAsJsonArray("data");
             PatrolTaskDetailDao patrolTaskDetailDao = SApplication.getInstance().getDaoSession().getPatrolTaskDetailDao();
@@ -399,20 +449,19 @@ public class HttpService extends Service implements ITaskHandlerListener,IDetail
                     TaskComponent.getDetialPatrolTask(HttpService.this,format(id),format(id));//根据任务ID查询任务详情
                 }
             }
-            Log.i("httpServiceSuc", "onTaskSuccess: "+jsonObject.toString());
             //发消息给HomePageActivity
             Intent intent = new Intent();
             intent.putExtra("flag","1");
             intent.setAction("com.whut.smartinspection.services.HttpService");
             sendBroadcast(intent);
         }
+        if(flag == 11){//提交巡视项目回调
+            JsonObject jsonObject = new JsonParser().parse((String)obj).getAsJsonObject();
+            String s = jsonObject.toString();
+            Log.i(TAG, "onTaskSuccess: "+s);
+        }
     }
-//    private class NoticeHandler extends Handler{
-//        @Override
-//        public void handleMessage(Message msg ){
-//
-//        }
-//    }
+
     private String format(String str){
         if(str.length()>2)
             return str.substring(1,str.length()-1);

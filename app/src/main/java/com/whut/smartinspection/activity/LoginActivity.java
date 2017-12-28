@@ -45,8 +45,7 @@ public class LoginActivity extends SwipeBackActivity implements IHandlerListener
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
         //删除任务列表
-        TaskItemDao taskItemDao = BaseDbComponent.getTaskItemDao();
-        taskItemDao.deleteAll();
+        BaseDbComponent.deleteData();
 
         SharedPreferences sp = this.getSharedPreferences("userInfo", Context.MODE_WORLD_READABLE);
         String username = sp.getString("USERNAME","");

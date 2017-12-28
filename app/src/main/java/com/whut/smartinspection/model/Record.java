@@ -27,6 +27,27 @@ public class Record {
 
     private Long fid;//用于标识外键关系
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("{");
+        sb.append("\"id\":\"")
+                .append(idd).append('\"');
+        sb.append(",\"valueChar\":\"")
+                .append(valueChar).append('\"');
+        sb.append(",\"valueFloat\":\"")
+                .append(valueFloat).append("\"");
+        sb.append(",\"valueString\":\"")
+                .append(valueString).append('\"');
+        sb.append(",\"patrolRecordDate\":\"")
+                .append(patrolRecordDate).append("\"");
+        sb.append(",\"deviceId\":\"")
+                .append(deviceId).append('\"');
+        sb.append(",\"patrolContentId\":\"")
+                .append(patrolContentId).append('\"');
+        sb.append('}');
+        return sb.toString();
+    }
+
     @Generated(hash = 426103613)
     public Record(Long id, String idd, String valueChar, float valueFloat,
             String valueString, long patrolRecordDate, String deviceId,

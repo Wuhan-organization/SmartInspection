@@ -314,7 +314,7 @@ public class TaskComponent extends BaseHttpComponent {
             public void onResponse(String response, int id) {
                 CustomParser.ResponseObject ro = CustomParser.parse(response);
                 if (ro.getCode() == 200) {
-                    listener.onTaskSuccess(ro.getMsg(), EMsgType.LOGIN_SUCCESS,1);
+                    listener.onTaskSuccess(ro.getMsg(), EMsgType.LOGIN_SUCCESS,11);
                 } else {
                     listener.onTaskFailure(ro.getMsg(), EMsgType.LOGIN_FAILURE);
                 }

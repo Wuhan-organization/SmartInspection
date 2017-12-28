@@ -171,7 +171,7 @@ public class FullInspectionActivity extends Activity implements ITaskHandlerList
     private Map<Integer,PatrolContent> pcList = new HashMap<>();
     private Map<Integer,PatrolContent> signPatrol = new HashMap<>();
     private Map<String,Long> deviceIdMapInerId = new HashMap<>();
-    private String patrolHeadPageId ;//首页ID
+//    private String patrolHeadPageId ;//首页ID
     private String patrolContentId ;//巡视作业卡名字ID
     private String deviceId ;//设备名称ID
     private String deviceName;//设备名称
@@ -179,15 +179,18 @@ public class FullInspectionActivity extends Activity implements ITaskHandlerList
     private int deviceTypeIddI;//item设备类型ID
     private String deviceTypeNameI;//item设备类型名称
     private TaskItem item;//传过来的任务item
-    private String patrolNameId;
+//    private String patrolNameId;
     private String taskId;
     private List<String> patrolNameIDList = new ArrayList<>();
     private List<String> patrolHeadPageIDList = new ArrayList<>();
+    private int pointDeviceType = 0;
     private PerPatrolCard perPatrolCard = null;
-    private Long wholeId;
     private List<Device> deviceList;
     private int devicePoint = 0;
     private WholePatrolCard wholePatrolCard;
+    Long wholeId = null;
+    String patrolNameId;
+    String patrolHeadPageId;
     public FullInspectionActivity(){
         gestureDetector = new GestureDetector(this);
     }
@@ -216,21 +219,20 @@ public class FullInspectionActivity extends Activity implements ITaskHandlerList
             String tpatrolHeadPageId = temp.getPatrolHeadPageId();
             patrolHeadPageIDList.add(tpatrolHeadPageId);
         }
-
-        //插入一个巡视作业卡
-        WholePatrolCard wholePatrolCard = new WholePatrolCard(null,patrolHeadPageId);
-        WholePatrolCardDao wholePatrolCardDao = SApplication.getInstance().getDaoSession().getWholePatrolCardDao();
-        wholePatrolCardDao.insertOrReplace(wholePatrolCard);
-        wholeId = wholePatrolCard.getId();
-
-        initData();
         initView();
-        initTabView();
+        patrolPerDeviceType();
+//        initTabView();
     }
-    private void patrolPerDeviceType(String patrolNameId){
-
-    }
-    private void initData(){
+    private void patrolPerDeviceType(){
+        map.clear();//清空数据
+        pcList.clear();
+        radioFlag.clear();
+        radioMap.clear();
+        radioMap1.clear();
+        deviceNameList.clear();
+        patrolConResList.clear();
+        deviceTypeNameList.clear();
+        intervalUnitList.clear();
         //间隔名称
         IntervalUnitDao intervalUnitDao = SApplication.getInstance().getDaoSession().getIntervalUnitDao();
         QueryBuilder<IntervalUnit> qbIU = intervalUnitDao.queryBuilder();
@@ -238,20 +240,16 @@ public class FullInspectionActivity extends Activity implements ITaskHandlerList
         for (IntervalUnit iu   :listIU ) {
             intervalUnitList.add(iu.getName());
         }
-    }
-    private void initView(){
-//        OverScrollDecoratorHelper.setUpOverScroll(scrollView);//滑动样式
-        gestureDetector.setIsLongpressEnabled(true);//左右滑
-        rlGestrue.setOnTouchListener(this);
-        rlGestrue.setLongClickable(true);
-        deviceTypeName.setText(deviceTypeNameI);
 
+        //1.插入一个巡视作业卡
+        WholePatrolCard wholePatrolCard = new WholePatrolCard(null,patrolHeadPageId,false);
+        WholePatrolCardDao wholePatrolCardDao = SApplication.getInstance().getDaoSession().getWholePatrolCardDao();
+        wholePatrolCardDao.insertOrReplace(wholePatrolCard);
+        wholeId = wholePatrolCard.getId();
         //巡视作业卡片内容
-        map.clear();
         PatrolContentDao patrolContentDao = SApplication.getInstance().getDaoSession().getPatrolContentDao();
         QueryBuilder<PatrolContent> qbPC = patrolContentDao.queryBuilder();
         List<PatrolContent> listPC = qbPC.where(PatrolContentDao.Properties.PatrolNameId.eq(patrolNameId)).list();
-
         for (PatrolContent dt  :listPC ) {
             int no = dt.getNo();
             if(!pcList.containsKey(no)){
@@ -336,6 +334,12 @@ public class FullInspectionActivity extends Activity implements ITaskHandlerList
                 deviceTypeName.setText(deviceTypeNameI);
             }
         });
+    }
+    private void initView(){
+//        OverScrollDecoratorHelper.setUpOverScroll(scrollView);//滑动样式
+        gestureDetector.setIsLongpressEnabled(true);//左右滑
+        rlGestrue.setOnTouchListener(this);
+        rlGestrue.setLongClickable(true);
     }
 
     public void initTabView(){
@@ -480,7 +484,7 @@ public class FullInspectionActivity extends Activity implements ITaskHandlerList
             patrolConResList.add(record);
         }
         perPatrolCard.setRecords(patrolConResList);
-        perPatrolCard.setDeviceId(patrolHeadPageId);
+//        perPatrolCard.setDeviceId(patrolHeadPageId);
         String sTemp = perPatrolCard.toString();
         TaskComponent.commitDetialTask(FullInspectionActivity.this,sTemp);
 
@@ -490,36 +494,13 @@ public class FullInspectionActivity extends Activity implements ITaskHandlerList
         super.onPause();
         //退出界面时发起提交服务
         insertData();
-//       //查询对应任务的巡视首页实体
-//        WholePatrolCardDao wholePatrolCardDao = SApplication.getInstance().getDaoSession().getWholePatrolCardDao();
-//        QueryBuilder<WholePatrolCard> dbWhole = wholePatrolCardDao.queryBuilder();
-//        List<WholePatrolCard> wholeList = dbWhole.where(WholePatrolCardDao.Properties.PatrolHeadPageId.eq(patrolHeadPageId)).list();
-//        Long wholeID
-        //查询一个设备的巡视项目
-//        PerPatrolCardDao perPatrolCardDao = SApplication.getInstance().getDaoSession().getPerPatrolCardDao();
-//        QueryBuilder<PerPatrolCard> qbPer = perPatrolCardDao.queryBuilder();
-//        List<PerPatrolCard> lll = qbPer.list();
-//        List<PerPatrolCard> l = qbPer.where(PerPatrolCardDao.Properties.Fid.eq(wholeId)).list();
-//        RecordDao recordDao = SApplication.getInstance().getDaoSession().getRecordDao();
-//        for(PerPatrolCard temp : l){
-//            Long id = temp.getId();
-//            QueryBuilder<Record> qbRecord = recordDao.queryBuilder();
-//            List<Record> records = null;
-//            if(id!=null) {
-//                records = qbRecord.where(RecordDao.Properties.Fid.eq(id)).list();
-//            }
-//            temp.setRecords(records);
-//        }
-//        wholePatrolCard.setPerPatrolCardList(l);
-//        String resultWhole = wholePatrolCard.toString();
-//        Log.i("onPause", "onPause: "+resultWhole);
     }
     public void insertData(){
         //插入一个设备的巡视记录结果
         PerPatrolCardDao perPatrolCardDao = SApplication.getInstance().getDaoSession().getPerPatrolCardDao();
         Long perInsertId = null ;
         if(!deviceIdMapInerId.containsKey(deviceId)){//生成id
-            perPatrolCard = new PerPatrolCard(null,deviceId,false,wholeId);
+            perPatrolCard = new PerPatrolCard(null,deviceId,false,wholeId,patrolHeadPageId);
             perPatrolCardDao.insertOrReplace(perPatrolCard);
             deviceIdMapInerId.put(deviceId,perPatrolCard.getId());
             perInsertId = perPatrolCard.getId();
@@ -589,17 +570,22 @@ public class FullInspectionActivity extends Activity implements ITaskHandlerList
             }
             recordDao.insertOrReplace(record);
         }
+        //发消息给HomePageActivity
+        Intent intent = new Intent();
+        intent.putExtra("flag","1");
+        intent.setAction("com.whut.smartinspection.activity.FullInspectionActivity");
+        sendBroadcast(intent);
     }
     @Override
     public void onTaskSuccess(Object obj, EMsgType type, int flag) {
         if(flag == 1){
             SystemUtils.showToast(FullInspectionActivity.this,"提交已成功到服务器！");
         }
-        if(flag == 8) {//获取全部巡视作业卡名称
-            JsonObject jsonObject = new JsonParser().parse((String) obj).getAsJsonObject();
-            String str = jsonObject.get("msg").toString();
-            patrolHeadPageId = str.substring(1,str.length()-1);
-        }
+//        if(flag == 8) {//获取全部巡视作业卡名称
+//            JsonObject jsonObject = new JsonParser().parse((String) obj).getAsJsonObject();
+//            String str = jsonObject.get("msg").toString();
+//            patrolHeadPageId = str.substring(1,str.length()-1);
+//        }
     }
 
     @Override
@@ -794,10 +780,20 @@ public class FullInspectionActivity extends Activity implements ITaskHandlerList
                         }
                     });
                 }else{
-                    devicePoint = deviceList.size()-1;
-                    point = map.size();
-                    insertData();
-                    SystemUtils.showToast(getApplicationContext(),"巡视完成");
+                    pointDeviceType ++;
+                    if(pointDeviceType<patrolNameIDList.size()){
+                        patrolNameId = patrolNameIDList.get(pointDeviceType);
+                        patrolHeadPageId = patrolHeadPageIDList.get(pointDeviceType);
+                        patrolPerDeviceType();
+                        devicePoint = 0;
+                        point = 1;
+                        insertData();
+                    }else {
+                        devicePoint = deviceList.size() - 1;
+                        point = map.size();
+                        insertData();
+                        SystemUtils.showToast(getApplicationContext(),"巡视完成");
+                    }
                 }
             }
         }

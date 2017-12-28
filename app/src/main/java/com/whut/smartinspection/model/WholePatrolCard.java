@@ -25,6 +25,19 @@ public class WholePatrolCard {
     @ToMany(referencedJoinProperty = "fid")
     private List<PerPatrolCard> perPatrolCardList;
 
+    private boolean flag ;//标记是否提交到服务器
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("{");
+        sb.append("\"patrolHeadPageId\":\"")
+                .append(patrolHeadPageId).append('\"');
+        sb.append(",\"perPatrolCardList\":")
+                .append(perPatrolCardList);
+        sb.append('}');
+        return sb.toString();
+    }
+
     /** Used to resolve relations */
     @Generated(hash = 2040040024)
     private transient DaoSession daoSession;
@@ -33,10 +46,11 @@ public class WholePatrolCard {
     @Generated(hash = 297373125)
     private transient WholePatrolCardDao myDao;
 
-    @Generated(hash = 786956462)
-    public WholePatrolCard(Long id, String patrolHeadPageId) {
+    @Generated(hash = 1785942662)
+    public WholePatrolCard(Long id, String patrolHeadPageId, boolean flag) {
         this.id = id;
         this.patrolHeadPageId = patrolHeadPageId;
+        this.flag = flag;
     }
 
     @Generated(hash = 1369273149)
@@ -66,6 +80,18 @@ public class WholePatrolCard {
 
     public void setPerPatrolCardList(List<PerPatrolCard> perPatrolCardList) {
         this.perPatrolCardList = perPatrolCardList;
+    }
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
+
+    public boolean getFlag() {
+        return this.flag;
     }
 
     /** Resets a to-many relationship, making the next get call to query for a fresh result. */

@@ -31,6 +31,7 @@ public class PerPatrolCardDao extends AbstractDao<PerPatrolCard, Long> {
         public final static Property DeviceId = new Property(1, String.class, "deviceId", false, "DEVICE_ID");
         public final static Property Flag = new Property(2, boolean.class, "flag", false, "FLAG");
         public final static Property Fid = new Property(3, Long.class, "fid", false, "FID");
+        public final static Property PatrolHeadPageId = new Property(4, String.class, "patrolHeadPageId", false, "PATROL_HEAD_PAGE_ID");
     }
 
     private DaoSession daoSession;
@@ -53,7 +54,8 @@ public class PerPatrolCardDao extends AbstractDao<PerPatrolCard, Long> {
                 "\"id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "\"DEVICE_ID\" TEXT," + // 1: deviceId
                 "\"FLAG\" INTEGER NOT NULL ," + // 2: flag
-                "\"FID\" INTEGER);"); // 3: fid
+                "\"FID\" INTEGER," + // 3: fid
+                "\"PATROL_HEAD_PAGE_ID\" TEXT);"); // 4: patrolHeadPageId
     }
 
     /** Drops the underlying database table. */
@@ -81,6 +83,11 @@ public class PerPatrolCardDao extends AbstractDao<PerPatrolCard, Long> {
         if (fid != null) {
             stmt.bindLong(4, fid);
         }
+ 
+        String patrolHeadPageId = entity.getPatrolHeadPageId();
+        if (patrolHeadPageId != null) {
+            stmt.bindString(5, patrolHeadPageId);
+        }
     }
 
     @Override
@@ -102,6 +109,11 @@ public class PerPatrolCardDao extends AbstractDao<PerPatrolCard, Long> {
         if (fid != null) {
             stmt.bindLong(4, fid);
         }
+ 
+        String patrolHeadPageId = entity.getPatrolHeadPageId();
+        if (patrolHeadPageId != null) {
+            stmt.bindString(5, patrolHeadPageId);
+        }
     }
 
     @Override
@@ -121,7 +133,8 @@ public class PerPatrolCardDao extends AbstractDao<PerPatrolCard, Long> {
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // deviceId
             cursor.getShort(offset + 2) != 0, // flag
-            cursor.isNull(offset + 3) ? null : cursor.getLong(offset + 3) // fid
+            cursor.isNull(offset + 3) ? null : cursor.getLong(offset + 3), // fid
+            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4) // patrolHeadPageId
         );
         return entity;
     }
@@ -132,6 +145,7 @@ public class PerPatrolCardDao extends AbstractDao<PerPatrolCard, Long> {
         entity.setDeviceId(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setFlag(cursor.getShort(offset + 2) != 0);
         entity.setFid(cursor.isNull(offset + 3) ? null : cursor.getLong(offset + 3));
+        entity.setPatrolHeadPageId(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
      }
     
     @Override

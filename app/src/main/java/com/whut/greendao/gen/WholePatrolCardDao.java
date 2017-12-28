@@ -26,6 +26,7 @@ public class WholePatrolCardDao extends AbstractDao<WholePatrolCard, Long> {
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property PatrolHeadPageId = new Property(1, String.class, "patrolHeadPageId", false, "PATROL_HEAD_PAGE_ID");
+        public final static Property Flag = new Property(2, boolean.class, "flag", false, "FLAG");
     }
 
     private DaoSession daoSession;
@@ -45,7 +46,8 @@ public class WholePatrolCardDao extends AbstractDao<WholePatrolCard, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"WHOLE_PATROL_CARD\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
-                "\"PATROL_HEAD_PAGE_ID\" TEXT);"); // 1: patrolHeadPageId
+                "\"PATROL_HEAD_PAGE_ID\" TEXT," + // 1: patrolHeadPageId
+                "\"FLAG\" INTEGER NOT NULL );"); // 2: flag
     }
 
     /** Drops the underlying database table. */
@@ -67,6 +69,7 @@ public class WholePatrolCardDao extends AbstractDao<WholePatrolCard, Long> {
         if (patrolHeadPageId != null) {
             stmt.bindString(2, patrolHeadPageId);
         }
+        stmt.bindLong(3, entity.getFlag() ? 1L: 0L);
     }
 
     @Override
@@ -82,6 +85,7 @@ public class WholePatrolCardDao extends AbstractDao<WholePatrolCard, Long> {
         if (patrolHeadPageId != null) {
             stmt.bindString(2, patrolHeadPageId);
         }
+        stmt.bindLong(3, entity.getFlag() ? 1L: 0L);
     }
 
     @Override
@@ -99,7 +103,8 @@ public class WholePatrolCardDao extends AbstractDao<WholePatrolCard, Long> {
     public WholePatrolCard readEntity(Cursor cursor, int offset) {
         WholePatrolCard entity = new WholePatrolCard( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
-            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1) // patrolHeadPageId
+            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // patrolHeadPageId
+            cursor.getShort(offset + 2) != 0 // flag
         );
         return entity;
     }
@@ -108,6 +113,7 @@ public class WholePatrolCardDao extends AbstractDao<WholePatrolCard, Long> {
     public void readEntity(Cursor cursor, WholePatrolCard entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setPatrolHeadPageId(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
+        entity.setFlag(cursor.getShort(offset + 2) != 0);
      }
     
     @Override

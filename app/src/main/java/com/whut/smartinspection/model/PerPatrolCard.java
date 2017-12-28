@@ -32,6 +32,8 @@ public class PerPatrolCard {
 
     private Long fid;//外键
 
+    private String patrolHeadPageId;
+
     /** Used to resolve relations */
     @Generated(hash = 2040040024)
     private transient DaoSession daoSession;
@@ -40,16 +42,37 @@ public class PerPatrolCard {
     @Generated(hash = 2096211651)
     private transient PerPatrolCardDao myDao;
 
-    @Generated(hash = 2124331736)
-    public PerPatrolCard(Long id, String deviceId, boolean flag, Long fid) {
+    @Generated(hash = 2083541088)
+    public PerPatrolCard(Long id, String deviceId, boolean flag, Long fid,
+            String patrolHeadPageId) {
         this.id = id;
         this.deviceId = deviceId;
         this.flag = flag;
         this.fid = fid;
+        this.patrolHeadPageId = patrolHeadPageId;
     }
 
     @Generated(hash = 1716305057)
     public PerPatrolCard() {
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("{");
+        sb.append("\"records\":")
+                .append(records);
+        sb.append(",\"patrolHeadPageId\":\"")
+                .append(patrolHeadPageId).append('\"');
+        sb.append('}');
+        return sb.toString();
+    }
+
+    public String getPatrolHeadPageId() {
+        return patrolHeadPageId;
+    }
+
+    public void setPatrolHeadPageId(String patrolHeadPageId) {
+        this.patrolHeadPageId = patrolHeadPageId;
     }
 
     public Long getFid() {
@@ -144,4 +167,5 @@ public class PerPatrolCard {
         this.daoSession = daoSession;
         myDao = daoSession != null ? daoSession.getPerPatrolCardDao() : null;
     }
+
 }

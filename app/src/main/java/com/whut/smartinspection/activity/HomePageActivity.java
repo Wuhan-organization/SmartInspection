@@ -53,10 +53,10 @@ public class HomePageActivity extends SwipeBackActivity {
 //        ProgressWheel pw = new ProgressWheel(HomePageActivity.this, myAttributes);
         pw = (ProgressWheel) findViewById(R.id.pw_spinner);
         pw.startSpinning();
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
-        Log.i("onCreate", "onCreate: "+dm.heightPixels);
-        Log.i("onCreate", "onCreate: "+dm.widthPixels);
+//        DisplayMetrics dm = new DisplayMetrics();
+//        getWindowManager().getDefaultDisplay().getMetrics(dm);
+//        Log.i("onCreate", "onCreate: "+dm.heightPixels);
+//        Log.i("onCreate", "onCreate: "+dm.widthPixels);
         Intent serviceIntent = new Intent(HomePageActivity.this, HttpService.class);
         startService(serviceIntent); //启动后台服务
         //注册广播接收器
