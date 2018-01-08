@@ -58,7 +58,7 @@ public class WaitingTaskActivity extends SwipeBackActivity {
                 TaskItem item  = (TaskItem) tpl.getItem(i);
                 switch (Integer.parseInt(item.getTaskType())){
                     case 0://全面巡视
-                        intent = new Intent(WaitingTaskActivity.this,FullInspectionActivity.class);
+                        intent = new Intent(WaitingTaskActivity.this,FullInspectActivity.class);
                         intent.putExtra("item",item);
                         startActivity(intent);
                         break;
@@ -99,7 +99,7 @@ public class WaitingTaskActivity extends SwipeBackActivity {
 //            }catch (Exception e){
 //
 //            }
-//            listTemp = qb.build().list();
+//            listTemp = qbRecord.build().list();
 //        }
         for (int i= 0;i<listTemp.size();i++){
             TaskItem item = listTemp.get(i);

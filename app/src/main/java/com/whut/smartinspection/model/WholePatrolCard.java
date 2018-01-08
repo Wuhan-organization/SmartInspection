@@ -11,6 +11,7 @@ import org.greenrobot.greendao.DaoException;
 import com.whut.greendao.gen.DaoSession;
 import com.whut.greendao.gen.PerPatrolCardDao;
 import com.whut.greendao.gen.WholePatrolCardDao;
+import com.whut.greendao.gen.RecordDao;
 
 /**
  * Created by Fortuner on 2017/12/25.
@@ -23,20 +24,9 @@ public class WholePatrolCard {
     private String patrolHeadPageId;
 
     @ToMany(referencedJoinProperty = "fid")
-    private List<PerPatrolCard> perPatrolCardList;
+    private List<Record> records;
 
     private boolean flag ;//标记是否提交到服务器
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("{");
-        sb.append("\"patrolHeadPageId\":\"")
-                .append(patrolHeadPageId).append('\"');
-        sb.append(",\"perPatrolCardList\":")
-                .append(perPatrolCardList);
-        sb.append('}');
-        return sb.toString();
-    }
 
     /** Used to resolve relations */
     @Generated(hash = 2040040024)
@@ -72,14 +62,12 @@ public class WholePatrolCard {
     public void setPatrolHeadPageId(String patrolHeadPageId) {
         this.patrolHeadPageId = patrolHeadPageId;
     }
-
     @Keep
-    public List<PerPatrolCard> getPerPatrolCardList() {
-        return perPatrolCardList;
+    public List<Record> getRecords() {
+        return records;
     }
-
-    public void setPerPatrolCardList(List<PerPatrolCard> perPatrolCardList) {
-        this.perPatrolCardList = perPatrolCardList;
+    public void setRecords(List<Record> records) {
+        this.records = records;
     }
 
     public boolean isFlag() {
@@ -90,14 +78,25 @@ public class WholePatrolCard {
         this.flag = flag;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("{");
+        sb.append("\"patrolHeadPageId\":\"")
+                .append(patrolHeadPageId).append('\"');
+        sb.append(",\"records\":")
+                .append(records);
+        sb.append('}');
+        return sb.toString();
+    }
+
     public boolean getFlag() {
         return this.flag;
     }
 
     /** Resets a to-many relationship, making the next get call to query for a fresh result. */
-    @Generated(hash = 1358819915)
-    public synchronized void resetPerPatrolCardList() {
-        perPatrolCardList = null;
+    @Generated(hash = 3024737)
+    public synchronized void resetRecords() {
+        records = null;
     }
 
     /**

@@ -20,7 +20,7 @@ import com.whut.greendao.gen.PerPatrolCardDao;
 @Entity
 public class PerPatrolCard {
     @Property(nameInDb = "id")
-    @Id(autoincrement = true)
+    @Id()
     private Long id;
 
     @ToMany(referencedJoinProperty = "fid")

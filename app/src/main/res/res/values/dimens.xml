@@ -7,4 +7,6 @@
     <dimen name="header_footer_left_right_padding">24dp</dimen>
     <dimen name="header_footer_top_bottom_padding">12dp</dimen>
 
+    <dimen name="full_inspect_activity_li">24dp</dimen>
+    <dimen name="full_inspect_activity_radioBtn">40dp</dimen>
 </resources>

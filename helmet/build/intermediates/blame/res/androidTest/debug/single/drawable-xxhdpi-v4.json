@@ -156,12 +156,12 @@
         "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable-xxhdpi-v4\\abc_ic_menu_selectall_mtrl_alpha.png"
     },
     {
-        "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\abc_list_selector_disabled_holo_dark.9.png",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable-xxhdpi-v4\\abc_list_selector_disabled_holo_dark.9.png"
-    },
-    {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png",
         "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable-xxhdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\abc_list_selector_disabled_holo_dark.9.png",
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable-xxhdpi-v4\\abc_list_selector_disabled_holo_dark.9.png"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\abc_ic_star_black_36dp.png",

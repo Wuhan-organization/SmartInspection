@@ -30,6 +30,7 @@ public class PersonDao extends AbstractDao<Person, Long> {
         public final static Property PhoneNumber = new Property(3, String.class, "phoneNumber", false, "PHONE_NUMBER");
         public final static Property Password = new Property(4, String.class, "password", false, "PASSWORD");
         public final static Property SessionId = new Property(5, String.class, "sessionId", false, "SESSION_ID");
+        public final static Property IsInitTaskDetail = new Property(6, boolean.class, "isInitTaskDetail", false, "IS_INIT_TASK_DETAIL");
     }
 
 
@@ -50,7 +51,8 @@ public class PersonDao extends AbstractDao<Person, Long> {
                 "\"AGE\" INTEGER NOT NULL ," + // 2: age
                 "\"PHONE_NUMBER\" TEXT," + // 3: phoneNumber
                 "\"PASSWORD\" TEXT," + // 4: password
-                "\"SESSION_ID\" TEXT);"); // 5: sessionId
+                "\"SESSION_ID\" TEXT," + // 5: sessionId
+                "\"IS_INIT_TASK_DETAIL\" INTEGER NOT NULL );"); // 6: isInitTaskDetail
     }
 
     /** Drops the underlying database table. */
@@ -88,6 +90,7 @@ public class PersonDao extends AbstractDao<Person, Long> {
         if (sessionId != null) {
             stmt.bindString(6, sessionId);
         }
+        stmt.bindLong(7, entity.getIsInitTaskDetail() ? 1L: 0L);
     }
 
     @Override
@@ -119,6 +122,7 @@ public class PersonDao extends AbstractDao<Person, Long> {
         if (sessionId != null) {
             stmt.bindString(6, sessionId);
         }
+        stmt.bindLong(7, entity.getIsInitTaskDetail() ? 1L: 0L);
     }
 
     @Override
@@ -134,7 +138,8 @@ public class PersonDao extends AbstractDao<Person, Long> {
             cursor.getInt(offset + 2), // age
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // phoneNumber
             cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // password
-            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5) // sessionId
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // sessionId
+            cursor.getShort(offset + 6) != 0 // isInitTaskDetail
         );
         return entity;
     }
@@ -147,6 +152,7 @@ public class PersonDao extends AbstractDao<Person, Long> {
         entity.setPhoneNumber(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
         entity.setPassword(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
         entity.setSessionId(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setIsInitTaskDetail(cursor.getShort(offset + 6) != 0);
      }
     
     @Override

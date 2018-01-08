@@ -49,7 +49,7 @@ public class TaskItemDao extends AbstractDao<TaskItem, Long> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"TASK_ITEM\" (" + //
-                "\"id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
+                "\"id\" INTEGER PRIMARY KEY ," + // 0: id
                 "\"IDD\" TEXT," + // 1: idd
                 "\"WORKER\" TEXT," + // 2: worker
                 "\"START_DATE\" INTEGER," + // 3: startDate

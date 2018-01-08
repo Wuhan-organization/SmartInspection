@@ -24,10 +24,19 @@ public class SApplication extends Application {
 	private static SApplication instance;
 	private static String sessionID = "";
 
+	private static boolean isInitTaskDetail = false;
 	private DaoMaster.DevOpenHelper mHelper;
 	private SQLiteDatabase db;
 	private DaoMaster mDaoMaster;
 	private DaoSession mDaoSession;
+
+	public static boolean isInitTaskDetail() {
+		return isInitTaskDetail;
+	}
+
+	public static void setIsInitTaskDetail(boolean isInitTaskDetail) {
+		SApplication.isInitTaskDetail = isInitTaskDetail;
+	}
 
 	@Override
 	public void onCreate() {

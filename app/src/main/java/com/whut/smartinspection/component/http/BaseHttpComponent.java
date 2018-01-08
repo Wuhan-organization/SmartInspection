@@ -1,5 +1,7 @@
 package com.whut.smartinspection.component.http;
 
+import com.zhy.http.okhttp.cookie.store.CookieStore;
+
 public class BaseHttpComponent {
 	public static final String URL = "http://115.159.108.163:8009/smartIsland/";
 	public final String contentType = "application/json;charset=UTF-8";
@@ -13,7 +15,7 @@ public class BaseHttpComponent {
 	//设备类型
 	public static final String URL_DEVICE_STYLE =IP +  "BDZXJService/Android/DeviceType/all";
 	//间隔
-		public static final String URL_INTERVALUNIT =IP +  "BDZXJService/Android/IntervalUnit/all";
+	public static final String URL_INTERVALUNIT =IP +  "BDZXJService/Android/IntervalUnit/all";
 	//设备名称
 	public static final String URL_DEVICE =IP +  "BDZXJService/Android/Device";
 	//巡视项目

@@ -167,7 +167,7 @@ public class BluetoothActivity extends Activity {
         });
 //        bluetooth_back.setOnClickListener(new  View.OnClickListener(){
 //            @Override
-//            public void onClick(View view)
+//            public void onInnerClick(View view)
 //            {
 //                Intent intent = new Intent(BluetoothActivity.this, MainActivity.class);
 //                startActivity(intent);

@@ -101,6 +101,8 @@
         <activity android:name=".activity.tree_view.TreeTestActivity"/>
         <activity android:name=".activity.MaintenanceActivity"/>
         <activity android:name=".activity.WorkingHelpActivity"/>
+        <activity android:name=".activity.FullTourActivity"/>
+        <activity android:name=".activity.FullInspectActivity"/>
 
         <service android:name="cn.com.reformer.rfBleService.BleService" />
     </application>

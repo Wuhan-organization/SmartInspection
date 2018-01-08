@@ -63,7 +63,6 @@ public class TaskPageListAdapter extends BaseAdapter implements View.OnClickList
         holder.workMember.setText(menu.getCommon());
         Glide.with(mContext).load(menu.getTaskIcon()).into(holder.taskIcon);
         return convertView;
-
     }
 
     @Override

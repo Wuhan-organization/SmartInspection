@@ -1,6 +1,5 @@
 package com.whut.greendao.gen;
 
-import java.util.List;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteStatement;
 
@@ -9,8 +8,6 @@ import org.greenrobot.greendao.Property;
 import org.greenrobot.greendao.internal.DaoConfig;
 import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.database.DatabaseStatement;
-import org.greenrobot.greendao.query.Query;
-import org.greenrobot.greendao.query.QueryBuilder;
 
 import com.whut.smartinspection.model.PerPatrolCard;
 
@@ -36,7 +33,6 @@ public class PerPatrolCardDao extends AbstractDao<PerPatrolCard, Long> {
 
     private DaoSession daoSession;
 
-    private Query<PerPatrolCard> wholePatrolCard_PerPatrolCardListQuery;
 
     public PerPatrolCardDao(DaoConfig config) {
         super(config);
@@ -51,7 +47,7 @@ public class PerPatrolCardDao extends AbstractDao<PerPatrolCard, Long> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"PER_PATROL_CARD\" (" + //
-                "\"id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
+                "\"id\" INTEGER PRIMARY KEY ," + // 0: id
                 "\"DEVICE_ID\" TEXT," + // 1: deviceId
                 "\"FLAG\" INTEGER NOT NULL ," + // 2: flag
                 "\"FID\" INTEGER," + // 3: fid
@@ -173,18 +169,4 @@ public class PerPatrolCardDao extends AbstractDao<PerPatrolCard, Long> {
         return true;
     }
     
-    /** Internal query to resolve the "perPatrolCardList" to-many relationship of WholePatrolCard. */
-    public List<PerPatrolCard> _queryWholePatrolCard_PerPatrolCardList(Long fid) {
-        synchronized (this) {
-            if (wholePatrolCard_PerPatrolCardListQuery == null) {
-                QueryBuilder<PerPatrolCard> queryBuilder = queryBuilder();
-                queryBuilder.where(Properties.Fid.eq(null));
-                wholePatrolCard_PerPatrolCardListQuery = queryBuilder.build();
-            }
-        }
-        Query<PerPatrolCard> query = wholePatrolCard_PerPatrolCardListQuery.forCurrentThread();
-        query.setParameter(0, fid);
-        return query.list();
-    }
-
 }

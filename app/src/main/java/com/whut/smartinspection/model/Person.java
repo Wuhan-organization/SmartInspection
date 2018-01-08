@@ -16,20 +16,30 @@ public class Person {
     private String phoneNumber;
     private String password;
     private String sessionId;
+    private boolean isInitTaskDetail ;
 
-    @Generated(hash = 739484211)
+    @Generated(hash = 1756947697)
     public Person(Long id, String name, int age, String phoneNumber,
-            String password, String sessionId) {
+            String password, String sessionId, boolean isInitTaskDetail) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.phoneNumber = phoneNumber;
         this.password = password;
         this.sessionId = sessionId;
+        this.isInitTaskDetail = isInitTaskDetail;
     }
 
     @Generated(hash = 1024547259)
     public Person() {
+    }
+
+    public boolean isInitTaskDetail() {
+        return isInitTaskDetail;
+    }
+
+    public void setInitTaskDetail(boolean initTaskDetail) {
+        isInitTaskDetail = initTaskDetail;
     }
 
     public String getSessionId() {
@@ -73,5 +83,13 @@ public class Person {
     }
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public boolean getIsInitTaskDetail() {
+        return this.isInitTaskDetail;
+    }
+
+    public void setIsInitTaskDetail(boolean isInitTaskDetail) {
+        this.isInitTaskDetail = isInitTaskDetail;
     }
 }

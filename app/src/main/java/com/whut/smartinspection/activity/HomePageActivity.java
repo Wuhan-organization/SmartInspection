@@ -51,8 +51,13 @@ public class HomePageActivity extends SwipeBackActivity {
         ButterKnife.bind(this);
 
 //        ProgressWheel pw = new ProgressWheel(HomePageActivity.this, myAttributes);
-        pw = (ProgressWheel) findViewById(R.id.pw_spinner);
-        pw.startSpinning();
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                pw = (ProgressWheel) findViewById(R.id.pw_spinner);
+                pw.startSpinning();
+            }
+        });
 //        DisplayMetrics dm = new DisplayMetrics();
 //        getWindowManager().getDefaultDisplay().getMetrics(dm);
 //        Log.i("onCreate", "onCreate: "+dm.heightPixels);

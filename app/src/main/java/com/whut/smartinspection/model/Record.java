@@ -14,18 +14,48 @@ import org.greenrobot.greendao.annotation.Generated;
 @Entity
 public class Record {
     @Property(nameInDb = "id")
-    @Id(autoincrement = true)
+    @Id()
     private Long id;//greenDao自动生成的ID
 
     private String idd;//巡视项目ID
-    private String valueChar;
-    private float valueFloat;
-    private String valueString;
+    private String valueChar;//单选 √ ×
+    private float valueFloat;//温度输入
+    private String valueString;//备注
     private long patrolRecordDate;
     private String deviceId;
     private String patrolContentId;
 
     private Long fid;//用于标识外键关系
+
+    private Long wholeID ;//一个巡视作业卡对于一个wholeID
+
+    @Generated(hash = 1921360249)
+    public Record(Long id, String idd, String valueChar, float valueFloat,
+            String valueString, long patrolRecordDate, String deviceId,
+            String patrolContentId, Long fid, Long wholeID) {
+        this.id = id;
+        this.idd = idd;
+        this.valueChar = valueChar;
+        this.valueFloat = valueFloat;
+        this.valueString = valueString;
+        this.patrolRecordDate = patrolRecordDate;
+        this.deviceId = deviceId;
+        this.patrolContentId = patrolContentId;
+        this.fid = fid;
+        this.wholeID = wholeID;
+    }
+
+    @Generated(hash = 477726293)
+    public Record() {
+    }
+
+    public Long getWholeID() {
+        return wholeID;
+    }
+
+    public void setWholeID(Long wholeID) {
+        this.wholeID = wholeID;
+    }
 
     @Override
     public String toString() {
@@ -46,25 +76,6 @@ public class Record {
                 .append(patrolContentId).append('\"');
         sb.append('}');
         return sb.toString();
-    }
-
-    @Generated(hash = 426103613)
-    public Record(Long id, String idd, String valueChar, float valueFloat,
-            String valueString, long patrolRecordDate, String deviceId,
-            String patrolContentId, Long fid) {
-        this.id = id;
-        this.idd = idd;
-        this.valueChar = valueChar;
-        this.valueFloat = valueFloat;
-        this.valueString = valueString;
-        this.patrolRecordDate = patrolRecordDate;
-        this.deviceId = deviceId;
-        this.patrolContentId = patrolContentId;
-        this.fid = fid;
-    }
-
-    @Generated(hash = 477726293)
-    public Record() {
     }
 
     public Long getId() {

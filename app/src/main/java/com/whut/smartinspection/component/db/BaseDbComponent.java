@@ -6,7 +6,6 @@ import com.whut.greendao.gen.TaskItemDao;
 import com.whut.greendao.gen.WholePatrolCardDao;
 import com.whut.smartinspection.application.SApplication;
 import com.whut.smartinspection.model.WholePatrolCard;
-
 /***
  * @author xiongbin
  * @date 2016-3-31 下午2:35:18
@@ -34,7 +33,7 @@ public class BaseDbComponent {
         return taskItemDao;
     }
     public static void deleteData(){
-        taskItemDao.deleteAll();
+//        taskItemDao.deleteAll();
         wholePatrolCardDao.deleteAll();
         perPatrolCardDao.deleteAll();
         recordDao.deleteAll();

@@ -36,9 +36,11 @@ public class RecordDao extends AbstractDao<Record, Long> {
         public final static Property DeviceId = new Property(6, String.class, "deviceId", false, "DEVICE_ID");
         public final static Property PatrolContentId = new Property(7, String.class, "patrolContentId", false, "PATROL_CONTENT_ID");
         public final static Property Fid = new Property(8, Long.class, "fid", false, "FID");
+        public final static Property WholeID = new Property(9, Long.class, "wholeID", false, "WHOLE_ID");
     }
 
     private Query<Record> perPatrolCard_RecordsQuery;
+    private Query<Record> wholePatrolCard_RecordsQuery;
 
     public RecordDao(DaoConfig config) {
         super(config);
@@ -52,7 +54,7 @@ public class RecordDao extends AbstractDao<Record, Long> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"RECORD\" (" + //
-                "\"id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
+                "\"id\" INTEGER PRIMARY KEY ," + // 0: id
                 "\"IDD\" TEXT," + // 1: idd
                 "\"VALUE_CHAR\" TEXT," + // 2: valueChar
                 "\"VALUE_FLOAT\" REAL NOT NULL ," + // 3: valueFloat
@@ -60,7 +62,8 @@ public class RecordDao extends AbstractDao<Record, Long> {
                 "\"PATROL_RECORD_DATE\" INTEGER NOT NULL ," + // 5: patrolRecordDate
                 "\"DEVICE_ID\" TEXT," + // 6: deviceId
                 "\"PATROL_CONTENT_ID\" TEXT," + // 7: patrolContentId
-                "\"FID\" INTEGER);"); // 8: fid
+                "\"FID\" INTEGER," + // 8: fid
+                "\"WHOLE_ID\" INTEGER);"); // 9: wholeID
     }
 
     /** Drops the underlying database table. */
@@ -109,6 +112,11 @@ public class RecordDao extends AbstractDao<Record, Long> {
         if (fid != null) {
             stmt.bindLong(9, fid);
         }
+ 
+        Long wholeID = entity.getWholeID();
+        if (wholeID != null) {
+            stmt.bindLong(10, wholeID);
+        }
     }
 
     @Override
@@ -151,6 +159,11 @@ public class RecordDao extends AbstractDao<Record, Long> {
         if (fid != null) {
             stmt.bindLong(9, fid);
         }
+ 
+        Long wholeID = entity.getWholeID();
+        if (wholeID != null) {
+            stmt.bindLong(10, wholeID);
+        }
     }
 
     @Override
@@ -169,7 +182,8 @@ public class RecordDao extends AbstractDao<Record, Long> {
             cursor.getLong(offset + 5), // patrolRecordDate
             cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // deviceId
             cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // patrolContentId
-            cursor.isNull(offset + 8) ? null : cursor.getLong(offset + 8) // fid
+            cursor.isNull(offset + 8) ? null : cursor.getLong(offset + 8), // fid
+            cursor.isNull(offset + 9) ? null : cursor.getLong(offset + 9) // wholeID
         );
         return entity;
     }
@@ -185,6 +199,7 @@ public class RecordDao extends AbstractDao<Record, Long> {
         entity.setDeviceId(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
         entity.setPatrolContentId(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
         entity.setFid(cursor.isNull(offset + 8) ? null : cursor.getLong(offset + 8));
+        entity.setWholeID(cursor.isNull(offset + 9) ? null : cursor.getLong(offset + 9));
      }
     
     @Override
@@ -222,6 +237,20 @@ public class RecordDao extends AbstractDao<Record, Long> {
             }
         }
         Query<Record> query = perPatrolCard_RecordsQuery.forCurrentThread();
+        query.setParameter(0, fid);
+        return query.list();
+    }
+
+    /** Internal query to resolve the "records" to-many relationship of WholePatrolCard. */
+    public List<Record> _queryWholePatrolCard_Records(Long fid) {
+        synchronized (this) {
+            if (wholePatrolCard_RecordsQuery == null) {
+                QueryBuilder<Record> queryBuilder = queryBuilder();
+                queryBuilder.where(Properties.Fid.eq(null));
+                wholePatrolCard_RecordsQuery = queryBuilder.build();
+            }
+        }
+        Query<Record> query = wholePatrolCard_RecordsQuery.forCurrentThread();
         query.setParameter(0, fid);
         return query.list();
     }

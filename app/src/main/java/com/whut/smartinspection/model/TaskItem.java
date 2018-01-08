@@ -15,7 +15,7 @@ import java.util.Date;
 public class TaskItem  implements Serializable{
     final static long   serialVersionUID = 1;
     @Property(nameInDb = "id")
-    @Id(autoincrement = true)
+    @Id()
     private Long id;//前端自动生成Id
     private String idd; //后台自动生成
     private String worker;//工作者 列表 负责人放在第一位
