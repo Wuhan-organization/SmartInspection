@@ -92,28 +92,28 @@ public class PowerStationCheckActivity extends SwipeBackActivity {
 //            menu.setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1508997652313&di=0029fd23a3dd0e88b49babc5cada2181&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F019f9c5542b8fc0000019ae980d080.jpg%401280w_1l_2o_100sh.jpg");
             switch (i){
                 case 0:
-                    menu.setImageLocal(R.drawable.two_level0);
+                    menu.setImageLocal(R.drawable.yun_wei);
                     break;
                 case 1:
-                    menu.setImageLocal(R.drawable.two_level1);
+                    menu.setImageLocal(R.drawable.yun_wei);
                     break;
                 case 2:
-                    menu.setImageLocal(R.drawable.two_level2);
+                    menu.setImageLocal(R.drawable.yun_wei);
                     break;
                 case 3:
-                    menu.setImageLocal(R.drawable.two_level3);
+                    menu.setImageLocal(R.drawable.yun_wei);
                     break;
                 case 4:
-                    menu.setImageLocal(R.drawable.two_level4);
+                    menu.setImageLocal(R.drawable.yun_wei);
                     break;
                 case 5:
-                    menu.setImageLocal(R.drawable.two_level5);
+                    menu.setImageLocal(R.drawable.yun_wei);
                     break;
                 case 6:
-                    menu.setImageLocal(R.drawable.two_level6);
+                    menu.setImageLocal(R.drawable.yun_wei);
                     break;
                 case 7:
-                    menu.setImageLocal(R.drawable.two_level3);
+                    menu.setImageLocal(R.drawable.yun_wei);
                     break;
 
                 default:

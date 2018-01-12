@@ -14,36 +14,38 @@
     app:right_btn_visible="false"
     app:title_visible="true"
     app:title_text="变电智能巡检系统"
+    android:gravity="center_horizontal"
     tools:context="com.whut.smartinspection.activity.HomePageActivity">
     <LinearLayout
+        android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <com.whut.smartinspection.widgets.LoopSlidingView
             android:id="@+id/lsv_home_page"
             android:layout_width="match_parent"
-            android:layout_height="666px" />
+            android:layout_height="230dp" />
     </LinearLayout>
 
     <com.todddavies.components.progressbar.ProgressWheel
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="40dp"
         android:layout_gravity="center_horizontal"
         android:id="@+id/pw_spinner"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_centerInParent="true"
-        ProgressWheel:pwText="正在分配任务..."
+        ProgressWheel:pwText="抓取任务中..."
         ProgressWheel:pwTextColor="#222"
-        ProgressWheel:pwTextSize="14sp"
+        ProgressWheel:pwTextSize="10sp"
         ProgressWheel:pwRimColor="#330097D6"
-        ProgressWheel:pwBarLength="60dp"
-        ProgressWheel:pwBarColor="#0097D6"
-        ProgressWheel:pwBarWidth="5dp"
-        ProgressWheel:pwRimWidth="2dp" />
+        ProgressWheel:pwBarLength="10dp"
+        ProgressWheel:pwBarColor="@color/bg_toolbar"
+        ProgressWheel:pwBarWidth="2dp"
+        ProgressWheel:pwRimWidth="3dp" />
 
     <LinearLayout
-            android:visibility="invisible"
+            android:visibility="gone"
             android:id="@+id/ll_list"
-            android:layout_marginTop="90dp"
+            android:layout_marginTop="60dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
@@ -56,7 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <ImageView
-                    android:layout_marginLeft="90dp"
+                    android:layout_marginLeft="30dp"
                     android:src="@drawable/excel_safe_cat"
                     android:layout_width="40dp"
                     android:layout_height="40dp" />
@@ -69,20 +71,20 @@
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/ll_help"
-                android:layout_marginTop="90dp"
+                android:layout_marginTop="50dp"
                 android:layout_below="@id/ll_my_task"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="40dp">
                 <ImageView
-                    android:layout_marginLeft="90dp"
+                    android:layout_marginLeft="30dp"
                     android:src="@drawable/wireless_door_ban1"
                     android:layout_width="40dp"
                     android:layout_height="40dp" />
                 <TextView
                     android:textSize="30sp"
                     android:gravity="center_vertical"
-                    android:text="帮助"
+                    android:text="帮       助"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent" />
             </LinearLayout>

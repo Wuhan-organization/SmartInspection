@@ -8,8 +8,16 @@ import android.util.Log;
 
 public class ButtonUtils {
     private static long lastClickTime = 0;
-    private static long DIFF = 1000;
+    private static long DIFF = 2000;
     private static int lastButtonId = -1;
+
+    public static long getLastClickTime() {
+        return lastClickTime;
+    }
+
+    public static void setLastClickTime(long lastClickTime) {
+        ButtonUtils.lastClickTime = lastClickTime;
+    }
 
     /**
      * 判断两次点击的间隔，如果小于1000，则认为是多次无效点击
@@ -47,4 +55,11 @@ public class ButtonUtils {
         return false;
     }
 
+    public static long getDIFF() {
+        return DIFF;
+    }
+
+    public static void setDIFF(long DIFF) {
+        ButtonUtils.DIFF = DIFF;
+    }
 }

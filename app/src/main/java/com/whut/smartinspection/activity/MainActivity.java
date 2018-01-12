@@ -180,8 +180,8 @@ public class MainActivity extends SwipeBackActivity {
         List<Integer> urlList = new ArrayList<>();
 //        for (int i = 0;i < 2;i++) {
 //            urlList.add("http://img.taopic.com/uploads/allimg/120727/201995-120HG1030762.jpg");
-            urlList.add(R.drawable.oop1);
-            urlList.add(R.drawable.oop2);
+            urlList.add(R.drawable.oop4);
+            urlList.add(R.drawable.oop4);
 //        }
         loopSlidingView.setImageOverride(urlList);
         loopSlidingView.startTurning(4000);

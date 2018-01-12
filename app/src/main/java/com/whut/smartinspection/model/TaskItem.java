@@ -21,7 +21,7 @@ public class TaskItem  implements Serializable{
     private String worker;//工作者 列表 负责人放在第一位
     private Date startDate;//任务开始日期
     private Date endDate;//任务结束日期
-    private int status; //完成状态1完成，0代办
+    private int status; //完成状态1完成，0代办--》改为表示是否初始化
     private String taskType;//任务类型
     private String taskTypeName;//任务类型名称 eg.全面巡视
     private int taskIcon;//任务类型图标

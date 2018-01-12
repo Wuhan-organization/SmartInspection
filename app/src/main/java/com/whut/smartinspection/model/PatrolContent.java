@@ -36,10 +36,13 @@ public class PatrolContent {
 
     private String patrolNameId;
 
-    @Generated(hash = 41847467)
+    private String unit;
+
+    @Generated(hash = 1410287866)
     public PatrolContent(Long id, String idd, int no, String part, String content,
             short isImportant, String date, String patrolContentTypeNo,
-            String patrolContentName, int deviceTypeId, String patrolNameId) {
+            String patrolContentName, int deviceTypeId, String patrolNameId,
+            String unit) {
         this.id = id;
         this.idd = idd;
         this.no = no;
@@ -51,10 +54,19 @@ public class PatrolContent {
         this.patrolContentName = patrolContentName;
         this.deviceTypeId = deviceTypeId;
         this.patrolNameId = patrolNameId;
+        this.unit = unit;
     }
 
     @Generated(hash = 1821211469)
     public PatrolContent() {
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 
     public String getPatrolContentTypeNo() {

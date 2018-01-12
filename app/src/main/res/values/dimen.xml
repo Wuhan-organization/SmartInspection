@@ -2,6 +2,7 @@
 <resources>
     <dimen name="rigth_tv_size">15sp</dimen>
 
-    <dimen name="full_inspect_activity_li">24dp</dimen>
-    <dimen name="full_inspect_activity_radioBtn">40dp</dimen>
+    <dimen name="full_inspect_activity_li">12dp</dimen>
+
+    <dimen name="full_inspect_activity_radioBtn">20dp</dimen>
 </resources>

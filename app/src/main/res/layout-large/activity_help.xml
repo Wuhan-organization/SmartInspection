@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.whut.smartinspection.widgets.CustomToolBar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:left_tv_visible="true"
+    app:left_tv_text="返回"
+    app:right_btn_visible="false"
+    app:title_visible="true"
+    app:title_text="帮助"
+    tools:context="com.whut.smartinspection.activity.HelpActivity">
+    <RelativeLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/first"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_marginLeft="80dp"
+                    android:src="@drawable/excel_safe_cat"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp" />
+                <TextView
+                    android:textSize="30sp"
+                    android:gravity="center_vertical"
+                    android:text="智能安全帽"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/second"
+                android:layout_marginTop="80dp"
+                android:layout_below="@id/first"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_marginLeft="80dp"
+                    android:src="@drawable/knowledge_center"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp" />
+                <TextView
+                    android:textSize="30sp"
+                    android:gravity="center_vertical"
+                    android:text="知识中心"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/third"
+                android:layout_marginTop="80dp"
+                android:layout_below="@id/second"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_marginLeft="80dp"
+                    android:src="@drawable/wireless_door_ban1"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp" />
+                <TextView
+                    android:textSize="30sp"
+                    android:gravity="center_vertical"
+                    android:text="无线门禁"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/fouth"
+                android:layout_marginTop="80dp"
+                android:layout_below="@id/third"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_marginLeft="80dp"
+                    android:src="@drawable/wireless_door_ban1"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp" />
+                <TextView
+                    android:textSize="30sp"
+                    android:gravity="center_vertical"
+                    android:text="巡视项目折叠卡"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</com.whut.smartinspection.widgets.CustomToolBar>

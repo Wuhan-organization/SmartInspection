@@ -47,6 +47,11 @@ public class HomePageActivity extends SwipeBackActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        DisplayMetrics metric = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metric);
+        int width =metric.widthPixels;  //宽度（PX）
+        int height =metric.heightPixels;  //高度（PX）
+
         setContentView(R.layout.activity_home_page);
         ButterKnife.bind(this);
 
@@ -122,8 +127,11 @@ public class HomePageActivity extends SwipeBackActivity {
     private void showBanner() {
         List<Integer> urlList = new ArrayList<>();
 //            urlList.add("http://img.taopic.com/uploads/allimg/120727/201995-120HG1030762.jpg");
-        urlList.add(R.drawable.oop1);
-        urlList.add(R.drawable.oop2);
+        urlList.add(R.drawable.oop7);
+        urlList.add(R.drawable.oop6);
+        urlList.add(R.drawable.oop4);
+        urlList.add(R.drawable.oop5);
+
         loopSlidingView.setImageOverride(urlList);
         loopSlidingView.startTurning(4000);
     }

@@ -23,6 +23,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -176,7 +178,7 @@ public class HttpService extends Service implements ITaskHandlerListener,IDetail
         //从服务器获取数据到本地数据库
         TaskComponent.getSubstationList(HttpService.this,0);
         //获取任务列表
-        TaskComponent.getCommonTaskList(HttpService.this,11);
+        TaskComponent.getCommonTaskList(HttpService.this,0);
         //注册广播接收器(FullInspectActivity-->HttpService)
         FullActivityReceiver receiver=new HttpService.FullActivityReceiver();
         IntentFilter filter=new IntentFilter();
@@ -421,11 +423,11 @@ public class HttpService extends Service implements ITaskHandlerListener,IDetail
                 String patrolNameId = jo.get("patrolNameId").toString();
                 String patrolContentTypeNo = jo.get("patrolContentTypeNo").toString(); //巡视项目数据类型编码用于指定填RecordPostVo中的哪一个value字段，详情见附件1
                 String patrolContentName = jo.get("patrolContentTypeName").toString(); //巡视项目数据类型
+                String unit = jo.get("unit")==null?null:jo.get("unit").toString();
 
-
-                PatrolContent patrolContent = new PatrolContent(null,format(id),Integer.parseInt(no),part,content,
+                PatrolContent patrolContent = new PatrolContent(null,format(id),Integer.parseInt(no),format(part),format(content),
                         Short.parseShort(isImportant),data,format(patrolContentTypeNo),
-                        format(patrolContentName),deviceTypeId,format(patrolNameId));
+                        format(patrolContentName),deviceTypeId,format(patrolNameId),format(unit));
                 patrolContentDao.insertOrReplace(patrolContent);
             }
         }
@@ -487,9 +489,13 @@ public class HttpService extends Service implements ITaskHandlerListener,IDetail
                 JsonObject joLeader = jLeader.getAsJsonObject();
                 String leader = joLeader.get("username").toString();
 
-                TaskItem taskItem = new TaskItem(0L+i, format(id), format(leader),null,null,1,
+                TaskItem taskItem = new TaskItem(0L+i, format(id), format(leader),null,null,0,
                         format(taskType), null, 1,format(common));
                 taskItemDao.insertOrReplace(taskItem);
+
+//                GsonBuilder gsonBuilder = new GsonBuilder();
+//                Gson gson = gsonBuilder.create();
+//                String josnTest = gson.toJson(taskItem,TaskItem.class);
 
                 if("0".equals(format(taskType))){
                     PatrolTaskDetailDao patrolTaskDetailDao = SApplication.getInstance().getDaoSession().getPatrolTaskDetailDao();

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.whut.smartinspection.widgets.CustomToolBar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:left_tv_visible="true"
+    app:right_tv_visible="true"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="true"
+    app:left_tv_text="返回"
+    app:right_tv_text="提交"
+    app:right_btn_visible="false"
+    app:title_visible="true"
+    app:title_text="全面巡视"
+    tools:context="com.whut.smartinspection.activity.FullInspectionActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!--<ScrollView-->
+            <!--android:fillViewport="true"-->
+            <!--android:id="@+id/scorll_view"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="fill_parent"-->
+            <!--android:fadeScrollbars="false"-->
+            <!--android:scrollbars="vertical"-->
+            <!--android:fadingEdge="vertical">-->
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical"
+                    android:scrollbarStyle="outsideInset"
+                    android:scrollbars="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="变电站名称："
+                            android:textSize="16sp" />
+                        <EditText
+                            android:enabled="false"
+                            android:id="@+id/substation_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="设备类型："
+                            android:textSize="16sp" />
+                        <EditText
+                            android:enabled="false"
+                            android:cursorVisible="false"
+                            android:focusableInTouchMode="false"
+                            android:focusable="false"
+                            android:id="@+id/style_device"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:orientation="horizontal">-->
+                        <!--<TextView-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text="巡视作业："-->
+                            <!--android:textSize="20sp" />-->
+                        <!--<EditText-->
+                            <!--android:enabled="false"-->
+                            <!--android:id="@+id/work_walk"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:textSize="20sp" />-->
+                    <!--</LinearLayout>-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="间隔名称："
+                            android:textSize="16sp" />
+                        <EditText
+                            android:enabled="false"
+                            android:cursorVisible="false"
+                            android:focusableInTouchMode="false"
+                            android:focusable="false"
+                            android:id="@+id/name_dis"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="设备名称："
+                            android:textSize="16sp" />
+                        <EditText
+                            android:enabled="false"
+                            android:cursorVisible="false"
+                            android:focusableInTouchMode="false"
+                            android:focusable="false"
+                            android:id="@+id/name_device"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </LinearLayout>
+                <!-- //////////////////////////////////////////////-->
+                    <Button
+                        android:id="@+id/btn_help"
+                        android:background="@color/bg_toolbar"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="10dp"
+                        android:text="帮助"
+                        android:textSize="16sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp" />
+                    <RelativeLayout
+                        android:id="@+id/frl_gestrue"
+                        android:layout_width="match_parent"
+                        android:layout_height="400px"
+                        android:background="@drawable/bodder">
+                        <include layout="@layout/item_radio_group_first" />
+                    </RelativeLayout>
+                    <!--<View-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="1dp"-->
+                        <!--android:background="#CCCCCC" />-->
+                    <RelativeLayout
+                        android:id="@+id/rl_gestrue"
+                        android:layout_width="match_parent"
+                        android:layout_height="400px"
+                        android:background="@drawable/bodder">
+                        <include layout="@layout/item_radio_group" />
+                    </RelativeLayout>
+                    <!--<View-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="1dp"-->
+                        <!--android:background="#CCCCCC" />-->
+                    <RelativeLayout
+                        android:id="@+id/trl_gestrue"
+                        android:layout_width="match_parent"
+                        android:layout_height="400px"
+                        android:background="@drawable/bodder">
+                        <include layout="@layout/item_radio_group_third" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                            android:visibility="gone"
+                            android:weightSum="2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal">
+                            <com.github.clans.fab.FloatingActionButton
+                                android:layout_weight="1"
+                                android:id="@+id/back"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom|center"
+                                android:layout_marginBottom="4dp"
+                                android:layout_marginRight="90dp"
+                                android:src="@drawable/ic_back"
+                                fab:fab_colorNormal="@color/white"
+                                fab:fab_colorPressed="@color/red"
+                                fab:fab_colorRipple="@color/gray" />
+                            <com.github.clans.fab.FloatingActionButton
+                                android:layout_weight="1"
+                                android:id="@+id/next"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom|center"
+                                android:layout_marginBottom="4dp"
+                                android:src="@drawable/ic_next"
+                                fab:fab_colorNormal="@color/white"
+                                fab:fab_colorPressed="@color/red"
+                                fab:fab_colorRipple="@color/gray" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:visibility="gone"
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <android.support.design.widget.TabLayout
+                            android:id="@+id/tabs"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:tabIndicatorColor="@color/red"
+                            app:tabSelectedTextColor="@color/red"
+                            app:tabTextColor="@color/black"/>
+                        <!--可滑动的布局内容-->
+                        <android.support.v4.view.ViewPager
+                            android:id="@+id/vp_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp">
+                        </android.support.v4.view.ViewPager>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:visibility="gone"
+                        android:id="@+id/button_id_visual"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <com.github.clans.fab.FloatingActionButton
+                            android:id="@+id/task_detail_commit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|right"
+                            android:src="@drawable/commit"
+                            fab:fab_colorNormal="@color/white"
+                            fab:fab_colorPressed="@color/red"
+                            fab:fab_colorRipple="@color/gray"/>
+                    </LinearLayout>
+            </LinearLayout>
+        <!--</ScrollView>-->
+    </LinearLayout>
+</com.whut.smartinspection.widgets.CustomToolBar>
+

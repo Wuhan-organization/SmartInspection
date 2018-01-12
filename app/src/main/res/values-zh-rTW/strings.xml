@@ -15,7 +15,7 @@
     <string name="defaultmac">000000000000000000</string>
     <string name="result_set_success">设置成功</string>
     <string name="result_set_failed">设置失败</string>
-    <string name="main_app_name">SmartInspection</string>
+    <string name="main_app_name">智能巡检</string>
     <string name="front">24sp</string>
     <string name="app_name">WiFi 相機瀏覽器</string>
     <string name="label_file_browser">檔案瀏覽</string>

@@ -32,7 +32,7 @@
         android:name=".application.SApplication"
         android:allowBackup="true"
         android:icon="@drawable/patrol"
-        android:label="@string/m_app_name"
+        android:label="@string/main_app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon, android:theme, android:label">
