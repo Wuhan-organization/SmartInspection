@@ -1,2 +1,2 @@
-# SmartInspection
-#现在second分支下开发
+﻿# SmartInspection
+#在master分支下开发（代码最新）
