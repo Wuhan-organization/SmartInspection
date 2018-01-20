@@ -54,7 +54,7 @@ public class RecordDao extends AbstractDao<Record, Long> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"RECORD\" (" + //
-                "\"id\" INTEGER PRIMARY KEY ," + // 0: id
+                "\"id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "\"IDD\" TEXT," + // 1: idd
                 "\"VALUE_CHAR\" TEXT," + // 2: valueChar
                 "\"VALUE_FLOAT\" REAL NOT NULL ," + // 3: valueFloat

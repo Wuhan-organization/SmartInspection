@@ -109,7 +109,7 @@ public class NewTaskActivity extends SwipeBackActivity implements ITaskHandlerLi
         Toast.makeText(NewTaskActivity.this,"提交成功!",Toast.LENGTH_LONG).show();
     }
     @Override
-    public void onTaskFailure(Object obj, EMsgType type) {
+    public void onTaskFailure(Object obj, EMsgType type,int flag) {
         String message = (String)obj;
         Toast.makeText(NewTaskActivity.this,message,Toast.LENGTH_LONG).show();
     }

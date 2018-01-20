@@ -24,11 +24,20 @@ public class SApplication extends Application {
 	
 	private static SApplication instance;
 	private static String sessionID = "";
+	private static int taskCount = 0;
 
 	private DaoMaster.DevOpenHelper mHelper;
 	private SQLiteDatabase db;
 	private DaoMaster mDaoMaster;
 	private DaoSession mDaoSession;
+
+	public static int getTaskCount() {
+		return taskCount;
+	}
+
+	public static void setTaskCount(int taskCount) {
+		SApplication.taskCount = taskCount;
+	}
 
 	/**
 	 * 判断当前设备是手机还是平板，代码来自 Google I/O App for Android

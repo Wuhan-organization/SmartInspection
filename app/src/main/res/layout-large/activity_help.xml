@@ -11,14 +11,18 @@
     app:right_btn_visible="false"
     app:title_visible="true"
     app:title_text="帮助"
+    android:gravity="center_horizontal"
+    android:layout_gravity="center_horizontal"
     tools:context="com.whut.smartinspection.activity.HelpActivity">
-    <RelativeLayout
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <!--<RelativeLayout-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
 
         <LinearLayout
+            android:layout_marginTop="100dp"
+            android:layout_gravity="center_horizontal"
             android:layout_centerVertical="true"
             android:orientation="vertical"
             android:layout_width="wrap_content"
@@ -29,7 +33,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <ImageView
-                    android:layout_marginLeft="80dp"
                     android:src="@drawable/excel_safe_cat"
                     android:layout_width="40dp"
                     android:layout_height="40dp" />
@@ -48,7 +51,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <ImageView
-                    android:layout_marginLeft="80dp"
                     android:src="@drawable/knowledge_center"
                     android:layout_width="40dp"
                     android:layout_height="40dp" />
@@ -67,7 +69,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <ImageView
-                    android:layout_marginLeft="80dp"
                     android:src="@drawable/wireless_door_ban1"
                     android:layout_width="40dp"
                     android:layout_height="40dp" />
@@ -79,7 +80,6 @@
                     android:layout_height="match_parent" />
             </LinearLayout>
             <LinearLayout
-                android:visibility="gone"
                 android:id="@+id/fouth"
                 android:layout_marginTop="80dp"
                 android:layout_below="@id/third"
@@ -87,17 +87,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <ImageView
-                    android:layout_marginLeft="80dp"
                     android:src="@drawable/wireless_door_ban1"
                     android:layout_width="40dp"
                     android:layout_height="40dp" />
                 <TextView
                     android:textSize="30sp"
                     android:gravity="center_vertical"
-                    android:text="巡视项目折叠卡"
+                    android:text="数据上传"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent" />
             </LinearLayout>
         </LinearLayout>
-    </RelativeLayout>
+    <!--</RelativeLayout>-->
 </com.whut.smartinspection.widgets.CustomToolBar>

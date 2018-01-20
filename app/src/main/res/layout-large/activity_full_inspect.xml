@@ -24,6 +24,7 @@
         android:layout_marginRight="20dp"
         android:orientation="vertical">
         <LinearLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -46,13 +47,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="设备类型："
+                android:text="间隔名称："
                 android:textSize="16sp" />
             <EditText
                 android:cursorVisible="false"
                 android:focusableInTouchMode="false"
                 android:focusable="false"
-                android:id="@+id/style_device"
+                android:id="@+id/name_dis"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16sp" />
@@ -64,14 +65,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="间隔名称："
+                android:text="设备类型："
                 android:textSize="16sp" />
             <EditText
-                android:enabled="false"
                 android:cursorVisible="false"
                 android:focusableInTouchMode="false"
                 android:focusable="false"
-                android:id="@+id/name_dis"
+                android:id="@+id/style_device"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16sp" />
@@ -127,6 +127,7 @@
         android:layout_height="1dp"
         android:background="#CCCCCC" />
     <Button
+        android:visibility="gone"
         android:layout_marginTop="10dp"
         android:textColor="@color/white"
         android:id="@+id/btn_next"

@@ -48,56 +48,45 @@ public class LoginActivity extends SwipeBackActivity implements IHandlerListener
     @BindView(R.id.et_login_password)
     EditText etLoginPassword;
     PersonDao personDao = SApplication.getInstance().getDaoSession().getPersonDao();
+    Person person = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        //删除任务列表
-        BaseDbComponent.deleteData();
-
-        SharedPreferences sp = this.getSharedPreferences("userInfo", Context.MODE_WORLD_READABLE);
-        username = sp.getString("USERNAME","");
-        password = sp.getString("PASSWORD","");
-        sessionID = sp.getString("SESSIONID","");
-//        if((username==null||"".equals(username))&&(password==null||"".equals(password))){
-//            QueryBuilder<Person> qbPerson = personDao.queryBuilder();
-//            List<Person> personList = qbPerson.where(PersonDao.Properties.Id.eq(1L)).list();
-//            username = personList.size()>0?personList.get(0).getName():"";
-//            password = personList.size()>0?personList.get(0).getPassword():"";
-//            sessionID = personList.size()>0?personList.get(0).getSessionId():"";
-//            SApplication.setSessionID(sessionID);
-//        }
-        etLoginPassword.setText("123456");
-        etLoginUsername.setText("yang");
-        if(SApplication.getSessionID()!=null && !"".equals(SApplication.getSessionID())){
+        if((username==null||"".equals(username))&&(password==null||"".equals(password))){
+            QueryBuilder<Person> qbPerson = personDao.queryBuilder();
+            person = qbPerson.where(PersonDao.Properties.Id.eq(1L)).unique();
+            if(person !=null){
+                username = person.getName();
+                password = person.getPassword();
+                sessionID = person.getSessionId();
+                etLoginPassword.setText(password);
+                etLoginUsername.setText(username);
+            }else{
+                person = new Person();
+                person.setIsInitTaskDetail(false);
+            }
+        }else{
+            SharedPreferences sp = this.getSharedPreferences("userInfo", Context.MODE_WORLD_READABLE);
+            username = sp.getString("USERNAME","");
+            password = sp.getString("PASSWORD","");
+            sessionID = sp.getString("SESSIONID","");
+            etLoginPassword.setText(password);
+            etLoginUsername.setText(username);
+            SApplication.setSessionID(sessionID);
             Intent intent = new Intent(this, HomePageActivity.class);
             startActivity(intent);
         }
-        etLoginPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus == false){
-                    username = etLoginUsername.getText().toString();
-                    QueryBuilder<Person> qbPerson = personDao.queryBuilder();
-                    List<Person> personList = qbPerson.where(PersonDao.Properties.Name.eq(username)).list();
-                    password = personList.size()>0?personList.get(0).getPassword():"";
-                    etLoginPassword.setText(password);
-                }
-            }
-        });
     }
 
     @OnClick({R.id.btn_login_user_login, R.id.btn_login_reset, R.id.btn_login_user_exit})
     public void onClick(View view) {
-        switch (view.getId()) {
-            // 登录
+        switch (view.getId()) {// 登录
             case R.id.btn_login_user_login:
                 if (!ButtonUtils.isFastDoubleClick(R.id.btn_login_user_login)) {
-                    //写你相关操作即可
                     login();
                 }
-//                login();
                 break;
             case R.id.btn_login_reset:
                 etLoginPassword.setText("");
@@ -112,8 +101,8 @@ public class LoginActivity extends SwipeBackActivity implements IHandlerListener
     }
 
     private void login() {
-        String username = etLoginUsername.getText().toString().trim();
-        String password = etLoginPassword.getText().toString().trim();
+        username = etLoginUsername.getText().toString().trim();
+        password = etLoginPassword.getText().toString().trim();
         UserComponent.login(this, username, password);
     }
 
@@ -126,7 +115,6 @@ public class LoginActivity extends SwipeBackActivity implements IHandlerListener
                 SApplication.setSessionID(sessionID);
                 //将用户名密码保存
                 SharedPreferences sp = this.getSharedPreferences("userInfo", Context.MODE_WORLD_READABLE);
-                Person person = new Person();
                 person.setId(1L);
                 person.setName(username);
                 person.setPassword(password);
@@ -146,10 +134,11 @@ public class LoginActivity extends SwipeBackActivity implements IHandlerListener
 
     @Override
     public void onFailure(Object obj, EMsgType type) {
-        switch (type) {
-            // 登录失败
+        switch (type) {// 登录失败
             case LOGIN_FAILURE:
-                SystemUtils.showToast(this, obj.toString());
+                SystemUtils.showToast(this,"用户名和密码错误");
+                etLoginUsername.setText("");
+                etLoginPassword.setText("");
                 break;
             default:
                 break;

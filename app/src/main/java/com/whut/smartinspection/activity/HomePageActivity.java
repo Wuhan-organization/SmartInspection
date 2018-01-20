@@ -63,10 +63,6 @@ public class HomePageActivity extends SwipeBackActivity {
                 pw.startSpinning();
             }
         });
-//        DisplayMetrics dm = new DisplayMetrics();
-//        getWindowManager().getDefaultDisplay().getMetrics(dm);
-//        Log.i("onCreate", "onCreate: "+dm.heightPixels);
-//        Log.i("onCreate", "onCreate: "+dm.widthPixels);
         Intent serviceIntent = new Intent(HomePageActivity.this, HttpService.class);
         startService(serviceIntent); //启动后台服务
         //注册广播接收器
@@ -74,7 +70,6 @@ public class HomePageActivity extends SwipeBackActivity {
         IntentFilter filter=new IntentFilter();
         filter.addAction("com.whut.smartinspection.services.HttpService");
         HomePageActivity.this.registerReceiver(receiver,filter);
-
         initData();
     }
     /**

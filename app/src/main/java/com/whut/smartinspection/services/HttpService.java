@@ -1,5 +1,8 @@
 package com.whut.smartinspection.services;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -36,6 +39,7 @@ import com.whut.greendao.gen.PatrolContentDao;
 import com.whut.greendao.gen.PatrolTaskDetailDao;
 import com.whut.greendao.gen.PatrolWorkCardDao;
 import com.whut.greendao.gen.PerPatrolCardDao;
+import com.whut.greendao.gen.PersonDao;
 import com.whut.greendao.gen.RecordDao;
 import com.whut.greendao.gen.SubDao;
 import com.whut.greendao.gen.TaskItemDao;
@@ -58,6 +62,7 @@ import com.whut.smartinspection.model.PatrolContent;
 import com.whut.smartinspection.model.PatrolTaskDetail;
 import com.whut.smartinspection.model.PatrolWorkCard;
 import com.whut.smartinspection.model.PerPatrolCard;
+import com.whut.smartinspection.model.Person;
 import com.whut.smartinspection.model.Record;
 import com.whut.smartinspection.model.Sub;
 import com.whut.smartinspection.model.TaskItem;
@@ -105,7 +110,8 @@ public class HttpService extends Service implements ITaskHandlerListener,IDetail
                     switch (result) {
                         case 0://成功
                             Date date = new Date(System.currentTimeMillis());
-                            Log.i(TAG, "OnCompleted: "+date);
+                            String doorID = bytesToString(bytes);
+                            Log.i(TAG, "OnCompleted: "+date+"\n"+doorID);
                             break;
                         case 1:
                             break;
@@ -126,24 +132,6 @@ public class HttpService extends Service implements ITaskHandlerListener,IDetail
                     //设备更新
                 }
             });
-//            rfBleKey.setOnCompletedListener(new OnCompletedListener() {
-//                @Override
-//                public void OnCompleted(byte[] bytes, int i) {
-//                    final int result = i;
-//                    switch (result) {
-//                        case 0://成功
-//                            Date date = new Date(System.currentTimeMillis());
-//                            Log.i(TAG, "OnCompleted: "+date);
-//                            break;
-//                        case 1:
-//                            break;
-//                        case 2:
-//                            break;
-//                        case 3:
-//                            break;
-//                    }
-//                }
-//            });
         }
 
         @Override
@@ -175,10 +163,17 @@ public class HttpService extends Service implements ITaskHandlerListener,IDetail
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.w(TAG, "in onStartCommand");
-        //从服务器获取数据到本地数据库
-        TaskComponent.getSubstationList(HttpService.this,0);
         //获取任务列表
         TaskComponent.getCommonTaskList(HttpService.this,0);
+        PersonDao personDao = SApplication.getInstance().getDaoSession().getPersonDao();
+        QueryBuilder<Person> qbPerson = personDao.queryBuilder();
+        Person person = qbPerson.where(PersonDao.Properties.Id.eq(1L)).unique();
+        if(!person.getIsInitTaskDetail()){
+            //从服务器获取数据到本地数据库
+            TaskComponent.getSubstationList(HttpService.this,0);
+            person.setIsInitTaskDetail(true);
+            personDao.insertOrReplace(person);
+        }
         //注册广播接收器(FullInspectActivity-->HttpService)
         FullActivityReceiver receiver=new HttpService.FullActivityReceiver();
         IntentFilter filter=new IntentFilter();
@@ -197,45 +192,33 @@ public class HttpService extends Service implements ITaskHandlerListener,IDetail
         public void onReceive(Context context, Intent intent) {//广播接收
             Bundle bundle=intent.getExtras();
             String count=bundle.getString("flag");
+
+            TaskItem item = (TaskItem)intent.getSerializableExtra("item");
+            String taskId  = item.getIdd();
+            //查询任务对应的细节
+            PatrolTaskDetailDao patrolTaskDetailDao = SApplication.getInstance().getDaoSession().getPatrolTaskDetailDao();
+            QueryBuilder<PatrolTaskDetail> qbPatrolTDetail = patrolTaskDetailDao.queryBuilder();
+            List<PatrolTaskDetail> patrolTaskDetails = qbPatrolTDetail.where(PatrolTaskDetailDao.Properties.TaskId.eq(taskId)).list();
+
             if("1".equals(count)){ //将本地数据库的巡视记录提交到服务器
-                //查询一个设备的巡视项目
-                WholePatrolCardDao wholePatrolCardDao = SApplication.getInstance().getDaoSession().getWholePatrolCardDao();
-                QueryBuilder<WholePatrolCard> qbWholePatrolCard = wholePatrolCardDao.queryBuilder();
-                List<WholePatrolCard> wholePatrolCards  = qbWholePatrolCard.list();
-                RecordDao recordDao = SApplication.getInstance().getDaoSession().getRecordDao();
-                for(WholePatrolCard wholePatrolCard : wholePatrolCards){
-                    Long wholeID = wholePatrolCard.getId();
-                    QueryBuilder<Record> qbRecord = recordDao.queryBuilder();
-                    List<Record> records = qbRecord.where(RecordDao.Properties.WholeID.eq(wholeID)).list();
-                    wholePatrolCard.setRecords(records);
-                    String temp = wholePatrolCard.toString();
-                    TaskComponent.commitDetialTask(HttpService.this,temp);
+                for (PatrolTaskDetail patrolTaskDetail : patrolTaskDetails) {
+                    String patrolNameId = patrolTaskDetail.getPatrolNameId();
+                    String patrolHeadPageId = patrolTaskDetail.getPatrolHeadPageId();
+                    //查询一个设备的巡视项目
+                    WholePatrolCardDao wholePatrolCardDao = SApplication.getInstance().getDaoSession().getWholePatrolCardDao();
+                    QueryBuilder<WholePatrolCard> qbWholePatrolCard = wholePatrolCardDao.queryBuilder();
+                    List<WholePatrolCard> wholePatrolCards = qbWholePatrolCard.where(WholePatrolCardDao.Properties.PatrolHeadPageId.eq(patrolHeadPageId)).list();
+                    RecordDao recordDao = SApplication.getInstance().getDaoSession().getRecordDao();
+                    for (WholePatrolCard wholePatrolCard : wholePatrolCards) {
+                        Long wholeID = wholePatrolCard.getId();
+                        QueryBuilder<Record> qbRecord = recordDao.queryBuilder();
+                        List<Record> records = qbRecord.where(RecordDao.Properties.WholeID.eq(wholeID)).list();
+                        wholePatrolCard.setRecords(records);
+                        String temp = wholePatrolCard.toString();
+                        TaskComponent.commitDetialTask(HttpService.this, temp);
+                    }
                 }
             }
-//            if("1".equals(count)) { //将本地数据库的巡视记录提交到服务器
-//                //查询一个设备的巡视项目
-//                    PerPatrolCardDao perPatrolCardDao = SApplication.getInstance().getDaoSession().getPerPatrolCardDao();
-//                    QueryBuilder<PerPatrolCard> qbPer = perPatrolCardDao.queryBuilder();
-//                    List<PerPatrolCard> lll = qbPer.list();
-//                    List<PerPatrolCard> perPatrolCardList = qbPer.where(PerPatrolCardDao.Properties.Flag.eq(false)).list();
-//                    RecordDao recordDao = SApplication.getInstance().getDaoSession().getRecordDao();
-//                    for(PerPatrolCard temp : perPatrolCardList){
-//                        Long id = temp.getId();
-//                        QueryBuilder<Record> qbRecord = recordDao.queryBuilder();
-//                        List<Record> records = null;
-//                        if(id!=null) {
-//                            records = qbRecord.list();
-//                            records = qbRecord.where(RecordDao.Properties.Fid.eq(id)).list();
-//                        }
-//                        temp.setRecords(records);
-//                        //按设备来提交（一个设备提交一次)
-//                        String resultPerPatrolCard = temp.toString();
-//                        TaskComponent.commitDetialTask(HttpService.this,resultPerPatrolCard);
-//
-//                        temp.setFlag(true);//标注已提交过
-//                        perPatrolCardDao.insertOrReplace(temp);
-//                    }
-//            }
         }
     }
     @Override
@@ -423,7 +406,7 @@ public class HttpService extends Service implements ITaskHandlerListener,IDetail
                 String patrolNameId = jo.get("patrolNameId").toString();
                 String patrolContentTypeNo = jo.get("patrolContentTypeNo").toString(); //巡视项目数据类型编码用于指定填RecordPostVo中的哪一个value字段，详情见附件1
                 String patrolContentName = jo.get("patrolContentTypeName").toString(); //巡视项目数据类型
-                String unit = jo.get("unit")==null?null:jo.get("unit").toString();
+                String unit = jo.get("unit")==null||"\"\"".equals(jo.get("unit").toString())?null:jo.get("unit").toString();
 
                 PatrolContent patrolContent = new PatrolContent(null,format(id),Integer.parseInt(no),format(part),format(content),
                         Short.parseShort(isImportant),data,format(patrolContentTypeNo),
@@ -468,6 +451,11 @@ public class HttpService extends Service implements ITaskHandlerListener,IDetail
             JsonObject jsonObject = new JsonParser().parse((String) obj).getAsJsonObject();
             JsonArray jsonArray = jsonObject.getAsJsonArray("data");
             TaskItemDao taskItemDao = SApplication.getInstance().getDaoSession().getTaskItemDao();
+            //记录下任务的数量(id是覆盖的)
+            SApplication.setTaskCount(jsonArray.size());
+            //删除任务详细
+            PatrolTaskDetailDao patrolTaskDetailDao = SApplication.getInstance().getDaoSession().getPatrolTaskDetailDao();
+            patrolTaskDetailDao.deleteAll();
             for (int i = 0; i < jsonArray.size(); i++) {
                 JsonElement idx = jsonArray.get(i);
                 JsonObject jo = idx.getAsJsonObject();
@@ -498,8 +486,6 @@ public class HttpService extends Service implements ITaskHandlerListener,IDetail
 //                String josnTest = gson.toJson(taskItem,TaskItem.class);
 
                 if("0".equals(format(taskType))){
-                    PatrolTaskDetailDao patrolTaskDetailDao = SApplication.getInstance().getDaoSession().getPatrolTaskDetailDao();
-                    patrolTaskDetailDao.deleteAll();
                     TaskComponent.getDetialPatrolTask(HttpService.this,format(id),format(id));//根据任务ID查询任务详情
                 }
             }
@@ -516,16 +502,35 @@ public class HttpService extends Service implements ITaskHandlerListener,IDetail
 //                String s = jsonObject.toString();
                 Log.i(TAG, "onTaskSuccess: " + "ddd");
             }
+            NotificationManager mNotifyMgr =
+                    (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            PendingIntent contentIntent = PendingIntent.getActivity(
+                    this, 0, new Intent(this, HomePageActivity.class), 0);
+
+            Notification notification = new Notification.Builder(this)
+                    .setSmallIcon(R.drawable.dao_zha)
+                    .setContentTitle("变电站智能巡检系统")
+                    .setContentText("数据提交完成！")
+                    .setContentIntent(contentIntent)
+                    .build();// getNotification()
+
+            mNotifyMgr.notify(001, notification);
         }
     }
 
     private String format(String str){
+        if(str == null){
+            return  null;
+        }
         if(str.length()>2)
             return str.substring(1,str.length()-1);
         return str;
     }
     @Override
-    public void onTaskFailure(Object obj, EMsgType type) {
-        Toast.makeText(HttpService.this,"请求服务器出错!",Toast.LENGTH_LONG);
+    public void onTaskFailure(Object obj, EMsgType type,int flag) {
+
+        if(flag == 9) {
+            Toast.makeText(HttpService.this, "请求服务器出错!", Toast.LENGTH_LONG);
+        }
     }
 }

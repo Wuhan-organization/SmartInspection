@@ -46,8 +46,8 @@ public class HelpActivity  extends SwipeBackActivity{
                 startActivity(intent);
                 break;
             case R.id.fouth:
-                intent = new Intent(HelpActivity.this, TreeTestActivity.class);
-                startActivity(intent);
+//                intent = new Intent(HelpActivity.this, TreeTestActivity.class);
+//                startActivity(intent);
                 break;
             default:
                 break;

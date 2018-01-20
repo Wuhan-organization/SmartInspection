@@ -39,7 +39,7 @@ public class TaskComponent extends BaseHttpComponent {
                 if (e != null) {
                     message = e.getMessage();
                 }
-                listener.onTaskFailure(message, EMsgType.GET_SUB_DATA_FAILURE);
+                listener.onTaskFailure(message, EMsgType.GET_SUB_DATA_FAILURE,1);
             }
             @Override
             public void onResponse(String response, int id) {
@@ -47,7 +47,7 @@ public class TaskComponent extends BaseHttpComponent {
                 if (ro.getCode() == 200) {
                     listener.onTaskSuccess(response, EMsgType.GET_SUB_DATA_SUCCESS,1);
                 } else {
-                    listener.onTaskFailure(ro.getMsg(), EMsgType.GET_SUB_DATA_FAILURE);
+                    listener.onTaskFailure(ro.getMsg(), EMsgType.GET_SUB_DATA_FAILURE,1);
                 }
             }
         });
@@ -62,7 +62,7 @@ public class TaskComponent extends BaseHttpComponent {
                if (e != null) {
                    message = e.getMessage();
                }
-               listener.onTaskFailure(message, EMsgType.GET_SUB_DATA_FAILURE);
+               listener.onTaskFailure(message, EMsgType.GET_SUB_DATA_FAILURE,2);
            }
            @Override
            public void onResponse(String response, int id) {
@@ -70,7 +70,7 @@ public class TaskComponent extends BaseHttpComponent {
                if (ro.getCode() == 0) {
                    listener.onTaskSuccess(response, EMsgType.GET_SUB_DATA_SUCCESS,2);
                } else {
-                   listener.onTaskFailure(ro.getMsg(), EMsgType.GET_SUB_DATA_FAILURE);
+                   listener.onTaskFailure(ro.getMsg(), EMsgType.GET_SUB_DATA_FAILURE,2);
                }
            }
        });
@@ -84,7 +84,7 @@ public class TaskComponent extends BaseHttpComponent {
                if (e != null) {
                    message = e.getMessage();
                }
-               listener.onTaskFailure(message, EMsgType.GET_SUB_DATA_FAILURE);
+               listener.onTaskFailure(message, EMsgType.GET_SUB_DATA_FAILURE,3);
            }
            @Override
            public void onResponse(String response, int id) {
@@ -92,7 +92,7 @@ public class TaskComponent extends BaseHttpComponent {
                if (ro.getCode() == 0) {
                    listener.onTaskSuccess(response, EMsgType.GET_SUB_DATA_SUCCESS,3);
                } else {
-                   listener.onTaskFailure(ro.getMsg(), EMsgType.GET_SUB_DATA_FAILURE);
+                   listener.onTaskFailure(ro.getMsg(), EMsgType.GET_SUB_DATA_FAILURE,3);
                }
            }
        });
@@ -106,7 +106,7 @@ public class TaskComponent extends BaseHttpComponent {
                if (e != null) {
                    message = e.getMessage();
                }
-               listener.onTaskFailure(message, EMsgType.GET_SUB_DATA_FAILURE);
+               listener.onTaskFailure(message, EMsgType.GET_SUB_DATA_FAILURE,5);
            }
            @Override
            public void onResponse(String response, int id) {
@@ -114,7 +114,7 @@ public class TaskComponent extends BaseHttpComponent {
                if (ro.getCode() == 0) {
                    listener.onTaskSuccess(response, EMsgType.GET_SUB_DATA_SUCCESS,5);
                } else {
-                   listener.onTaskFailure(ro.getMsg(), EMsgType.GET_SUB_DATA_FAILURE);
+                   listener.onTaskFailure(ro.getMsg(), EMsgType.GET_SUB_DATA_FAILURE,5);
                }
            }
        });
@@ -128,7 +128,7 @@ public class TaskComponent extends BaseHttpComponent {
                if (e != null) {
                    message = e.getMessage();
                }
-               listener.onTaskFailure(message, EMsgType.GET_SUB_DATA_FAILURE);
+               listener.onTaskFailure(message, EMsgType.GET_SUB_DATA_FAILURE,6);
            }
            @Override
            public void onResponse(String response, int id) {
@@ -136,7 +136,7 @@ public class TaskComponent extends BaseHttpComponent {
                if (ro.getCode() == 200) {
                    listener.onTaskSuccess(response, EMsgType.GET_SUB_DATA_SUCCESS,6);
                } else {
-                   listener.onTaskFailure(ro.getMsg(), EMsgType.GET_SUB_DATA_FAILURE);
+                   listener.onTaskFailure(ro.getMsg(), EMsgType.GET_SUB_DATA_FAILURE,6);
                }
            }
        });
@@ -150,7 +150,7 @@ public class TaskComponent extends BaseHttpComponent {
                if (e != null) {
                    message = e.getMessage();
                }
-               listener.onTaskFailure(message, EMsgType.GET_SUB_DATA_FAILURE);
+               listener.onTaskFailure(message, EMsgType.GET_SUB_DATA_FAILURE,7);
            }
            @Override
            public void onResponse(String response, int id) {
@@ -158,7 +158,7 @@ public class TaskComponent extends BaseHttpComponent {
                if (ro.getCode() == 200) {
                    listener.onTaskSuccess(response, EMsgType.GET_SUB_DATA_SUCCESS,7);
                } else {
-                   listener.onTaskFailure(ro.getMsg(), EMsgType.GET_SUB_DATA_FAILURE);
+                   listener.onTaskFailure(ro.getMsg(), EMsgType.GET_SUB_DATA_FAILURE,7);
                }
            }
        });
@@ -172,7 +172,7 @@ public class TaskComponent extends BaseHttpComponent {
                if (e != null) {
                    message = e.getMessage();
                }
-               listener.onTaskFailure(message, EMsgType.GET_SUB_DATA_FAILURE);
+               listener.onTaskFailure(message, EMsgType.GET_SUB_DATA_FAILURE,8);
            }
 
            @Override
@@ -181,7 +181,7 @@ public class TaskComponent extends BaseHttpComponent {
                if (ro.getCode() == 200) {
                    listener.onTaskSuccess(response, EMsgType.GET_SUB_DATA_SUCCESS,8);
                } else {
-                   listener.onTaskFailure(ro.getMsg(), EMsgType.GET_SUB_DATA_FAILURE);
+                   listener.onTaskFailure(ro.getMsg(), EMsgType.GET_SUB_DATA_FAILURE,8);
                }
 
            }
@@ -199,16 +199,16 @@ public class TaskComponent extends BaseHttpComponent {
                 if (e != null) {
                     message = e.getMessage();
                 }
-                listener.onTaskFailure(message, EMsgType.GET_SUB_DATA_FAILURE);
+                listener.onTaskFailure(message, EMsgType.GET_SUB_DATA_FAILURE,9);
             }
 
             @Override
             public void onResponse(String response, int id) {
                 CustomParser.ResponseObject ro = CustomParser.parse(response);
-                if (ro.getCode() == 200) {
+                if (ro !=null &&ro.getCode() == 200) {
                     listener.onTaskSuccess(response, EMsgType.GET_SUB_DATA_SUCCESS,9);
                 } else {
-                    listener.onTaskFailure(ro.getMsg(), EMsgType.GET_SUB_DATA_FAILURE);
+                    listener.onTaskFailure(ro.getMsg(), EMsgType.GET_SUB_DATA_FAILURE,9);
                 }
             }
         });
@@ -252,7 +252,7 @@ public class TaskComponent extends BaseHttpComponent {
                 if (e != null) {
                     message = e.getMessage();
                 }
-                listener.onTaskFailure(message, EMsgType.GET_SUB_DATA_FAILURE);
+                listener.onTaskFailure(message, EMsgType.GET_SUB_DATA_FAILURE,0);
             }
 
             @Override
@@ -261,7 +261,7 @@ public class TaskComponent extends BaseHttpComponent {
                 if (ro.getCode() == 200) {
                     listener.onTaskSuccess(ro.getMsg(), EMsgType.GET_SUB_DATA_SUCCESS,0);
                 } else {
-                    listener.onTaskFailure(ro.getMsg(), EMsgType.GET_SUB_DATA_FAILURE);
+                    listener.onTaskFailure(ro.getMsg(), EMsgType.GET_SUB_DATA_FAILURE,0);
                 }
 
             }
@@ -307,7 +307,7 @@ public class TaskComponent extends BaseHttpComponent {
                 if (e != null) {
                     message = e.getMessage();
                 }
-                listener.onTaskFailure(message, EMsgType.GET_SUB_DATA_FAILURE);
+                listener.onTaskFailure(message, EMsgType.GET_SUB_DATA_FAILURE,11);
             }
 
             @Override
@@ -316,7 +316,7 @@ public class TaskComponent extends BaseHttpComponent {
                 if (ro.getCode() == 200) {
                     listener.onTaskSuccess(ro.getMsg(), EMsgType.GET_SUB_DATA_SUCCESS,11);
                 } else {
-                    listener.onTaskFailure(ro.getMsg(), EMsgType.GET_SUB_DATA_FAILURE);
+                    listener.onTaskFailure(ro.getMsg(), EMsgType.GET_SUB_DATA_FAILURE,11);
                 }
             }
         });
