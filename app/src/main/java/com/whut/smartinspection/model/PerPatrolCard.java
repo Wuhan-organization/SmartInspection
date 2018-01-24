@@ -19,6 +19,7 @@ import com.whut.greendao.gen.PerPatrolCardDao;
  */
 @Entity
 public class PerPatrolCard {
+    //实体id
     @Property(nameInDb = "id")
     @Id()
     private Long id;
@@ -32,7 +33,7 @@ public class PerPatrolCard {
 
     private Long fid;//外键
 
-    private String patrolHeadPageId;
+    private String patrolHeadPageId;//首页id
 
     /** Used to resolve relations */
     @Generated(hash = 2040040024)

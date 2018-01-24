@@ -58,7 +58,7 @@ import org.greenrobot.greendao.query.QueryBuilder;
 //import static com.baidu.location.h.j.R;
 
 /**
- * 全面巡视页面
+ * 全面巡视页面（第二版）
  * Created by xiongbin on 2017/11/2.
  */
 public class FullInspectionActivity extends Activity implements ITaskHandlerListener,GestureDetector.OnGestureListener,View.OnTouchListener {

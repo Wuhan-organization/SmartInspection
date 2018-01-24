@@ -6,16 +6,24 @@ import org.greenrobot.greendao.annotation.Generated;
 
 /**
  * Created by think on 2017/10/24.
+ * 用户实体
  */
 @Entity
 public class Person {
+    //实体id
     @Id
     private Long id;
+    //用户名
     private String name;
+    //年龄
     private int age;
+    //电话号码
     private String phoneNumber;
+    //密码
     private String password;
+    //回话id
     private String sessionId;
+
     private boolean isInitTaskDetail ;//是否初始化变电站信息
 
     @Generated(hash = 1756947697)

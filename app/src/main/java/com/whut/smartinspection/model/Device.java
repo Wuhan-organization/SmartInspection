@@ -12,6 +12,7 @@ import org.greenrobot.greendao.annotation.Property;
  */
 @Entity
 public class Device {
+    //实体id(自动生成)
     @Property(nameInDb = "id")
     @Id(autoincrement = true)
     private Long id;
@@ -19,11 +20,11 @@ public class Device {
     private String name;
     //设备编号
     private String no;
-    
+    //设备id
     private String idd;
-
+    //间隔单元ID
     private String intervalUnitId;
-
+    //设备类型ID
     private int deviceTypeId;
 
     @Generated(hash = 744949392)

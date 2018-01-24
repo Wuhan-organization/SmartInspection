@@ -10,6 +10,7 @@ import java.util.Date;
 
 /**
  * Created by Fortuner on 2017/12/5.
+ * 任务实体
  */
 @Entity
 public class TaskItem  implements Serializable{
@@ -17,7 +18,7 @@ public class TaskItem  implements Serializable{
     @Property(nameInDb = "id")
     @Id()
     private Long id;//前端自动生成Id
-    private String idd; //后台自动生成
+    private String idd; //任务id
     private String worker;//工作者 列表 负责人放在第一位
     private Date startDate;//任务开始日期
     private Date endDate;//任务结束日期

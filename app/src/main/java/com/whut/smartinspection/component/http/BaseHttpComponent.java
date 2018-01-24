@@ -6,7 +6,8 @@ public class BaseHttpComponent {
 	public static final String URL = "http://115.159.108.163:8009/smartIsland/";
 	public final String contentType = "application/json;charset=UTF-8";
 	public static final String USER_AGENT = "fm_android";
-	public static final String IP = "http://119.27.171.24/";
+//	public static final String IP = "http://119.27.171.24/";
+	public static final String IP = "http://116.62.59.24:8080/";
 //	public static final String IP = "http://192.168.1.117:8080/";
 	//获取变电站名称列表
 	public static final String URL_SUBSTATION =IP + "BDZXJService/Android/Substation/all";

@@ -13,21 +13,21 @@ import org.greenrobot.greendao.annotation.Generated;
 
 @Entity
 public class Record {
+    //实体id
     @Property(nameInDb = "id")
     @Id(autoincrement = true)
     private Long id;//greenDao自动生成的ID
-
     private String idd;//巡视项目ID
     private String valueChar;//单选 √ ×
     private float valueFloat;//温度输入
     private String valueString;//备注
-    private long patrolRecordDate;
-    private String deviceId;
-    private String patrolContentId;
+    private long patrolRecordDate;//巡视记录日期
+    private String deviceId;//设备id
+    private String patrolContentId;//巡视项目id
 
     private Long fid;//用于标识外键关系
 
-    private Long wholeID ;//一个巡视作业卡对于一个wholeID
+    private Long wholeID ;//PatrolWorkCard 的id
 
     @Generated(hash = 1921360249)
     public Record(Long id, String idd, String valueChar, float valueFloat,

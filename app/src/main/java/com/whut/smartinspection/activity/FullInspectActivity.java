@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.bric.util.Text;
 import com.whut.greendao.gen.DeviceDao;
 import com.whut.greendao.gen.DeviceTypeDao;
 import com.whut.greendao.gen.IntervalUnitDao;
@@ -36,8 +35,6 @@ import com.whut.smartinspection.utils.ButtonUtils;
 import com.whut.smartinspection.utils.SystemUtils;
 import com.whut.smartinspection.widgets.CustomToolBar;
 import com.whut.smartlibrary.base.SwipeBackActivity;
-import com.wx.wheelview.common.WheelConstants;
-import com.wx.wheelview.util.WheelUtils;
 import com.wx.wheelview.widget.WheelView;
 import com.wx.wheelview.widget.WheelViewDialog;
 
@@ -47,8 +44,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -56,6 +51,7 @@ import butterknife.OnClick;
 
 /**
  * Created by Fortuner on 2018/1/1.
+ * 全面巡视activity （第三版）
  */
 
 public class FullInspectActivity extends SwipeBackActivity {
@@ -134,8 +130,8 @@ public class FullInspectActivity extends SwipeBackActivity {
         QueryBuilder<PatrolTaskDetail> qbPatrolTDetail = patrolTaskDetailDao.queryBuilder();
         lpatrolNameId = qbPatrolTDetail.where(PatrolTaskDetailDao.Properties.TaskId.eq(taskId)).list();
         patrolNameId = lpatrolNameId.size()>0?lpatrolNameId.get(0).getPatrolNameId():null;
-        insertData1(lpatrolNameId);//先初始化数据库
-        initData1();
+        insertData(lpatrolNameId);//先初始化数据库
+        initData();
         initView();
         changeInitedStatue();
     }
@@ -144,7 +140,7 @@ public class FullInspectActivity extends SwipeBackActivity {
         TaskItemDao taskItemDao = SApplication.getInstance().getDaoSession().getTaskItemDao();
         taskItemDao.insertOrReplace(item);
     }
-    private void insertData1(List<PatrolTaskDetail> patrolTaskDetails){
+    private void insertData(List<PatrolTaskDetail> patrolTaskDetails){
         for (PatrolTaskDetail patrolTaskDetail : patrolTaskDetails){
             patrolNameId = patrolTaskDetail.getPatrolNameId();
             patrolHeadPageId = patrolTaskDetail.getPatrolHeadPageId();
@@ -189,7 +185,7 @@ public class FullInspectActivity extends SwipeBackActivity {
             }
         }
     }
-    private void initData1(){
+    private void initData(){
         //转到第一种设备类型
         patrolNameId = lpatrolNameId.get(0).getPatrolNameId();
         //巡视作业卡片内容
@@ -221,7 +217,7 @@ public class FullInspectActivity extends SwipeBackActivity {
             }
         });
     }
-    private void changeDeviceType1(int i){
+    private void changeDeviceType(int i){
         //巡视作业卡片内容
         QueryBuilder<PatrolContent> qbPatrolContent = patrolContentDao.queryBuilder();
         patrolContents  = qbPatrolContent.where(PatrolContentDao.Properties.PatrolNameId.eq(patrolNameId)).list();
@@ -247,7 +243,7 @@ public class FullInspectActivity extends SwipeBackActivity {
 
     }
 
-    private void changeDevice1(){
+    private void changeDevice(){
         Device device = deviceList.get(pDevice);
         nameDevice.setText(device.getName());
         QueryBuilder<Record> qbRecord = recordDao.queryBuilder();
@@ -316,13 +312,13 @@ public class FullInspectActivity extends SwipeBackActivity {
     public void onClick(View view){
         switch (view.getId()){
             case R.id.name_device:
-                showDialog1(view,deviceList);
+                nameDeviceDialog(view,deviceList);
                 break;
             case R.id.style_device:
-                showDialog(view, deviceTypeList);
+                deviceTypeDialog(view, deviceTypeList);
                 break;
             case R.id.name_dis:
-                showDialog3(view,intervalUnits);
+                intervalUnitsDialog(view,intervalUnits);
                 break;
             case R.id.btn_help:
                 Intent intent = new Intent(FullInspectActivity.this,WorkingHelpActivity.class);
@@ -360,7 +356,7 @@ public class FullInspectActivity extends SwipeBackActivity {
         }
     }
 
-    public void showDialog(View view, final List<DeviceType> parent) {
+    public void deviceTypeDialog(View view, final List<DeviceType> parent) {
         WheelViewDialog dialog = new WheelViewDialog(this);
         List<String> list = new ArrayList<>();
         for(DeviceType deviceType : parent){
@@ -374,11 +370,11 @@ public class FullInspectActivity extends SwipeBackActivity {
                 deviceTypeName.setText(parent.get(position).getName());
                 pDevice = position;
                 patrolNameId = lpatrolNameId.get(position).getPatrolNameId();
-                changeDeviceType1(position);
+                changeDeviceType(position);
             }
         }).show();
     }
-    public void showDialog3(View view, final List<IntervalUnit> parent) {
+    public void intervalUnitsDialog(View view, final List<IntervalUnit> parent) {
         WheelViewDialog dialog = new WheelViewDialog(this);
         List<String> list = new ArrayList<>();
         for(IntervalUnit intervalUnit : parent){
@@ -393,7 +389,7 @@ public class FullInspectActivity extends SwipeBackActivity {
             }
         }).show();
     }
-    public void showDialog1(View view, final List<Device> parent) {
+    public void nameDeviceDialog(View view, final List<Device> parent) {
         WheelViewDialog dialog = new WheelViewDialog(this);
         List<String> list = new ArrayList<>();
         for(Device device : parent){
@@ -411,7 +407,7 @@ public class FullInspectActivity extends SwipeBackActivity {
                 }
 
 //                changeDevice();
-                changeDevice1();
+                changeDevice();
                 Log.i(TAG, "onItemClick: "+position);
             }
         }).show();

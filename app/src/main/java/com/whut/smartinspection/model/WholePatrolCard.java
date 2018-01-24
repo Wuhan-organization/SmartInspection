@@ -15,14 +15,17 @@ import com.whut.greendao.gen.RecordDao;
 
 /**
  * Created by Fortuner on 2017/12/25.
+ * 巡视作业卡记录实体
  */
 @Entity
 public class WholePatrolCard {
+    //实体id
     @Id(autoincrement = true)
     private Long id;
-
+    //首页id
     private String patrolHeadPageId;
 
+    //巡视作业卡下的巡视项目记录
     @ToMany(referencedJoinProperty = "fid")
     private List<Record> records;
 

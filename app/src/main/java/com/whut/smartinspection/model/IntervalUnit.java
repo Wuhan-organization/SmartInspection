@@ -7,15 +7,17 @@ import org.greenrobot.greendao.annotation.Generated;
 
 /**
  * Created by Fortuner on 2017/11/24.
+ * 间隔单元实体
  */
 @Entity
 public class IntervalUnit {
+    //实体id
     @Property(nameInDb = "id")
     @Id(autoincrement = true)
     private Long id;
-
+    //间隔单元id
     private String idd;
-
+    //间隔单元名称
     private String name;
 
     @Generated(hash = 443661963)

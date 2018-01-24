@@ -1,11 +1,11 @@
 [
     {
-        "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_play.xml",
-        "source": "D:\\workspace\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_play.xml"
+        "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_ic_menu_overflow_material.xml",
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_ic_menu_overflow_material.xml"
     },
     {
-        "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_ic_menu_overflow_material.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_ic_menu_overflow_material.xml"
+        "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_play.xml",
+        "source": "D:\\workspace\\SmartInspection\\helmet\\src\\main\\res\\drawable\\ic_play.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\open.png",
@@ -29,19 +29,19 @@
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_list_selector_background_transition_holo_dark.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\notification_tile_bg.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\notification_tile_bg.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\notification_tile_bg.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_ic_search_api_material.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_ic_search_api_material.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_ic_search_api_material.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_item_background_holo_light.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_item_background_holo_light.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_item_background_holo_light.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_backward.xml",
@@ -49,7 +49,7 @@
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_switch_thumb_material.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_switch_thumb_material.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_switch_thumb_material.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_play_glow.png",
@@ -57,43 +57,43 @@
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_tab_indicator_material.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_tab_indicator_material.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_tab_indicator_material.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_btn_radio_material.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_btn_radio_material.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_btn_radio_material.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_ic_clear_material.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_ic_clear_material.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_ic_clear_material.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\notification_bg_low.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\notification_bg_low.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\notification_bg_low.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_ic_ab_back_material.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_ic_ab_back_material.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_ic_ab_back_material.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_seekbar_thumb_material.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_seekbar_thumb_material.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_seekbar_thumb_material.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_edit_text_material.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_edit_text_material.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_edit_text_material.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_btn_check_material.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_btn_check_material.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_btn_check_material.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_btn_borderless_material.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_btn_borderless_material.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_btn_borderless_material.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\adas_left.png",
@@ -105,7 +105,7 @@
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_vector_test.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_vector_test.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_vector_test.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\wificam.png",
@@ -113,7 +113,7 @@
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_ratingbar_material.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_ratingbar_material.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_ratingbar_material.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\switch_inner_holo_light.xml",
@@ -121,7 +121,7 @@
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_ratingbar_small_material.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_ratingbar_small_material.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_ratingbar_small_material.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\adas_calibrate.png",
@@ -129,11 +129,11 @@
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_textfield_search_material.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_textfield_search_material.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_textfield_search_material.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_btn_default_mtrl_shape.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_btn_default_mtrl_shape.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_btn_default_mtrl_shape.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\po_seekbar.xml",
@@ -141,11 +141,11 @@
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_list_selector_holo_light.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_list_selector_holo_light.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_list_selector_holo_light.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_seekbar_tick_mark_material.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_seekbar_tick_mark_material.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_seekbar_tick_mark_material.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\background.jpg",
@@ -153,7 +153,7 @@
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_cab_background_top_material.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_cab_background_top_material.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_cab_background_top_material.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_forward_normal.png",
@@ -161,7 +161,7 @@
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\notification_bg.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\notification_bg.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\notification_bg.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_size_glow.png",
@@ -169,7 +169,7 @@
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_list_selector_holo_dark.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_list_selector_holo_dark.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_list_selector_holo_dark.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\adas_right.png",
@@ -181,11 +181,11 @@
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_ic_voice_search_api_material.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_ic_voice_search_api_material.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_ic_voice_search_api_material.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_ic_go_search_api_material.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_ic_go_search_api_material.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_ic_go_search_api_material.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_forward.xml",
@@ -197,7 +197,7 @@
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_spinner_textfield_background_material.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_spinner_textfield_background_material.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_spinner_textfield_background_material.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_forward_glow.png",
@@ -221,7 +221,7 @@
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_cab_background_internal_bg.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_cab_background_internal_bg.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_cab_background_internal_bg.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_size.xml",
@@ -229,7 +229,7 @@
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\notification_icon_background.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\notification_icon_background.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\notification_icon_background.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_pause_glow.png",
@@ -249,7 +249,7 @@
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_ratingbar_indicator_material.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_ratingbar_indicator_material.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_ratingbar_indicator_material.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\ic_play_normal.png",
@@ -257,11 +257,11 @@
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_dialog_material_background.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_dialog_material_background.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_dialog_material_background.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_text_cursor_material.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_text_cursor_material.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_text_cursor_material.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\pir_icon.png",
@@ -277,7 +277,7 @@
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_seekbar_track_material.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_seekbar_track_material.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_seekbar_track_material.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\group_background.xml",
@@ -293,7 +293,7 @@
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_item_background_holo_dark.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_item_background_holo_dark.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_item_background_holo_dark.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\cam_connect.png",
@@ -305,11 +305,11 @@
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_btn_colored_material.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_btn_colored_material.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_btn_colored_material.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\abc_list_selector_background_transition_holo_light.xml",
-        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\c7efcda02fff26fadc1cb580d7053acc2f88974a\\output\\res\\drawable\\abc_list_selector_background_transition_holo_light.xml"
+        "source": "C:\\Users\\Fortuner\\.android\\build-cache\\f2e8a8283437fc37892bcd64a96da658fd2ab27d\\output\\res\\drawable\\abc_list_selector_background_transition_holo_light.xml"
     },
     {
         "merged": "D:\\workspace\\SmartInspection\\helmet\\build\\intermediates\\res\\merged\\release\\drawable\\banner.png",

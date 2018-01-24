@@ -17,12 +17,15 @@ import org.greenrobot.greendao.annotation.Property;
  */
 @Entity
 public class DeviceType {
+    //实体id
     @Id
     @Property(nameInDb = "id")
     private Long id;
-    //类型名称
+    //设备类型id
     private String idd;
+    //设备类型名称
     private String name;
+    //设备类型编号
     private String no;
 
 

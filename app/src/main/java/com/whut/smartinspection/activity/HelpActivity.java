@@ -17,6 +17,7 @@ import tw.com.a_i_t.IPCamViewer.HelmetActivity;
 
 /**
  * Created by Fortuner on 2017/12/15.
+ * 帮助界面
  */
 
 public class HelpActivity  extends SwipeBackActivity{

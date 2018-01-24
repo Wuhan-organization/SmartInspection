@@ -8,14 +8,14 @@ import org.greenrobot.greendao.annotation.Generated;
 
 /**
  * Created by xms on 2017/10/24.
- * 巡视内容
+ * 巡视项目
  */
 @Entity
 public class PatrolContent {
+    //实体id
     @Property(nameInDb = "id")
     @Id(autoincrement = true)
     private Long id;
-
     private String idd;
     //项目条目
     private int no;
@@ -29,13 +29,13 @@ public class PatrolContent {
     private String date;
     //数据类型
     private String patrolContentTypeNo;
-
-    private String patrolContentName; //巡视项目数据类型
-
+    //巡视项目数据类型
+    private String patrolContentName;
+    //设备类型id
     private int deviceTypeId;
-
+    //巡视作业卡id
     private String patrolNameId;
-
+    //输入项单位
     private String unit;
 
     @Generated(hash = 1410287866)

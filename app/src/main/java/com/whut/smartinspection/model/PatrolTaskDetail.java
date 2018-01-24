@@ -11,14 +11,16 @@ import org.greenrobot.greendao.annotation.Generated;
  */
 @Entity
 public class PatrolTaskDetail {
+    //实体id
     @Property(nameInDb = "id")
     @Id(autoincrement = true)
     private Long id;
+    //任务id
     private String taskId;
-
-    private String patrolHeadPageId;//巡视首页ID
-
-    private String patrolNameId;//巡视项目名字ID
+    //巡视首页ID
+    private String patrolHeadPageId;
+    //巡视作业卡ID
+    private String patrolNameId;
 
     @Generated(hash = 81408514)
     public PatrolTaskDetail(Long id, String taskId, String patrolHeadPageId,

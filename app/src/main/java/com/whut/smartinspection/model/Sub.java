@@ -7,14 +7,17 @@ import org.greenrobot.greendao.annotation.Property;
 
 /**
  * Created by Fortuner on 2017/11/24.
+ * 变电站实体
  */
 @Entity
 public class Sub  {
+    //实体id
     @Property(nameInDb = "id")
     @Id(autoincrement = true)
     private Long id;
-
+    //变电站名称
     private String name;
+    //变电站id
     @Property(nameInDb = "idd")
     private String idd;
 

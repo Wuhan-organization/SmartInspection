@@ -44,7 +44,7 @@ import butterknife.ButterKnife;
 
 /**
  * Created by Fortuner on 2017/12/28.
- * 全面巡视（改进版本)
+ * 全面巡视  第一版（改进版本)
  */
 
 public class FullTourActivity extends SwipeBackActivity implements AdapterView.OnItemClickListener,EventCallable {

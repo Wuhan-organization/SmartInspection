@@ -11,19 +11,19 @@ import org.greenrobot.greendao.annotation.Generated;
  */
 @Entity
 public class PatrolWorkCard {
-
+    //实体id
     @Property(nameInDb = "id")
     @Id(autoincrement = true)
     private Long id;
-
-    private String idd;//巡视作业卡名字ID
-
+    //巡视作业卡名字ID
+    private String idd;
+    //巡视项目名称
     private String name;
-
+    //类型名称
     private String typeName;
-
+    //设备id
     private String deviceId;
-
+    //扩展列
     private String otherColumn;
 
 

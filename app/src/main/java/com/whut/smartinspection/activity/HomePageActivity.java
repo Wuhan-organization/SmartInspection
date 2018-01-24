@@ -35,6 +35,7 @@ import butterknife.OnClick;
 
 /**
  * Created by Fortuner on 2017/12/14.
+ * 主界面
  */
 
 public class HomePageActivity extends SwipeBackActivity {
