@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.bric.util.Text;
 import com.whut.greendao.gen.DeviceDao;
 import com.whut.greendao.gen.DeviceTypeDao;
+import com.whut.greendao.gen.IntervalUnitDao;
 import com.whut.greendao.gen.PatrolContentDao;
 import com.whut.greendao.gen.PatrolTaskDetailDao;
 import com.whut.greendao.gen.PerPatrolCardDao;
@@ -24,6 +25,7 @@ import com.whut.smartinspection.adapters.FullWheelAdapter;
 import com.whut.smartinspection.application.SApplication;
 import com.whut.smartinspection.model.Device;
 import com.whut.smartinspection.model.DeviceType;
+import com.whut.smartinspection.model.IntervalUnit;
 import com.whut.smartinspection.model.PatrolContent;
 import com.whut.smartinspection.model.PatrolTaskDetail;
 import com.whut.smartinspection.model.PerPatrolCard;
@@ -73,6 +75,8 @@ public class FullInspectActivity extends SwipeBackActivity {
     Button btnHelp;
     @BindView(R.id.toolbar_right_tv)
     TextView toolbarRightTv;
+    @BindView(R.id.wheelview)
+    WheelView wheelView;
 
 
     List<PatrolTaskDetail> lpatrolNameId;//任务对应的内容
@@ -113,6 +117,7 @@ public class FullInspectActivity extends SwipeBackActivity {
     DeviceType deviceType;
     DeviceDao deviceDao = SApplication.getInstance().getDaoSession().getDeviceDao();
     PatrolContentDao patrolContentDao = SApplication.getInstance().getDaoSession().getPatrolContentDao();
+    List<IntervalUnit> intervalUnits = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,6 +125,7 @@ public class FullInspectActivity extends SwipeBackActivity {
         ButtonUtils.setDIFF(30*60*1000);//设置提交按钮三十秒内不能点击
         ButtonUtils.setLastClickTime(0);
         ButterKnife.bind(this);
+
         CustomToolBar.goBack(FullInspectActivity.this);//返回按钮监听
         item = (TaskItem) getIntent().getSerializableExtra("item");
         taskId  = item.getIdd();
@@ -128,9 +134,6 @@ public class FullInspectActivity extends SwipeBackActivity {
         QueryBuilder<PatrolTaskDetail> qbPatrolTDetail = patrolTaskDetailDao.queryBuilder();
         lpatrolNameId = qbPatrolTDetail.where(PatrolTaskDetailDao.Properties.TaskId.eq(taskId)).list();
         patrolNameId = lpatrolNameId.size()>0?lpatrolNameId.get(0).getPatrolNameId():null;
-//        insertData(lpatrolNameId1);//先初始化数据库
-//        initData();
-//        initView();
         insertData1(lpatrolNameId);//先初始化数据库
         initData1();
         initView();
@@ -141,59 +144,17 @@ public class FullInspectActivity extends SwipeBackActivity {
         TaskItemDao taskItemDao = SApplication.getInstance().getDaoSession().getTaskItemDao();
         taskItemDao.insertOrReplace(item);
     }
-    private void insertData(List<PatrolTaskDetail> patrolTaskDetails){
-        for (PatrolTaskDetail patrolTaskDetail : patrolTaskDetails){
-            patrolNameId = patrolTaskDetail.getPatrolNameId();
-            patrolHeadPageId = patrolTaskDetail.getPatrolHeadPageId();
-            //提交时按设备类型提交的
-            WholePatrolCard wholePatrolCard = new WholePatrolCard(wholeId,patrolHeadPageId,false);
-            WholePatrolCardDao wholePatrolCardDao = SApplication.getInstance().getDaoSession().getWholePatrolCardDao();
-            wholePatrolCardDao.insertOrReplace(wholePatrolCard);
-            //巡视作业卡片内容
-            QueryBuilder<PatrolContent> qbPC = patrolContentDao.queryBuilder();
-            patrolContents = qbPC.where(PatrolContentDao.Properties.PatrolNameId.eq(patrolNameId)).list();
-            deviceTypeIddI = patrolContents.get(0).getDeviceTypeId();//获得设备类型ID
-            QueryBuilder<DeviceType> qbDeviceTpe = deviceTypedao.queryBuilder();
-            deviceType =  qbDeviceTpe.where(DeviceTypeDao.Properties.Idd.eq(deviceTypeIddI)).unique();
-            if(deviceType!=null)
-                deviceTypeList.add(deviceType);
-            QueryBuilder<Device> qbDevice = deviceDao.queryBuilder();
-            deviceList = qbDevice.where(DeviceDao.Properties.DeviceTypeId.eq(deviceTypeIddI)).list();
-            patrolCardDao = SApplication.getInstance().getDaoSession().getPerPatrolCardDao();
-            recordDao = SApplication.getInstance().getDaoSession().getRecordDao();
-            mapId =  new HashMap<>();//key -->设备类型iD
-            for(int i=0;i<deviceList.size();i++){
-                //插入设备
-                String devieceId = deviceList.get(i).getIdd();
-                PerPatrolCard perPatrolCard = new PerPatrolCard(deviceDbId,devieceId,false,0L,patrolHeadPageId);
-                patrolCardDao.insertOrReplace(perPatrolCard);
-                mapId.put(devieceId, deviceDbId);
-                for(int j = 0;j<patrolContents.size();j++){
-                    Record record = new Record();
-                    record.setValueChar(" ");
-                    record.setValueFloat(0);
-                    record.setId(pointPatrol++);
-                    record.setFid(deviceDbId);
-                    record.setDeviceId(devieceId);
-                    record.setPatrolContentId(patrolContents.get(j).getIdd());
-                    //加入巡视作业卡id用于提交
-                    record.setWholeID(wholeId);
-                   recordDao.insertOrReplace(record);
-                }
-                deviceDbId++;
-            }
-            wholeId++;
-            mapPatrolNameId.put(patrolNameId,mapId);
-        }
-    }
     private void insertData1(List<PatrolTaskDetail> patrolTaskDetails){
         for (PatrolTaskDetail patrolTaskDetail : patrolTaskDetails){
             patrolNameId = patrolTaskDetail.getPatrolNameId();
             patrolHeadPageId = patrolTaskDetail.getPatrolHeadPageId();
             //提交时按设备类型提交的
-            WholePatrolCard wholePatrolCard = new WholePatrolCard(wholeId,patrolHeadPageId,false);
             WholePatrolCardDao wholePatrolCardDao = SApplication.getInstance().getDaoSession().getWholePatrolCardDao();
-            wholePatrolCardDao.insertOrReplace(wholePatrolCard);
+            if(item.getStatus() == 0) {
+                WholePatrolCard wholePatrolCard = new WholePatrolCard(null, patrolHeadPageId, false);
+                wholePatrolCardDao.insertOrReplace(wholePatrolCard);
+                wholeId = wholePatrolCard.getId();
+            }
             //巡视作业卡片内容
             QueryBuilder<PatrolContent> qbPC = patrolContentDao.queryBuilder();
             patrolContents = qbPC.where(PatrolContentDao.Properties.PatrolNameId.eq(patrolNameId)).list();
@@ -215,9 +176,9 @@ public class FullInspectActivity extends SwipeBackActivity {
                     String devieceId = deviceList.get(i).getIdd();
                     for (int j = 0; j < patrolContents.size(); j++) {
                         Record record = new Record();
-                        record.setValueChar(" ");
+                        record.setValueChar("T");
                         record.setValueFloat(-1);
-                        record.setId(pointPatrol++);
+                        record.setId(null);
                         record.setDeviceId(devieceId);
                         record.setPatrolContentId(patrolContents.get(j).getIdd());
                         //加入巡视作业卡id用于提交
@@ -225,43 +186,8 @@ public class FullInspectActivity extends SwipeBackActivity {
                         recordDao.insertOrReplace(record);
                     }
                 }
-                wholeId++;
             }
-
         }
-    }
-    private void initData(){
-        //转到当前map
-        patrolNameId = lpatrolNameId.get(0).getPatrolNameId();
-        mapId = mapPatrolNameId.get(patrolNameId);
-
-
-        //巡视作业卡片内容
-        QueryBuilder<PatrolContent> qbPatrolContent = patrolContentDao.queryBuilder();
-        patrolContents  = qbPatrolContent.where(PatrolContentDao.Properties.PatrolNameId.eq(patrolNameId)).list();
-        //初始化
-        String deviceTypeId = deviceTypeList.get(0).getIdd();
-        QueryBuilder<Device> qbDevice = deviceDao.queryBuilder();
-        qbDevice = deviceDao.queryBuilder();
-        deviceList = qbDevice.list();
-        deviceList = qbDevice.where(DeviceDao.Properties.DeviceTypeId.eq(Integer.valueOf(deviceTypeId))).list();
-        //获取巡视结果容器
-        String deviceId = deviceList.get(0).getIdd();
-        deviceDbId = mapId.get(deviceId);
-
-        QueryBuilder<Record> qbRecord = recordDao.queryBuilder();
-        records = qbRecord.where(RecordDao.Properties.Fid.eq(deviceDbId)).list();
-
-
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                nameDis.setText("#1主变本体间隔");
-                substationName.setText("锦江变电站500KV");
-                deviceTypeName.setText( deviceTypeList.get(0).getName());
-                nameDevice.setText(deviceList.get(0).getName());
-            }
-        });
     }
     private void initData1(){
         //转到第一种设备类型
@@ -274,6 +200,11 @@ public class FullInspectActivity extends SwipeBackActivity {
         QueryBuilder<Device> qbDevice = deviceDao.queryBuilder();
         qbDevice = deviceDao.queryBuilder();
         deviceList = qbDevice.where(DeviceDao.Properties.DeviceTypeId.eq(Integer.valueOf(deviceTypeId))).list();
+        //初始化间隔
+        IntervalUnitDao intervalUnitDao = SApplication.getInstance().getDaoSession().getIntervalUnitDao();
+        QueryBuilder<IntervalUnit> IUqueryBuilder = intervalUnitDao.queryBuilder();
+        intervalUnits = IUqueryBuilder.list();
+
         //获取巡视结果容器
         String deviceId = deviceList.get(0).getIdd();
 
@@ -283,39 +214,12 @@ public class FullInspectActivity extends SwipeBackActivity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                nameDis.setText("#1主变本体间隔");
+                nameDis.setText(intervalUnits.get(0).getName());
                 substationName.setText("锦江变电站500KV");
                 deviceTypeName.setText( deviceTypeList.get(0).getName());
                 nameDevice.setText(deviceList.get(0).getName());
             }
         });
-    }
-    private void changeDeviceType(){
-        //巡视作业卡片内容
-        QueryBuilder<PatrolContent> qbPatrolContent = patrolContentDao.queryBuilder();
-        patrolContents  = qbPatrolContent.where(PatrolContentDao.Properties.PatrolNameId.eq(patrolNameId)).list();
-        deviceTypeIddI = patrolContents.get(0).getDeviceTypeId();//获得设备类型ID
-        QueryBuilder<DeviceType> qbDeviceTpe = deviceTypedao.queryBuilder();
-        deviceType =  qbDeviceTpe.where(DeviceTypeDao.Properties.Idd.eq(deviceTypeIddI)).unique();
-        //改变设备列表
-        QueryBuilder<Device> qbDevice = deviceDao.queryBuilder();
-        deviceList = qbDevice.where(DeviceDao.Properties.DeviceTypeId.eq(deviceTypeIddI)).list();
-        //改变记录liebiao
-        mapId = mapPatrolNameId.get(patrolNameId);
-        String deviceId = deviceList.get(0).getIdd();
-        deviceDbId = mapId.get(deviceId);
-        QueryBuilder<Record> qbRecord = recordDao.queryBuilder();
-        records = qbRecord.where(RecordDao.Properties.Fid.eq(deviceDbId)).list();
-        patrolContentList.clear();
-        for(PatrolContent patrolContent : patrolContents){
-            patrolContentList.add(patrolContent);
-        }
-        recordList.clear();
-        for(Record record : records){
-            recordList.add(record);
-        }
-        wheelAdapter.notifyDataSetChanged();
-
     }
     private void changeDeviceType1(int i){
         //巡视作业卡片内容
@@ -343,19 +247,6 @@ public class FullInspectActivity extends SwipeBackActivity {
 
     }
 
-    private void changeDevice(){
-        Device device = deviceList.get(pDevice);
-        nameDevice.setText(device.getName());
-        mapId = mapPatrolNameId.get(patrolNameId);
-        deviceDbId = mapId.get(device.getIdd());
-        QueryBuilder<Record> qbRecord = recordDao.queryBuilder();
-        records = qbRecord.where(RecordDao.Properties.Fid.eq(deviceDbId)).list();
-        recordList.clear();
-        for(Record record : records){
-            recordList.add(record);
-        }
-        wheelAdapter.notifyDataSetChanged();
-    }
     private void changeDevice1(){
         Device device = deviceList.get(pDevice);
         nameDevice.setText(device.getName());
@@ -385,8 +276,8 @@ public class FullInspectActivity extends SwipeBackActivity {
         style.textColor = Color.GRAY;
 //        style.selectedTextZoom = 5L;
         if(SApplication.isPad(FullInspectActivity.this)){//平板
-            style.selectedTextSize = 30;
-            style.textSize =27;
+            style.selectedTextSize = 27;
+            style.textSize =24;
         }else{//手机
             style.selectedTextSize = 18;
             style.textSize =15;
@@ -394,22 +285,10 @@ public class FullInspectActivity extends SwipeBackActivity {
         wheelView.setWheelSize(3);
         wheelView.setStyle(style);
         wheelView.setWheelClickable(true);
-        wheelView.setSelection(0);
+        wheelView.setSelection(1);
 
         wheelView.setWheelData(patrolContentList);  // 数据集合
-//        wheelView.setOnWheelItemClickListener(new WheelView.OnWheelItemClickListener() {
-//            @Override
-//            public void onItemClick(int position, Object o) {
-//                WheelUtils.log("click:" + position);
-//            }
-//        });
-//        wheelView.setOnWheelItemSelectedListener(new WheelView.OnWheelItemSelectedListener<PatrolContent>() {
-//            @Override
-//            public void onItemSelected(int position, PatrolContent patrolContent) {
-//                WheelUtils.log("click:" + position);
-//                wheelView.getSelectionItem();
-//            }
-//        });
+
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -433,7 +312,7 @@ public class FullInspectActivity extends SwipeBackActivity {
             }
         });
     }
-    @OnClick({R.id.name_device,R.id.style_device,R.id.btn_help,R.id.toolbar_right_tv})
+    @OnClick({R.id.name_device,R.id.style_device,R.id.btn_help,R.id.toolbar_right_tv,R.id.name_dis})
     public void onClick(View view){
         switch (view.getId()){
             case R.id.name_device:
@@ -441,6 +320,9 @@ public class FullInspectActivity extends SwipeBackActivity {
                 break;
             case R.id.style_device:
                 showDialog(view, deviceTypeList);
+                break;
+            case R.id.name_dis:
+                showDialog3(view,intervalUnits);
                 break;
             case R.id.btn_help:
                 Intent intent = new Intent(FullInspectActivity.this,WorkingHelpActivity.class);
@@ -451,6 +333,7 @@ public class FullInspectActivity extends SwipeBackActivity {
                     QueryBuilder<Record> qbRecord = recordDao.queryBuilder();
                     records = qbRecord.list();
                     intent = new Intent();
+                    intent.putExtra("item",item);
                     intent.putExtra("flag","1");
                     intent.setAction("com.whut.smartinspection.activity.FullInspectActivity");
                     sendBroadcast(intent);
@@ -492,6 +375,21 @@ public class FullInspectActivity extends SwipeBackActivity {
                 pDevice = position;
                 patrolNameId = lpatrolNameId.get(position).getPatrolNameId();
                 changeDeviceType1(position);
+            }
+        }).show();
+    }
+    public void showDialog3(View view, final List<IntervalUnit> parent) {
+        WheelViewDialog dialog = new WheelViewDialog(this);
+        List<String> list = new ArrayList<>();
+        for(IntervalUnit intervalUnit : parent){
+            list.add(intervalUnit.getName());
+        }
+        dialog.setTitle("选择间隔名词").setItems(list).setButtonText("确定").setDialogStyle(Color
+                .parseColor("#6699ff")).setCount(5).setOnDialogItemClickListener(new WheelViewDialog.OnDialogItemClickListener() {
+            @Override
+            public void onItemClick(int position, String s) {
+                int i = position;
+                nameDis.setText(s);
             }
         }).show();
     }

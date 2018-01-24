@@ -16,7 +16,7 @@ public class Person {
     private String phoneNumber;
     private String password;
     private String sessionId;
-    private boolean isInitTaskDetail ;
+    private boolean isInitTaskDetail ;//是否初始化变电站信息
 
     @Generated(hash = 1756947697)
     public Person(Long id, String name, int age, String phoneNumber,

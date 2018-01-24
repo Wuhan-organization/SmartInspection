@@ -364,7 +364,7 @@ public class FullInspectionActivity extends Activity implements ITaskHandlerList
     }
 
     @Override
-    public void onTaskFailure(Object obj, EMsgType type) {
+    public void onTaskFailure(Object obj, EMsgType type,int flag) {
         SystemUtils.showToast(FullInspectionActivity.this,"失败,服务器或者网络错误");
     }
     @Override

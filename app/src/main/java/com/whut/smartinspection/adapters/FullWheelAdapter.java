@@ -52,7 +52,10 @@ public class FullWheelAdapter extends BaseWheelAdapter<PatrolContent> {
         if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.item_full_tour, null);
             if(!SApplication.isPad(mContext)){
-                ListView.LayoutParams params = new ListView.LayoutParams(ListView.LayoutParams.MATCH_PARENT,270);//设置宽度和高度
+                ListView.LayoutParams params = new ListView.LayoutParams(ListView.LayoutParams.MATCH_PARENT,350);//设置宽度和高度
+                convertView.setLayoutParams(params);
+            }else{//平板
+                ListView.LayoutParams params = new ListView.LayoutParams(ListView.LayoutParams.MATCH_PARENT,400);//设置宽度和高度
                 convertView.setLayoutParams(params);
             }
 //            convertView.setMinimumHeight(100);

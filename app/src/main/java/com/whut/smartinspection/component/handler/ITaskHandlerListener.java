@@ -8,5 +8,5 @@ import java.util.ArrayList;
 
 public interface ITaskHandlerListener {
     public void onTaskSuccess(Object obj, EMsgType type, int flag);
-    public void onTaskFailure(Object obj, EMsgType type);
+    public void onTaskFailure(Object obj, EMsgType type,int flag);
 }

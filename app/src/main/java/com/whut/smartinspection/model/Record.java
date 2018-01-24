@@ -14,7 +14,7 @@ import org.greenrobot.greendao.annotation.Generated;
 @Entity
 public class Record {
     @Property(nameInDb = "id")
-    @Id()
+    @Id(autoincrement = true)
     private Long id;//greenDao自动生成的ID
 
     private String idd;//巡视项目ID

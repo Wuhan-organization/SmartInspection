@@ -1,5 +1,6 @@
 package com.whut.smartinspection.component.db;
 
+import com.whut.greendao.gen.PatrolTaskDetailDao;
 import com.whut.greendao.gen.PerPatrolCardDao;
 import com.whut.greendao.gen.RecordDao;
 import com.whut.greendao.gen.TaskItemDao;
@@ -34,8 +35,9 @@ public class BaseDbComponent {
     }
     public static void deleteData(){
 //        taskItemDao.deleteAll();
-        wholePatrolCardDao.deleteAll();
-        perPatrolCardDao.deleteAll();
-        recordDao.deleteAll();
+
+//        wholePatrolCardDao.deleteAll();
+//        perPatrolCardDao.deleteAll();
+//        recordDao.deleteAll();
     }
 }
